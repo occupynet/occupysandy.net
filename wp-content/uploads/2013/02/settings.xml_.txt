@@ -1,0 +1,1562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types>
+    <groups>
+        <group>
+            <ID>7459</ID>
+            <post_content></post_content>
+            <post_title>Resources Fields</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_fields>,resource-url,</_wp_types_group_fields>
+                <_wp_types_group_post_types>,resources-list,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+            </meta>
+        </group>
+        <group>
+            <ID>7211</ID>
+            <post_content></post_content>
+            <post_title>Project Fields</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_post_types>,project,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+                <_wp_types_group_fields>,help-needed,project-status,project-volunteer-link,project-donate-link,project-background,project-partners,project-location-name,project-location-street,project-location-city,project-location-state,project-location-zip,project-contact-name-external,project-contact-email-external,project-contact-phone-external,project-facebook-link,project-twitter-handle,project-website,project-flickr,project-media-link,project-category-other,project-contact-name-internal,project-contact-email-internal,project-contact-phone-internal,</_wp_types_group_fields>
+            </meta>
+        </group>
+        <group>
+            <ID>7201</ID>
+            <post_content></post_content>
+            <post_title>Locations</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_post_types>,location,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+                <_wp_types_group_fields>,website,twitter-handle,email,facebook,flickr,other-label,other-value,</_wp_types_group_fields>
+            </meta>
+        </group>
+        <group>
+            <ID>6300</ID>
+            <post_content></post_content>
+            <post_title>Featured</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_post_types>,post,page,ai1ec_event,</_wp_types_group_post_types>
+                <_wp_types_group_fields>,featured,</_wp_types_group_fields>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+            </meta>
+        </group>
+        <group>
+            <ID>6064</ID>
+            <post_content>Post type for educational library items.</post_content>
+            <post_title>Library</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_post_types>,sandy-library,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+                <_wp_types_group_fields>,library-source,library-link,</_wp_types_group_fields>
+            </meta>
+        </group>
+        <group>
+            <ID>4447</ID>
+            <post_content></post_content>
+            <post_title>Resources</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>draft</post_status>
+            <meta>
+                <_wp_types_group_fields>,resource-email,resource-url,resource-facebook,resource-phone,resource-file,resource-other-info,</_wp_types_group_fields>
+                <_wp_types_group_post_types>,resources-list,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+            </meta>
+        </group>
+        <group>
+            <ID>15</ID>
+            <post_content></post_content>
+            <post_title>Call Info</post_title>
+            <post_excerpt></post_excerpt>
+            <post_type>wp-types-group</post_type>
+            <post_status>publish</post_status>
+            <meta>
+                <_wp_types_group_fields>,notes,</_wp_types_group_fields>
+                <_wp_types_group_post_types>,ai1ec_event,</_wp_types_group_post_types>
+                <_wp_types_group_terms>all</_wp_types_group_terms>
+                <_wp_types_group_templates>all</_wp_types_group_templates>
+            </meta>
+        </group>
+    </groups>
+    <fields>
+        <field>
+            <id>notes</id>
+            <name>Notes Link</name>
+            <description></description>
+            <type>textfield</type>
+            <slug>notes</slug>
+            <data>
+                <is_new>1</is_new>
+            </data>
+        </field>
+        <field>
+            <id>resource-email</id>
+            <slug>resource-email</slug>
+            <type>email</type>
+            <name>Resource Email</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <email>
+                        <active>1</active>
+                        <message>Please enter a valid email address</message>
+                    </email>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>resource-url</id>
+            <slug>resource-url</slug>
+            <type>url</type>
+            <name>Resource URL</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>resource-facebook</id>
+            <slug>resource-facebook</slug>
+            <type>url</type>
+            <name>Resource Facebook Page</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>resource-phone</id>
+            <slug>resource-phone</slug>
+            <type>phone</type>
+            <name>Resource Phone</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>resource-file</id>
+            <slug>resource-file</slug>
+            <type>file</type>
+            <name>Resource File</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>resource-other-info</id>
+            <slug>resource-other-info</slug>
+            <type>wysiwyg</type>
+            <name>Resource Other Info</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>title</id>
+            <slug>title</slug>
+            <type>textfield</type>
+            <name>Title</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>library-summary</id>
+            <slug>library-summary</slug>
+            <type>wysiwyg</type>
+            <name>Summary/Quote</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>library-link</id>
+            <slug>library-link</slug>
+            <type>url</type>
+            <name>Link</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>library-source</id>
+            <slug>library-source</slug>
+            <type>textfield</type>
+            <name>Source</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>featured</id>
+            <slug>featured</slug>
+            <type>checkbox</type>
+            <name>Featured</name>
+            <description></description>
+            <data>
+                <set_value>1</set_value>
+                <save_empty>no</save_empty>
+                <display>db</display>
+                <display_value_not_selected></display_value_not_selected>
+                <display_value_selected></display_value_selected>
+                <is_new>1</is_new>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>website</id>
+            <slug>website</slug>
+            <type>url</type>
+            <name>Website</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>twitter-handle</id>
+            <slug>twitter-handle</slug>
+            <type>textfield</type>
+            <name>Twitter Handle</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>email</id>
+            <slug>email</slug>
+            <type>email</type>
+            <name>Email</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                    <email>
+                        <active>1</active>
+                        <message>Please enter a valid email address</message>
+                    </email>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>facebook</id>
+            <slug>facebook</slug>
+            <type>url</type>
+            <name>Facebook</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>flickr</id>
+            <slug>flickr</slug>
+            <type>url</type>
+            <name>Flickr</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>other-label</id>
+            <slug>other-label</slug>
+            <type>textfield</type>
+            <name>Other Label</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>other-value</id>
+            <slug>other-value</slug>
+            <type>textfield</type>
+            <name>Other Value</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                </validate>
+                <conditional_display>
+                    <conditions>
+                        <condition_84bdc0e72182456f223715d337fd56c8-1>
+                            <field>other-label</field>
+                            <operation>!==</operation>
+                            <value></value>
+                        </condition_84bdc0e72182456f223715d337fd56c8-1>
+                    </conditions>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>project-overview</id>
+            <slug>project-overview</slug>
+            <type>wysiwyg</type>
+            <name>Overview</name>
+            <description>Free form field to enter text, include images, etc.</description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-status</id>
+            <slug>project-status</slug>
+            <type>radio</type>
+            <name>Volunteers Needed?</name>
+            <description></description>
+            <data>
+                <options>
+                    <wpcf-fields-radio-option-c35986205b9e6284f7c88e463c5b4e1a-1>
+                        <title>Select Status</title>
+                        <value></value>
+                        <display_value>2</display_value>
+                    </wpcf-fields-radio-option-c35986205b9e6284f7c88e463c5b4e1a-1>
+                    <default>wpcf-fields-radio-option-c35986205b9e6284f7c88e463c5b4e1a-1</default>
+                    <wpcf-fields-radio-option-95cf28d1b442a56df8520615aba6eff7-2>
+                        <title>Seeking Volunteers</title>
+                        <value>1</value>
+                        <display_value>1</display_value>
+                    </wpcf-fields-radio-option-95cf28d1b442a56df8520615aba6eff7-2>
+                </options>
+                <display>db</display>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-help-needed</id>
+            <slug>project-help-needed</slug>
+            <type>wysiwyg</type>
+            <name>Help Needed</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-volunteer-link</id>
+            <slug>project-volunteer-link</slug>
+            <type>url</type>
+            <name>Volunteer Link</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-donate-link</id>
+            <slug>project-donate-link</slug>
+            <type>url</type>
+            <name>Donate Link</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-background</id>
+            <slug>project-background</slug>
+            <type>wysiwyg</type>
+            <name>Background</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-partners</id>
+            <slug>project-partners</slug>
+            <type>wysiwyg</type>
+            <name>Partners</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-website</id>
+            <slug>project-website</slug>
+            <type>url</type>
+            <name>Project Website</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-facebook-link</id>
+            <slug>project-facebook-link</slug>
+            <type>url</type>
+            <name>Facebook</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-twitter-handle</id>
+            <slug>project-twitter-handle</slug>
+            <type>textfield</type>
+            <name>Twitter Handle</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-flickr</id>
+            <slug>project-flickr</slug>
+            <type>url</type>
+            <name>Flickr</name>
+            <description></description>
+            <data>
+                <repetitive>1</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location-city</id>
+            <slug>project-location-city</slug>
+            <type>textfield</type>
+            <name>City</name>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location-name</id>
+            <slug>project-location-name</slug>
+            <type>textfield</type>
+            <name>Location</name>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location-street</id>
+            <slug>project-location-street</slug>
+            <type>textfield</type>
+            <name>Street</name>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location-zip</id>
+            <slug>project-location-zip</slug>
+            <type>textfield</type>
+            <name>Zip</name>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location-state</id>
+            <slug>project-location-state</slug>
+            <type>textfield</type>
+            <name>State</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-location</id>
+            <type>textfield</type>
+            <name>project-location</name>
+            <slug>project-location</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+            </data>
+        </field>
+        <field>
+            <id>project-category-other</id>
+            <slug>project-category-other</slug>
+            <type>textfield</type>
+            <name>Project Category Other</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>help-needed</id>
+            <slug>help-needed</slug>
+            <type>wysiwyg</type>
+            <name>Help Needed</name>
+            <description></description>
+            <data>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_address</id>
+            <type>textfield</type>
+            <name>ai1ec_address</name>
+            <slug>ai1ec_address</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_end-date</id>
+            <type>textfield</type>
+            <name>ai1ec_end-date</name>
+            <slug>ai1ec_end-date</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_end-time</id>
+            <type>textfield</type>
+            <name>ai1ec_end-time</name>
+            <slug>ai1ec_end-time</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_start-date</id>
+            <type>textfield</type>
+            <name>ai1ec_start-date</name>
+            <slug>ai1ec_start-date</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_start-time</id>
+            <type>textfield</type>
+            <name>ai1ec_start-time</name>
+            <slug>ai1ec_start-time</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>ai1ec_venue</id>
+            <type>textfield</type>
+            <name>ai1ec_venue</name>
+            <slug>ai1ec_venue</slug>
+            <description></description>
+            <data>
+                <controlled>1</controlled>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>project-services-funds</id>
+            <slug>project-services-funds</slug>
+            <type>checkbox</type>
+            <name>Project Services Funds</name>
+            <description>Would this project like to apply for funds from Occupy Sandy funding groups?</description>
+            <data>
+                <set_value>1</set_value>
+                <save_empty>no</save_empty>
+                <display>value</display>
+                <display_value_not_selected>Yes</display_value_not_selected>
+                <display_value_selected>No</display_value_selected>
+                <is_new>1</is_new>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+                <removed_from_history>1</removed_from_history>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-name-internal</id>
+            <slug>project-contact-name-internal</slug>
+            <type>textfield</type>
+            <name>Internal Contact Name</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-email-internal</id>
+            <slug>project-contact-email-internal</slug>
+            <type>email</type>
+            <name>Internal Contact Email</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                    <email>
+                        <active>1</active>
+                        <message>Please enter a valid email address</message>
+                    </email>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-phone-internal</id>
+            <slug>project-contact-phone-internal</slug>
+            <type>phone</type>
+            <name>Internal Contact Phone</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-name-external</id>
+            <slug>project-contact-name-external</slug>
+            <type>textfield</type>
+            <name>Public Contact Name</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-email-external</id>
+            <slug>project-contact-email-external</slug>
+            <type>email</type>
+            <name>Public Contact Email</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <required>
+                        <active>1</active>
+                        <value>true</value>
+                        <message>This Field is required</message>
+                    </required>
+                    <email>
+                        <active>1</active>
+                        <message>Please enter a valid email address</message>
+                    </email>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-contact-phone-external</id>
+            <slug>project-contact-phone-external</slug>
+            <type>phone</type>
+            <name>Public Contact Phone</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+        <field>
+            <id>project-media-link</id>
+            <slug>project-media-link</slug>
+            <type>url</type>
+            <name>Project Media Link</name>
+            <description></description>
+            <data>
+                <repetitive>0</repetitive>
+                <validate>
+                    <url>
+                        <active>1</active>
+                        <message>Please enter a valid URL address</message>
+                    </url>
+                </validate>
+                <conditional_display>
+                    <relation>AND</relation>
+                    <custom></custom>
+                </conditional_display>
+                <disabled_by_type>0</disabled_by_type>
+            </data>
+        </field>
+    </fields>
+    <types>
+        <type>
+            <wpcf-post-type>minutes</wpcf-post-type>
+            <labels>
+                <name>Minutes</name>
+                <singular_name>Minutes</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>minutes</slug>
+            <description></description>
+            <public>public</public>
+            <menu_position>10</menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <post_tag>1</post_tag>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <comments>1</comments>
+                <revisions>1</revisions>
+                <author>1</author>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <id>minutes</id>
+        </type>
+        <type>
+            <wpcf-post-type>bulletin</wpcf-post-type>
+            <labels>
+                <name>Bulletins</name>
+                <singular_name>Bulletin</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>bulletin</slug>
+            <description>Community posts</description>
+            <public>public</public>
+            <menu_position>6</menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <post_tag>1</post_tag>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <comments>1</comments>
+                <author>1</author>
+                <thumbnail>1</thumbnail>
+                <post-formats>1</post-formats>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <id>bulletin</id>
+        </type>
+        <type>
+            <labels>
+                <name>FAQs</name>
+                <singular_name>FAQ</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>faq</slug>
+            <description></description>
+            <public>public</public>
+            <menu_position>8</menu_position>
+            <menu_icon>http://www.sparkimg.com/faq/faq_icon_20.png</menu_icon>
+            <taxonomies>
+                <category>1</category>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <id>faq</id>
+        </type>
+        <type>
+            <wpcf-post-type>resources-list</wpcf-post-type>
+            <labels>
+                <name>Resources</name>
+                <singular_name>Resource</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>resources-list</slug>
+            <description>Alphabetical list of resources.</description>
+            <public>public</public>
+            <menu_position></menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <post_tag>1</post_tag>
+                <resource-category>1</resource-category>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <revisions>1</revisions>
+                <excerpt>1</excerpt>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <hierarchical>1</hierarchical>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <disabled>0</disabled>
+            <id>resources-list</id>
+        </type>
+        <type>
+            <labels>
+                <name>Locations</name>
+                <singular_name>Location</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>location</slug>
+            <description></description>
+            <public>public</public>
+            <menu_position></menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <category>1</category>
+                <post_tag>1</post_tag>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <excerpt>1</excerpt>
+                <thumbnail>1</thumbnail>
+                <custom-fields>1</custom-fields>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <post_relationship>
+                <belongs>
+                    <page>1</page>
+                </belongs>
+            </post_relationship>
+            <id>location</id>
+        </type>
+        <type>
+            <wpcf-post-type>project</wpcf-post-type>
+            <labels>
+                <name>Projects</name>
+                <singular_name>Project</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>project</slug>
+            <description></description>
+            <public>public</public>
+            <menu_position></menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <post_tag>1</post_tag>
+                <project-category>1</project-category>
+                <project-service>1</project-service>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <comments>1</comments>
+                <author>1</author>
+                <excerpt>1</excerpt>
+                <thumbnail>1</thumbnail>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <id>project</id>
+        </type>
+        <type>
+            <wpcf-post-type>sandy-library</wpcf-post-type>
+            <labels>
+                <name>Library Items</name>
+                <singular_name>Library Item</singular_name>
+                <add_new>Add New</add_new>
+                <add_new_item>Add New %s</add_new_item>
+                <edit_item>Edit %s</edit_item>
+                <new_item>New %s</new_item>
+                <view_item>View %s</view_item>
+                <search_items>Search %s</search_items>
+                <not_found>No %s found</not_found>
+                <not_found_in_trash>No %s found in Trash</not_found_in_trash>
+                <parent_item_colon>Parent %s</parent_item_colon>
+                <all_items>%s</all_items>
+            </labels>
+            <slug>sandy-library</slug>
+            <description>Post type to use for the educational library.</description>
+            <public>public</public>
+            <menu_position></menu_position>
+            <menu_icon></menu_icon>
+            <taxonomies>
+                <post_tag>1</post_tag>
+                <library-category>1</library-category>
+            </taxonomies>
+            <supports>
+                <title>1</title>
+                <editor>1</editor>
+                <comments>1</comments>
+                <trackbacks>1</trackbacks>
+                <revisions>1</revisions>
+                <author>1</author>
+                <excerpt>1</excerpt>
+            </supports>
+            <rewrite>
+                <enabled>1</enabled>
+                <custom>normal</custom>
+                <slug></slug>
+                <with_front>1</with_front>
+                <feeds>1</feeds>
+                <pages>1</pages>
+            </rewrite>
+            <has_archive>1</has_archive>
+            <show_in_menu>1</show_in_menu>
+            <show_in_menu_page></show_in_menu_page>
+            <show_ui>1</show_ui>
+            <publicly_queryable>1</publicly_queryable>
+            <can_export>1</can_export>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <permalink_epmask>EP_PERMALINK</permalink_epmask>
+            <id>sandy-library</id>
+        </type>
+    </types>
+    <taxonomies>
+        <taxonomy>
+            <wpcf-tax>library-category</wpcf-tax>
+            <labels>
+                <name>Library Categories</name>
+                <singular_name>Library Category</singular_name>
+                <search_items>Search %s</search_items>
+                <popular_items>Popular %s</popular_items>
+                <all_items>All %s</all_items>
+                <parent_item>Parent %s</parent_item>
+                <parent_item_colon>Parent %s:</parent_item_colon>
+                <edit_item>Edit %s</edit_item>
+                <update_item>Update %s</update_item>
+                <add_new_item>Add New %s</add_new_item>
+                <new_item_name>New %s Name</new_item_name>
+                <separate_items_with_commas>Separate %s with commas</separate_items_with_commas>
+                <add_or_remove_items>Add or remove %s</add_or_remove_items>
+                <choose_from_most_used>Choose from the most used %s</choose_from_most_used>
+                <menu_name>%s</menu_name>
+            </labels>
+            <slug>library-category</slug>
+            <description></description>
+            <public>public</public>
+            <supports>
+                <library>1</library>
+                <sandy-library>1</sandy-library>
+            </supports>
+            <hierarchical>hierarchical</hierarchical>
+            <rewrite>
+                <enabled>1</enabled>
+                <slug></slug>
+                <with_front>1</with_front>
+                <hierarchical>1</hierarchical>
+            </rewrite>
+            <show_ui>1</show_ui>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <show_tagcloud>1</show_tagcloud>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <update_count_callback></update_count_callback>
+            <id>library-category</id>
+        </taxonomy>
+        <taxonomy>
+            <wpcf-tax>resource-category</wpcf-tax>
+            <labels>
+                <name>Resource Categories</name>
+                <singular_name>Resource Category</singular_name>
+                <search_items>Search %s</search_items>
+                <popular_items>Popular %s</popular_items>
+                <all_items>All %s</all_items>
+                <parent_item>Parent %s</parent_item>
+                <parent_item_colon>Parent %s:</parent_item_colon>
+                <edit_item>Edit %s</edit_item>
+                <update_item>Update %s</update_item>
+                <add_new_item>Add New %s</add_new_item>
+                <new_item_name>New %s Name</new_item_name>
+                <separate_items_with_commas>Separate %s with commas</separate_items_with_commas>
+                <add_or_remove_items>Add or remove %s</add_or_remove_items>
+                <choose_from_most_used>Choose from the most used %s</choose_from_most_used>
+                <menu_name>%s</menu_name>
+            </labels>
+            <slug>resource-category</slug>
+            <description>Categories for posts in the Resource section.</description>
+            <public>public</public>
+            <supports>
+                <resources-list>1</resources-list>
+            </supports>
+            <hierarchical>hierarchical</hierarchical>
+            <rewrite>
+                <enabled>1</enabled>
+                <slug></slug>
+                <with_front>1</with_front>
+                <hierarchical>1</hierarchical>
+            </rewrite>
+            <show_ui>1</show_ui>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <show_tagcloud>1</show_tagcloud>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <update_count_callback></update_count_callback>
+            <disabled>0</disabled>
+            <id>resource-category</id>
+        </taxonomy>
+        <taxonomy>
+            <wpcf-tax>project-service-group</wpcf-tax>
+            <labels>
+                <name>Project Categories</name>
+                <singular_name>Project Category</singular_name>
+                <search_items>Search %s</search_items>
+                <popular_items>Popular %s</popular_items>
+                <all_items>All %s</all_items>
+                <parent_item>Parent %s</parent_item>
+                <parent_item_colon>Parent %s:</parent_item_colon>
+                <edit_item>Edit %s</edit_item>
+                <update_item>Update %s</update_item>
+                <add_new_item>Add New %s</add_new_item>
+                <new_item_name>New %s Name</new_item_name>
+                <separate_items_with_commas>Separate %s with commas</separate_items_with_commas>
+                <add_or_remove_items>Add or remove %s</add_or_remove_items>
+                <choose_from_most_used>Choose from the most used %s</choose_from_most_used>
+                <menu_name>%s</menu_name>
+            </labels>
+            <slug>project-category</slug>
+            <description></description>
+            <public>public</public>
+            <supports>
+                <project>1</project>
+            </supports>
+            <hierarchical>hierarchical</hierarchical>
+            <rewrite>
+                <enabled>1</enabled>
+                <slug></slug>
+                <with_front>1</with_front>
+                <hierarchical>1</hierarchical>
+            </rewrite>
+            <show_ui>1</show_ui>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <show_tagcloud>1</show_tagcloud>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <update_count_callback></update_count_callback>
+            <id>project-category</id>
+        </taxonomy>
+        <taxonomy>
+            <wpcf-tax>project-service</wpcf-tax>
+            <labels>
+                <name>Project Services</name>
+                <singular_name>Project Service</singular_name>
+                <search_items>Search %s</search_items>
+                <popular_items>Popular %s</popular_items>
+                <all_items>All %s</all_items>
+                <parent_item>Parent %s</parent_item>
+                <parent_item_colon>Parent %s:</parent_item_colon>
+                <edit_item>Edit %s</edit_item>
+                <update_item>Update %s</update_item>
+                <add_new_item>Add New %s</add_new_item>
+                <new_item_name>New %s Name</new_item_name>
+                <separate_items_with_commas>Separate %s with commas</separate_items_with_commas>
+                <add_or_remove_items>Add or remove %s</add_or_remove_items>
+                <choose_from_most_used>Choose from the most used %s</choose_from_most_used>
+                <menu_name>%s</menu_name>
+            </labels>
+            <slug>project-service</slug>
+            <description></description>
+            <public>public</public>
+            <supports>
+                <project>1</project>
+            </supports>
+            <hierarchical>hierarchical</hierarchical>
+            <rewrite>
+                <enabled>1</enabled>
+                <slug></slug>
+                <with_front>1</with_front>
+                <hierarchical>1</hierarchical>
+            </rewrite>
+            <show_ui>1</show_ui>
+            <show_in_nav_menus>1</show_in_nav_menus>
+            <show_tagcloud>1</show_tagcloud>
+            <query_var_enabled>1</query_var_enabled>
+            <query_var></query_var>
+            <update_count_callback></update_count_callback>
+            <disabled>0</disabled>
+            <id>project-service</id>
+        </taxonomy>
+    </taxonomies>
+    <post_relationships>
+        <post_relationship>a:1:{s:4:&quot;page&quot;;a:1:{s:8:&quot;location&quot;;a:0:{}}}</post_relationship>
+    </post_relationships>
+</types>
