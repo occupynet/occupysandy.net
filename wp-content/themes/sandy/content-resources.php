@@ -9,6 +9,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
 	<header class="entry-header">
 		<h1 class="leader"><?php the_title(); ?></h1>
         <?php edit_post_link( __( 'Edit', 'foghorn' ), '<span class="edit-link">', '</span>' ); ?>
@@ -20,4 +21,5 @@
 		<?php the_content(); ?>
 
 	</div><!-- .entry-content -->
+
 </article><!-- #post-<?php the_ID(); ?> -->
