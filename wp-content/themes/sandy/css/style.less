@@ -252,7 +252,7 @@ p {
   margin: .5em 0 .5em;
 }
 
-h1 {font-size: 36px; .condensed;}
+h1 {font-size: 36px; .condensed; line-height: 1.1em;}
 h2 {font-size: 22px; .caps;}
 h3 {font-size: 18px;}
 h4 {font-size: 14px;}
@@ -363,6 +363,10 @@ a, a:active, a:visited {
 }
 
 a img {border: 0;}
+
+aside a {
+  word-wrap: break-word;
+}
 
 button, 
 .button, 
@@ -489,6 +493,15 @@ button,
   }
 }
 
+.search-results article {
+border-top: 1px solid #DDD;
+margin-top: 25px;
+padding-top: 25px;
+}
+
+.comments {
+	
+}
 
 /* table */
 
@@ -504,10 +517,13 @@ button,
     white-space: nowrap;
   }
   td {
-    padding: 7px 10px 9px;
+    padding: 10px;
     font-size: 14px;
     line-height: 1.3em;
     vertical-align: top;
+    p {
+	    margin: -2px 0 .5em;
+    }
   }
   tr:nth-child(2n+2) {  
     background: #F5F5F5;
@@ -711,6 +727,8 @@ ul.resources {
 
 
 /* forms */
+
+.gform_wrapper { display: inline !important; } /* fix for gravity form display error */
 
 .form-item {
   margin-top: 2em;
@@ -1029,19 +1047,14 @@ hr {
 
 /* twitter and facebook icons in local menu */
 
-#menu-item-21706, #menu-item-21707, /* occupysandy.net */
-#menu-item-602, #menu-item-603, /* staging */
-#menu-item-3094, #menu-item-3095, /* production */
-#menu-item-3653, #menu-item-3654 /* pea's local */ {
-  a {
-    .socialgram;
-    font-size: 40px;
-    padding: 0;
-    width: 44px;
-    height: 44px;
-    line-height: 40px;
-    text-align: center;
-  }
+.social-icon a {
+	.socialgram;
+	font-size: 40px;
+	padding: 0;
+	width: 44px;
+	height: 44px;
+	line-height: 40px;
+	text-align: center;
 }
 
 .communities {
@@ -1310,11 +1323,11 @@ footer.entry-meta {
   display: none;
 }
 
-.twtr-widget .twtr-tweet {
+#twtr-widget-1 .twtr-tweet {
   border-bottom: 1px solid #CCC;
   padding: 0!important;
   a {
-    color: #999 !important;
+    color: #222 !important;
     &:hover {
       color: @anchor!important;
     }
@@ -1475,11 +1488,15 @@ footer.entry-meta {
     margin-left: 5px;
   }
   .about {
-    .column(6);
+    display: inline;
+	float: left;
+	width: 50%;
     padding: 25px;
   }
   .events, .contact, .weather {
-    .column(3);
+    display: inline;
+	float: left;
+	width: 25%;
     padding: 25px 25px 25px 0;    
     dt {
       margin-top: .5em;
@@ -1804,7 +1821,12 @@ footer.entry-meta {
   padding:0;
 }
 
-
+.error404 ul {
+	margin: 1em 2em;
+}
+.error404 li {
+	margin: .5em 0;
+}
 
 /* calendar -- temporary until new plugin theme is done */
 
@@ -2500,6 +2522,45 @@ input::-moz-focus-inner {
 
 
 /******* RESPONSIVE STYLING *******/
+
+
+@media screen and (max-width: 768px) {
+
+	#menu-local-menu a {
+		padding: 0 15px;
+		border-bottom: 1px solid #BBB;
+	}
+	
+	#menu-item-21706 a, 
+	#menu-item-21707 a {
+		height: 45px;
+	}
+	
+	.home-feeds, 
+	.home-promos {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 30px;
+		float: none;
+	}
+	
+	#interoccupy {
+		.about {
+			width: 100%;
+			margin: 0;
+			padding: 25px 25px 13px;
+			border-bottom: 1px dotted #DDD;
+		}
+		.weather, 
+		.contact {
+			width: 50%;
+			padding: 25px 0 30px 25px;
+			margin: 0;
+		}
+	}
+
+}
+
 
 
 @media screen and (max-width: 720px) {
