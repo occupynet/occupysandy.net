@@ -16,6 +16,7 @@ wp-config.php
 voice/voicefiles
 wp-content/_uploads/
 #wp-content/uploads/
+wp-content/uploads/gravity_forms/
 wp-content/blogs.dir/
 wp-content/upgrade/
 wp-content/backup-db/
