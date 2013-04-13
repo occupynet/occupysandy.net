@@ -1,0 +1,150 @@
+//
+// @file
+//
+// This is adapted from Twitter Bootstrap. Change these variables to modify the
+// look of the calendar.
+//
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@grayDarkest:           #111;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
+@grayLighter:           #eee;
+@grayLightest:          #f0f0f0;
+@white:                 #fff;
+@btnShadow:             #fff;
+
+// Accent colors
+// -------------------------
+@blue:                  #049cdb;
+@blueDark:              #0064cd;
+@blueLight:             #E0EFFF;
+@green:                 #49c157;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@yellowLight:           #ffd;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+@muted:                 mix( @textColor, @bodyBackground, 60% );
+
+// Typography
+// -------------------------
+@baseFontSize:          13px;
+@baseLineHeight:        16px;
+@altFontFamily:         Georgia, "Times New Roman", Times, serif;
+@titleFontSize:         30px;
+@titleLineHeight:       25px;
+
+@headingsFontFamily:    Calibri, Nunito, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@headingsFontWeight:    bold;
+@headingsColor:         @grayDark;
+
+
+// Tables
+// -------------------------
+@tableBackgroundAccent:             #f9f9f9; // for striping
+@tableBackgroundHover:              #f5f5f5; // for hover
+@tableBorder:                       #ddd; // table and cell border
+
+// Buttons
+// -------------------------
+@btnTextShadow:                     0 1px 1px @textEmboss;
+
+@btnSuccessBackground:              #62c462;
+@btnSuccessBackgroundHighlight:     #51a351;
+
+@btnInfoBackground:                 #5bc0de;
+@btnInfoBackgroundHighlight:        #2f96b4;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+@btnDangerBackground:               #ee5f5b;
+@btnDangerBackgroundHighlight:      #bd362f;
+
+@btnInverseBackground:              @gray;
+@btnInverseBackgroundHighlight:     @grayDarker;
+
+@btnShadow:                         ~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)";
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          10000;
+@zindexPopover:           10010;
+@zindexTooltip:           10020;
+@zindexFixedNavbar:       10030;
+@zindexModalBackdrop:     10040;
+@zindexModal:             10050;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:                @grayLighter;
+
+
+// Modals
+// -------------------------
+@modalBorder:             mix( @bodyBackground, @textColor, 70% );
+@modalFooterBackground:   #f5f5f5;
+@modalFooterShadow:       0 1px 0 @bodyBackground;
+@fadedModalBorder:        #ddd;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             #c09853;
+@warningBackground:       #fcf8e3;
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               #b94a48;
+@errorBackground:         #f2dede;
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successText:             #468847;
+@successBackground:       #dff0d8;
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoText:                #3a87ad;
+@infoBackground:          #d9edf7;
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;
+
+
+// Calendar Toolbar
+// -------------------------
+@toolbarBg:               mix( @btnBackground, @bodyBackground, 70% );
+@toolbarBgHighlight:      mix( @btnBackgroundHighlight, @bodyBackground, 70% );
+@toolbarBorder:           mix( @btnBorder, @bodyBackground, 70% );

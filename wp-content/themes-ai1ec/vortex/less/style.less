@@ -1,0 +1,1115 @@
+//
+// @file
+//
+// CSS declarations for all parts of a WordPress site in which the All-in-One
+// Calendar plugin is active. Mostly the bare minimum required for proper
+// styling of widgets.
+//
+
+// ======================
+// = Variables & mixins =
+// ======================
+// Based on Bootstrap. Modify variables.less for custom colors, font-sizes, etc.
+// We do not import variable.less as it's handled server side';
+@import "bootstrap/mixins.less";
+@import "bootstrap/mixins-custom.less";
+
+// ========================
+// = Unnamespaced inludes =
+// ========================
+
+@import "bootstrap/component-animations.less";
+
+// These files have proper namespacing done inside them.
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+
+// Select2 is well-namespaced already, and will be difficult to style if styles
+// are forced inside .timely namespace.
+@import "select2.less";
+
+// =====================================
+// = Unnamespaced includes - overrides =
+// =====================================
+.modal-backdrop {
+	background-color: @bodyBackground;
+}
+.select2-container {
+	margin-bottom: 9px;
+}
+.select2-container-multi {
+	.select2-choices {
+		background-color: @inputBackground;
+		background-image: none;
+		border-color: @inputBorder;
+		.select2-search-field input {
+			color: @inputText;
+			&.select2-default {
+				color: @placeholderText !important;
+			}
+		}
+	}
+}
+.select2-drop {
+	background-color: @bodyBackground;
+	border-color: @inputBorderFocus;
+	color: @textColor;
+	font-family: @baseFontFamily;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+	z-index: @zindexDropdown;
+	.ai1ec-modal-open & {
+		z-index: @zindexDropdown + @zindexModal;
+	}
+}
+.select2-results {
+	margin: 4px 0;
+	padding: 0;
+	.select2-highlighted {
+		color: @dropdownLinkColor;
+		background-color: @dropdownLinkBackgroundHover;
+	}
+	.select2-no-results,
+	.select2-searching,
+	.select2-selection-limit {
+		background-color: mix( @textColor, @bodyBackground, 10% );
+	}
+}
+.select2-search-choice-close {
+	top: 3px;
+}
+.select2-container,
+.select2-drop {
+	.ai1ec-category-color,
+	.ai1ec-category-color-empty {
+		width: 7px;
+		height: 7px;
+	}
+}
+
+// Fight FOUT by hiding .timely container(s) while loading fonts.
+.ai1ec-posterboard-view {
+	background-image: url('@{imgdir}/ajax-loader.gif');
+	background-repeat: no-repeat;
+	background-position: center 50px;
+	min-height: 100px;
+	> * {
+		.opacity( 0 );
+		.transition( opacity 0.2s );
+		visibility: hidden;
+	}
+}
+.wf-active .ai1ec-posterboard-view,
+.wf-inactive .ai1ec-posterboard-view {
+	background-image: none;
+	min-height: 0;
+	> * {
+		.opacity( 100 );
+		visibility: visible;
+	}
+}
+
+// ===============
+// = Hard resets =
+// ===============
+// Reset some elements that are aggressively styled by poorly written themes.
+// Required for modals, anchors, images, other elements. We need to include
+// #ai1ec-container below to give extra priority at times.
+.timely,
+#ai1ec-container {
+	a,
+	a:link,
+	a:visited,
+	a:active,
+	a:hover {
+		font-weight: normal;
+		text-decoration: none !important;
+	}
+	img {
+		background: none;
+		border: none;
+		.border-radius( 0 );
+		.box-shadow( none );
+		max-width: none;
+		margin: 0;
+		padding: 0;
+	}
+	// Restore some WP styling for embedded images in Agenda view.
+	.alignleft,
+	&.alignleft {
+		float: left;
+		margin: 0 16px 8px 0;
+	}
+	.alignright,
+	&.alignright {
+		float: right;
+		margin: 0 0 8px 16px;
+	}
+	small {
+		margin: 0 !important;
+	}
+	table {
+		line-height: inherit;
+	}
+	tr,
+	th,
+	td {
+		background: none;
+		border: 0;
+		padding: 0;
+	}
+}
+
+// Namespace what we can.
+.timely {
+	// =======================
+	// = Namespaced includes =
+	// =======================
+
+	// CSS Reset
+	@import "bootstrap/reset.less";
+
+	// Page structure, base CSS & components.
+	@import "bootstrap/scaffolding.less";
+	@import "bootstrap/grid.less";
+	@import "bootstrap/type.less";
+	@import "bootstrap/forms.less";
+	@import "bootstrap/fileupload.less";
+	@import "bootstrap/dropdowns.less";
+	@import "bootstrap/close.less";
+	@import "bootstrap/buttons.less";
+	@import "bootstrap/button-groups.less";
+	@import "bootstrap/alerts.less";
+	@import "bootstrap/navs.less";
+	@import "bootstrap/thumbnails.less";
+
+	// Utility classes.
+	@import "bootstrap/utilities.less";
+
+	// Other namespaced includes.
+	@import "datepicker.less";
+	@import "timepicker.less";
+
+	// ===================================
+	// = Namespaced includes - overrides =
+	// ===================================
+
+	// ================
+	// = Extra Resets =
+	// ================
+
+	// Copied from scaffolding body reset; needed to apply to .timely, not body.
+	margin: 0;
+	font-family: @baseFontFamily;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+	color: @textColor;
+
+	a {
+		border: none;
+	}
+
+	// ===============================
+	// = Button & dropdown overrides =
+	// ===============================
+	.btn {
+		color: @btnTextColor;
+		text-shadow: @btnTextShadow;
+		.buttonBackground( @btnBackground, @btnBackgroundHighlight );
+		border: 1px solid @btnBorder;
+		*border: 0; // Remove the border to prevent IE7's black border on input:focus
+		border-bottom-color: darken(@btnBorder, 10%);
+		.box-shadow( @btnShadow );
+		&:hover {
+			color: @btnTextHover;
+		}
+		&.disabled,
+		&[disabled] {
+			background-color: mix( @bodyBackground, @textColor, 95% );
+		}
+	}
+	// Repeat all .btn-* overrides to give them higher precendence than above
+	// .btn overrides.
+	.btn-primary,
+	.btn-primary:hover,
+	.btn-warning,
+	.btn-warning:hover,
+	.btn-danger,
+	.btn-danger:hover,
+	.btn-success,
+	.btn-success:hover,
+	.btn-info,
+	.btn-info:hover,
+	.btn-inverse,
+	.btn-inverse:hover {
+		color: mix( @bodyBackground, @white, 12% );
+		text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+	}
+	.btn-primary.active,
+	.btn-warning.active,
+	.btn-danger.active,
+	.btn-success.active,
+	.btn-info.active,
+	.btn-inverse.active {
+		color: rgba(255,255,255,.75);
+	}
+	.btn-primary {
+		.buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+	}
+	.btn-warning {
+		.buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+	}
+	.btn-danger {
+		.buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+	}
+	.btn-success {
+		.buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+	}
+	.btn-info {
+		.buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+	}
+	.btn-inverse {
+		.buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+	}
+
+	// Position toolbar buttons properly.
+	.btn-toolbar {
+		margin: 0;
+	}
+	.btn-group {
+		margin-bottom: 6px;
+		vertical-align: bottom;
+		> .btn-primary {
+			z-index: 3;
+		}
+	}
+	.btn-group.pull-right + .btn-group.pull-right {
+		margin-left: 0;
+		margin-right: 5px;
+	}
+	// Until we upgrade Bootstrap, must manually apply these styles to override
+	// any applied by themes based on more recent Bootstrap.
+	.btn-group > .btn,
+	.btn-group > .dropdown-menu,
+	.btn-group > .popover {
+		font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
+	}
+	// Reset fonts for other sizes
+	.btn-group > .btn-mini {
+		font-size: @baseFontSize - 2px;
+	}
+	.btn-group > .btn-small {
+		font-size: @fontSizeSmall;
+	}
+	.btn-group > .btn-large {
+		font-size: @baseFontSize + 2px;
+	}
+
+	// Position and colorize navigation properly.
+	.nav {
+		margin: 0 0 @baseLineHeight !important;
+		list-style: none !important;
+		padding: 0 !important;
+		> li {
+			list-style: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	}
+	.nav-pills > li > a {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 8px 9px 7px;
+	}
+	.nav > li > a:hover,
+	.nav-pills > .active > a,
+	.nav > .dropdown:hover > a,
+	.nav-pills > .active > a:hover,
+	.nav > .dropdown.active > a:hover,
+	.nav-tabs .open .dropdown-toggle,
+	.nav-pills .open .dropdown-toggle,
+	.nav > li.dropdown.open.active > a:hover {
+		#gradient > .vertical( fade( @bodyBackground, 0% ), fade( @bodyBackground, 50% ) );
+		filter: none\9; // IE8 doesn't support translucent gradients
+		.listItemActive( ~", inset 0 2px 1px " fade( @textColor, 10% ) );
+	}
+	// Fix coloring of Dropdown menus.
+	.dropdown-toggle {
+		.listItem();
+		&:hover {
+			.listItemActive();
+		}
+	}
+	.caret {
+		border-top-color: @textColor;
+		border-bottom-color: @textColor;
+		.opacity( 75 );
+	}
+	.dropdown .caret {
+		margin-left: 0;
+	}
+	.nav-tabs .dropdown-toggle .caret,
+	.nav-pills .dropdown-toggle .caret {
+		border-top-color: @dropdownLinkColor;
+		border-bottom-color: @dropdownLinkColor;
+	}
+	.nav-tabs .dropdown-toggle:hover .caret,
+	.nav-pills .dropdown-toggle:hover .caret,
+	.nav li.dropdown.open .caret,
+	.nav li.dropdown.open.active .caret,
+	.nav li.dropdown.open a:hover .caret,
+	.nav-tabs .active .dropdown-toggle .caret,
+	.nav-pills .active .dropdown-toggle .caret {
+		border-top-color: @dropdownLinkColorHover;
+		border-bottom-color: @dropdownLinkColorHover;
+	}
+	.dropdown-toggle {
+		cursor: pointer;
+	}
+	.dropdown-menu {
+		border-color: @dropdownBorder;
+		margin-top: 0 !important;
+	}
+	.dropdown-menu a:hover,
+	.dropdown-menu .active > a,
+	.dropdown-menu .active > a:hover {
+		border: none;
+		// !important required until we upgrade Bootstrap.
+		background: @dropdownLinkBackgroundHover !important;
+		color: @dropdownLinkColorHover;
+	}
+
+	// ==========
+	// = Modals =
+	// ==========
+	.modal {
+		min-height: 250px;
+		margin-left: -250px;
+		width: 500px;
+		background-color: @bodyBackground !important;
+		border-color: @modalBorder !important;
+	}
+	.modal-header {
+		h2 {
+			margin: 0;
+		}
+		border-bottom-color: @fadedModalBorder;
+	}
+	.modal-body {
+		min-height: 90px;
+		max-height: 350px;
+		padding: 15px;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	.modal-footer {
+		background-color: @modalFooterBackground;
+		border-top-color: @fadedModalBorder;
+		.box-shadow( @modalFooterShadow );
+	}
+	.close {
+		color: @textColor;
+		.opacity( 30 );
+		&:hover {
+			color: @textColor;
+			.opacity( 60 );
+		}
+	}
+
+	// =========
+	// = Forms =
+	// =========
+
+	form {
+		margin: 0;
+	}
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	input[type="file"],
+	.uneditable-input {
+		color: @inputText;
+		.placeholder( @placeholderText );
+		&:focus {
+			border-color: @inputBorderFocus;
+			.box-shadow( 0 0 8px @inputBorderFocus );
+		}
+	}
+	.placeholder {
+		color: @placeholderText;
+	}
+	input[disabled],
+	select[disabled],
+	textarea[disabled],
+	input[readonly],
+	select[readonly],
+	textarea[readonly] {
+		border-color: mix( @inputBorder, @bodyBackground, 75% );
+		cursor: auto;
+	}
+	input[readonly],
+	select[readonly],
+	textarea[readonly] {
+		background-color: @inputBackground;
+		border-color: @inputBorder;
+	}
+	.select2-container input[type="text"]:focus {
+		.box-shadow( none );
+	}
+
+	input.ai1ec-datepicker[readonly],
+	input.ai1ec-timepicker[readonly] {
+		cursor: pointer;
+	}
+	.datepicker {
+		@datepickerFontSize: @baseFontSize * 0.85;
+		font-size: @datepickerFontSize;
+		padding: @datepickerFontSize * 0.5;
+		&.ai1ec-right-aligned:before {
+			left: auto;
+			right: 6px;
+		}
+		&.ai1ec-right-aligned:after {
+			left: auto;
+			right: 7px;
+		}
+		th,
+		td {
+			height: @datepickerFontSize * 2;
+			width: @datepickerFontSize * 2.2;
+			vertical-align: middle;
+		}
+		th {
+			font-weight: bold;
+		}
+		thead tr:first-child th,
+		tfoot tr:first-child th {
+			&:hover {
+				background-color: @dropdownLinkBackgroundHover;
+			}
+			// Override unusual and buggy hiding of today button.
+			&.today {
+				display: table-cell !important;
+				filter: alpha(opacity=100) !important;
+				margin: 0 !important;
+				overflow: visible !important;
+				opacity: 100 !important;
+				padding: 0 !important;
+				height: @datepickerFontSize * 2 !important;
+				width: @datepickerFontSize * 2.2 !important;
+			}
+		}
+		td {
+			&.day:hover {
+				background-color: @dropdownLinkBackgroundHover;
+			}
+			&.old,
+			&.new {
+				color: mix( @textColor, @bodyBackground, 60% );
+			}
+			&.disabled,
+			&.disabled:hover {
+				background: none;
+				color: mix( @textColor, @bodyBackground, 30% );
+			}
+			&.today,
+			&.today:hover,
+			&.today.disabled,
+			&.today.disabled:hover {
+				.buttonBackground( @todayColor, @todayColor );
+				.box-shadow( inset 0 0 2px mix( @todayColor, @textColor, 50% ) );
+			}
+			&.active,
+			&.active:hover,
+			&.active.disabled,
+			&.active.disabled:hover {
+				.buttonBackground( @dropdownLinkBackgroundHover, @dropdownLinkBackgroundHover );
+				.box-shadow( none );
+				color: @dropdownLinkColor;
+				text-shadow: none;
+			}
+			span {
+				&:hover {
+					background-color: @dropdownLinkBackgroundHover;
+				}
+				&.old {
+					color: mix( @textColor, @bodyBackground, 60% );
+				}
+				&.disabled,
+				&.disabled:hover {
+					background: none;
+					color: mix( @textColor, @bodyBackground, 30% );
+				}
+				&.active,
+				&.active:hover,
+				&.active.disabled,
+				&.active.disabled:hover {
+					.buttonBackground( @dropdownLinkBackgroundHover, @dropdownLinkBackgroundHover );
+					.box-shadow( none );
+					color: @dropdownLinkColor;
+					text-shadow: none;
+				}
+			}
+		}
+	}
+	.bootstrap-timepicker table td {
+		height: auto;
+		a:hover {
+			background-color: @dropdownLinkBackgroundHover;
+			border: none;
+		}
+	}
+	.datepicker,
+	.bootstrap-timepicker.dropdown-menu {
+		&:before {
+			border-bottom-color: @dropdownBorder;
+		}
+		&:after {
+			border-bottom-color: @dropdownBackground;
+		}
+	}
+}
+
+// =======================================================================
+// = Modal open status tracking (adapted from earlier ver. of Bootstrap) =
+// =======================================================================
+// Recalculate z-index where appropriate
+.ai1ec-modal-open {
+	overflow: hidden;
+	.dropdown-menu {  z-index: @zindexDropdown + @zindexModal !important; }
+	.dropdown.open { *z-index: @zindexDropdown + @zindexModal !important; }
+	.popover       {  z-index: @zindexPopover  + @zindexModal !important; }
+	.tooltip       {  z-index: @zindexTooltip  + @zindexModal !important; }
+}
+
+// ==============================
+// = AI1EC General declarations =
+// ==============================
+
+// General AJAX.
+.ai1ec-loading {
+	position: absolute;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('@{imgdir}/ajax-loader.gif') no-repeat center center;
+	background-color: fade( @bodyBackground, 50% );
+	display: none;
+	#ai1ec-calendar-view-container & {
+		background-color: transparent;
+		background-position: center 150px;
+	}
+	.modal > & {
+		.border-radius( 5px );
+	}
+}
+
+// Label styling.
+.ai1ec-label {
+	font-size: 0.85em;
+	font-weight: bold;
+	color: @labelColor;
+	text-transform: uppercase;
+}
+
+// All-day badges
+.ai1ec-allday-badge {
+	color: @eventStubAllDayText;
+	background: @eventDefaultColor;
+	.border-radius(0.9em);
+	.box-shadow( @shadow );
+	display: inline-block;
+	font-size: 0.85em;
+	font-weight: normal;
+	#gradient > .vertical-three-colors(
+		@alldayBadgeGradientTop,
+		@alldayBadgeGradientMiddle, 50%,
+		@alldayBadgeGradientBottom
+	);
+	margin: 0 0 1px;
+	.opacity( 90 );
+	padding: 0 0.7em 0.05em;
+	@shadow: inset 0 1px 0 @alldayBadgeHighlight, 0 2px 2px @alldayBadgeShadow;
+	vertical-align: middle;
+}
+
+.ai1ec-no-results {
+	color: @muted;
+}
+
+// Special formatting for paragraph text (as opposed to most application UI).
+.ai1ec-centered {
+	text-align: center;
+}
+.ai1ec-prose {
+	p, ul, ol, li {
+		font-size: @baseFontSize * 1.08;
+		line-height: @baseLineHeight * 1.2;
+	}
+	p, ul, ol {
+		margin-bottom: @baseLineHeight * 0.6;
+	}
+}
+
+// ==============
+// = Categories =
+// ==============
+.ai1ec-category {
+	.border-radius( 4px );
+	.box-shadow( inset 0 0 1px fade( @dropdownLinkColorHover, 50% ) );
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.9em;
+	line-height: 2em !important;
+	margin: 1px 0;
+	padding: 0 0.5em !important;
+	text-shadow: 0 1px 0 @textEmboss;
+	text-transform: uppercase;
+	white-space: nowrap;
+	.listItem();
+}
+.ai1ec-category:hover,
+.active > .ai1ec-category {
+	.listItemActive();
+}
+
+// Category colors.
+.ai1ec-category-color,
+.ai1ec-category-color-empty {
+	display: inline-block;
+	height: 6px;
+	margin: 0 1px;
+	padding: 1px;
+	width: 6px;
+}
+.ai1ec-category-color {
+	.border-radius( 4px );
+	border-color: rgba(0,0,0,0.5);
+	.opacity( 80 );
+}
+
+// ========
+// = Tags =
+// ========
+.ai1ec-tag {
+	.border-radius( 4px );
+	color: @linkColor;
+	cursor: pointer;
+	display: inline-block !important;
+	line-height: 1.7em !important;
+	margin: 1px 0 0;
+	padding: 0 4px !important;
+	white-space: nowrap;
+	i {
+		padding-right: 3px;
+	}
+}
+.ai1ec-tag:hover,
+.active > .ai1ec-tag {
+	.listItemActive();
+}
+
+// =================
+// = Event avatars =
+// =================
+
+.ai1ec-event-avatar {
+	.timelyAvatar( natural );
+}
+
+// ======================
+// = Agenda widget view =
+// ======================
+.ai1ec-agenda-widget-view {
+	font-size: 0.8em;
+	.ai1ec-date-events {
+		margin: 0 0.5em 0 0;
+	}
+	.ai1ec-date {
+		border-top: 1px solid darken(@agendaDateBackground, 5%);
+		#gradient > .vertical-three-colors-replace(@agendaDateBackground, @agendaDateBackground, 1em, @bodyBackground);
+		float: left;
+		width: 100%;
+	}
+	.ai1ec-date.ai1ec-today {
+		border-top: 1px solid darken(@agendaTodayBackground, 5%);
+		#gradient > .vertical-three-colors-replace(@agendaTodayBackground, @agendaTodayBackground, 1em, @bodyBackground);
+	}
+	.ai1ec-date-title {
+		border: 1px solid mix(@textColor, @agendaDateTitleBackground, 30%);
+		border-top-color: @agendaDateTitleBackground;
+		.border-radius(5px);
+		.box-shadow(0 2px 2px rgba(0,0,0,0.08));
+		overflow: hidden;
+		color: mix( @textColor, @agendaDateTitleBackground, 85% );
+		float: left;
+		font-size: 8.7pt;
+		font-weight: bold !important;
+		#gradient > .vertical-three-colors(@agendaDateTitleBackground, @agendaDateTitleBackground, 1em, darken(@agendaDateTitleBackground, 12%));
+		filter: none\9; // IE8 doesn't understand how to render this gradient for some reason
+		line-height: 1.2em;
+		margin: 0.5em 0.75em;
+		text-align: center;
+		text-shadow: 0 1px 0 @textEmboss;
+		width: 3.5em;
+		&:hover {
+			color: @textColor;
+		}
+	}
+	.ai1ec-month {
+		background: @agendaDateTitleBorder;
+		color: @agendaDateTitleMonthText;
+		display: block;
+		font-size: 0.7em;
+		font-weight: normal;
+		letter-spacing: 0.2em;
+		line-height: 1.8em;
+		text-transform: uppercase;
+		text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	}
+	.ai1ec-day {
+		font-size: 1.7em;
+		padding: 0.3em 0 0.2em;
+		display: block;
+	}
+	.ai1ec-weekday {
+		font-size: 0.8em;
+		line-height: 1.3em;
+		display: block;
+	}
+	.ai1ec-year {
+		color: @agendaDateTitleMonthText;
+		background: @agendaDateTitleBorder;
+		font-size: 0.8em;
+		letter-spacing: 0.15em;
+		padding: 0 0.1em;
+		text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	}
+
+	// Agenda widget view events.
+	.ai1ec-event {
+		clear: right;
+		font-size: 1.2em;
+		line-height: 1.3em;
+		margin: 0.5em 0 0.5em 4.9em;
+		padding: 0;
+		position: relative;
+		a {
+			color: @eventDefaultColor;
+			display: block;
+			background: @eventBackground;
+			border: 1px solid @eventBorder;
+			.border-radius( 0.4em) ;
+			padding: 0.2em 0.4em;
+			&:hover {
+				border-color: @eventBorderHover;
+				color: @eventDefaultColorHover;
+			}
+		}
+		.ai1ec-event-time {
+			font-weight: bold;
+		}
+		.ai1ec-event-title {
+			font-weight: normal;
+		}
+		.ai1ec-allday-badge {
+			vertical-align: bottom;
+		}
+	}
+}
+
+// Event popovers appended to body tag.
+
+.popover.ai1ec-popup {
+	line-height: @baseLineHeight;
+	text-align: left;
+
+	// Until we upgrade Bootstrap, must undo some Bootstrap styles applied by
+	// themes based on more recent Bootstrap.
+	background: none;
+	background-clip: inherit;
+	border: none;
+	.border-radius( 0 );
+	.box-shadow( none );
+	width: auto;
+
+	&.fade {
+		opacity: 0;
+		.transition(all .15s ease-in-out);
+		&.in {
+			opacity: 1;
+			.transition(opacity .15s ease-in-out);
+		}
+	}
+	@ai1ecArrowSize: 10px;
+	&.top    { margin-top:  0; }
+	&.right  { margin-left: 0; }
+	&.bottom { margin-top:  0; }
+	&.left   { margin-left: 0; }
+
+	.arrow {
+		z-index: 1;
+	}
+	&.top .arrow {
+		#timelyPopoverArrow  > .top( @ai1ecArrowSize, @eventBorder );
+		&:after {
+			#timelyPopoverArrow  > #outlinedArrow .top( 10px, 2px, @eventBackground );
+		}
+	}
+	&.left .arrow {
+		#timelyPopoverArrow  > .left( @ai1ecArrowSize, @eventBorder );
+		&:after {
+			#timelyPopoverArrow  > #outlinedArrow .left( 10px, 2px, @eventBackground );
+		}
+	}
+	&.bottom .arrow {
+		#timelyPopoverArrow  > .bottom( @ai1ecArrowSize, @eventBorder );
+		&:after {
+			#timelyPopoverArrow  > #outlinedArrow .bottom( 10px, 2px, @eventBackground );
+		}
+	}
+	&.right .arrow {
+		#timelyPopoverArrow  > .right( @ai1ecArrowSize, @eventBorder );
+		&:after {
+			#timelyPopoverArrow  > #outlinedArrow .right( 10px, 2px, @eventBackground );
+		}
+	}
+
+	.popover-inner {
+		background: @eventBorder;
+		.border-radius( 5px );
+		.box-shadow( 0 3px 10px rgba(0,0,0,0.3) );
+		padding: 1px;
+		position: relative;
+		width: 170px;
+	}
+	.popover-content {
+		background: @eventBackground;
+		.border-radius( 4px );
+		color: @eventText;
+		font-size: 10px;
+		font-weight: normal;
+		padding: 5px 8px;
+		position: relative;
+		z-index: 2;
+	}
+	.ai1ec-event-time {
+		padding: 1px 8px;
+		background: @eventTimeBackground;
+		margin: 2px -8px 0;
+		font-weight: bold;
+	}
+	.ai1ec-event-avatar {
+		margin: 6px auto 3px;
+		position: relative;
+		width: 85%;
+		img {
+			width: 100%;
+		}
+	}
+	.ai1ec-category-colors {
+		float: right;
+		font-size: 0.9em;
+	}
+	.ai1ec-category-color {
+		padding: 1px;
+	}
+	.post-edit-link {
+		font-size: 11px;
+		margin-left: 2px;
+		white-space: nowrap;
+		i {
+			font-size: 13px;
+		}
+	}
+
+	&.left.ai1ec-popup-in-oneday-view {
+		margin-left: 49px;
+	}
+}
+
+.popover-title.ai1ec-popup-title {
+	font-size: 12px;
+	font-weight: bold;
+	line-height: inherit;
+	background: none;
+	border-bottom: none;
+	padding: 0;
+	a {
+		font-weight: bold !important;
+	}
+}
+
+.ai1ec-popup-excerpt {
+	font-size: 11px;
+	margin-top: 2px;
+}
+
+// ===============================
+// = Front-end create event form =
+// ===============================
+
+.ai1ec-create-event-form,
+.ai1ec-submit-ics-form {
+	.ai1ec-checkbox-label {
+		margin: 5px 0 9px;
+		vertical-align: top;
+		span {
+			vertical-align: top;
+		}
+		input[type="checkbox"] {
+			margin: 0 0 3px;
+		}
+	}
+	.ai1ec-categories-selector,
+	.ai1ec-tags-selector {
+		width: 100%;
+	}
+	.fileupload .thumbnail {
+		width: 27px;
+		height: 27px;
+		margin-bottom: 0;
+	}
+	.ai1ec-recaptcha {
+		background: #f5f5f5;
+		border: 1px solid @fadedModalBorder;
+		.box-shadow( @modalFooterShadow );
+		#recaptcha_image img {
+			.box-shadow( 0 0 1px rgba(0,0,0,0.5) );
+		}
+		#recaptcha_area {
+			margin: 0 auto;
+		}
+		.ai1ec-initializing-message {
+			display: none;
+			text-align: center;
+		}
+		&.ai1ec-initializing {
+			background: url('@{imgdir}/ajax-loader.gif') no-repeat center 10px;
+			.ai1ec-initializing-message {
+				color: @muted;
+				margin: 50px 0 10px;
+				display: block;
+			}
+		}
+	}
+}
+
+.ai1ec-create-event-form {
+	.ai1ec-with-time {
+		display: none;
+	}
+	#ai1ec-end-time-wrap .span6:last-child {
+		margin-left: 4%;
+		width: 47%;
+	}
+	#ai1ec_map_canvas {
+		height: 100px;
+		margin-bottom: 9px;
+	}
+	#ai1ec-description {
+		max-width: 100%;
+	}
+}
+
+.ai1ec-submit-ics-form {
+	.ai1ec-recaptcha {
+		margin-bottom: 9px;
+	}
+}
+
+// ============================================================================
+// = Gmaps Autocomplete results (should be synced with timely-bootstrap.less) =
+// ============================================================================
+
+.ai1ec-geo-ac-results-not-ready {
+	// Hide by default (using a hiding attribute unused by the library).
+	// Only show once we have had a chance to do some markup-based styling in JS.
+	visibility: hidden;
+}
+.ai1ec-geo-ac-results {
+	img {
+		float: left;
+		margin-right: 5px;
+	}
+	.dropdown-menu {
+		display: block;
+		width: 275px;
+		li {
+			clear: left;
+			color: @dropdownLinkColor;
+			cursor: pointer;
+			margin: 2px 0;
+			padding: 0 5px;
+			&:hover {
+				color: @dropdownLinkColorHover;
+				background-color: @dropdownLinkBackgroundHover;
+			}
+		}
+	}
+	.ai1ec-modal-open & {
+		z-index: @zindexDropdown + @zindexModal;
+	}
+}
+
+// ===========================
+// = Responsive declarations =
+// ===========================
+
+.ai1ec-visible-narrow-phone {
+	display: none !important;
+}
+
+// Portrait phone
+@media (max-width: 480px) {
+	.ai1ec-visible-narrow-phone {
+		display: inherit !important;
+	}
+	.ai1ec-hidden-narrow-phone {
+		display: none !important;
+	}
+	.timely {
+		.btn {
+			font-size: 11px;
+		}
+		.btn-large {
+			font-size: 15px;
+		}
+	}
+}
+
+// Devices that are too narrow to display modals properly.
+@media (max-width: 500px ) {
+	.timely {
+		.modal {
+			position: fixed;
+			top: 3%;
+			right: 3%;
+			left: 3%;
+			width: auto;
+			margin: 0;
+		}
+		.modal.fade.in {
+			top: 3%;
+		}
+		.modal-body {
+			max-height: 222px;
+		}
+	}
+}

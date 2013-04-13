@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Special Recent Posts PRO - Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Special Recent Posts PRO&rdquo; Documentation by &ldquo;Luca Grandicelli&rdquo;</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Special Recent Posts PRO&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 12/09/2011<br>
+					By: Luca Grandicelli<br>
+					Email: <a href="mailto:lgrandicelli@gmail.com">lgrandicelli@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing the Special Recent Posts PRO plugin. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://codecanyon.net/user/LukasKaine">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#introduction">Introduction</a></li>
+			<li><a href="#requirements">Requirements</a></li>
+			<li><a href="#installation">Installation</a></li>
+			<li><a href="#upgrade">Upgrade Notes</a></li>
+			<li><a href="#howitworks">How Special Recent Posts works</a></li>
+			<li><a href="#configuration">Configuration</a></li>
+			<li><a href="#shortcodes">Using Shortcodes/PHP Code</a> <em class="quiet small">(If your theme uses PHP)</em></li>
+			<li><a href="#faq">F.A.Q</a>  <em class="quiet small">(If your theme uses Flash)</em></li>
+			<li><a href="#translating">Translating</a> <em class="quiet small">(If your theme uses an API)</em></li>
+			<li><a href="#support">Support</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="introduction"><strong>A) HTML Introduction</strong> - <a href="#toc">top</a></h3>
+		<p>Special Recent Posts PRO is a very powerful plugin/widget for WordPress which displays your recent posts with thumbnails. It's the perfect solution for online magazines or simple blogs and it comes with more than 60+ customization options available. You can dynamically re-size thumbnails to any desired dimension, drag multiple widget instances and configure each one with its specific settings. You can also use auto-generated PHP code/shortcodes to insert the widget in any part of your theme.</p>
+
+		<hr>
+
+		<h3 id="requirements"><strong>B) Requirements</strong> - <a href="#toc">top</a></h3>
+
+		<p>These are the main required settings:</p>
+		<ul>
+			<li>Wordpress release 3.0+</li>
+			<li>PHP version 5+</li>
+			<li>GD libraries installed and enabled on your server.</li>
+			<li>Correct permissions (0775 or 0777) on cache folder under special-recent-posts/cache</li>
+		</ul>
+		</p>
+
+		<hr>
+		
+		<h3 id="installation"><strong>C) Installation</strong> - <a href="#toc">top</a></h3>
+		
+		<p>Manual installation is easy and takes fewer than five minutes.</p>
+		
+		<ol>
+			<li>Download the plugin, unpack it and upload the '<em>special-recent-posts</em>' folder to your wp-content/plugins directory.</li>
+			<li>Activate the plugin through the 'Plugins' menu in WordPress.</li>
+			<li>Check for correct permissions (0775 or 0777) on cache folder under special-recent-posts/cache</li>
+			<li>Go to Settings > Special Recent Posts to configure the basic options.</li>
+			<li>On the widgets panel, drag the Special Recent Posts widget onto one of your sidebars and configure its specific settings.</li>
+			<li>You're done. Enjoy.</li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="upgrade"><strong>D) Upgrade Notes</strong> - <a href="#toc">top</a></h3>
+		
+		<p>Special Recent Posts PRO has been completely redesigned and most of the logic rewritten. So if you're upgrading from a free version, the plugin will try to do its best to preserve your old widget settings.</p>
+<p><strong>NOTE</strong>: Old custom CSS will be replaced so please make sure you make a backup copy of it before upgrading.
+If the upgrade process fails or if you're experiencing troubles with the plugin behaviour, please consider to completely uninstall the previous version and then re-install Special Recent Posts PRO from scratch.</p>
+		
+		<strong>NOTES FOR MANUAL UPGRADE</strong><br />
+If you wish to manually upgrade the SRP plugin from the free version to PRO, please read the following steps:
+		<ol>
+			<li>Deactivate the free version in the Wordpress Plugin panel</li>
+			<li>Delete the special-recent-posts folder on your server, under wp-content/plugins/</li>
+			<li>Upload the new special-recent-posts folder (PRO version) to the Wordpress plugin directory.</li>
+			<li>Refresh the Wordpress plugin page</li>
+			<li>Activate the new version.</li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="howitworks"><strong>E) How Special Recent Posts PRO works</strong> - <a href="#toc">top</a></h3>
+		
+		<p>Special Recent Posts PRO basically retrieves a list of recent posts assigning a thumbnail to each entry. The thumbnail generation process is one of the key features that makes SRP “special”. 
+The image re-size process is done completely on-the-fly and generated thumbnails are stored in a special cache folder for later display.</p>
+<p>For first, SRP tries to fetch a post featured image. If this exists, it will be displayed. If this doesn't, then the plugin will try to fetch the first image from the post content. If this step fails too, a custom no-image thumbnail will be displayed. If you're having troubles with thumbnail display, please read the F.A.Q</p>
+<p><strong>Note</strong>: Caching is mandatory. This means that if the cache folder doesn't exists or is unwritable, the whole plugin won't work.</p>
+		
+		<hr>
+		
+		<h3 id="configuration"><strong>F) Configuration</strong> - <a href="#toc">top</a></h3>
+		
+		<p><strong>The Basic Settings</strong><br />
+These settings are available under the Settings->Special Recent Posts PRO panel. This is the main place where global options apply to the whole plugin.</p>
+<strong>The Widget Settings</strong><br />
+This is the core of the Special Recent Posts PRO plugin. Here you can configure quite everything about your recent posts. The widget panel is divided into several sections, where each one take care of different settings. 
+Notes: In the plugin folder there is a configuration file called srp-config.php. <strong>PLEASE DO NOT MODIFY THIS FILE DIRECTLY.</strong>
+</p>
+
+	<h3 id="shortcodes"><strong>G) Using Shortcodes/PHP Code</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This is a great feature that lets users to insert the Special Recent Posts PRO widget in all non-widget handled parts of their Wordpress theme. Now you don't have to care anymore about manually building your own shortcode or PHP code, because everything is done by the special “CODE GENERATOR” section in the widget panel. After saving your widget options, here will appear the relative PHP code and Shortcode to use. Simply copy and paste these codes wherever you want in the Wordpress theme (PHP code) or in your posts/pages (shortcodes).</p>
+		
+		<hr>
+		
+	<h3 id="faq"><strong>H) F.A.Q</strong> - <a href="#toc">top</a></h3>
+	<strong>How do i edit the CSS?</strong><br />
+	<p>the css is located at [PLUGIN-FOLDER]/css/css-front.css</p>
+	<strong>Plugin shows no thumbnails</strong><br />
+This issue might be caused by several problems. Check the following list.
+<p>
+<ul>
+	<li>Set the correct permissions on the cache folder. In order to generate the thumbnails, the Special Recent Posts PRO plugin needs to write the cache folder, located under special-recent-posts/cache/
+Be sure this folder is set to 0775 or 0777. Please ask to your system administrator if you're not sure what you are doing.</li>
+<li>Thumbnails are rendered using the PHP GD libraries. These should be enabled on your server. Do a phpinfo() on your host to check if they're installed properly. Contact your hosting support to know how to enable them.</li>
+<li>Another problem could be that you're hosting the plugin on a MS Windows based machine. This will probably change the encoding data inside the files and could lead to several malfunctions. Better to host on a Unix/Linux based environment.</li>
+<li>External images are not allowed. This means that if you're trying to generate a thumbnail from an image hosted on a different domain, it won't work.</li>
+</ul>
+</p>
+<p>
+<strong>Category/Post filtering isn't working</strong><br />
+In order to properly filter posts by categories, you must provide a numeric value which is the Category ID. Every Wordpress category has an unique Identification number, and this can be found doing the following steps:
+
+<ol>
+<li>Go in the Posts->Categories panel</li>
+<li>Mouse over a category name.</li>
+<li>Look at the status bar at the very bottom of your browser window. There you will find a long string containing a parameter called tag_ID and its following value.</li>
+<li>Take note of that number, which is the relative Category ID to insert in the Special Recent Posts PRO filtering panel.</li>
+</ol>
+<strong>NOTE</strong>: Please remember that this procedure is also valid for post filtering.
+</p>
+	<hr>
+	
+	<h3 id="translating"><strong>H) Translating</strong> - <a href="#toc">top</a></h3>
+	<p>Special Recent Posts PRO makes use of the common gettext system for translating content, which is the same used by Wordpress. If you wish to translate the Special Recent Posts PRO plugin to your language, please consider the following steps:</p>
+<ol>
+<li>Download and install POEDIT at <a href="http://www.poedit.net/">http://www.poedit.net/</a></li>
+<li>Launch POEDIT and click on File → New Catalog</li>
+<li>On the Project Info tab, fill in only the first 4 fields.</li>
+<li>On the Paths tab, fill in the first text field with the physical path to the special recent posts PRO folder, inside the WP plugin folder. (Example: C:\mywordpress\wp-content\plugins\special-recent-posts\)</li>
+<li>On the Keywords tab, click the button called “new item” and insert the “_e” (without quotes) string</li>
+<li>Do the same for the “__” string (without quotes)</li>
+<li>Click Ok.</li>
+<li>Then a list of all English strings found is prompted.</li>
+<li>Translate each string to your desired language.</li>
+<li>Save the catalog as srplang-YOUR-LOCALE-CODE.mo (Example, for italian: srplang-it_IT.mo)</li>
+<li>Mail me the two generated files at <a href="mailto:lgrandicelli@gmail.com">lgrandicelli@gmail.com</a> specifying the language you've used.</li>
+</ol>
+
+If you're having issues or for further details on how properly translate gettext content, please refer to the official Wordpress documentation here, or do a Google search about it.
+	<hr>
+	
+	<h3 id="support"><strong>H) Support</strong> - <a href="#toc">top</a></h3>
+	For any support or suggestion please mail me at <a href="mailto:lgrandicelli@gmail.com">lgrandicelli@gmail.com</a>, or join the discussion on my <a href="http://www.lucagrandicelli.com/special-recent-posts-plugin-for-wordpress/">personal blog</a> or on the CodeCanyon.com Forum. I'll try to reply as soon as possible.
+	<hr>
+	Sincerely, Luca Grandicelli
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>

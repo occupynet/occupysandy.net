@@ -1,0 +1,36 @@
+#icon-edit.icon32-posts-ai1ec_event,
+#icon-post.icon32-posts-ai1ec_event {
+  background: url(../img/timely-post-type.png) no-repeat center center;
+}
+#menu-posts-ai1ec_event.menu-icon-post div.wp-menu-image {
+	background-image: url(../img/timely-admin-menu.png);
+}
+
+div.theme-success {
+	margin: 5px 15px 2px;
+	padding: 0 0.6em;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	border-radius: 3px 3px 3px 3px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.ai1ec-allday-badge {
+	background: #aaa;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #fff;
+	display: inline-block;
+	font-size: 0.75em;
+	margin: 0;
+	padding: 0 3px;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+.mupload_img_holder img {
+	height: auto !important;
+	vertical-align: bottom;
+}

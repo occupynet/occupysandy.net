@@ -1,0 +1,45 @@
+.clear {
+	clear:both;
+}
+#downloadables {
+	float:left;
+}
+.action-links {
+	padding:3px 0 0 3px;
+}
+.action-links a {
+	cursor:pointer;
+}
+.dc-version,
+.dc-filesize {
+	max-width:75px;
+}
+#installing {
+display:none;
+}
+.dc-loading {
+	display:block;
+	float:left;
+	min-width:42px;
+	min-height:42px;
+	background: url('images/spinner_32x32.gif') no-repeat center left;
+}
+.install-message {
+	display:block;
+	float:left;
+	margin: 5px 0 15px;
+	background-color: #FFFFE0;
+    border-color: #E6DB55;	
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0 0.6em;	
+	min-width:300px;
+}
+.current-cat {
+	background-color: #FFFFE0;
+    border-color: #E6DB55;	
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;	
+}

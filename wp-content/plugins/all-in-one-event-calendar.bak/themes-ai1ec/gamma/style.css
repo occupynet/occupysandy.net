@@ -1,0 +1,40 @@
+/**
+ * Theme Name: Gamma
+ * Theme URI: http://time.ly/
+ * Author: Timely Network Inc
+ * Author URI: http://time.ly/
+ * Description: A skeleton theme. Copy these files to a new theme directory to build a new calendar theme.
+ * Version: 1.9.6-pro
+ * Tags: light, white, gray, blue
+ */
+
+/*
+	========================================================
+	= New theme structure in All-in-One Event Calendar 1.9 =
+	========================================================
+
+	As of 1.9, please do not place your custom CSS rules in this file. Instead,
+	place them in here:
+
+	  [wp_root]/themes-ai1ec/[your_theme_directory]/css/override.css
+
+	Alternatively, for the more savvy designers, use the dynamic LESS stylesheet
+	language (http://lesscss.org/) to define your style rules, allowing you to
+	take advantage of any LESS variables defined by Vortex (see
+	[wp_root]/themes-ai1ec/vortex/less/user_variables.php). Place your LESS code
+	in this file:
+
+	  [wp_root]/themes-ai1ec/[your_theme_directory]/less/override.less
+
+	The style rules produced by these files will be applied *after* all the
+	default style rules of Vortex have been applied.
+
+	= NOTE ======================================================================
+	= Be sure to visit Events > Theme Options and click "Save Options" any time =
+	= you make changes to either of the above files before viewing your site.   =
+	=============================================================================
+
+	To find out more about the powerful theming engine, visit our help article:
+
+		http://help.time.ly/customer/portal/articles/803082
+ */

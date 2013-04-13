@@ -1,0 +1,80 @@
+/* CSS Document */
+
+#mce_fullscreen_container {
+	background-color: white;
+}
+
+#wp-black-studio-tinymce-widget-wrap {
+	display: none;
+}
+
+.editor_container {
+	background-color: #FFF;
+	border-color: #CCC #CCC #DFDFDF;
+	border-style: solid;
+	border-width: 1px;
+	border-collapse: separate;
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-khtml-border-top-right-radius: 3px;
+	-khtml-border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+.editor_toggle_buttons {
+	height: 30px;
+	margin-right: 15px;
+	margin-top: 8px;
+	float: right;
+}
+.editor_toggle_buttons a {
+	height: 18px;
+	margin: 5px 5px 0 0;
+	padding: 4px 5px 2px;
+	float: right;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-khtml-border-top-right-radius: 3px;
+	-khtml-border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	background-color: #F1F1F1;
+	border-color: #DFDFDF #DFDFDF #CCC;
+	color: #999;
+}
+.editor_toggle_buttons a.active {
+	border-color: #CCC #CCC #F4F4F4;
+	background-color: #F4F4F4;
+	color: #333;
+}
+.editor_toggle_buttons_legacy a.active {
+	border-color: #CCC #CCC #E9E9E9;
+	background-color: #E9E9E9;
+} 
+.editor_media_buttons {
+	cursor: default;
+	padding: 8px 8px;
+	height: 22px;
+}
+.editor_media_buttons a {
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+	font-size: 12px;
+	margin-right: 8px;
+}
+.editor_media_buttons img {
+	vertical-align: middle;
+	padding: 0 4px;
+}
+.editor_links {
+	font-size: 10px;
+	text-align: right;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}

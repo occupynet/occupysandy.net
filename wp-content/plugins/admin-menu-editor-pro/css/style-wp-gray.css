@@ -1,0 +1,211 @@
+.ws_container {
+	padding: 0;
+	width: 296px;
+	margin-bottom: 5px;
+
+	background: white;
+
+	border: 1px solid #aeaeae;
+
+	-webkit-box-shadow: inset 0 1px 0 #fff;
+	box-shadow: inset 0 1px 0 #fff;
+
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/**
+ * Item head elements
+ */
+
+.ws_item_head {
+	padding: 0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+
+	background-color: #d9d9d9;
+	background-image: -o-linear-gradient(top, #efefef, #d9d9d9);
+	background-image: -o-linear-gradient(top, #e9e9e9, #d9d9d9);
+	background-image: -ms-linear-gradient(top, #e9e9e9, #d9d9d9);
+	background-image: -moz-linear-gradient(top, #e9e9e9, #d9d9d9);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e9e9e9), to(#d9d9d9));
+	background-image: -webkit-linear-gradient(top, #e9e9e9, #d9d9d9);
+	background-image: linear-gradient(top, #e9e9e9, #d9d9d9);
+	/*background-color: #c7c7c7;*/
+}
+
+.ws_item_title {
+	padding: 6px 5px;
+
+	/*font-weight: bold;*/
+	color: #222;
+	text-shadow: #FFFFFF 0px 1px 0px;
+}
+
+.ws_flag_container {
+	padding-top: 6px;
+}
+
+/**
+ * The down-arrow that expands menu settings
+ */
+
+.ws_edit_link {
+	width: 30px;
+	height: 30px;
+
+	background: transparent url(../images/arrows.png) no-repeat center 5px;
+	overflow: hidden;
+	text-indent:-999em;
+}
+
+a.ws_edit_link:hover {
+	background-image: url(../images/arrows-dark.png);
+}
+
+.ws_edit_link:active {
+	background: transparent url(../images/arrows-dark.png) no-repeat center 5px;
+}
+
+.ws_edit_link_expanded {
+	border-bottom: none;
+	border-color: #ffffd0;
+
+	padding-bottom: 1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+
+	-moz-border-radius-bottomright: 0;
+	-moz-border-radius-bottomleft: 0;
+
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
+
+/**
+ * Separators
+ */
+
+.ws_menu_separator {
+	border-color: #d9d9d9;
+}
+
+.ws_menu_separator .ws_item_head {
+	height: 29px;
+	border-radius: 3px;
+	background: #F9F9F9 url("../images/menu-arrows.png") no-repeat 4px 8px;
+}
+
+.ws_menu_separator .ws_item_title {
+	display: none;
+}
+
+.ws_menu_separator.ws_active .ws_item_head {
+	background: #999 url("../images/menu-arrows.png") no-repeat 4px 8px;
+}
+
+/**
+ * Active item
+ */
+
+.ws_active .ws_item_head {
+	background: #777;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#6d6d6d), to(#808080));
+	background-image: -webkit-linear-gradient(bottom, #6d6d6d, #808080);
+	background-image:    -moz-linear-gradient(bottom, #6d6d6d, #808080);
+	background-image:      -o-linear-gradient(bottom, #6d6d6d, #808080);
+	background-image: linear-gradient(to top, #6d6d6d, #808080);
+}
+
+.ws_active .ws_item_title {
+	text-shadow: 0 -1px 0 #333;
+	color: #fff;
+	border-top-color: #808080;
+	border-bottom-color: #6d6d6d;
+}
+
+/**
+ * Dropping menus on other menus.
+ */
+
+.ws_menu_drop_hover, .ws_menu_drop_hover .ws_item_head  {
+	background: #43b529;
+}
+
+.ws_menu_drop_hover .ws_item_title {
+	text-shadow: none;
+}
+
+/**
+ * Misc
+ */
+
+.ws_editbox {
+	/*background-color: #ffffd0;*/
+	background-color: #FBFBFB;
+	padding: 4px 6px;
+}
+
+.ws_input_default input, .ws_input_default select {
+	color: gray;
+}
+
+/*
+ * Show/Hide advanced fields
+ */
+
+.ws_toggle_advanced_fields {
+	color: #6087CB;
+	font-size: 0.85em;
+}
+
+.ws_toggle_advanced_fields:visited, .ws_toggle_advanced_fields:active {
+	color: #6087CB;
+}
+
+.ws_toggle_advanced_fields:hover {
+	color: #d54e21;
+	text-decoration: underline;
+}
+
+
+/*
+ * Toolbars
+ */
+
+.ws_button {
+	border: 1px solid #c0c0e0;
+}
+
+a.ws_button:hover {
+	background-color: #d0e0ff;
+	border-color: #9090c0;
+}
+
+/************************************
+           Export and import
+*************************************/
+
+.ui-dialog {
+	background: white;
+	border: 1px solid #c0c0c0;
+}
+
+.ui-dialog-titlebar {
+	background-color: #86A7E3;
+}
+
+.ui-dialog-title {
+	color: white;
+}
+
+.ui-dialog-titlebar-close {
+	background: #86A7E3 url(../images/x.png) no-repeat center;
+	color: white;
+}
+
+.ui-dialog-titlebar-close:hover {
+	/*background-image: url(../images/x-light.png);*/
+	background-color: #a6c2f5;
+}

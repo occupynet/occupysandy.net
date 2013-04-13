@@ -1,0 +1,47 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+.sws_custom_table_cont {
+	min-width:50px;
+	min-height:50px;
+	width:auto;
+}   
+
+.sws_custom_table_cont table:first-child {
+	display:none !important;
+}
+
+.table_loading {
+	background: url("table-images/loader1.gif") no-repeat scroll center center transparent;
+	min-width:32px;
+	min-height:32px;
+}
+   
+.sws_custom_table
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	border-collapse: collapse;
+	text-align: left;
+	background: #fff;
+}
+.sws_custom_table th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+.sws_custom_table td
+{
+	border-top: none !important;
+	border: none;
+	color: #669;
+	padding: 9px 8px 0px 8px;
+	background-color: transparent !important;
+}
+.sws_custom_table tbody tr:hover td
+{
+	color: #009;
+}

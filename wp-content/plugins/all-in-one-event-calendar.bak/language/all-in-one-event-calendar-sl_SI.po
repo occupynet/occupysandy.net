@@ -1,0 +1,1821 @@
+# Copyright (C) 2010 All-in-One Event Calendar Plugin
+# This file is distributed under the same license as the All-in-One Event Calendar Plugin package.
+msgid ""
+msgstr ""
+"Project-Id-Version: All-in-One Event Calendar Plugin 1.0.9\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/all-in-one-event-calendar\n"
+"POT-Creation-Date: 2012-07-25 00:36:17+00:00\n"
+"PO-Revision-Date: 2012-09-28 11:51+0100\n"
+"Last-Translator: Miha Kočar <miha.kocar@guest.arnes.si>\n"
+"Language-Team: The Seed Studio\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
+
+#: app/controller/class-ai1ec-app-controller.php:420
+#: app/controller/class-ai1ec-app-controller.php:421
+#, fuzzy
+msgid "Calendar Feeds"
+msgstr "Koledar"
+
+#: app/controller/class-ai1ec-app-controller.php:436
+#: app/controller/class-ai1ec-app-controller.php:437
+#: app/helper/class-ai1ec-settings-helper.php:320
+msgid "Calendar"
+msgstr "Koledar"
+
+#: app/controller/class-ai1ec-app-controller.php:451
+#: app/controller/class-ai1ec-app-controller.php:452
+#, fuzzy
+msgid "Upgrade"
+msgstr "Posodobi"
+
+#: app/controller/class-ai1ec-app-controller.php:643
+msgid "You do not have sufficient permissions to update plugins for this site."
+msgstr ""
+"Nimate dovolj privilegijev za nadgradnjo vtičnikov na tej spletni strani."
+
+#: app/controller/class-ai1ec-calendar-controller.php:220
+#: app/helper/class-ai1ec-settings-helper.php:151
+msgid "Month"
+msgstr "mesec"
+
+#: app/controller/class-ai1ec-calendar-controller.php:221
+#: app/helper/class-ai1ec-settings-helper.php:154
+#, fuzzy
+msgid "Week"
+msgstr "tedensko"
+
+#: app/controller/class-ai1ec-calendar-controller.php:222
+#: app/helper/class-ai1ec-settings-helper.php:148
+#, fuzzy
+msgid "Day"
+msgstr "Dnevno"
+
+#: app/controller/class-ai1ec-calendar-controller.php:223
+#: app/controller/class-ai1ec-calendar-controller.php:483
+#: app/helper/class-ai1ec-settings-helper.php:157
+msgid "Agenda"
+msgstr "agenda"
+
+#. translators: "%s" represents the week's starting date
+#: app/controller/class-ai1ec-calendar-controller.php:425
+#: app/helper/class-ai1ec-calendar-helper.php:909
+#: app/helper/class-ai1ec-calendar-helper.php:918
+msgid "Week of %s"
+msgstr "Teden od %s"
+
+#: app/controller/class-ai1ec-calendar-controller.php:425
+msgid "F j"
+msgstr "F j"
+
+#: app/controller/class-ai1ec-events-controller.php:153
+msgid "This feed is already being imported."
+msgstr "Feed se že uvaža"
+
+#: app/controller/class-ai1ec-events-controller.php:154
+msgid "Please enter a valid iCalendar URL."
+msgstr "Prosim vpišite veljevaven iCalander URL"
+
+#: app/controller/class-ai1ec-events-controller.php:341
+msgid "Publish"
+msgstr "Objavi"
+
+#: app/controller/class-ai1ec-events-controller.php:341
+#: app/view/admin/feed_row.php:20
+msgid "Update"
+msgstr "Posodobi"
+
+#: app/controller/class-ai1ec-events-controller.php:343
+msgid "Submit for Review"
+msgstr "Oddaja v potrditev"
+
+#: app/controller/class-ai1ec-events-controller.php:467
+msgid "Event updated. <a href=\"%s\">View event</a>"
+msgstr "Dogodek posodobljend. <a href=\"%s\">Pogled dogodka</a>"
+
+#: app/controller/class-ai1ec-events-controller.php:468
+msgid "Custom field updated."
+msgstr "Dogodek posodobljen."
+
+#: app/controller/class-ai1ec-events-controller.php:469
+msgid "Custom field deleted."
+msgstr "Dogodek izbrisan."
+
+#: app/controller/class-ai1ec-events-controller.php:470
+msgid "Event updated."
+msgstr "Dogodek posodobljen."
+
+#. translators: %s: date and time of the revision
+#: app/controller/class-ai1ec-events-controller.php:472
+msgid "Event restored to revision from %s"
+msgstr "Dogodek vrnil v pregled %s"
+
+#: app/controller/class-ai1ec-events-controller.php:473
+msgid "Event published. <a href=\"%s\">View event</a>"
+msgstr "Dogodek objavljen. <a href=\"%s\">Pregled dogodka</a>"
+
+#: app/controller/class-ai1ec-events-controller.php:474
+msgid "Event saved."
+msgstr "Dogodek shranjen."
+
+#: app/controller/class-ai1ec-events-controller.php:475
+msgid "Event submitted. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr "Dogodek dodan. <a target=\"_blank\" href=\"%s\">Predogled dogodka</a>"
+
+#: app/controller/class-ai1ec-events-controller.php:476
+msgid ""
+"Event scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Preview event</a>"
+msgstr ""
+"Dogodek načrtovan za: <strong>%1$s</strong>. <a target=\"_blank\" href=\"%2$s"
+"\">Predogled dogodka</a>"
+
+#. translators: Publish box date format, see http:php.net/date
+#: app/controller/class-ai1ec-events-controller.php:478
+msgid "M j, Y @ G:i"
+msgstr "M j, Y @ G:i"
+
+#: app/controller/class-ai1ec-events-controller.php:479
+msgid "Event draft updated. <a target=\"_blank\" href=\"%s\">Preview event</a>"
+msgstr ""
+"Osnutek dogodka posodobljen. <a target=\"_blank\" href=\"%s\">Predogled "
+"dogodka</a>"
+
+#: app/controller/class-ai1ec-importer-controller.php:91
+#, fuzzy
+msgid "The Events Calendar → All-in-One Event Calendar"
+msgstr "Koledar dogodkov → All-in-One Event Koledar"
+
+#: app/controller/class-ai1ec-importer-controller.php:92
+#, fuzzy
+msgid ""
+"Imports events created using The Events Calendar plugin into the All-in-One "
+"Event Calendar"
+msgstr ""
+"uvoz ustvarjenih dogodkov s pomočjo The Events Calander vtičnika v All-in-"
+"One Event koledar "
+
+#: app/controller/class-ai1ec-settings-controller.php:60
+#, fuzzy
+msgid "All-in-One Event Calendar: Settings"
+msgstr "All-in-One Event vtičnik koledarja"
+
+#: app/controller/class-ai1ec-settings-controller.php:79
+#, fuzzy
+msgid "All-in-One Event Calendar: Calendar Feeds"
+msgstr "All-in-one Event Calendar"
+
+#: app/controller/class-ai1ec-settings-controller.php:100
+msgid "Settings Updated."
+msgstr "Nastavitve posodobljene."
+
+#: app/controller/class-ai1ec-settings-controller.php:190
+msgid "Flushed %d events"
+msgstr "Izbrisani %d dogodki"
+
+#: app/controller/class-ai1ec-settings-controller.php:196
+#: app/controller/class-ai1ec-settings-controller.php:243
+msgid "Invalid ICS feed ID"
+msgstr "Neveljaven ICS vnos ID"
+
+#: app/controller/class-ai1ec-settings-controller.php:230
+#, fuzzy
+msgid "No events were found"
+msgstr "Ni dogodkov"
+
+#: app/controller/class-ai1ec-settings-controller.php:235
+msgid "Imported %d events"
+msgstr "uvoženi %d dogodki"
+
+#: app/controller/class-ai1ec-settings-controller.php:236
+#: app/view/admin/feed_row.php:22
+msgid "Flush 1 event"
+msgid_plural "Flush %s events"
+msgstr[0] "Flush 1 event"
+msgstr[1] "izbriši %s dogodkov"
+
+#: app/controller/class-ai1ec-settings-controller.php:318
+msgctxt "meta box"
+msgid "General Settings"
+msgstr "Splošne nastavitve"
+
+#: app/controller/class-ai1ec-settings-controller.php:327
+#, fuzzy
+msgctxt "meta box"
+msgid "Advanced Settings"
+msgstr "Posodobi nastavitve"
+
+#: app/controller/class-ai1ec-settings-controller.php:336
+#: app/controller/class-ai1ec-settings-controller.php:365
+#, fuzzy
+msgctxt "meta box"
+msgid "Timely Support"
+msgstr "Podpora"
+
+#: app/controller/class-ai1ec-settings-controller.php:356
+#, fuzzy
+msgctxt "meta box"
+msgid "Feed Subscriptions"
+msgstr "Opis"
+
+#: app/controller/class-ai1ec-settings-controller.php:381
+msgid "<a href=\"%s\">Settings</a>"
+msgstr "<a href=\"%s\">Nastavitve</a>"
+
+#: app/controller/class-ai1ec-settings-controller.php:395
+msgid "<a href=\"%s\" target=\"_blank\">Donate</a>"
+msgstr "<a href=\"%s\" target=\"_blank\">Doniraj</a>"
+
+#: app/controller/class-ai1ec-settings-controller.php:396
+msgid "<a href=\"%s\" target=\"_blank\">Get Support</a>"
+msgstr "<a href=\"%s\" target=\"_blank\">Pomoč</a>"
+
+#: app/controller/class-ai1ec-themes-controller.php:118
+#: app/controller/class-ai1ec-themes-controller.php:119
+#: app/controller/class-ai1ec-themes-controller.php:182
+#, fuzzy
+msgid "Install Calendar Themes"
+msgstr "Koledar"
+
+#: app/controller/class-ai1ec-themes-controller.php:216
+msgid "Errors occurred while we tried to install your core Calendar Themes"
+msgstr "Prišlo je do napak pri namestitvi temeljnih tem koledarja"
+
+#: app/controller/class-ai1ec-themes-controller.php:231
+msgid "Calendar themes were installed successfully"
+msgstr "Teme koledarja so bile nameščene uspešno"
+
+#: app/controller/class-ai1ec-themes-controller.php:234
+#: app/view/admin/themes-updated.php:19
+#, fuzzy
+msgid "All-in-One Event Calendar Settings »"
+msgstr "All-in-One Event vtičnik koledarja"
+
+#: app/controller/class-ai1ec-themes-controller.php:252
+#: app/controller/class-ai1ec-themes-controller.php:253
+#: app/view/admin/themes-updated.php:5
+#, fuzzy
+msgid "Update Core Calendar Files"
+msgstr "Upravljal naročnine na druge koledarje"
+
+#: app/controller/class-ai1ec-themes-controller.php:323
+msgid ""
+"<div class=\"error\"><p><strong>There was an error updating one of the files."
+"</strong> Please FTP to your web server and manually copy <pre>%s</pre> to "
+"<pre>%s</pre></p></div>"
+msgstr ""
+"<div class=\"error\"><p><strong>Prišlo je do napake pri posodabljanju "
+"nekaterih datotek.</strong> Prosimo prenesite datoteke  <pre>%s</pre> s "
+"pomočjo FTP-ja na vaš spletrni strežnik v <pre>%s</pre></p></div>"
+
+#: app/controller/class-ai1ec-themes-controller.php:333
+msgid ""
+"<div id=\"message\" class=\"error\"><h3>Errors occurred while we tried to "
+"update your core calendar files.</h3><p><strong>Please follow any "
+"instructions listed below or your calendar may malfunction:</strong></p></"
+"div>"
+msgstr ""
+"<div id=\"message\" class=\"error\"><h3>Pri poizkusi posodobitve temeljnih "
+"datotek koledarja je prišlo do napak.</h3><p><strong>Prosimo sledite spodaj "
+"navedenim napotkom:</strong></p></div>"
+
+#: app/controller/class-ai1ec-themes-controller.php:336
+msgid ""
+"<div id=\"message\" class=\"updated\"><h3>Your core calendar files were "
+"updated successfully.</h3></div>"
+msgstr ""
+"<div id=\"message\" class=\"updated\"><h3>Temeljne datotke vašega koledarja "
+"so bile uspešno posodobljene.</h3></div>"
+
+#: app/helper/class-ai1ec-app-helper.php:156
+msgctxt "Custom post type name"
+msgid "Events"
+msgstr "Dogodki"
+
+#: app/helper/class-ai1ec-app-helper.php:157
+msgctxt "Custom post type name (singular)"
+msgid "Event"
+msgstr "Dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:158
+msgid "Add New"
+msgstr "Dodaj novo"
+
+#: app/helper/class-ai1ec-app-helper.php:159
+msgid "Add New Event"
+msgstr "Dodaj nov dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:160
+msgid "Edit Event"
+msgstr "Uredi dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:161
+msgid "New Event"
+msgstr "Nov dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:162
+#, fuzzy
+msgid "View Event"
+msgstr "Ogled dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:163
+msgid "Search Events"
+msgstr "Poišči dogodke"
+
+#: app/helper/class-ai1ec-app-helper.php:164
+msgid "No Events found"
+msgstr "Ni dogodkov"
+
+#: app/helper/class-ai1ec-app-helper.php:165
+msgid "No Events found in Trash"
+msgstr "Ni dogodkov v smeteh"
+
+#: app/helper/class-ai1ec-app-helper.php:166
+msgid "Parent Event"
+msgstr "Starševski dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:167
+msgid "Events"
+msgstr "Dogodki"
+
+#: app/helper/class-ai1ec-app-helper.php:214
+msgctxt "Event categories taxonomy"
+msgid "Event Categories"
+msgstr " Kategorije dogodkov"
+
+#: app/helper/class-ai1ec-app-helper.php:215
+msgctxt "Event categories taxonomy (singular)"
+msgid "Event Category"
+msgstr "Kategorija dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:222
+msgctxt "Event tags taxonomy"
+msgid "Event Tags"
+msgstr "Označbe dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:223
+msgctxt "Event tags taxonomy (singular)"
+msgid "Event Tag"
+msgstr "Označba dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:230
+#, fuzzy
+msgctxt "Event feeds taxonomy"
+msgid "Event Feeds"
+msgstr "Dogodki"
+
+#: app/helper/class-ai1ec-app-helper.php:231
+#, fuzzy
+msgctxt "Event feed taxonomy (singular)"
+msgid "Event Feed"
+msgstr "Dogodek shranjen."
+
+#: app/helper/class-ai1ec-app-helper.php:319
+msgid "Show All "
+msgstr "Prikaži vse"
+
+#: app/helper/class-ai1ec-app-helper.php:352
+msgid ""
+"All Events <span class=\"update-plugins count-%d\" title=\"%d Pending Events"
+"\"><span class=\"update-count\">%d</span></span>"
+msgstr ""
+"Vsi dogodki <span class=\"update-plugins count-%d\" title=\"%d Prihajajoči "
+"dogodki\"><span class=\"update-count\">%d</span></span>"
+
+#: app/helper/class-ai1ec-app-helper.php:358
+msgid "All Events"
+msgstr "Vsi dogodki"
+
+#: app/helper/class-ai1ec-app-helper.php:436
+msgid "Event Details"
+msgstr "Podrobnosti dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:471
+#, fuzzy
+msgid "Post Date"
+msgstr "Objavi datum/datum objave"
+
+#: app/helper/class-ai1ec-app-helper.php:472
+msgid "Event date/time"
+msgstr "Čas dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:689
+#, fuzzy
+msgid "Welcome to the All-in-One Event Calendar, by timely"
+msgstr "All-in-one Event Calendar"
+
+#: app/helper/class-ai1ec-app-helper.php:694
+msgid "Watch the introductory video »"
+msgstr "Poglejte si uvodni video »"
+
+#: app/helper/class-ai1ec-app-helper.php:698
+#: app/helper/class-ai1ec-app-helper.php:781
+msgid "Dismiss"
+msgstr "Zavrzi"
+
+#: app/helper/class-ai1ec-app-helper.php:715
+#, fuzzy
+msgid "Introducing the All-in-One Event Calendar, by Timely"
+msgstr "All-in-one Event Calendar"
+
+#: app/helper/class-ai1ec-app-helper.php:723 app/view/admin/box_support.php:41
+msgid "Upgrade to Premium for Free"
+msgstr "Nadgradite brezplačno na Premium"
+
+#: app/helper/class-ai1ec-app-helper.php:732
+#: app/helper/class-ai1ec-app-helper.php:754
+#: app/helper/class-ai1ec-app-helper.php:769
+#: app/helper/class-ai1ec-app-helper.php:832
+#, fuzzy
+msgid "All-in-One Event Calendar Notice"
+msgstr "All-in-One Event Calendar obvestilo:"
+
+#: app/helper/class-ai1ec-app-helper.php:801
+#, fuzzy
+msgid "Select an option in the <strong>Calendar page</strong> dropdown list."
+msgstr ""
+"Nastavite vtičnik: Izberite možnost v izpustnem seznamu <strong>koledarske "
+"strani</strong> , Kliknitek <strong>Posodobi natavitve</strong>."
+
+#: app/helper/class-ai1ec-app-helper.php:804
+#, fuzzy
+msgid "Select an option in the <strong>Timezone</strong> dropdown list."
+msgstr ""
+"Nastavite vtičnik: Izberite možnost v izpustnem seznamu<strong>časovnega "
+"pasu</strong>, kliknite<strong>Posodobi nastavitve</strong>."
+
+#: app/helper/class-ai1ec-app-helper.php:806
+msgid "Click <strong>Update Settings</strong>."
+msgstr "Kliknite na <strong>Posodobi nastavitve</strong>."
+
+#: app/helper/class-ai1ec-app-helper.php:811
+#, fuzzy
+msgid ""
+"The plugin is installed, but has not been configured. <a href=\"%s\">Click "
+"here to set it up now &raquo;</a>"
+msgstr ""
+"Vtičnik je nameščen vendar še ni nastavljen. <a href=\"%s\">Za nastavitev "
+"kliknite tukaj »</a>"
+
+#: app/helper/class-ai1ec-app-helper.php:819
+#, fuzzy
+msgid ""
+"The plugin is installed, but has not been configured. Please log in as an "
+"Administrator to set it up."
+msgstr ""
+"Vtičnik je nameščen vendar še ni nastavljen. Za nastavitev se prijavite kot "
+"WordPress Administrator."
+
+#: app/helper/class-ai1ec-app-helper.php:824
+msgid "<p>To set up the plugin:</p>"
+msgstr "<p>Za nastavitev vtičnika:</p>"
+
+#: app/helper/class-ai1ec-app-helper.php:849
+#, fuzzy
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] "Dogodek"
+msgstr[1] "Dogodek"
+
+#: app/helper/class-ai1ec-app-helper.php:861
+#, fuzzy
+msgid "Event Category"
+msgid_plural "Event Categories"
+msgstr[0] "Kategorija dogodka"
+msgstr[1] "Kategorija dogodka"
+
+#: app/helper/class-ai1ec-app-helper.php:873
+#, fuzzy
+msgid "Event Tag"
+msgid_plural "Event Tags"
+msgstr[0] "Označba dogodka"
+msgstr[1] "Označba dogodka"
+
+#. translators: "%s" represents the week's starting date
+#: app/helper/class-ai1ec-calendar-helper.php:817
+#: app/helper/class-ai1ec-calendar-helper.php:824
+msgid "j F Y"
+msgstr "j F Y"
+
+#: app/helper/class-ai1ec-calendar-helper.php:910
+#: app/helper/class-ai1ec-calendar-helper.php:919
+#, fuzzy
+msgid "M j"
+msgstr "M j"
+
+#: app/helper/class-ai1ec-calendar-helper.php:951
+msgid "« Previous Events"
+msgstr "« Prejšnji dogodki"
+
+#: app/helper/class-ai1ec-calendar-helper.php:958
+msgid "Next Events »"
+msgstr "Naslednji dogodki»"
+
+#: app/helper/class-ai1ec-events-helper.php:372
+#: app/helper/class-ai1ec-events-helper.php:394
+msgid "No repeat"
+msgstr "Brez ponavljanja"
+
+#: app/helper/class-ai1ec-events-helper.php:373
+#: app/helper/class-ai1ec-events-helper.php:395
+msgid "Every day"
+msgstr "vsak dan"
+
+#: app/helper/class-ai1ec-events-helper.php:374
+#: app/helper/class-ai1ec-events-helper.php:396
+msgid "Every week"
+msgstr "vsak teden"
+
+#: app/helper/class-ai1ec-events-helper.php:375
+#: app/helper/class-ai1ec-events-helper.php:397
+#, fuzzy
+msgid "Every month"
+msgstr "Dogodek"
+
+#: app/helper/class-ai1ec-events-helper.php:376
+#: app/helper/class-ai1ec-events-helper.php:398
+msgid "Every year"
+msgstr "vsako leto"
+
+#: app/helper/class-ai1ec-events-helper.php:378
+#: app/helper/class-ai1ec-events-helper.php:400
+msgid "Custom..."
+msgstr "po meri..."
+
+#: app/helper/class-ai1ec-events-helper.php:521
+msgid "first"
+msgstr "prvi"
+
+#: app/helper/class-ai1ec-events-helper.php:522
+msgid "second"
+msgstr "drugi"
+
+#: app/helper/class-ai1ec-events-helper.php:523
+msgid "third"
+msgstr "tretji"
+
+#: app/helper/class-ai1ec-events-helper.php:524
+msgid "fourth"
+msgstr "četrti"
+
+#: app/helper/class-ai1ec-events-helper.php:526
+msgid "last"
+msgstr "zadnji"
+
+#: app/helper/class-ai1ec-events-helper.php:531
+#, fuzzy
+msgid "Sunday"
+msgstr "nedelje"
+
+#: app/helper/class-ai1ec-events-helper.php:532
+#, fuzzy
+msgid "Monday"
+msgstr "ponedeljki"
+
+#: app/helper/class-ai1ec-events-helper.php:533
+#, fuzzy
+msgid "Tuesday"
+msgstr "torki"
+
+#: app/helper/class-ai1ec-events-helper.php:534
+#, fuzzy
+msgid "Wednesday"
+msgstr "srede"
+
+#: app/helper/class-ai1ec-events-helper.php:535
+#, fuzzy
+msgid "Thursday"
+msgstr "četrtki"
+
+#: app/helper/class-ai1ec-events-helper.php:536
+#, fuzzy
+msgid "Friday"
+msgstr "petki"
+
+#: app/helper/class-ai1ec-events-helper.php:537
+#, fuzzy
+msgid "Saturday"
+msgstr "sobote"
+
+#: app/helper/class-ai1ec-events-helper.php:539
+#, fuzzy
+msgid "day"
+msgstr "Danes"
+
+#: app/helper/class-ai1ec-events-helper.php:540
+#, fuzzy
+msgid "weekday"
+msgstr "delovni dnevi"
+
+#: app/helper/class-ai1ec-events-helper.php:541
+#, fuzzy
+msgid "weekend day"
+msgstr "delovni dnevi"
+
+#: app/helper/class-ai1ec-events-helper.php:607
+#: app/helper/class-ai1ec-events-helper.php:624
+#: app/helper/class-ai1ec-events-helper.php:1705
+#: app/helper/class-ai1ec-settings-helper.php:239
+#: app/view/admin/box_repeat.php:2
+msgid "Daily"
+msgstr "Dnevno"
+
+#: app/helper/class-ai1ec-events-helper.php:608
+#: app/helper/class-ai1ec-events-helper.php:625
+#: app/helper/class-ai1ec-events-helper.php:1717
+#: app/view/admin/box_repeat.php:3
+msgid "Weekly"
+msgstr "tedensko"
+
+#: app/helper/class-ai1ec-events-helper.php:609
+#: app/helper/class-ai1ec-events-helper.php:626
+#: app/helper/class-ai1ec-events-helper.php:1729
+#: app/view/admin/box_repeat.php:4
+msgid "Monthly"
+msgstr "mesečno"
+
+#: app/helper/class-ai1ec-events-helper.php:610
+#: app/helper/class-ai1ec-events-helper.php:627
+#: app/helper/class-ai1ec-events-helper.php:1741
+#: app/view/admin/box_repeat.php:5
+msgid "Yearly"
+msgstr "letno"
+
+#: app/helper/class-ai1ec-events-helper.php:649
+#, fuzzy
+msgid "day(s)"
+msgstr "ponedeljki"
+
+#: app/helper/class-ai1ec-events-helper.php:678
+msgid "week(s)"
+msgstr "tedni"
+
+#: app/helper/class-ai1ec-events-helper.php:748
+#, fuzzy
+msgid "month(s)"
+msgstr "mesec"
+
+#: app/helper/class-ai1ec-events-helper.php:771
+msgid "year(s)"
+msgstr "leta"
+
+#: app/helper/class-ai1ec-events-helper.php:1389
+msgid "Never"
+msgstr "nikoli"
+
+#: app/helper/class-ai1ec-events-helper.php:1390
+msgid "After"
+msgstr "po"
+
+#: app/helper/class-ai1ec-events-helper.php:1391
+#: app/view/admin/box_repeat.php:28
+msgid "On date"
+msgstr "na dan"
+
+#: app/helper/class-ai1ec-events-helper.php:1584
+#: app/helper/class-ai1ec-events-helper.php:1593
+#: app/helper/class-ai1ec-events-helper.php:1601
+msgctxt "Recurrence editor - weekly tab"
+msgid "on"
+msgstr "v"
+
+#: app/helper/class-ai1ec-events-helper.php:1589
+#: app/helper/class-ai1ec-events-helper.php:1618
+#: app/helper/class-ai1ec-events-helper.php:1656
+#, fuzzy
+msgid "and"
+msgstr "Konec"
+
+#: app/helper/class-ai1ec-events-helper.php:1614
+#: app/helper/class-ai1ec-events-helper.php:1621
+#: app/helper/class-ai1ec-events-helper.php:1627
+#: app/helper/class-ai1ec-events-helper.php:1638
+msgctxt "Recurrence editor - monthly tab"
+msgid "on"
+msgstr "v"
+
+#: app/helper/class-ai1ec-events-helper.php:1614
+#: app/helper/class-ai1ec-events-helper.php:1621
+#: app/helper/class-ai1ec-events-helper.php:1627
+msgid "of the month"
+msgstr "v mesecu"
+
+#: app/helper/class-ai1ec-events-helper.php:1651
+#: app/helper/class-ai1ec-events-helper.php:1659
+#: app/helper/class-ai1ec-events-helper.php:1666
+msgctxt "Recurrence editor - yearly tab"
+msgid "on"
+msgstr "v"
+
+#: app/helper/class-ai1ec-events-helper.php:1708
+msgid "Every other day"
+msgstr "vsak drugi dan"
+
+#: app/helper/class-ai1ec-events-helper.php:1710
+msgid "Every %d days"
+msgstr "vsak n dan"
+
+#: app/helper/class-ai1ec-events-helper.php:1720
+msgid "Every other week"
+msgstr "vsak drugi teden"
+
+#: app/helper/class-ai1ec-events-helper.php:1722
+msgid "Every %d weeks"
+msgstr "vsak n tden"
+
+#: app/helper/class-ai1ec-events-helper.php:1732
+msgid "Every other month"
+msgstr "vsak drugi mesec"
+
+#: app/helper/class-ai1ec-events-helper.php:1734
+msgid "Every %d months"
+msgstr "vsak n mesec"
+
+#: app/helper/class-ai1ec-events-helper.php:1744
+msgid "Every other year"
+msgstr "vsako drugo leto"
+
+#: app/helper/class-ai1ec-events-helper.php:1746
+msgid "Every %d years"
+msgstr "vsako n leto"
+
+#: app/helper/class-ai1ec-events-helper.php:1766
+msgid "until %s"
+msgstr "do %s"
+
+#: app/helper/class-ai1ec-events-helper.php:1769
+msgid "for %d occurrences"
+msgstr "za %d ponavljanj"
+
+#: app/helper/class-ai1ec-events-helper.php:1771
+#, fuzzy
+msgid "forever"
+msgstr "nikoli"
+
+#: app/helper/class-ai1ec-events-helper.php:1868
+#, fuzzy
+msgid "times"
+msgstr "krat"
+
+#: app/helper/class-ai1ec-settings-helper.php:85
+msgid "- Auto-Create New Page -"
+msgstr "- samodejno ustvari novo stran -"
+
+#: app/helper/class-ai1ec-settings-helper.php:106
+msgid "View \"%s\" »"
+msgstr "Prikaži \"%s\" »"
+
+#: app/helper/class-ai1ec-settings-helper.php:206
+msgid "Default (d/m/y)"
+msgstr "privzeto (d/m/l)"
+
+#: app/helper/class-ai1ec-settings-helper.php:209
+msgid "US (m/d/y)"
+msgstr "US (m/d/l)"
+
+#: app/helper/class-ai1ec-settings-helper.php:212
+msgid "ISO 8601 (y-m-d)"
+msgstr "ISO 8601 (l-m-d)"
+
+#: app/helper/class-ai1ec-settings-helper.php:215
+msgid "Dotted (m.d.y)"
+msgstr "s pikami (m.d.l)"
+
+#: app/helper/class-ai1ec-settings-helper.php:233
+msgid "Hourly"
+msgstr "vsako uro"
+
+#: app/helper/class-ai1ec-settings-helper.php:236
+msgid "Twice Daily"
+msgstr "dvakrat dnevno"
+
+#: app/model/class-ai1ec-event.php:510
+msgid " (all-day)"
+msgstr "(cel dan)"
+
+#: app/view/admin/agenda-widget-form.php:2
+msgid "Title:"
+msgstr "Naslov:"
+
+#: app/view/admin/agenda-widget-form.php:6
+msgid "Number of events to show:"
+msgstr "Število dogodkov za prikaz"
+
+#: app/view/admin/agenda-widget-form.php:14
+#, fuzzy
+msgid "Events with these <strong>Categories</strong>"
+msgstr "do <strong>%s</strong>"
+
+#: app/view/admin/agenda-widget-form.php:23
+#, fuzzy
+msgid "No categories found."
+msgstr "Ni dogodkov"
+
+#: app/view/admin/agenda-widget-form.php:30
+#, fuzzy
+msgid "<strong>Or</strong> events with these <strong>Tags</strong>"
+msgstr "<strong>ali</strong> dogodki s temi <strong></strong>"
+
+#: app/view/admin/agenda-widget-form.php:39
+#, fuzzy
+msgid "No tags found."
+msgstr "Ni dogodkov"
+
+#: app/view/admin/agenda-widget-form.php:46
+msgid "<strong>Or</strong> any of these <strong>Events</strong>"
+msgstr "<strong>ali</strong> katerikoli od teh <strong>dogodkov</strong>"
+
+#: app/view/admin/agenda-widget-form.php:55
+#, fuzzy
+msgid "No events found."
+msgstr "Ni dogodkov"
+
+#: app/view/admin/agenda-widget-form.php:62
+msgid "Show <strong>View Calendar</strong> button"
+msgstr "Prikaži <strong>Prikaz koledarja</strong> gumb"
+
+#: app/view/admin/agenda-widget-form.php:65
+msgid "Show <strong>Subscribe</strong> buttons"
+msgstr "Prikaži <strong>Naročite se</strong> gumbi"
+
+#: app/view/admin/agenda-widget-form.php:68
+msgid "Hide this widget on calendar page"
+msgstr "Skrij gradnik na strani koledarja"
+
+#: app/view/admin/box_advanced_settings.php:3
+msgid "Contain calendar in this DOM element:"
+msgstr "Contain calendar in this DOM element:"
+
+#: app/view/admin/box_advanced_settings.php:5
+#, fuzzy
+msgid ""
+"Optional. Provide a <a href=\"http://api.jquery.com/category/selectors/\" "
+"target=\"_blank\">jQuery selector</a> that evaluates to a single DOM "
+"element. Replaces any existing markup found within target. If left empty, "
+"calendar is shown in normal page content container."
+msgstr ""
+"Optional. Provide a <a href=\"http://api.jquery.com/category/selectors/\" "
+"target=\"_blank\">jQuery selector</a> that evaluates to a single DOM "
+"element. Replaces any existing markup found within target. If left empty, "
+"calendar is shown in normal page content container."
+
+#: app/view/admin/box_event_contact.php:1
+#, fuzzy
+msgid "Organizer contact info"
+msgstr "Info"
+
+#: app/view/admin/box_event_contact.php:7
+msgid "Contact name:"
+msgstr "Ime kontaknte osebe:"
+
+#: app/view/admin/box_event_contact.php:17
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: app/view/admin/box_event_contact.php:27
+msgid "E-mail:"
+msgstr "E-pošta:"
+
+#: app/view/admin/box_event_cost.php:1
+msgid "Event cost"
+msgstr "Cena dogodka"
+
+#: app/view/admin/box_event_cost.php:7
+msgid "Cost"
+msgstr "Cena"
+
+#: app/view/admin/box_event_location.php:1
+msgid "Event location details"
+msgstr "Podrobnosti lokacije dogodka"
+
+#: app/view/admin/box_event_location.php:8
+msgid "Venue name:"
+msgstr "Kraj:"
+
+#: app/view/admin/box_event_location.php:18
+msgid "Address:"
+msgstr "Kraj dogodka:"
+
+#: app/view/admin/box_event_location.php:28
+msgid "Show Google Map:"
+msgstr "Prikaži Google zemljevid:"
+
+#: app/view/admin/box_eventbrite.php:1
+msgid "Eventbrite Ticketing"
+msgstr "Eventbrite vstonice"
+
+#: app/view/admin/box_eventbrite.php:7
+msgid "Register this event with Eventbrite.com?"
+msgstr "Registrirajte ta dogodek z Eventbrite.com?"
+
+#: app/view/admin/box_eventbrite.php:12
+msgid "Yes"
+msgstr "Da"
+
+#: app/view/admin/box_eventbrite.php:14
+msgid "No"
+msgstr "Ne"
+
+#: app/view/admin/box_eventbrite.php:22
+msgid "Set up your first ticket"
+msgstr "Nastavite svojo prvo vstopnico"
+
+#: app/view/admin/box_eventbrite.php:24
+msgid ""
+"To create multiple tickets per event, submit this form, then follow the link "
+"to Eventbrite."
+msgstr ""
+"Za ustvarjanje skupinske vstopnice dogodka, izpolnite obrazec in sledite "
+"povezavi Eventbrite."
+
+#: app/view/admin/box_eventbrite.php:32
+msgid "Name"
+msgstr "Ime"
+
+#: app/view/admin/box_eventbrite.php:42
+msgid "Description"
+msgstr "Opis"
+
+#: app/view/admin/box_eventbrite.php:53
+msgid "Type"
+msgstr "Vrsta"
+
+#: app/view/admin/box_eventbrite.php:58
+msgid "Set Price"
+msgstr "Nastavi ceno"
+
+#: app/view/admin/box_eventbrite.php:60
+#, fuzzy
+msgid "Donation Based"
+msgstr "Prostovoljni prispevek"
+
+#: app/view/admin/box_eventbrite.php:68
+msgid ""
+"The price for this event's first ticket will be taken from the Cost field "
+"above."
+msgstr "Cena dogodka bo vzeta iz polja Cena zgoraj"
+
+#: app/view/admin/box_eventbrite.php:75
+msgid "Quantity"
+msgstr "KOličina"
+
+#: app/view/admin/box_eventbrite.php:85
+#, fuzzy
+msgid "Include Fee in Price"
+msgstr "Vključi honorar v ceno"
+
+#: app/view/admin/box_eventbrite.php:90
+#, fuzzy
+msgid "Add Service Fee on top of price"
+msgstr "Prištej strošek storitve k končni ceni"
+
+#: app/view/admin/box_eventbrite.php:92
+msgid "Include Service fee in price"
+msgstr "Dogodek načrtovan "
+
+#: app/view/admin/box_eventbrite.php:98
+msgid "Payment Options"
+msgstr "Možnosti plačila"
+
+#: app/view/admin/box_eventbrite.php:103
+msgid "Paypal"
+msgstr "Paypal"
+
+#: app/view/admin/box_eventbrite.php:105
+msgid "Google Checkout"
+msgstr "Google Checkout"
+
+#: app/view/admin/box_eventbrite.php:107
+msgid "Check"
+msgstr "Po položnici"
+
+#: app/view/admin/box_eventbrite.php:109
+msgid "Cash"
+msgstr "Gotovina"
+
+#: app/view/admin/box_eventbrite.php:111
+msgid "Send an Invoice"
+msgstr "Pošlji račun"
+
+#: app/view/admin/box_feeds.php:2
+msgid ""
+"Configure which other calendars your own calendar subscribes to.\n"
+"    You can add any calendar that provides an iCalendar (.ics) feed.\n"
+"    Enter the feed URL(s) below and the events from those feeds will be\n"
+"    imported periodically."
+msgstr ""
+"Nastavite na katere druge koledarje se vaš koledar naročuje.\n"
+"    Lahko dodaste koledarje, ki nudijo iCalendar (.ics) feed.\n"
+"    Vnesite spodaj URL(je) in dogodki iz teh naročnin\n"
+"\v    se bodo uvažali samodejno."
+
+#: app/view/admin/box_feeds.php:13
+msgid "Check for new events"
+msgstr "Preverite nove dogodke"
+
+#: app/view/admin/box_feeds.php:19 app/view/admin/feed_row.php:3
+msgid "iCalendar/.ics Feed URL:"
+msgstr "iCalendar/.ics Feed URL:"
+
+#: app/view/admin/box_feeds.php:23
+msgid "Event category"
+msgstr "Kategorija dogodka"
+
+#: app/view/admin/box_feeds.php:29 app/view/admin/feed_row.php:15
+msgid "Tag with"
+msgstr "Označi z"
+
+#: app/view/admin/box_feeds.php:33
+#, fuzzy
+msgid "+ Add new subscription"
+msgstr "+ dodaj novo naročnino"
+
+#: app/view/admin/box_general_settings.php:3
+#, fuzzy
+msgid "Viewing Events"
+msgstr "Pregledovanje dogodkov"
+
+#: app/view/admin/box_general_settings.php:5
+msgid "Calendar page:"
+msgstr "Stran koledarja"
+
+#: app/view/admin/box_general_settings.php:9
+msgid "Default calendar view:"
+msgstr "Privzet prikaz koledarja"
+
+#: app/view/admin/box_general_settings.php:14
+msgid "Timezone:"
+msgstr "Časovni pas:"
+
+#: app/view/admin/box_general_settings.php:19
+msgid "Week starts on"
+msgstr "Teden se začne z"
+
+#: app/view/admin/box_general_settings.php:23
+msgid "Agenda pages show at most"
+msgstr "Največkrat prikazane strani agende"
+
+#: app/view/admin/box_general_settings.php:24
+msgid "events"
+msgstr "dogodki"
+
+#: app/view/admin/box_general_settings.php:29
+#, fuzzy
+msgid "Keep all events <strong>expanded</strong> in the agenda view"
+msgstr "obdrži vse dogodke <strong>razširjene</strong> v pogledu agende"
+
+#: app/view/admin/box_general_settings.php:35
+#, fuzzy
+msgid "<strong>Show year</strong> in agenda date labels"
+msgstr "Uporabi<strong>24 urni </strong> izbor"
+
+#: app/view/admin/box_general_settings.php:41
+msgid "<strong>Show location in event titles</strong> in calendar views"
+msgstr ""
+"V pogledu koledarja <strong>prikaži lokacijo v naslovu dogodka</strong>"
+
+#: app/view/admin/box_general_settings.php:47
+msgid "<strong>Exclude</strong> events from search results"
+msgstr "<strong>Izključi</strong> dogodke zadetkov iskanja"
+
+#: app/view/admin/box_general_settings.php:53
+msgid ""
+"Show <strong>Post Your Event</strong> button above the calendar to "
+"privileged users"
+msgstr ""
+"Prikaži <strong>objavi vaš dogodekt</strong> gumb nad koledarjem za "
+"priviligirane uporabnike"
+
+#: app/view/admin/box_general_settings.php:59
+#, fuzzy
+msgid ""
+"Hide <strong>Subscribe</strong>/<strong>Add to Calendar</strong> buttons in "
+"calendar and single event views"
+msgstr ""
+"Skrij <strong>Naroči</strong>/<strong>Dodaj kolkedarju</strong> gumbi v "
+"koledarju in poglede individualnega dogodka"
+
+#: app/view/admin/box_general_settings.php:65
+msgid "Hide <strong>Google Maps</strong> until clicked"
+msgstr "Skrij <strong>Google zemljevide</strong> do klika"
+
+#: app/view/admin/box_general_settings.php:71
+msgid "Include <strong>event categories</strong> in post category lists"
+msgstr ""
+"Vključi <strong>kategorije dogodkov</strong> v seznamih kategorij prispevkov"
+
+#: app/view/admin/box_general_settings.php:75
+msgid "Adding/Editing Events"
+msgstr "Dodajanje/urejanje dogodkov"
+
+#: app/view/admin/box_general_settings.php:77
+#, fuzzy
+msgid "Input dates in this format:"
+msgstr "Vnos datumov v <strong>US formatu</strong>"
+
+#: app/view/admin/box_general_settings.php:83
+msgid "Use <strong>24h time</strong> in time pickers"
+msgstr "Uporabi<strong>24 urni </strong> izbor"
+
+#: app/view/admin/box_general_settings.php:89
+msgid "<strong>Disable address autocomplete</strong> function"
+msgstr "<strong>Onemogoči samodejno dokončanje naslova</strong>"
+
+#: app/view/admin/box_general_settings.php:95
+msgid ""
+"Use the configured <strong>region</strong> (WordPress locale) to bias the "
+"address autocomplete function"
+msgstr ""
+"Uporabi nastavljeno<strong>\"region\"</strong> (WordPress locale) za obhod "
+"funkcije samodokončanja naslova"
+
+#: app/view/admin/box_general_settings.php:101
+msgid "Display <strong>Publish</strong> at bottom of Edit Event form"
+msgstr "Prikaži <strong>Objavi</strong> na dnu obrazca za urejanje dogodka"
+
+#: app/view/admin/box_general_settings.php:105
+#, fuzzy
+msgid "Sharing Data"
+msgstr "Skupna raba"
+
+#: app/view/admin/box_general_settings.php:109
+#, fuzzy
+msgid "Allow Timely to collect calendar statistics"
+msgstr "Dovilite, da The Seed zbira statistiko rabe"
+
+#: app/view/admin/box_repeat.php:14
+msgid "End"
+msgstr "Konec"
+
+#: app/view/admin/box_repeat.php:21
+msgid "Ending after"
+msgstr "Zaključi po"
+
+#: app/view/admin/box_repeat.php:36
+msgid "Apply"
+msgstr "uporabi"
+
+#: app/view/admin/box_repeat.php:37
+msgid "Cancel"
+msgstr "prekliči"
+
+#: app/view/admin/box_support.php:3
+msgid "Timely"
+msgstr "Časovno"
+
+#: app/view/admin/box_support.php:7
+#, fuzzy
+msgid ""
+"Timely’s All-in-One Event Calendar is a revolutionary new way to find and "
+"share events."
+msgstr ""
+"Then.ly’s All-in-One Calendar je najnoveši način iskanja in objavljanja "
+"dogodkov."
+
+#: app/view/admin/box_support.php:16
+#, fuzzy
+msgid "Follow @_Timely"
+msgstr "Sletide the_seed_studio"
+
+#: app/view/admin/box_support.php:22
+#, fuzzy
+msgid "Upgrade to Premium for free and get exclusive features:"
+msgstr ""
+"Nadgradite na brezplačno Premium različico in pridobite dostop do posebnih "
+"storitev kot so:"
+
+#: app/view/admin/box_support.php:28
+#, fuzzy
+msgid "Calendar Themes"
+msgstr "Koledar"
+
+#: app/view/admin/box_support.php:29
+msgid "Posterboard View"
+msgstr "Pogled plakata"
+
+#: app/view/admin/box_support.php:30
+#, fuzzy
+msgid "Duplicate Events"
+msgstr "Uredi dogodek"
+
+#: app/view/admin/box_support.php:33
+msgid "Facebook Event Import/Export"
+msgstr "Facebook izvoz/uvoz dogodka"
+
+#: app/view/admin/box_support.php:34
+msgid "Location by Latitude/Longitude"
+msgstr "GPS lokacija"
+
+#: app/view/admin/box_support.php:35
+#, fuzzy
+msgid "... and much more!"
+msgstr "... in več!"
+
+#: app/view/admin/box_support.php:46
+#, fuzzy
+msgid ""
+"Timely is dedicated to creating the best calendar software in the world."
+msgstr "Then.ly se trudi ustvarit najboljši program za koledarje na svetu."
+
+#: app/view/admin/box_support.php:50
+#, fuzzy
+msgid ""
+"Please let us know if anything is not working the way you expect. While many "
+"problems are caused by conflicts with other plugins, most problems can be "
+"solved quickly.  Visit our <a href=\"http://help.time.ly/\" target=\"_blank"
+"\">Help Desk</a> to report bugs, request features, or learn how to get the "
+"most out of this plugin."
+msgstr ""
+"Prosimo vas, da nam sporočite če kar koli ne deluje, kot ste pričakovali. "
+"Čeprav je večina težav zaradi spora z drugimi vtičniki, je večino možno "
+"rešit zelo hitro. Poiščite našo <a href=\"http://help.then.ly/\" target="
+"\"_blank\">Help Desk-o</a> za prijavo napak, zahtevkov za nadgradnjo, ali da "
+"se naučite kako do popolnosti izkoristite ta vtičnik."
+
+#: app/view/admin/box_support.php:54
+#, fuzzy
+msgid "Get Support"
+msgstr "Podpora"
+
+#: app/view/admin/box_support.php:59
+msgid "Timely News"
+msgstr "Časovne novice"
+
+#: app/view/admin/box_support.php:59
+msgid "view all news »"
+msgstr "Prikaži vse novice »"
+
+#: app/view/admin/box_time_and_date.php:2
+msgid "Event date and time"
+msgstr "Datum in čas dogodka"
+
+#: app/view/admin/box_time_and_date.php:8
+msgid "All-day event"
+msgstr "Celodnevni dogodek"
+
+#: app/view/admin/box_time_and_date.php:18
+msgid "Start date / time"
+msgstr "Začetek"
+
+#: app/view/admin/box_time_and_date.php:31
+msgid "End date / time"
+msgstr "Konec"
+
+#: app/view/admin/box_time_and_date.php:46
+msgid "Repeat"
+msgstr "Ponovitve"
+
+#: app/view/admin/box_time_and_date.php:60
+msgid "Exclude"
+msgstr "izključi   "
+
+#: app/view/admin/box_time_and_date.php:67
+msgid "Choose a rule for exclusion"
+msgstr "Izberi pravilo za izključitev"
+
+#: app/view/admin/box_time_and_date.php:73
+msgid "Exclude dates"
+msgstr "izključi datume"
+
+#: app/view/admin/box_time_and_date.php:80
+#, fuzzy
+msgid "Select date range"
+msgstr "Datum in čas dogodka"
+
+#: app/view/admin/box_time_and_date.php:85
+msgid "Choose specific dates to exclude"
+msgstr "izberi določene dvatume za izključite"
+
+#: app/view/admin/calendar_tasks.php:3
+msgid "Welcome"
+msgstr "Dobrodošli"
+
+#: app/view/admin/calendar_tasks.php:4
+#, fuzzy
+msgid ""
+"to the All-in-One Event Calendar by <a href=\"http://time.ly/\" target="
+"\"_blank\">Timely</a>"
+msgstr ""
+"v All-in-One Calendar od <a href=\"http://then.ly/\" target=\"_blank\">Then."
+"ly</a>"
+
+#: app/view/admin/calendar_tasks.php:13 themes-ai1ec/vortex/calendar.php:30
+#, fuzzy
+msgid "Post Your Event"
+msgstr "+ Objavite svoj dogodek"
+
+#: app/view/admin/calendar_tasks.php:16
+#, fuzzy
+msgid "Add a new event to the calendar."
+msgstr "Dodajte ta dogodek v vaš Google koledar"
+
+#: app/view/admin/calendar_tasks.php:24
+#, fuzzy
+msgid "Manage Events"
+msgstr "Pregledovanje dogodkov"
+
+#: app/view/admin/calendar_tasks.php:27
+msgid "View and edit all your events."
+msgstr "Prikažite in uredite vse vaše dogodke."
+
+#: app/view/admin/calendar_tasks.php:39
+#, fuzzy
+msgid "Manage Event Categories"
+msgstr "Kategorije dogodka"
+
+#: app/view/admin/calendar_tasks.php:42
+msgid "Organize and color-code your events."
+msgstr "Uredite in barvno označite vse vaše dogodke."
+
+#: app/view/admin/calendar_tasks.php:50
+msgid "Choose Your Theme"
+msgstr "Izberite vašo temo"
+
+#: app/view/admin/calendar_tasks.php:53
+msgid "Change the look and feel."
+msgstr "Spremeni izgled in delovanje."
+
+#: app/view/admin/calendar_tasks.php:63
+msgid "Manage Calendar Feeds"
+msgstr "Upravljal naročnine na druge koledarje"
+
+#: app/view/admin/calendar_tasks.php:66
+#, fuzzy
+msgid "Subscribe to other calendars."
+msgstr "Naročite se vGooglovem koledarju"
+
+#: app/view/admin/calendar_tasks.php:74
+#, fuzzy
+msgid "Edit Calendar Settings"
+msgstr "Posodobi nastavitve"
+
+#: app/view/admin/calendar_tasks.php:77
+msgid "Make this calendar your own."
+msgstr "Naj postane ta koledar tudi vaš."
+
+#: app/view/admin/class-ai1ec-agenda-widget.php:15
+#: app/view/admin/class-ai1ec-agenda-widget.php:36
+msgid "Upcoming Events"
+msgstr "Prihajajoči dogodki"
+
+#: app/view/admin/class-ai1ec-agenda-widget.php:17
+#, fuzzy
+msgid "All-in-One Event Calendar: Lists upcoming events in Agenda view"
+msgstr ""
+"All-in-One Event koledarr: prikaz seznamov prihajajočih dogodkov v agendi"
+
+#: app/view/admin/event_categories-color_picker.php:5
+#: app/view/admin/event_categories-color_picker.php:19
+msgid "Category Color"
+msgstr "Barva kategorije"
+
+#: app/view/admin/event_categories-color_picker.php:13
+#: app/view/admin/event_categories-color_picker.php:25
+msgid "Events in this category will be identified by this color"
+msgstr "Dogodki v tej kategoriji bodo označeni s to barvo"
+
+#: app/view/admin/feed_row.php:9
+msgid "Event category:"
+msgstr "Kategorija dogodka:"
+
+#: app/view/admin/feed_row.php:19
+msgid "× Delete"
+msgstr "× Izbriši"
+
+#: app/view/admin/import.php:6
+msgid "Successfully imported events:"
+msgstr "Uspešno uvoženi dogodki"
+
+#: app/view/admin/row_daily.php:3 app/view/admin/row_monthly.php:3
+#: app/view/admin/row_monthly.php:22 app/view/admin/row_weekly.php:3
+#: app/view/admin/row_yearly.php:3
+#, fuzzy
+msgid "Every"
+msgstr "nikoli"
+
+#: app/view/admin/row_monthly.php:9
+msgid "On day of the month"
+msgstr "na dan v mesecu"
+
+#: app/view/admin/row_monthly.php:13
+msgid "On day of the week"
+msgstr "na dan v tednu"
+
+#: app/view/admin/row_weekly.php:6
+msgctxt "Recurrence editor - weekly tab"
+msgid "On"
+msgstr "v"
+
+#: app/view/admin/row_yearly.php:7
+msgctxt "Recurrence editor - yearly tab"
+msgid "In"
+msgstr "v"
+
+#: app/view/admin/settings.php:16
+msgid "Update Settings"
+msgstr "Posodobi nastavitve"
+
+#: app/view/admin/themes-updated.php:16
+msgid ""
+"Whenever core files are updated, please be sure to reload your web browser "
+"to make sure the most recent versions of the files are used."
+msgstr ""
+"v kolikor spo bile temeljne datoteke posodobljene, se vedno prepričajte da "
+"ste osvežili prikaz v brskalniku."
+
+#: lib/class-ai1ec-updater.php:12
+msgid "The plugin is at the latest version."
+msgstr "To je najnovejša verzija vtičnika."
+
+#: lib/class-ai1ec-updater.php:13
+msgid "Update package not available."
+msgstr "Posodobitev ni na voljo."
+
+#: lib/class-ai1ec-updater.php:14
+msgid "Downloading update from <span class=\"code\">%s</span>&#8230;"
+msgstr "Prenašam posodobitev iz <span class=\"code\">%s</span>&#8230;"
+
+#: lib/class-ai1ec-updater.php:15
+msgid "Unpacking the update&#8230;"
+msgstr "Razpakiram posodobitev&#8230;"
+
+#: lib/class-ai1ec-updater.php:16
+msgid "Deactivating the plugin&#8230;"
+msgstr "Deaktiviram vtočnik&#8230;"
+
+#: lib/class-ai1ec-updater.php:17
+msgid "Removing the old version of the plugin&#8230;"
+msgstr "Odstranjujem staro verzijo vtičnika&#8230;"
+
+#: lib/class-ai1ec-updater.php:18
+msgid "Could not remove the old plugin."
+msgstr "Odstranjevanje starega vtičnika ni bilo uspešno."
+
+#: lib/class-ai1ec-updater.php:19
+msgid "Plugin update failed."
+msgstr "Posodobitev vtičnika ni bila uspešna."
+
+#: lib/class-ai1ec-updater.php:20
+msgid "Plugin updated successfully."
+msgstr "Posodobitev vtičnika je bila uspešna."
+
+#: themes-ai1ec/vortex/agenda-widget.php:11
+msgid "There are no upcoming events."
+msgstr "Ni prihajajočih dogodkov"
+
+#: themes-ai1ec/vortex/agenda-widget.php:48 themes-ai1ec/vortex/agenda.php:68
+#: themes-ai1ec/vortex/agenda.php:118 themes-ai1ec/vortex/month.php:84
+#: themes-ai1ec/vortex/oneday.php:71 themes-ai1ec/vortex/oneday.php:82
+#: themes-ai1ec/vortex/oneday.php:158 themes-ai1ec/vortex/oneday.php:170
+#: themes-ai1ec/vortex/week.php:70 themes-ai1ec/vortex/week.php:81
+#: themes-ai1ec/vortex/week.php:160 themes-ai1ec/vortex/week.php:171
+msgid "@ %s"
+msgstr "@ %s"
+
+#: themes-ai1ec/vortex/agenda-widget.php:66
+msgid "View Calendar"
+msgstr "Prikaz koledarja"
+
+#: themes-ai1ec/vortex/agenda-widget.php:75
+#: themes-ai1ec/vortex/calendar.php:114
+msgid ""
+"Subscribe to this calendar using your favourite calendar program (iCal, "
+"Outlook, etc.)"
+msgstr ""
+"Naročite se na ta koledar z uporabo vašega najljubšega koledarskega programa "
+"(iCal, Outlook, itd.)"
+
+#: themes-ai1ec/vortex/agenda-widget.php:76
+#: themes-ai1ec/vortex/calendar.php:115
+msgid "✔ Subscribe"
+msgstr "✔ Naročite se"
+
+#: themes-ai1ec/vortex/agenda-widget.php:80
+#: themes-ai1ec/vortex/calendar.php:120
+msgid "Subscribe to this calendar in your Google Calendar"
+msgstr "Naročite se na koledar z Googlovim koledarjem"
+
+#: themes-ai1ec/vortex/agenda-widget.php:82
+msgid "Add to Google"
+msgstr "Dodaj Googlu"
+
+#: themes-ai1ec/vortex/agenda.php:6 themes-ai1ec/vortex/month.php:6
+#: themes-ai1ec/vortex/oneday.php:7 themes-ai1ec/vortex/week.php:6
+msgid "Today"
+msgstr "Danes"
+
+#: themes-ai1ec/vortex/agenda.php:12
+#, fuzzy
+msgid "Expand All"
+msgstr "+ Razširi vse"
+
+#: themes-ai1ec/vortex/agenda.php:15
+#, fuzzy
+msgid "Collapse All"
+msgstr "− Skrči vse"
+
+#: themes-ai1ec/vortex/agenda.php:32
+msgid "There are no upcoming events to display at this time."
+msgstr "Ni prihajajočih dogodkov za prikaz"
+
+#: themes-ai1ec/vortex/agenda.php:65 themes-ai1ec/vortex/agenda.php:121
+#: themes-ai1ec/vortex/month.php:88 themes-ai1ec/vortex/oneday.php:74
+#: themes-ai1ec/vortex/week.php:73
+msgid "(all-day)"
+msgstr "(cel dan)"
+
+#: themes-ai1ec/vortex/agenda.php:86
+#, fuzzy
+msgid "Read more"
+msgstr "Preberi vse »"
+
+#: themes-ai1ec/vortex/agenda.php:90 themes-ai1ec/vortex/event-multi.php:45
+#: themes-ai1ec/vortex/event-single.php:57
+msgid "Categories:"
+msgstr "Kategorije"
+
+#: themes-ai1ec/vortex/agenda.php:96 themes-ai1ec/vortex/event-multi.php:51
+#: themes-ai1ec/vortex/event-single.php:64
+msgid "Tags:"
+msgstr "Označbe:"
+
+#: themes-ai1ec/vortex/calendar.php:38
+msgid "Clear Filters"
+msgstr "Ponastavi (filtre)"
+
+#: themes-ai1ec/vortex/calendar.php:39
+msgid "Filter:"
+msgstr "Filter:"
+
+#: themes-ai1ec/vortex/calendar.php:46
+#, fuzzy
+msgid "Categories"
+msgstr "Kategorije"
+
+#: themes-ai1ec/vortex/calendar.php:72
+#, fuzzy
+msgid "Tags"
+msgstr "Označbe:"
+
+#: themes-ai1ec/vortex/calendar.php:116
+msgid "to this filtered calendar"
+msgstr "na prilagojen koledar"
+
+#: themes-ai1ec/vortex/calendar.php:122
+msgid "Subscribe in Google Calendar"
+msgstr "Naročite se vGooglovem koledarju"
+
+#: themes-ai1ec/vortex/event-excerpt.php:2
+#: themes-ai1ec/vortex/event-multi.php:4
+#: themes-ai1ec/vortex/event-single.php:5
+msgid "When:"
+msgstr "Kdaj:"
+
+#: themes-ai1ec/vortex/event-excerpt.php:4
+#: themes-ai1ec/vortex/event-multi.php:20
+#: themes-ai1ec/vortex/event-single.php:25
+msgid "Where:"
+msgstr "Kje:"
+
+#: themes-ai1ec/vortex/event-map.php:2
+msgid "Click to view map"
+msgstr "Kliknite za prikaz zemljevida"
+
+#: themes-ai1ec/vortex/event-map.php:9
+#, fuzzy
+msgid "View Full-Size Map"
+msgstr "zemljevid polne velikosti"
+
+#: themes-ai1ec/vortex/event-multi.php:7
+msgid "View in Calendar »"
+msgstr "Poglej v koledarju »"
+
+#: themes-ai1ec/vortex/event-multi.php:14
+#: themes-ai1ec/vortex/event-single.php:15
+msgid "Repeats:"
+msgstr "Ponovitve:"
+
+#: themes-ai1ec/vortex/event-multi.php:24
+msgid "View Map »"
+msgstr "Poglej zemljevid »"
+
+#: themes-ai1ec/vortex/event-multi.php:33
+#: themes-ai1ec/vortex/event-single.php:45
+msgid "Cost:"
+msgstr "Cena:"
+
+#: themes-ai1ec/vortex/event-multi.php:39
+#: themes-ai1ec/vortex/event-single.php:51
+msgid "Contact:"
+msgstr "Kontaktna oseba:"
+
+#: themes-ai1ec/vortex/event-single-footer.php:4
+msgid ""
+"This post was replicated from another site's <a class=\"ai1ec-ics-icon\" "
+"href=\"%s\" title=\"iCalendar feed\">calendar feed</a>."
+msgstr ""
+"Objava je kopirana z druge spletne strani<a class=\"ai1ec-ics-icon\" href="
+"\"%s\" title=\"iCalendar feed\">koledarski feed</a>."
+
+#: themes-ai1ec/vortex/event-single-footer.php:8
+#, fuzzy
+msgid "View original post"
+msgstr "Poglej izvorno objavo"
+
+#: themes-ai1ec/vortex/event-single.php:8
+#, fuzzy
+msgid "Back to Calendar"
+msgstr "Nazaj na koledar »"
+
+#: themes-ai1ec/vortex/event-single.php:21
+msgid "Excluding:"
+msgstr "Brez:"
+
+#: themes-ai1ec/vortex/event-single.php:32
+msgid "Add this event to your favourite calendar program (iCal, Outlook, etc.)"
+msgstr ""
+"Dodaj ta dogodek svojemu najljbšemu koledarskemu programu (iCal, Outlook, "
+"itd.)"
+
+#: themes-ai1ec/vortex/event-single.php:33
+msgid "✔ Add to Calendar"
+msgstr "✔Dodaj v koledar"
+
+#: themes-ai1ec/vortex/event-single.php:36
+msgid "Add this event to your Google Calendar"
+msgstr "Dodajte ta dogodek v vaš Google koledar"
+
+#: themes-ai1ec/vortex/event-single.php:38
+msgid "Add to Google Calendar"
+msgstr "Dodaj v Google koledar"
+
+#: themes-ai1ec/vortex/month.php:67 themes-ai1ec/vortex/oneday.php:57
+#: themes-ai1ec/vortex/oneday.php:148 themes-ai1ec/vortex/week.php:56
+#: themes-ai1ec/vortex/week.php:150
+msgid "Summary:"
+msgstr "Povzetek:"
+
+#: themes-ai1ec/vortex/month.php:70 themes-ai1ec/vortex/oneday.php:60
+#: themes-ai1ec/vortex/oneday.php:151 themes-ai1ec/vortex/week.php:59
+#: themes-ai1ec/vortex/week.php:153
+msgid "click anywhere for details"
+msgstr "kliknite za podrobnosti"
+
+#: themes-ai1ec/vortex/oneday.php:35 themes-ai1ec/vortex/week.php:34
+#, fuzzy
+msgid "All-day"
+msgstr "(cel dan)"
+
+#. Plugin Name of the plugin/theme
+#, fuzzy
+msgid "All-in-One Event Calendar by Timely"
+msgstr "All-in-one Event Calendar"
+
+#. Plugin URI of the plugin/theme
+#, fuzzy
+msgid "http://time.ly/"
+msgstr "http://theseednetwork.com/"
+
+#. Description of the plugin/theme
+#, fuzzy
+msgid ""
+"A calendar system with month, week, day, agenda views, upcoming events "
+"widget, color-coded categories, recurrence, and import/export of .ics feeds."
+msgstr ""
+"Koledarski sistem dogodkov s pogledi na mesec in agendo, gradnik "
+"prihajajočih dogodkov, barvno označene kategorije, ponovitve in uvoz/izvoz "
+"ics feedov"
+
+#~ msgid "then.ly"
+#~ msgstr "then.ly"
+
+#~ msgid "Then.ly"
+#~ msgstr "Then.ly"
+
+#~ msgid "Settings"
+#~ msgstr "Nastavitve"
+
+#~ msgctxt "meta box"
+#~ msgid "The Seed Studio Support"
+#~ msgstr "The Seed Studio podpora"
+
+#~ msgctxt "meta box"
+#~ msgid "ICS Import Settings"
+#~ msgstr "ICS Uvoz nastavitev"
+
+#~ msgid ""
+#~ "%sTo set up the plugin: %s 1. Select an option in the <strong>Calendar "
+#~ "page</strong> dropdown list. %s 2. Select an option in the "
+#~ "<strong>Timezone</strong> dropdown list. %s 3. Click <strong>Update "
+#~ "Settings</strong>. %s"
+#~ msgstr ""
+#~ "%s Nastavite vtičnik: %s 1. Izberite možnost v v izpustnem "
+#~ "seznamu<strong> na koledarski strani </strong> . %s 2. Izberite možnost v "
+#~ "izpustnem seznamu   <strong>časovnega pasu</strong>. %s 3. Kliknite "
+#~ "<strong> posodobi nastavitve</strong>. %s"
+
+#~ msgid "Auto-refresh"
+#~ msgstr "Samodejno osveži"
+
+#~ msgid "The Seed Studio"
+#~ msgstr "The Seed Studio"
+
+#~ msgid ""
+#~ "The Seed Studio provides web development and support services for clients "
+#~ "and web developers."
+#~ msgstr ""
+#~ "The Seed Studio razvija spletne strani, nudi podporo storitev za stranke "
+#~ "in spletne razvijalce."
+
+#~ msgid "Get Support<span> from one of our experienced pros</span>"
+#~ msgstr "Poišči podporo<span> pri našem strokovnajaku</span>"
+
+#~ msgid "View plugin documentation"
+#~ msgstr "Prikaži dokumentacjo vtičnika"
+
+#~ msgid ""
+#~ "You can also hire The Seed for support on a contract or per-hour basis "
+#~ "for this plugin, for your website or for any of your Internet marketing "
+#~ "needs (we can really help!)."
+#~ msgstr ""
+#~ "Lahko najamete The Seed za podporo po pogodbi ali po urni postavki za "
+#~ "vtičnik, vašo spletno stran ali katerokoli drugo spletno marketinško "
+#~ "potrebo (raenično vam lahko pomagamo!)"
+
+#~ msgid ""
+#~ "Plugin users: The Seed gives support priority to clients. For free "
+#~ "support from other WordPress users, visit the plugin's forum."
+#~ msgstr ""
+#~ "Uporabniki vtičnika: The Speed nudi prednostno podpro strankam. Za "
+#~ "brezplačno podporo WordPressovih uporabnikov obiščite forum vtilnika."
+
+#~ msgid "Vote and Share"
+#~ msgstr "Glasuj in deli"
+
+#~ msgid ""
+#~ "This plugin is offered free to the Wordpress Community under the GPL3 "
+#~ "license. All we ask is that you:"
+#~ msgstr ""
+#~ "Wordpress Community ponuja brezplačen vtičnik pod GPL3 licenco. Od vas "
+#~ "želimo:"
+
+#~ msgid ""
+#~ "<a href=\"http://wordpress.org/extend/plugins/all-in-one-event-calendar/"
+#~ "\" target=\"_blank\">Give it a five-star rating on wordpress.org</a> (if "
+#~ "you think it deserves it!)"
+#~ msgstr ""
+#~ "<a href=\"http://wordpress.org/extend/plugins/all-in-one-event-calendar/"
+#~ "\" target=\"_blank\"> dodeli 5 zvezdic wordpress.org -ju</a> (če mislite, "
+#~ "da si jih zasluži!)"
+
+#~ msgid "Link to the plugin page on our website"
+#~ msgstr "Povezava dostrani vtičnika na naši spletni strani"
+
+#~ msgid "Become a Fan on Facebook"
+#~ msgstr "Postanite naš oboževalec na Facebooku"
+
+#~ msgid "Follow us on Twitter"
+#~ msgstr "Sledite nam na Twitterju"
+
+#~ msgid "Latest from the Seed Network"
+#~ msgstr "Novosti Seed Network-a"
+
+#~ msgid "✘"
+#~ msgstr "✘"
+
+#~ msgid "Categories ▾"
+#~ msgstr "Kategorije ▾"
+
+#~ msgid "Tags ▾"
+#~ msgstr "Označbe ▾"
+
+#~ msgid "All-in-one Event Calendar"
+#~ msgstr "All-in-one Event Calendar"
+
+#~ msgid ""
+#~ "http://theseednetwork.com/software/all-in-one-event-calendar-wordpress/"
+#~ msgstr ""
+#~ "http://theseednetwork.com/software/all-in-one-event-calendar-wordpress/"
+
+#~ msgid "Tuesdays & Thursdays"
+#~ msgstr "torki & četrtki"
+
+#~ msgid "Mondays, Wednesdays & Fridays"
+#~ msgstr "ponedeljki, srede & petki"
+
+#~ msgid "Weekends"
+#~ msgstr "vikendi"
+
+#~ msgid "Donate"
+#~ msgstr "Donirajte"
+
+#~ msgid "ending after <strong>%d</strong> time"
+#~ msgid_plural "ending after <strong>%d</strong> times"
+#~ msgstr[0] "zaključi po <strong>%d</strong> čas"
+#~ msgstr[1] "ending after <strong>%d</strong> times"
+
+#~ msgid " or "
+#~ msgstr "ali"

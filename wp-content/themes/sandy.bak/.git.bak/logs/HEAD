@@ -1,0 +1,20 @@
+0000000000000000000000000000000000000000 746de441497f3a6f741c5f080f14689a3ae0165e  <occupysandy@molina.mayfirst.org> 1361901671 -0500	clone: from git@github.com:occupynet/sandy.git
+746de441497f3a6f741c5f080f14689a3ae0165e fc2d1e5679f6dc52c2616c598568df24a00c75a6  <occupysandy@molina.mayfirst.org> 1361903856 -0500	fc2d1e5679f6dc52c2616c598568df24a00c75a6: updating HEAD
+fc2d1e5679f6dc52c2616c598568df24a00c75a6 746de441497f3a6f741c5f080f14689a3ae0165e  <occupysandy@molina.mayfirst.org> 1361904341 -0500	pull origin master: Fast-forward
+746de441497f3a6f741c5f080f14689a3ae0165e 6e2e0075a3f6040b3533a3e0db8b6ec18ae795a4  <occupysandy@molina.mayfirst.org> 1361904540 -0500	checkout: moving from master to patricia
+6e2e0075a3f6040b3533a3e0db8b6ec18ae795a4 6e2e0075a3f6040b3533a3e0db8b6ec18ae795a4  <occupysandy@molina.mayfirst.org> 1361904605 -0500	checkout: moving from patricia to pea-merge
+6e2e0075a3f6040b3533a3e0db8b6ec18ae795a4 188e79cef4251c816849961bddd9925e98821ec7  <occupysandy@molina.mayfirst.org> 1361904739 -0500	commit (merge): patricia and master merge party time
+188e79cef4251c816849961bddd9925e98821ec7 d0ae5491bb5d9a2a71271137085608be5b81b85a  <occupysandy@molina.mayfirst.org> 1361904780 -0500	commit (amend): patricia and master merge party time
+d0ae5491bb5d9a2a71271137085608be5b81b85a 746de441497f3a6f741c5f080f14689a3ae0165e  <occupysandy@molina.mayfirst.org> 1361905431 -0500	checkout: moving from pea-merge to master
+746de441497f3a6f741c5f080f14689a3ae0165e d0ae5491bb5d9a2a71271137085608be5b81b85a  <occupysandy@molina.mayfirst.org> 1361905450 -0500	merge pea-merge: Fast-forward
+d0ae5491bb5d9a2a71271137085608be5b81b85a fb82ca70f487192bf3451993dfed03c51de6380f  <occupysandy@molina.mayfirst.org> 1361916407 -0500	pull origin master: Fast-forward
+fb82ca70f487192bf3451993dfed03c51de6380f 3546912f693b9be96ed40d087223d035f0173d4f  <occupysandy@molina.mayfirst.org> 1361928763 -0500	pull origin master: Fast-forward
+3546912f693b9be96ed40d087223d035f0173d4f 735b790c21aae22d9a268407add499d0fdbd44d3  <occupysandy@molina.mayfirst.org> 1362461153 -0500	pull : Fast-forward
+735b790c21aae22d9a268407add499d0fdbd44d3 9d299df316d3e326518b76e4de1dee71da50d588  <occupysandy@molina.mayfirst.org> 1362770280 -0500	pull : Fast-forward
+9d299df316d3e326518b76e4de1dee71da50d588 393f2b22520cf9f3d67618f5766a5db565d8b58f  <occupysandy@molina.mayfirst.org> 1363485494 -0400	pull : Fast-forward
+393f2b22520cf9f3d67618f5766a5db565d8b58f 31df5ee7ea53618748aa7c05586b43b149537f6a  <occupysandy@molina.mayfirst.org> 1363486202 -0400	pull : Fast-forward
+31df5ee7ea53618748aa7c05586b43b149537f6a 3780757bff78ed57d2ac6cfa915fa224983bdadb  <occupysandy@molina.mayfirst.org> 1363486524 -0400	pull : Fast-forward
+3780757bff78ed57d2ac6cfa915fa224983bdadb a90fa98feef5e5e994f201fa6b8b36070a9b871a  <occupysandy@molina.mayfirst.org> 1363486952 -0400	pull : Fast-forward
+a90fa98feef5e5e994f201fa6b8b36070a9b871a b5824900513eed7b7d9d2b377c2267ef58b70ddc  <occupysandy@molina.mayfirst.org> 1363487632 -0400	pull : Fast-forward
+b5824900513eed7b7d9d2b377c2267ef58b70ddc 6368a3ebaae7a437d7abff9a1fbd541dc87b2ef3  <occupysandy@molina.mayfirst.org> 1363546817 -0400	pull : Fast-forward
+6368a3ebaae7a437d7abff9a1fbd541dc87b2ef3 2deabfcf26bd7ef428a4dc75fbfdd72baa2762b6  <occupysandy@molina.mayfirst.org> 1365890887 -0400	commit: updated resources library template

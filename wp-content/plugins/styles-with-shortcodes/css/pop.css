@@ -1,0 +1,220 @@
+
+#pop-options-cont {
+	width: 814px;
+}
+
+#pop-options-cont .option-content {
+	display:none;
+}
+
+#pop-options-cont .toggle-option h3.option-title.open {
+	-moz-border-radius:6px 6px 0 0;
+	-webkit-border-radius:6px 6px 0 0;
+	-html-border-radius:6px 6px 0 0;
+	border-radius:6px 6px 0 0;
+	background-position:10px -27px;
+}
+
+#pop-options-cont .toggle-option h3.option-title {
+	-moz-border-radius:6px 6px 6px 6px;
+	-webkit-border-radius:6px;
+	-html-border-radius:6px;
+	border-radius:6px;
+	background:url("images/toggle.png") no-repeat scroll 10px 13px #F1F1F1;
+	border:1px solid #E6E6E6;
+	color:#4E4C41;
+	cursor:pointer;
+	font-size:1.2em;
+	margin:15px 0 0;
+	padding:15px 15px 15px 40px;
+}
+
+#pop-options-cont .toggle-option h3.option-title span{
+	color:#AAAAAA;
+	float:right;
+	font-size:0.9em;
+	font-weight:normal;
+}
+#pop-options-cont .options-table {
+	width: 100%;
+}
+#pop-options-cont .option-content {
+	-moz-border-radius:0 0 6px 6px;
+	-webkit-border-radius:8px;
+	-html-border-radius:8px;
+	border-radius:8px;
+	background:none repeat scroll 0 0 #FBFBFA;
+	border-color:-moz-use-text-color #E6E6E6 #E6E6E6;
+	border-color:#E6E6E6;
+	border-right:1px solid #E6E6E6;
+	border-style:none solid solid;
+	border-width:medium 1px 1px;
+	margin:0;
+	padding:15px;
+}
+
+#pop-options-cont .bottom-controls {
+	padding: 20px 0 0 0;
+}
+
+#pop-options-cont .options-table tr.tabs-subtitle th {
+	border-bottom: none !important;
+}
+
+#pop-options-cont .options-table th p {
+	font-weight: normal !important;
+}
+
+#pop-options-cont .tabs-create_sidebar th,#pop-options-cont .tabs-list_sidebar .desc-cell {
+	vertical-align:top;
+}
+
+#pop-options-cont .description{
+	-moz-border-radius:8px 8px 8px 8px;
+	-webkit-border-radius:8px 8px 8px 8px;
+	-html-border-radius:8px 8px 8px 8px;
+	border-radius:8px 8px 8px 8px;
+	background:none repeat scroll 0 0 #F1F1F1;
+	color:#777777;
+	padding:15px;
+	display:block;
+	float:right;
+	max-width:350px;
+	margin:0 0 10px 5px;
+	width:100%;
+}
+
+.pop-options-main .save-button {
+	margin-top: 10px;
+}
+
+.pop-inline-cont .inline-edit-col-right {
+	margin-top: 0px !important;
+}
+
+.clearer {
+	clear:both;
+}
+
+tr.pop-checkbox {
+	vertical-align:middle;
+}
+
+#pop-options-cont .license_key {
+	width:350px;
+}
+
+#pop-options-cont .add_license_key {
+	width:270px;
+}
+.registered-license {
+	padding-top:7px;
+}
+
+.license-key-desc {
+	-moz-border-radius:8px 8px 8px 8px;
+	-webkit-border-radius:8px 8px 8px 8px;
+	-html-border-radius:8px 8px 8px 8px;
+	border-radius:8px 8px 8px 8px;
+	background:none repeat scroll 0 0 #F1F1F1;
+	color:#777777;
+	padding:20px;
+	display:block;
+	float:left;
+	max-width:350px;
+	margin:10px 0 10px 0;
+	width:100%;
+}
+
+#add-license-msg {
+   margin: 5px 0 15px;
+	-moz-border-radius:3px 3px 3px 3px;
+	-webkit-border-radius:3px 3px 3px 3px;
+	-html-border-radius:3px 3px 3px 3px;
+	border-radius:3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0 0.6em; 
+	display:none;
+	max-width:350px;
+}
+
+.add-license-error {
+   background-color: #FFEBE8;
+   border-color: #CC0000;
+}
+.add-license-message {
+ background-color: #FFFFE0;
+    border-color: #E6DB55;
+}
+.pop-version {
+	font-size:0.7em;
+	clear:both;
+	float:left;
+	margin:10px;
+}
+
+.pt-clear{
+	clear:both;
+}
+
+.pt-checkbox-label {
+	padding:0 0 0 5px;
+}
+
+.pt-label {
+	padding:0 5px 0 0;
+}
+
+.pt-label.pt-type-yesno {
+	padding-right:12px;
+}
+
+.pt-option {
+	clear:left;	
+}
+
+/* slider option field*/
+.pt-option-range {
+   padding-top:10px;
+   
+}
+.pt-option-range .pt-label { 
+	margin:5px 10px 0 0;
+	float:left;
+}
+
+.pt-option-range .slider {
+	background:#3C72E6 url(images/h30.png) repeat-x 0 0; 
+    border: 1px solid #333;
+    cursor: pointer;
+    height: 9px;
+    margin-top: 10px;
+    position: relative;
+    width: 300px;
+	display:block;
+	float:left;
+	clear:none;
+	-moz-border-radius:5px; 
+	-webkit-border-radius:5px; 
+	-moz-box-shadow:inset 0 0 8px #000;	
+}
+.pt-option-range .range {
+    border: 1px inset #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 20px;
+    margin: 0 0 0 15px;
+    padding: 3px 0;
+    text-align: center;
+    width: 50px;
+	float:left;
+}
+input[type="text"].pop-colorpicker {
+	width:70px;
+}
+.pt-save-button {
+	text-align:right;
+}
+.pt-option-textarea textarea{
+	width:380px;
+}

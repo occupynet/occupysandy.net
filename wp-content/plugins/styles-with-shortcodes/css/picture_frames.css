@@ -1,0 +1,36 @@
+
+/* START sws_picture_frame1 */
+.picture_frame1 {
+	background:url("../images/frame_all_corners.png") no-repeat scroll 0 0 transparent;
+	height:270px !important;
+	width:380px !important;
+	margin-bottom:10px;
+}
+.picture_frame1 img {
+display none;
+}
+div.sws_frame_left {
+float:left;
+	margin-right: 20px;
+}
+
+div.sws_frame_right {
+float:right;
+	margin-left: 20px;
+}
+
+div.sws_frame_center {
+display: block !important;
+margin-left: auto !important;
+margin-right: auto !important;
+clear:both;
+}
+
+.picture_frame1 .picture_frame1_img,
+.picture_frame1 .frame-zoom-wrap
+{
+	padding: 29px 21px 20px 30px;
+	width:320px;
+	height:197px;
+}
+/* END sws_picture_frame1 */

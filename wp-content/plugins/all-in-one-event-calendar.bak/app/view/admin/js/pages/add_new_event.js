@@ -1,0 +1,1 @@
+timely.require(["scripts/add_new_event"],function(e){e.start()});

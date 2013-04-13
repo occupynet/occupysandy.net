@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--[if IE 6]>
+<style>
+.imgload { width:320px; }
+</style>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript" src="js/jquery.preloadify.js" ></script>
+<script type="text/javascript">
+
+$(function(){
+	
+		$("#content").preloadify({ imagedelay:500 });
+	
+	$("#restart").click(function(e){
+		$("#content").preloadify({ imagedelay:500 }); e.preventDefault();
+		});
+	
+	});
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Preloadify</title>
+</head>
+
+<body>
+
+<div id="container">
+<h2>Preloadify - Load images with style</h2>
+
+<ul id="examples" class="clearfix">
+<li><a href="index.html">Preload Images</a></li>
+<li><a href="single.html">Preload Single Image</a></li>
+<li><a href="#" id="restart">Restart Preload</a></li>
+</ul>
+
+<div id="content" class=" clearfix">
+
+<div class="clearfix left">
+<div class="imgload"><div><a href="#"><img src="images/2.jpg" /></a></div></div> 
+<p>Urna lundium nunc nisi et est habitasse nascetur dolor, cras placerat aenean turpis et amet, aliquet ridiculus ac et pellentesque arcu dignissim placerat turpis a egestas dictumst eros tincidunt nisi, vel ut, ut, porta aliquam? Elementum? Diam, a augue ultrices porta, pellentesque, vel, in. Turpis eu. Phasellus turpis, placerat arcu porttitor dolor enim aliquam amet magnis. Non, vut cum turpis! Eu sagittis et dignissim enim magna turpis tortor mattis ridiculus turpis dictumst, quis ultrices, vut. Nec, auctor auctor ac rhoncus ultrices turpis montes lorem hac adipiscing proin enim elementum est! Ut elementum lundium habitasse? Sit, odio mid amet et! Amet? Ut turpis, augue sagittis et turpis lectus eros ultrices, phasellus tristique in a eu odio sagittis a natoque a lacus.</p>
+</div>
+
+<div class="clearfix right ">
+<div  class="imgload"><div><a href="#"><img src="images/1.jpg" /></a></div></div> 
+<p>Pulvinar. Et elementum. Risus! Augue, duis cras, mattis montes odio odio facilisis? Integer adipiscing augue, quis facilisis, mus velit quis amet dolor etiam? Cum habitasse odio? Purus nec turpis quis ac non turpis! Hac urna. Ut placerat. Et ridiculus purus a penatibus massa habitasse aliquet placerat, proin tortor lectus, diam et augue tristique pulvinar mattis amet eu nec dapibus pellentesque porta sed a vel integer proin risus nec et odio tortor quis amet aenean. A enim parturient, vel lectus? Porta et adipiscing porttitor aliquam nunc massa nec, eros ac, turpis etiam vel ridiculus tempor ut ac, porttitor dapibus facilisis, velit? Et in nec, aliquet non sed a, ac nisi mus porta, magna porta integer diam egestas porta! Auctor rhoncus.</p>
+</div>
+
+
+<div class="clearfix left">
+<div class="imgload"><div><a href="#"><img src="images/4.jpg" /></a></div></div> 
+<p>Urna lundium nunc nisi et est habitasse nascetur dolor, cras placerat aenean turpis et amet, aliquet ridiculus ac et pellentesque arcu dignissim placerat turpis a egestas dictumst eros tincidunt nisi, vel ut, ut, porta aliquam? Elementum? Diam, a augue ultrices porta, pellentesque, vel, in. Turpis eu. Phasellus turpis, placerat arcu porttitor dolor enim aliquam amet magnis. Non, vut cum turpis! Eu sagittis et dignissim enim magna turpis tortor mattis ridiculus turpis dictumst, quis ultrices, vut. Nec, auctor auctor ac rhoncus ultrices turpis montes lorem hac adipiscing proin enim elementum est! Ut elementum lundium habitasse? Sit, odio mid amet et! Amet? Ut turpis, augue sagittis et turpis lectus eros ultrices, phasellus tristique in a eu odio sagittis a natoque a lacus.</p>
+</div>
+
+<div class="clearfix right ">
+<div  class="imgload"><div><a href="#"><img src="images/5.jpg" /></a></div></div> 
+<p>Pulvinar. Et elementum. Risus! Augue, duis cras, mattis montes odio odio facilisis? Integer adipiscing augue, quis facilisis, mus velit quis amet dolor etiam? Cum habitasse odio? Purus nec turpis quis ac non turpis! Hac urna. Ut placerat. Et ridiculus purus a penatibus massa habitasse aliquet placerat, proin tortor lectus, diam et augue tristique pulvinar mattis amet eu nec dapibus pellentesque porta sed a vel integer proin risus nec et odio tortor quis amet aenean. A enim parturient, vel lectus? Porta et adipiscing porttitor aliquam nunc massa nec, eros ac, turpis etiam vel ridiculus tempor ut ac, porttitor dapibus facilisis, velit? Et in nec, aliquet non sed a, ac nisi mus porta, magna porta integer diam egestas porta! Auctor rhoncus.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

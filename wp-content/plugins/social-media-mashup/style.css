@@ -1,0 +1,36 @@
+.social-media-mashup {
+	margin: 1em 0;
+}
+
+.social-media-mashup .smm-item {
+	border-bottom: 1px solid #ccc;
+	padding: 0.5em 0;
+}
+
+.social-media-mashup .smm-item img {
+	border: none !important;
+	padding: 0 !important;
+}
+
+.social-media-mashup .smm-item p {
+	margin: 0 0 0.5em;
+}
+
+.social-media-mashup .entry-meta {
+	font-size: 0.8em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.social-media-mashup .sep {
+	opacity: 0.4;
+}
+
+.icons-grey .smm-item,
+.icons-glossy .smm-item {
+	background-position: left 0.6em !important;
+}
+
+.icons-mini .smm-item {
+	background-position: left 0.75em !important;
+}

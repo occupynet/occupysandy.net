@@ -1,0 +1,43 @@
+label[for="show_icons0"],
+label[for="show_icons1"],
+label[for="show_icons2"] {
+	display: inline-block;
+	height: 24px;
+	padding: 0 0 10px;
+	text-indent: -9999px;
+	width: 177px;
+}
+
+label[for="show_icons0"] {
+	background: url(icons/grey.png) no-repeat left center;
+}
+
+label[for="show_icons1"] {
+	background: url(icons/glossy.png) no-repeat left center;
+}
+
+label[for="show_icons2"] {
+	background: url(icons/mini.png) no-repeat left center;
+}
+
+a.rsswidget {
+	font: 13px Georgia, serif;
+	text-decoration: none;
+}
+
+.credits a {
+	text-decoration: none;
+}
+
+.rss-widget span.rss-date {
+	color: #999;
+	font-size: 12px;
+	margin-left: 3px;
+}
+
+.smm-pre {
+	background: #fff;
+	font-size: 0.9em;
+	line-height: 1.4;
+	padding: 5px 2px;
+}

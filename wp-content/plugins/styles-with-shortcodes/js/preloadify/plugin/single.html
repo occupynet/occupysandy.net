@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript" src="js/jquery.preloadify.js" ></script>
+<script type="text/javascript">
+
+$(function(){
+	
+		$("#bigimage").preloadify({ imagedelay:500 });
+	
+	$("#restart").click(function(e){
+		$("#bigimage").preloadify({ imagedelay:500 }); e.preventDefault();
+		});
+	
+	});
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Preloadify</title>
+</head>
+
+<body>
+
+<div id="container">
+<h2>Preloadify - Load images with style</h2>
+
+<ul id="examples" class="clearfix">
+<li><a href="index.html">Preload Images</a></li>
+<li><a href="text.html">Images with text</a></li>
+<li><a href="#" id="restart">Restart Preload</a></li>
+</ul>
+
+
+<div id="bigimage"><div><a href="#"><img src="images/big.jpg" /></a></div></div> 
+
+
+</div>
+
+</body>
+</html>

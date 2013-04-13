@@ -1,0 +1,43 @@
+// These are the variables we have changed and the variables affected by those changes
+
+// Accent colors
+// -------------------------
+@blue:                  #269DD9;
+@blueDark:              #0974AA;
+@teal:                  #3A77A6;
+@tealDark:              #135486;
+@turquoise:             #47c3ce;
+@green:                 #84c04b;
+@greenDark:             saturate(darken(@green, 10%), 10%);
+@red:                   #F05C4C;
+@yellow:                #fdcc46;
+@orange:                #E08652;
+@pink:                  #f54365;
+@purple:                #532b81;
+
+// Links
+// -------------------------
+@linkColor:             @greenDark;
+@linkColorHover:        darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@baseFontFamily:        Arial, sans-serif;
+@headingsFontFamily:    Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@headingsColor:         @grayDark;
+
+
+// Buttons
+// -------------------------
+@btnBorder:                         #ccc;
+
+@btnPrimaryBackground:              @green;
+@btnPrimaryBackgroundHighlight:     darken(spin(@btnPrimaryBackground, 15%), 10%);
+@navbarBrandColor:                @navbarLinkColor;
+
+@btnWarningBackground:              lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     @orange;
+
+// Dropdowns
+@dropdownLinkBackgroundHover:   @linkColor;

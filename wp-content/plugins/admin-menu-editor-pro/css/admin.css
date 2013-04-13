@@ -1,0 +1,29 @@
+/**
+ * Miscellaneous menu styles that can be used on all admin pages.
+ */
+
+/*
+ * Submenu separators.
+ */
+hr.ws-submenu-separator {
+	display: block;
+	margin: 2px 0;
+    height: 0;
+
+    border-width: 1px 0;
+	border-style: inset;
+	border-color: #cddce1;
+}
+
+/* No pointer/hand on separators. */
+#adminmenu li.ws-submenu-separator-wrap a {
+	cursor: default;
+}
+
+/* Override the bluish highlight used by WP */
+#adminmenu li.ws-submenu-separator-wrap a:hover,
+#adminmenu li.ws-submenu-separator-wrap a:focus
+{
+    background-color: white;
+}
+

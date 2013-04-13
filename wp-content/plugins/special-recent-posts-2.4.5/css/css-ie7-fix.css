@@ -1,0 +1,23 @@
+/*
+| --------------------------------------------------------
+| File        : css-ie-fix.css
+| Project     : Special Recent Posts PRO plugin for Wordpress
+| Version     : 2.4.5
+| Description : Specific stylesheet for IE7 browser
+| Author      : Luca Grandicelli
+| Author URL  : http://www.lucagrandicelli.com
+| Plugin URL  : http://codecanyon.net/item/special-recent-posts-pro/552356
+| Copyright (C) 2011-2012  Luca Grandicelli
+| --------------------------------------------------------
+*/
+
+div.srp-thumbnail-box {
+	float          : left !important;
+	vertical-align : top !important;
+	padding-right  : 10px !important;
+}
+
+div.srp-content-box {
+	display          : inline-block !important;
+	vertical-align   : top !important;
+}
