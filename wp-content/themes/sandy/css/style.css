@@ -1803,7 +1803,8 @@ footer.entry-meta {
 .promo a:hover span {
   color: #ffcd67;
 }
-.promo a:hover b {
+.promo a:hover b,
+.promo a:hover strong {
   display: block;
 }
 /* projects */
