@@ -8,7 +8,7 @@
  */
 ?>
 
-<?php $current_page = $page->ID; ?>
+<?php $feed_heading =  get_post_meta($post->ID, 'home-feed-heading', true); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   
@@ -51,7 +51,7 @@
 		 ) );
 	?>
     <div style="clear:both;"  class="feature home-feeds" id="feature">
-      <h2 class="promos-title">Updates</h2>
+      <h2 class="promos-title"><?php echo $feed_heading; ?></h2>
       <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
       <article id="post-<?php the_ID(); ?>" <?php post_class(' clearfix'); ?>>
         <header class="entry-header"><a href="<?php the_permalink(); ?>" title="Read more">
