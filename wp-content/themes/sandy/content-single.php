@@ -23,6 +23,12 @@
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 	<div class="entry-content">
+		<?php if( has_post_thumbnail() ) { ?>
+		<div class="post-thumbnail">
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php _e('Permanent Link to', 'foghorn'); ?> <?php the_title_attribute(); ?>"><?php the_post_thumbnail('multiple-thumb'); ?></a>
+	    </div>
+	    <?php } ?>
+	    
 		<?php the_content(); ?>
         <?php edit_post_link( __( 'Edit', 'foghorn' ), '<span class="edit-link">', '</span>' ); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( '<span>Pages:</span>', 'foghorn' ), 'after' => '</div>' ) ); ?>

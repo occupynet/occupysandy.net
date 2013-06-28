@@ -14,9 +14,6 @@
     	<?php if( has_post_thumbnail() ) { ?>
     	<div class="post-thumbnail">
     		<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php _e('Permanent Link to', 'foghorn'); ?> <?php the_title_attribute(); ?>"><?php the_post_thumbnail('multiple-thumb'); ?></a>
-            <?php if ( is_sticky() ) { ?>
-				<span class="entry-format"><?php _e( 'Featured', 'foghorn' ); ?></span>
-			<?php } ?>
         </div>
         <?php } ?>
         

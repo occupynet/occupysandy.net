@@ -1309,10 +1309,30 @@ footer.entry-meta {
   padding-bottom: 10px;
 }
 .blog .post-thumbnail,
-.single .post-thumbnail,
+/*.single .post-thumbnail,*/
 .archive .post-thumbnail {
   float: right;
   margin: 0 0 15px 25px;
+}
+.home .post-thumbnail img,
+.single .post-thumbnail img {
+  float: right;
+  padding: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  height: auto;
+  background: #e6e6e6;
+}
+.home .post-thumbnail img {
+  width: 30%;
+  height: auto;
+  max-height: 400px;
+}
+
+.single .post-thumbnail img {
+  width: 40%;
+  height: auto;
+  max-height: 600px;
 }
 .blog #author-avatar,
 .single #author-avatar,

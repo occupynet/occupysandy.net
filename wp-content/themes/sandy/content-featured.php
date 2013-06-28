@@ -8,56 +8,80 @@
  */
 ?>
 
+<?php $current_page = $page->ID; ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  
   <header class="entry-header">
     <h1 class="leader">
       <?php the_title(); ?>
     </h1>
-    <?php edit_post_link( __( 'Edit', 'foghorn' ), '<span class="edit-link">', '</span>' ); ?>
   </header>
+  
   <!-- .entry-header -->
   
   <div class="entry-content">
-    <p class="follower"> <?php echo get_post_meta($post->ID, 'custom_tagline', true); ?> </p>
-    
-    <?php
-	/* Get all sticky posts */
-	$sticky = get_option( 'sticky_posts' );
+    <?php 
+	$temp = $wp_query; $wp_query= null;
+	$wp_query = new WP_Query(); 
+	$wp_query->query(array('post__in'=>get_option('sticky_posts'), 'posts_per_page' => 1, 'ignore_sticky_posts' => 1));
 
-	/* Sort the stickies with the newest ones at the top */
-	rsort( $sticky );
-
-	/* Get the 5 newest stickies (change 5 for a different number) */
-	$sticky = array_slice( $sticky, 0, 5 );
-
-	/* Query sticky posts */
-	query_posts( array( 'post__in' => $sticky, 'caller_get_posts' => 1 ) );
+	while ($wp_query->have_posts()) : $wp_query->the_post(); 
 	?>
-
+    <?php if( has_post_thumbnail() ) { ?>
+    <div class="post-thumbnail"> <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+      <?php the_post_thumbnail('multiple-thumb'); ?>
+      </a> </div>
+    <?php } ?>
+    <h1 style="line-height: 1em; margin: -8px 0 0 0;"> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+      <?php the_title(); ?>
+      </a> </h1>
+    <footer class="entry-meta">
+      <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate>
+        <?php the_time('F jS, Y'); ?>
+      </time>
+    </footer>
+    <p class="follower"> <?php the_excerpt('300'); ?> </p>
+    <?php endwhile; ?>
+    <?php
+	query_posts( array( 
+		'post__not_in' => get_option( 'sticky_posts' ),
+		'posts_per_page' => 6,
+		'offset' => 1,
+		 ) );
+	?>
     <div style="clear:both;"  class="feature home-feeds" id="feature">
-		<div class="feature-box">
-			<h2 class="feature-title">Newswire</h2>
-			<nav class="feature-nav">
-				<button class="feature-next">▸</button>
-				<button class="feature-back">◂</button>
-				<br>
-			</nav>
-			<div class="feature_container">
-			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-				<div class="feature-slide">
-					<h3><a href="<?php the_permalink(); ?>" title="<?php the_title() ?>" rel="bookmark"><?php echo get_interocc_excerpt(25); ?></a></h3>
-				</div>
-			<?php endwhile; // end of the loop. ?>
-			</div>
-		</div>
-	</div>
+      <h2 class="promos-title">Updates</h2>
+      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+      <article id="post-<?php the_ID(); ?>" <?php post_class(' clearfix'); ?>>
+        <header class="entry-header"><a href="<?php the_permalink(); ?>" title="Read more">
+          <?php the_title(); ?>
+          </a>
+          <?php if( has_post_thumbnail() ) { ?>
+          <div class="post-thumbnail"> <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+            <?php the_post_thumbnail('multiple-thumb'); ?>
+            </a> </div>
+          <?php } ?>
+        </header>
+        <footer class="entry-meta">
+          <time datetime="<?php echo the_time('Y-m-j'); ?>" pubdate>
+            <?php the_time('F jS, Y'); ?>
+          </time>
+        </footer>
+        <div class="entry-summary"> <?php the_excerpt(); ?> </div>
+      </article>
+      <?php endwhile; // end of the loop. ?>
+    </div>
     <!-- .featured-posts -->
+    
+    <div>
+      <?php wp_reset_query(); ?>
 
-     <?php wp_reset_query(); ?> 
-
-	  <?php the_content(); ?>
-
+		<?php the_content(); ?>
   </div>
   <!-- .entry-content --> 
 </article>
+<footer>
+  <?php edit_post_link( __( 'Edit', 'foghorn' ), '<span class="edit-link">', '</span>' ); ?>
+</footer>
 <!-- #post-<?php the_ID(); ?> --> 
