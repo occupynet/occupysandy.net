@@ -167,6 +167,8 @@ function foghorn_widgets_init() {
 }
 add_action( 'widgets_init', 'foghorn_widgets_init' );
 
+register_nav_menu( 'global', 'Global Menu' );
+
 /**
  * Display navigation to next/previous pages when applicable
  */

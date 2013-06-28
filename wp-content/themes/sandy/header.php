@@ -68,7 +68,14 @@
 <div id="page" class="hfeed">
 	<header id="branding" role="banner" class="clearfix">
 			<nav id="global">
-				<ul id="menu-global-menu">
+				<?php wp_nav_menu( 
+					array( 
+						'theme_location' => 'global', 
+						'menu_class'	=> 'global-menue',
+						'menu_id'	=> 'menu-global-menu' 
+						) 
+					); ?>
+				<!-- <ul id="menu-global-menu">
 					<li class="globalLogo"><a href="http://interoccupy.net">Inter<span>occupy.net</span></a></li>
 					<li class="navAbout"><a href="http://interoccupy.net/about/">About</a></li>
 					<li class="navNewsire"><a href="http://interoccupy.net/newswire/">Newswire</a></li>
@@ -76,7 +83,7 @@
 					<li class="navCalendar"><a href="http://interoccupy.net/calendar/">Calendar</a></li>
 					<li class="navServices"><a href="http://interoccupy.net/services/">Services</a></li>
 					<li class="navJoin"><a href="http://interoccupy.net/get-involved/">Get Involved</a></li>
-				</ul>
+				</ul> -->
 			</nav>
 
 			<hgroup>
