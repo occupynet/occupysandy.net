@@ -46,7 +46,7 @@
     <?php
 	query_posts( array( 
 		'post__not_in' => get_option( 'sticky_posts' ),
-		'posts_per_page' => 6,
+		'posts_per_page' => 5,
 		'offset' => 1,
 		 ) );
 	?>
