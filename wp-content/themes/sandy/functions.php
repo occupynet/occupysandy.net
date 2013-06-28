@@ -74,7 +74,7 @@ endif; // foghorn_setup
  */
  
 function foghorn_excerpt_length( $length ) {
-	return 150;
+	return 60;
 }
 add_filter( 'excerpt_length', 'foghorn_excerpt_length' );
 
