@@ -90,7 +90,7 @@ function  register_project_taxonomy () {
 			'rewrite' => array('slug' => 'project-categories'),
 			'singular_label' => 'Project Category') 
 		);
-	register_taxonomy('project_services',
+	register_taxonomy('project-services',
 		array (0 => 'projects',)
 		,array ( 'hierarchical' => true,
 			'label' => 'Project Services',
