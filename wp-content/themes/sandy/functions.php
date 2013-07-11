@@ -1,5 +1,9 @@
 <?php
 
+// include_once('functions-projects.php');
+// include_once('functions-resources.php');
+// include_once('functions-library.php');
+
 /**
  * Tell WordPress to run foghorn_setup() when the 'after_setup_theme' hook is run.
  */
@@ -11,7 +15,6 @@ if ( ! function_exists( 'foghorn_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
-
  * Note that this function is hooked into the after_setup_theme hook, which runs
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
@@ -110,11 +113,6 @@ function foghorn_custom_excerpt_more( $output ) {
 	return $output;
 }
 add_filter( 'get_the_excerpt', 'foghorn_custom_excerpt_more' );
-
-
-/**
- * Adds custom body for singular vs multiple layouts
- */
 
 
 /**
@@ -372,257 +370,29 @@ add_action('wp_head','add_slider_resources');
 		return interocc_excerpt($excerpt_length, $id, $echo);
  }
 
-/*
-*******************************************
-* Register Custom Post Types and Taxonomies
-*******************************************
-*/
-
-//this should be, if views is activated
-if ( 1 == 2 ){
-
-// Initialize custom post type and taxonomy registration
-add_action( 'init', 'register_resources_post_type' );
-
-function register_resources_post_type() {
-	 // Register Resources Custom Post type
-	 register_post_type('resources', 
-	 	array(	
-	 		'label' => 'Resources',
-	 		'description' => '',
-	 		'public' => true,
-	 		'show_ui' => true,
-	 		'show_in_menu' => true,
-	 		'capability_type' => 'post',
-	 		'hierarchical' => false,
-	 		'rewrite' => 
-	 		array(
-	 			'slug' => ''
-	 			),
-	 		'query_var' => true,
-	 		'exclude_from_search' => false,
-	 		'supports' => 
-	 		array(
-	 			'title',
-	 			'editor',
-	 			'excerpt',
-	 			'trackbacks',
-	 			'custom-fields',
-	 			'comments',
-	 			'revisions',
-	 			'thumbnail',
-	 			'author',
-	 			'page-attributes',
-	 			),
-			'taxonomies' => 
-			array(
-				'post_tag',
-				),
-	 		'labels' => 
-	 		array(
-				'name' => 'Resources',
-				'singular_name' => 'Resource',
-				'menu_name' => 'Resources',
-				'add_new' => 'Add Resource',
-				'add_new_item' => 'Add New Resource',
-				'edit' => 'Edit',
-				'edit_item' => 'Edit Resource',
-				'new_item' => 'New Resource',
-				'view' => 'View Resource',
-				'view_item' => 'View Resource',
-				'search_items' => 'Search Resources',
-				'not_found' => 'No Resources Found',
-				'not_found_in_trash' => 'No Resources Found in Trash',
-				'parent' => 'Parent Resource',
-				),
-	 		)
-	);
-	// Register Resources Taxonomy
-	register_taxonomy('resource_categories',
-		array(
-			0 => 'resources',
-			),
-		array( 
-			'hierarchical' => true, 
-			'label' => 'Resource Categories',
-			'show_ui' => true,'query_var' => true,
-			'rewrite' => 
-			array(
-				'slug' => 'resource-category'
-				),
-			'singular_label' => 'Category'
-			) 
-		);
-}
-
-// Initialize custom post type and taxonomy registration
-add_action( 'init', 'register_library_post_type' );
-
-function register_library_post_type () {
-	// Register Library Custom Post Type
-	register_post_type('library_items', 
-		array(	
-			'label' => 'Library Items',
-			'description' => 'The Library is a collection of relevant articles to read.',
-			'public' => true,
-			'show_ui' => true,
-			'show_in_menu' => true,
-			'capability_type' => 'post',
-			'hierarchical' => false,
-			'rewrite' => 
-			array(
-				'slug' => 'library'
-				),
-			'query_var' => true,
-			'has_archive' => true,
-			'exclude_from_search' => false,
-			'supports' => 
-			array(
-				'title',
-				'editor',
-				'excerpt',
-				'trackbacks',
-				'custom-fields',
-				'comments',
-				'revisions',
-				'thumbnail',
-				'author',
-				),
-			'taxonomies' => 
-			array(
-				'post_tag',
-				),
-			'labels' => 
-			array(
-				'name' => 'Library Items',
-				'singular_name' => 'Library Item',
-				'menu_name' => 'Library Items',
-				'add_new' => 'Add Library Item',
-				'add_new_item' => 'Add New Library Item',
-				'edit' => 'Edit',
-				'edit_item' => 'Edit Library Item',
-				'new_item' => 'New Library Item',
-				'view' => 'View Library Item',
-				'view_item' => 'View Library Item',
-				'search_items' => 'Search Library Items',
-				'not_found' => 'No Library Items Found',
-				'not_found_in_trash' => 'No Library Items Found in Trash',
-				'parent' => 'Parent Library Item',
-				),
-			) 
-	);
-
-	// Register Library Categories
-	register_taxonomy('library_categories',
-		array(
-			0 => 'library_items',
-			),
-		array( 'hierarchical' => true, 
-			'label' => 'Library Categories',
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => 
-			array(
-				'slug' => 'library-category'
-				),
-			'singular_label' => 'Library Category'
-			) 
-		);
-}
-
-// Initialize custom post type and taxonomy registration
-add_action( 'init', 'register_project_post_type' );
-
-function register_project_post_type() {
-	// Register Project Custom Post Type
-	register_post_type('projects', 
-		array(	
-			'label' => 'Projects',
-			'description' => '',
-			'public' => true,
-			'show_ui' => true,'
-			show_in_menu' => true,
-			'capability_type' => 'post',
-			'hierarchical' => false,
-			'rewrite' => 
-			array(
-				'slug' => ''
-				),
-			'query_var' => true,'
-			has_archive' => true,
-			'exclude_from_search' => false,
-			'supports' => 
-			array(
-				'title',
-				'editor',
-				'excerpt',
-				'trackbacks',
-				'custom-fields',
-				'comments',
-				'revisions',
-				'thumbnail',
-				'author',
-				),
-			'taxonomies' => 
-			array(
-				'post_tag',
-				),
-			'labels' => 
-			array(
-				'name' => 'Projects',
-				'singular_name' => 'Project',
-				'menu_name' => 'Projects',
-				'add_new' => 'Add New Project',
-				'add_new_item' => 'Add New Project',
-				'edit' => 'Edit',
-				'edit_item' => 'Edit Project',
-				'new_item' => 'New Project',
-				'view' => 'View Project',
-				'view_item' => 'View Project',
-				'search_items' => 'Search Projects',
-				'not_found' => 'No Projects Found',
-				'not_found_in_trash' => 'No Projects Found in Trash',
-				'parent' => 'Parent Project',
-				),
-			) 
-	);
-
-	// Register Project Categories
-	register_taxonomy('project_categories',
-		array(
-			0 => 'projects',
-			),
-		array( 
-			'hierarchical' => true, 
-			'label' => 'Project Categories',
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => 
-			array(
-				'slug' => 'project-categories'
-				),
-			'singular_label' => 'Project'
-			) 
-		);
-}
-
-} // end if views
-
 //List terms in a given taxonomy
 //Used to generate TOC for custom post types like Resources and Library
 
-function get_custom_taxonomy_list ($taxonomyname) {
-	$taxonomy = $taxonomyname;
-	$custom_terms = get_terms($taxonomy);
-	?>
+function get_custom_taxonomy_list($taxonomy) {
+	$terms = get_terms($taxonomy);
+	echo '<ul class="list-wrap">';
+	foreach ( $terms as $term ) {
+		echo '<li><a href="#' . $term->slug . '" title="' . $term->name . '" ' . '>' . $term->name.'</a></li>';
+	}
+	echo '</ul>';
+} 
 
-	<ul class="list-wrap">
-		
-		<?php
-		foreach ($custom_terms as $custom_term) {
-		echo '<li><a href="#' . $custom_term->slug . '" title="' . $custom_term->name . '" ' . '>' . $custom_term->name.'</a></li>';
-		}
-		?>
-	</ul>
-	<?php }
+//Custom post types don't make good use of descriptions...
+//Used to display intro/descriptive text for custom post types like Resources and Library
+function get_content_for_tax_archive($pagename) {
+	$args = array(
+		'pagename' => $pagename
+	);
+	$taxpage = new WP_Query( $args );
+	while ( $taxpage->have_posts() ) : $taxpage->the_post();
+		the_content();
+	endwhile;
+	wp_reset_postdata();
+}
 
+?>

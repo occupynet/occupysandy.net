@@ -1,0 +1,27 @@
+/* 
+    Document   : style.css
+    Created on : 2013/01/21, 16:04:46
+    Author     : tai
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#wpadminbar .show-template-name,
+#wpadminbar .hover .show-template-name,
+#wpadminbar .quicklinks .menupop ul li#wp-admin-bar-included_files_path .ab-item div { 
+	font-family: monospace;
+	text-shadow: none;
+}
+
+#wpadminbar .quicklinks .menupop ul li#wp-admin-bar-included_files_path .ab-item {
+	height: auto;
+}
+
+#wpadminbar .hover .show-template-name,
+#wpadminbar .quicklinks .menupop ul li#wp-admin-bar-included_files_path .ab-item div {
+	color: #333;
+}
+
+#included-files-list {
+	margin-left: 20px;
+}

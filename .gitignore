@@ -29,6 +29,7 @@ wp-content/plugins/wp-piwik/update/
 wp-content/db.php
 wp-content/object-cache.php
 wp-content/w3tc-config/
+wp-content/plugins/custom-post-type-ui/
 
 wp-content/plugins/si-captcha-for-wordpress/captcha/temp/
 wp-content/plugins/duplicator/files/
