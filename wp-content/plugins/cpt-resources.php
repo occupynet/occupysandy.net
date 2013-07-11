@@ -69,6 +69,15 @@ function register_resources_post_type() {
 
 }
 
+function resource_flush_rules(){
+    //defines the post type so the rules can be flushed.
+    register_library_post_type();
+
+    //and flush the rules.
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'resource_flush_rules');
+
 add_action( 'init', 'register_resource_taxonomy' );
 
 function  register_resource_taxonomy () {

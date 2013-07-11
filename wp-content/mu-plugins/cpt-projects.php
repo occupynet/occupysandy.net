@@ -27,8 +27,6 @@ Author URI: http://www.occupywallstreet.net
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************************/
 
-add_action( 'init', 'register_project_post_type' );
-
 function register_project_post_type() {
   $labels = array(
     'name' => 'Projects',
@@ -58,7 +56,7 @@ function register_project_post_type() {
     'query_var' => true,
     // 'rewrite' => array( 'slug' => 'projects' ),
     // 'has_archive' => true,
-    'rewrite' => true,
+    'rewrite' => false,
     'has_archive' => true,
     'capability_type' => 'post',
     'hierarchical' => false,
@@ -70,6 +68,16 @@ function register_project_post_type() {
   register_post_type( 'projects', $args );
 }
 
+function project_flush_rules(){
+    //defines the post type so the rules can be flushed.
+    register_project_post_type();
+
+    //and flush the rules.
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'project_flush_rules');
+
+add_action( 'init', 'register_project_post_type' );
 add_action( 'init', 'register_project_taxonomy' );
 
 function  register_project_taxonomy () {
@@ -79,7 +87,7 @@ function  register_project_taxonomy () {
 			'label' => 'Project Categories',
 			'show_ui' => true,
 			'query_var' => true,
-			'rewrite' => array('slug' => ''),
+			'rewrite' => array('slug' => 'project-categories'),
 			'singular_label' => 'Project Category') 
 		);
 	register_taxonomy('project_services',
@@ -88,10 +96,13 @@ function  register_project_taxonomy () {
 			'label' => 'Project Services',
 			'show_ui' => true,
 			'query_var' => true,
-			'rewrite' => array('slug' => ''),
+			'rewrite' => array('slug' => 'project-services'),
 			'singular_label' => 'Project Service') 
 		);
 }
+
+
+
 
 /**
  *  Register Field Groups

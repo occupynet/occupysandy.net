@@ -15,9 +15,9 @@ get_header(); ?>
       <div id="content" role="main">
             
         <div class="content-wrap clearfix">
-          <?php// the_post(); ?>
 
           <?php get_template_part( 'content', 'projects' ); ?>
+          
         </div>
 
         <?php //comments_template( '', true ); ?>

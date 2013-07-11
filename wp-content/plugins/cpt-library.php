@@ -64,8 +64,16 @@ function register_library_post_type() {
   ); 
 
 	register_post_type( 'library', $args );
-
 }
+
+function library_flush_rules(){
+    //defines the post type so the rules can be flushed.
+    register_library_post_type();
+
+    //and flush the rules.
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'library_flush_rules');
 
 add_action( 'init', 'register_library_taxonomy' );
 

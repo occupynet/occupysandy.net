@@ -10,8 +10,7 @@
 
 <article id="post-7099" class="post-7099 page type-page status-publish hentry">
 	<header class="entry-header">
-		<h1 class="leader"><?php $post_type = get_post_type_object( get_post_type($post) );
-		echo $post_type->labels->name ; ?></h1>
+		<h1 class="leader"><?php the_title(); ?></h1>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -25,11 +24,6 @@
 	<div class="entry-content">
 
 		<?php
-		// Page content is edited in the Projects Page ('pagename=projects')
-		// $post_type = get_post_type_object( get_post_type($post) );
-		// echo $post_type->labels->description ; ?>
-
-		<?php
 		    // Page content is edited in the Projects Page ('pagename=projects')
 		    $your_query = new WP_Query( 'pagename=projects' );
 		    while ( $your_query->have_posts() ) : $your_query->the_post();
@@ -37,8 +31,6 @@
 		    endwhile;
 		    wp_reset_postdata();
 		?>
-
-	<?php// the_content(); ?>
 
       <table  class="pro">
 	      <thead>
