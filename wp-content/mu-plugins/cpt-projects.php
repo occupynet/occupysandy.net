@@ -81,7 +81,7 @@ add_action( 'init', 'register_project_post_type' );
 add_action( 'init', 'register_project_taxonomy' );
 
 function  register_project_taxonomy () {
-	register_taxonomy('project_categories',
+	register_taxonomy('project-categories',
 		array (0 => 'projects',)
 		,array ( 'hierarchical' => true,
 			'label' => 'Project Categories',
@@ -100,8 +100,6 @@ function  register_project_taxonomy () {
 			'singular_label' => 'Project Service') 
 		);
 }
-
-
 
 
 /**
