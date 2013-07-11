@@ -3,7 +3,7 @@
 Plugin Name: Options Framework
 Plugin URI: http://www.wptheming.com
 Description: A framework for building theme options.
-Version: 1.5.2
+Version: 1.6
 Author: Devin Price
 Author URI: http://www.wptheming.com
 License: GPLv2
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 /* Basic plugin definitions */
 
-define( 'OPTIONS_FRAMEWORK_VERSION', '1.5.2' );
+define( 'OPTIONS_FRAMEWORK_VERSION', '1.6' );
 define( 'OPTIONS_FRAMEWORK_URL', plugin_dir_url( __FILE__ ) );
 
 load_plugin_textdomain( 'optionsframework', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
@@ -138,7 +138,7 @@ function optionsframework_init() {
 	require_once dirname( __FILE__ ) . '/options-media-uploader.php';
 
 	// Optionally Loads the options file from the theme
-	$location = apply_filters( 'options_framework_location', array('options.php') );
+	$location = apply_filters( 'options_framework_location', array( 'options.php' ) );
 	$optionsfile = locate_template( $location );
 
 	// Load settings
@@ -220,7 +220,7 @@ function optionsframework_setdefaults() {
 
 	if ( isset( $optionsframework_settings['knownoptions'] ) ) {
 		$knownoptions =  $optionsframework_settings['knownoptions'];
-		if ( !in_array($option_name, $knownoptions) ) {
+		if ( !in_array( $option_name, $knownoptions ) ) {
 			array_push( $knownoptions, $option_name );
 			$optionsframework_settings['knownoptions'] = $knownoptions;
 			update_option( 'optionsframework', $optionsframework_settings);
@@ -242,18 +242,40 @@ function optionsframework_setdefaults() {
 	}
 }
 
+/* Define menu options (still limited to appearance section)
+ *
+ * Examples usage:
+ *
+ * add_filter( 'optionsframework_menu', function($menu) {
+ *     $menu['page_title'] = 'Hello Options';
+ *	   $menu['menu_title'] = 'Hello Options';
+ *     return $menu;
+ * });
+*/
+
+function optionsframework_menu_settings() {
+
+	$menu = array(
+		'page_title' => __( 'Theme Options', 'optionsframework'),
+		'menu_title' => __('Theme Options', 'optionsframework'),
+		'capability' => 'edit_theme_options',
+		'menu_slug' => 'options-framework',
+		'callback' => 'optionsframework_page'
+	);
+	
+	return apply_filters( 'optionsframework_menu', $menu );
+}
+
 /* Add a subpage called "Theme Options" to the appearance menu. */
 
-if ( !function_exists( 'optionsframework_add_page' ) ) {
+function optionsframework_add_page() {
+	
+	$menu = optionsframework_menu_settings();
+	$of_page = add_theme_page( $menu['page_title'], $menu['menu_title'], $menu['capability'], $menu['menu_slug'], $menu['callback'] );
 
-	function optionsframework_add_page() {
-		$of_page = add_theme_page( __( 'Theme Options', 'optionsframework'), __('Theme Options', 'optionsframework'), 'edit_theme_options', 'options-framework','optionsframework_page' );
-
-		// Load the required CSS and javscript
-		add_action( 'admin_enqueue_scripts', 'optionsframework_load_scripts');
-		add_action( 'admin_print_styles-' . $of_page, 'optionsframework_load_styles' );
-	}
-
+	// Load the required CSS and javscript
+	add_action( 'admin_enqueue_scripts', 'optionsframework_load_scripts' );
+	add_action( 'admin_print_styles-' . $of_page, 'optionsframework_load_styles' );
 }
 
 /* Loads the CSS */
@@ -268,9 +290,11 @@ function optionsframework_load_styles() {
 
 /* Loads the javascript */
 
-function optionsframework_load_scripts($hook) {
+function optionsframework_load_scripts( $hook ) {
 
-	if ( 'appearance_page_options-framework' != $hook )
+	$menu = optionsframework_menu_settings();
+	
+	if ( 'appearance_page_' . $menu['menu_slug'] != $hook )
         return;
 
 	// Enqueue colorpicker scripts for versions below 3.5 for compatibility

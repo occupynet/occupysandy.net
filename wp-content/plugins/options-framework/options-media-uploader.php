@@ -91,7 +91,13 @@ endif;
  
 if ( ! function_exists( 'optionsframework_media_scripts' ) ) :
 
-function optionsframework_media_scripts() {
+function optionsframework_media_scripts( $hook ) {
+	
+	$menu = optionsframework_menu_settings();
+	
+	if ( 'appearance_page_' . $menu['menu_slug'] != $hook )
+        return;
+        
 	if ( function_exists( 'wp_enqueue_media' ) )
 		wp_enqueue_media();
 	wp_register_script( 'of-media-uploader', OPTIONS_FRAMEWORK_URL .'js/media-uploader.js', array( 'jquery' ) );

@@ -6,7 +6,7 @@
 
 function optionsframework_tabs() {
 	$counter = 0;
-	$options = optionsframework_options();
+	$options =& _optionsframework_options();
 	$menu = '';
 
 	foreach ( $options as $value ) {
@@ -102,14 +102,19 @@ function optionsframework_fields() {
 		if ( isset( $value['desc'] ) ) {
 			$explain_value = $value['desc'];
 		}
+		
+		if ( has_filter( 'optionsframework_' . $value['type'] ) ) {
+			$output .= apply_filters( 'optionsframework_' . $value['type'], $option_name, $value, $val );
+		}
+
 
 		switch ( $value['type'] ) {
-
+		
 		// Basic text input
 		case 'text':
 			$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="text" value="' . esc_attr( $val ) . '" />';
 			break;
-
+			
 		// Password input
 		case 'password':
 			$output .= '<input id="' . esc_attr( $value['id'] ) . '" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '" type="password" value="' . esc_attr( $val ) . '" />';
@@ -344,7 +349,7 @@ function optionsframework_fields() {
 			
 		// Editor
 		case 'editor':
-			$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags) . '</div>'."\n";
+			$output .= '<div class="explain">' . wp_kses( $explain_value, $allowedtags ) . '</div>'."\n";
 			echo $output;
 			$textarea_name = esc_attr( $option_name . '[' . $value['id'] . ']' );
 			$default_editor_settings = array(
@@ -356,7 +361,7 @@ function optionsframework_fields() {
 			if ( isset( $value['settings'] ) ) {
 				$editor_settings = $value['settings'];
 			}
-			$editor_settings = array_merge($editor_settings, $default_editor_settings);
+			$editor_settings = array_merge( $default_editor_settings, $editor_settings );
 			wp_editor( $val, $value['id'], $editor_settings );
 			$output = '';
 			break;
