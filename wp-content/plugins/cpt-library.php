@@ -74,7 +74,6 @@ function library_flush_rules(){
     flush_rewrite_rules();
 }
 register_activation_hook(__FILE__, 'library_flush_rules');
-
 add_action( 'init', 'register_library_taxonomy' );
 
 function  register_library_taxonomy () {
