@@ -35,7 +35,7 @@
 			<p><?php if(has_meta_value('project-facebook-link')) { ?>
 				<a href="<?php echo get_post_meta( get_the_ID(), 'project-facebook-link', true ); ?>" target="_blank" class="button btnSmall">Facebook</a> <?php } ?>
 				<?php if(has_meta_value('project-twitter-handle')) { ?>
-				<a href="http://<?php echo get_post_meta( get_the_ID(), 'project-twitter-handle', true ); ?>" target="_blank" class="button btnSmall">Twitter</a><?php } ?>
+				<a href="<?php echo get_post_meta( get_the_ID(), 'project-twitter-handle', true ); ?>" target="_blank" class="button btnSmall">Twitter</a><?php } ?>
 			</p>
 
 		</div><!-- .entry-meta -->
