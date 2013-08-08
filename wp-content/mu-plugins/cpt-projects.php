@@ -27,6 +27,19 @@ Author URI: http://www.occupywallstreet.net
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *******************************************************************************************/
 
+// Fields 
+add_action('acf/register_fields', 'sandy_register_fields');
+
+function sandy_register_fields()
+{
+    // include_once('add-ons/acf-repeater/repeater.php');
+    // include_once('add-ons/acf-gallery/gallery.php');
+    // include_once('add-ons/acf-flexible-content/flexible-content.php');
+}
+
+// Options Page 
+// include_once( 'add-ons/acf-options-page/acf-options-page.php' );
+
 function register_project_post_type() {
   $labels = array(
     'name' => 'Projects',
@@ -112,7 +125,7 @@ function  register_project_taxonomy () {
 if(function_exists("register_field_group"))
 {
     register_field_group(array (
-        'id' => 'acf_projects',
+        'id' => 'acf_project-fields',
         'title' => 'Project Fields',
         'fields' => array (
             array (
@@ -149,9 +162,11 @@ if(function_exists("register_field_group"))
                 'conditional_logic' => array (
                     'status' => 1,
                     'rules' => array (
-                        'field' => 'project-status',
-                        'operator' => '==',
-                        'value' => '1',
+                        array (
+                            'field' => 'project-status',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
                     ),
                     'allorany' => 'all',
                 ),
@@ -313,9 +328,11 @@ if(function_exists("register_field_group"))
                 'conditional_logic' => array (
                     'status' => 1,
                     'rules' => array (
-                        'field' => 'project-fundraising-status',
-                        'operator' => '==',
-                        'value' => '1',
+                        array (
+                            'field' => 'project-fundraising-status',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
                     ),
                     'allorany' => 'all',
                 ),
@@ -332,14 +349,61 @@ if(function_exists("register_field_group"))
                 'conditional_logic' => array (
                     'status' => 1,
                     'rules' => array (
-                        'field' => 'project-fundraising-status',
-                        'operator' => '==',
-                        'value' => '1',
+                        array (
+                            'field' => 'project-fundraising-status',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
                     ),
                     'allorany' => 'all',
                 ),
                 'default_value' => '',
                 'formatting' => 'none',
+            ),
+            array (
+                'key' => 'project_spokescouncil_member',
+                'label' => 'Spokescouncil Member',
+                'name' => 'project_spokescouncil_member',
+                'type' => 'true_false',
+                'required' => 1,
+                'message' => '',
+                'default_value' => 0,
+            ),
+            array (
+                'key' => 'project_goals',
+                'label' => 'Goals',
+                'name' => 'project_goals',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'basic',
+                'media_upload' => 'no',
+            ),
+            array (
+                'key' => 'project_member_list',
+                'label' => 'Member List',
+                'name' => 'project_member_list',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'basic',
+                'media_upload' => 'no',
+            ),
+            array (
+                'key' => 'project_endorsements',
+                'label' => 'Endorsements',
+                'name' => 'project_endorsements',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'basic',
+                'media_upload' => 'no',
+            ),
+            array (
+                'key' => 'project_additional_information',
+                'label' => 'Additional Information',
+                'name' => 'project_additional_information',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'basic',
+                'media_upload' => 'no',
             ),
         ),
         'location' => array (

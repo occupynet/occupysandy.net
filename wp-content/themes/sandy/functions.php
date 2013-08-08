@@ -395,4 +395,5 @@ function get_content_for_tax_archive($pagename) {
 	wp_reset_postdata();
 }
 
+
 ?>

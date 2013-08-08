@@ -31,7 +31,16 @@
 					return 'true';
 				}
 			}
+			$spokescouncil_member = get_post_meta( get_the_ID(), 'project_spokescouncil_member', true ); 
 			?>
+			<p class="pro-status entry-date">
+			<?php 
+				if($spokescouncil_member) {
+					echo 'Spokescouncil Member';
+				} else {
+					echo 'Not a Spokescouncil Member';
+				} ?>
+			</p>
 			<p><?php if(has_meta_value('project-facebook-link')) { ?>
 				<a href="<?php echo get_post_meta( get_the_ID(), 'project-facebook-link', true ); ?>" target="_blank" class="button btnSmall">Facebook</a> <?php } ?>
 				<?php if(has_meta_value('project-twitter-handle')) { ?>
@@ -70,21 +79,37 @@
 			<p><?php display_post_meta('project-background'); ?></p>
 			<?php } ?>
 
+			<?php if(has_meta_value('project_goals')) { ?>
+			<h2 class="project-section-title">Goals</h2>
+			<p><?php display_post_meta('project_goals'); ?></p>
+			<?php } ?>
+
 			<?php if(has_meta_value('project-partners')) { ?>
 			<h2 class="project-section-title">Partners</h2>
 			<p><?php display_post_meta('project-partners') ?></p>
 			<?php } ?>
 
+			<?php if(has_meta_value('project_member_list')) { ?>
+			<h2 class="project-section-title">Members</h2>
+			<p><?php display_post_meta('project_member_list') ?></p>
+			<?php } ?>
+
 			<h2 class="project-section-title">Contact</h2>
 			<ul>
 				<li><?php display_post_meta('project-contact-name-external') ?></li>
-				<li><a href="mailto:<?php display_post_meta('project-website') ?>" target="_blank"><?php display_post_meta('project-contact-email-external') ?></a></li>
+				<li><a href="mailto:<?php display_post_meta('project-contact-email-external') ?>" target="_blank"><?php display_post_meta('project-contact-email-external') ?></a></li>
 				<?php if(has_meta_value('project-contact-phone-external')) { ?><li><span>Phone:</span> <?php display_post_meta('project-contact-phone-external') ?></li><?php } ?>
 				<?php if(has_meta_value('project-website')) { ?><li><span>Website:</span> <a href="<?php display_post_meta('project-website') ?>" target="_blank"><?php display_post_meta('project-website') ?></a></li><?php } ?>
 				<?php if(has_meta_value('project-facebook-link')) { ?><li><span>Facebook:</span> <a href="<?php display_post_meta('project-facebook-link') ?>" target="_blank"><?php display_post_meta('project-facebook-link') ?></a></li><?php } ?>
 				<?php if(has_meta_value('project-twitter-handle')) { ?><li><span>Twitter:</span> <a href="<?php display_post_meta('project-twitter-handle') ?>" target="_blank"><?php display_post_meta('project-twitter-handle') ?></a></li><?php } ?>
 				<?php if(has_meta_value('project-flickr')) { ?><li><span>Flickr:</span> <a href="<?php display_post_meta('project-flickr') ?>" target="_blank"><?php display_post_meta('project-flickr') ?></a></li><?php } ?>
 			</ul>
+
+			<?php if(has_meta_value('project_additional_information')) { ?>
+			<h2 class="project-section-title">Additional Information</h2>
+			<p><?php display_post_meta('project_additional_information') ?></p>
+			<?php } ?>
+
 	    </div>
 
 	    <p>
