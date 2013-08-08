@@ -367,7 +367,7 @@ if(function_exists("register_field_group"))
                 'type' => 'true_false',
                 'required' => 1,
                 'message' => '',
-                'default_value' => 0,
+                'default_value' => '',
             ),
             array (
                 'key' => 'project_goals',

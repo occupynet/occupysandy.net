@@ -35,11 +35,21 @@
 			?>
 			<p class="pro-status entry-date">
 			<?php 
-				if($spokescouncil_member) {
+				// if(isset($spokescouncil_member)) {
+				// 	if($spokescouncil_member) {
+				// 		echo 'Spokescouncil Member';
+				// 	} else {
+				// 		echo 'Not a Spokescouncil Member';
+				// 	} 
+				// } else {
+				// 	echo 'Not set';
+				// }
+
+				if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
 					echo 'Spokescouncil Member';
-				} else {
-					echo 'Not a Spokescouncil Member';
-				} ?>
+				} 
+
+				?>
 			</p>
 			<p><?php if(has_meta_value('project-facebook-link')) { ?>
 				<a href="<?php echo get_post_meta( get_the_ID(), 'project-facebook-link', true ); ?>" target="_blank" class="button btnSmall">Facebook</a> <?php } ?>
