@@ -62,7 +62,7 @@
 			    $spokescouncil_member = get_post_meta( get_the_ID(), 'project_spokescouncil_member', true ); 
 
 			    //If project not a spokescouncil member, skip
-			    // if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
+			    if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
 			    ?>
 
 				<tr>
@@ -77,7 +77,7 @@
 					<td class="pro-link"><a href="<?php the_permalink(); ?>"></a></td>
 				</tr>
 
-	    <?php //} //end if
+	    <?php } //end if
 	    endwhile;
 	    ?>
 	       </tbody>
