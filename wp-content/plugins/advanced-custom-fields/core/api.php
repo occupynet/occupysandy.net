@@ -84,7 +84,8 @@ function acf_filter_post_id( $post_id )
 function get_field_reference( $field_name, $post_id )
 {
 	// cache
-	$cache = wp_cache_get( 'field_reference/post_id=' .  $post_id . '/name=' .  $field_name, 'acf', false, $found = false );
+	$found = false;
+	$cache = wp_cache_get( 'field_reference/post_id=' .  $post_id . '/name=' .  $field_name, 'acf', false, $found );
 
 	if( $found )
 	{
@@ -1011,22 +1012,14 @@ function acf_form_head()
 		$post_id = $_POST['post_id'];
 		
 		
-		// set post_lock
-		$GLOBALS['acf_save_lock'] = $post_id;
-
-		
 		// allow for custom save
 		$post_id = apply_filters('acf/pre_save_post', $post_id);
 		
 		
 		// save the data
 		do_action('acf/save_post', $post_id);	
-			
-			
-		// set post_lock and allow saves
-		$GLOBALS['acf_save_lock'] = false;	
-		
-		
+
+
 		// redirect
 		if(isset($_POST['return']))
 		{

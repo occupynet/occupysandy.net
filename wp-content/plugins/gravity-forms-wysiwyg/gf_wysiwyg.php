@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms WYSIWYG
 Plugin URI: http://themergency.com/
 Description: Adds a WYSIWYG field to Gravity Forms
-Version: 0.1 beta
+Version: 0.2 beta
 Author: Brad Vincent
 Author URI: http://themergency.com/
 License: GPL2
@@ -33,7 +33,7 @@ class gf_wysiwyg {
 
     private static $name = 'Gravity Forms WYSIWYG';
     private static $slug = 'gf_wysiwyg';
-    private static $version = '0.1';
+    private static $version = '0.2';
     private static $min_gravityforms_version = '1.6';
 
     //Plugin starting point. Will load appropriate files

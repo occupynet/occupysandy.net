@@ -12,14 +12,7 @@
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<div class="entry-meta">
-			<?php
-			// 	printf( __( '<span class="sep">Posted </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a>', 'foghorn' ),
-			// 	esc_url( get_permalink() ),
-			// 	esc_attr( get_the_time() ),
-			// 	esc_attr( get_the_date( 'c' ) ),
-			// 	esc_html( get_the_date() )
-			// );
-			?>
+
 			<?php $meta = get_post_meta( get_the_ID() ); 
 			function display_post_meta($meta) {
 				$postmeta = get_post_meta(get_the_ID(), $meta, true);
@@ -91,18 +84,16 @@
 
 			<?php if(has_meta_value('project_goals')) { ?>
 			<h2 class="project-section-title">Goals</h2>
-			<p><?php display_post_meta('project_goals'); ?></p>
+			<?php //the_field doesn't strip formatting, but requires the Advanced Custom Fields plugin ?>
+			<p><?php the_field('project_goals'); ?></p>
 			<?php } ?>
 
 			<?php if(has_meta_value('project-partners')) { ?>
 			<h2 class="project-section-title">Partners</h2>
-			<p><?php display_post_meta('project-partners') ?></p>
+			<?php //the_field doesn't strip formatting, but requires the Advanced Custom Fields plugin ?>
+			<p><?php the_field('project-partners') ?></p>
 			<?php } ?>
 
-			<?php if(has_meta_value('project_member_list')) { ?>
-			<h2 class="project-section-title">Members</h2>
-			<p><?php display_post_meta('project_member_list') ?></p>
-			<?php } ?>
 
 			<h2 class="project-section-title">Contact</h2>
 			<ul>

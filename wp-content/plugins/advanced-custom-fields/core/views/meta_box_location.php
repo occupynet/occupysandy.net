@@ -85,12 +85,13 @@ if( empty($groups) )
 								'post'			=>	__("Post",'acf'),
 								'post_category'	=>	__("Post Category",'acf'),
 								'post_format'	=>	__("Post Format",'acf'),
+								'post_status'	=>	__("Post Status",'acf'),
 								'taxonomy'		=>	__("Post Taxonomy",'acf'),
 							),
 							__("Other",'acf') => array(
-								'ef_taxonomy'	=>	__("Taxonomy Term (Add / Edit)",'acf'),
-								'ef_user'		=>	__("User (Add / Edit)",'acf'),
-								'ef_media'		=>	__("Media Attachment (Edit)",'acf')
+								'ef_media'		=>	__("Attachment",'acf'),
+								'ef_taxonomy'	=>	__("Term",'acf'),
+								'ef_user'		=>	__("User",'acf'),
 							)
 						);
 								

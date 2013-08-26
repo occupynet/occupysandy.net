@@ -4,21 +4,24 @@ Donate link: http://themergency.com/donate/
 Tags: form,forms,gravity,gravity form,gravity forms,WYSIWYG,content editor
 Requires at least: 3.2
 Tested up to: 3.3.2
-Stable tag: trunk
+Stable tag: 0.2 beta
 
 Adds a WYSIWYG field to Gravity Forms
 
 == Description ==
 
-> This plugin is an add-on for the amazing *Gravity Forms Plugin*.
-> Check out my other free [Add-ons for Gravity Forms](http://themergency.com/gravity-forms-addon-plugins/)
+> This plugin is an add-on for the [Gravity Forms Plugin](http://bit.ly/getgravityforms "visit the Gravity Forms website"). 
+> If you don't yet own a license of the best forms plugin for WordPress, go and [buy one now!](http://bit.ly/getgravityforms "purchase Gravity Forms!")
 
 The current version of Gravity Forms (v.1.6.4) does not yet support WYSIWYG fields. This plugins hopes to fill this gap until the WYSIWYG editor is supported by the Gravity Forms core.
 
 **features**
 
 *   Adds a new WYSIWYG field under standard fields
-*   Adds a "Enable WYSIWYG" checkbox for post body field
+*   Adds a "Enable WYSIWYG" checkbox for post body fields
+*   Adds a "Enable WYSIWYG" checkbox for paragraph text fields
+*   Custom field now support WYSIWYG by selecting "paragraph text" field type and checking "Enable WYSIWYG"
+*   Support for adding the media buttons to the WYSIWYG by adding a class name of "media_buttons"
 
 **PLEASE NOTE**
 This plugin uses features that are only available in the most recent versions of WordPress (v3.2) and Gravity Forms (v.1.6.4). It goes without saying that you need to upgrade to the latest versions of both in order for this plugin to work.
@@ -37,13 +40,18 @@ This plugin uses features that are only available in the most recent versions of
 
 == Changelog ==
 
-= 1.0 =
+= 0.2 beta =
+* allow default values
+* fixed bug with validation clearing WYSIWYG value
+* added "Enable WYSIWYG" checkbox for paragraph text fields
+
+= 0.1 beta =
 * Initial Relase. First version.
 
 == Frequently Asked Questions ==
 
 = Does this plugin rely on anything? =
-Yes, you need to install the [Gravity Forms Plugin](http://themergency.com/gravity-forms-addon-plugins/) for this plugin to work.
+Yes, you need to install the [Gravity Forms Plugin](http://bit.ly/getgravityforms "visit the Gravity Forms website") for this plugin to work.
 
 == Upgrade Notice ==
 
