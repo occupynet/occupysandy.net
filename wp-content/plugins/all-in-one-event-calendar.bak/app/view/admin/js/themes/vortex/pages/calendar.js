@@ -1,1 +1,0 @@
-timely.require(["themes/vortex/scripts/calendar"],function(e){e.start()});
