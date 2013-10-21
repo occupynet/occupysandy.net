@@ -69,10 +69,13 @@
 					<td class="pro-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
 					<td class="pro-blurb"><?php if( $post->post_excerpt ) { echo $post->post_excerpt; } ?></td>
 					<td class="pro-status">
+					<?php if(has_meta_value('project-donate-link')) { ?>
+					<a class="button" title="Donate" href="<?php display_post_meta('project-donate-link'); ?>">Donate</a>
+					<?php } ?>
 					<?php 
-					if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
-					echo 'Spokescouncil Member';
-					}  ?>
+					//if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
+					//echo 'Spokescouncil Member';
+					//}  ?>
 					</td>
 					<td class="pro-link"><a href="<?php the_permalink(); ?>"></a></td>
 				</tr>
