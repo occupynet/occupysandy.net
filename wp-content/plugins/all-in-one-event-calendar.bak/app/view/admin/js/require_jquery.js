@@ -1,1 +1,0 @@
-timely.define(["jquery_lib"],function(){return jQuery.noConflict(!0)});

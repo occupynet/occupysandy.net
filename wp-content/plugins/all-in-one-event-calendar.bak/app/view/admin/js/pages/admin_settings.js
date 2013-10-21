@@ -1,1 +1,0 @@
-timely.require(["scripts/admin_settings"]);

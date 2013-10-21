@@ -1,1 +1,0 @@
-timely.require(["scripts/common_scripts/frontend/common_frontend"],function(e){e.start()});
