@@ -72,10 +72,7 @@
 					<?php if(has_meta_value('project-donate-link')) { ?>
 					<a class="button" title="Donate" href="<?php display_post_meta('project-donate-link'); ?>">Donate</a>
 					<?php } ?>
-					<?php 
-					//if(!empty($spokescouncil_member) && ($spokescouncil_member)) {
-					//echo 'Spokescouncil Member';
-					//}  ?>
+
 					</td>
 					<td class="pro-link"><a href="<?php the_permalink(); ?>"></a></td>
 				</tr>
