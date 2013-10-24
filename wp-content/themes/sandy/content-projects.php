@@ -49,7 +49,7 @@
 	        <tr>
 	          <th>Title</th>
 	          <th>Description</th>
-	          <th>Dotate</th>
+	          <th>Donate</th>
 	          <th>Profile</th>
 	        </tr>
 	      </thead>
