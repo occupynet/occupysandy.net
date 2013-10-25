@@ -1318,6 +1318,7 @@ footer.entry-meta {
   padding: 10px;
   margin-left: 20px;
   margin-bottom: 20px;
+  margin-top: 20px;
   background: #e6e6e6;
 }
 .home .post-thumbnail img {
@@ -1668,7 +1669,24 @@ footer.entry-meta {
   float: right;
   clear: both;
   padding-left: 15px;
+  .post {
+    background: #EEE;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  .entry-header a {
+    color: #222;
+    font-size: 22px;
+    line-height: 1.3;
+    &:hover {
+        color: #666;
+    }
+  }
+  .entry-meta {
+    margin-top: 4px;
+  }
 }
+
 .feature-box {
   background: #F9F9F9;
   margin-bottom: 15px;
@@ -1777,8 +1795,7 @@ footer.entry-meta {
   letter-spacing: 1px;
   line-height: 36px;
   margin: 0!important;
-  padding: 6px 1px;
-  border-top: 1px solid #DDD;
+  padding: 0 1px 5px;
 }
 .promo {
   height: 150px;
@@ -1812,6 +1829,18 @@ footer.entry-meta {
   behavior: url(../js/PIE.htc);
   display: none;
 }
+.promo a a {
+    padding: 5px 15px 6px;
+    color: #ffcd67;
+    font-weight: bold;
+    display: none;
+    float: left;
+    border-radius: 5px;
+    white-space: nowrap;
+    &:hover {
+        color: #FFF;
+    }
+}
 .promo a:hover {
   background-color: #333;
   background-color: rgba(0, 0, 0, 0.6);
@@ -1819,6 +1848,7 @@ footer.entry-meta {
 .promo a:hover span {
   color: #ffcd67;
 }
+.promo a:hover a,
 .promo a:hover b,
 .promo a:hover strong {
   display: block;
