@@ -48,10 +48,9 @@
 		<div class="ai1ec-actions pull-right btn-group">
 			<?php if ( $event->ticket_url ) : ?>
 				<a href="<?php esc_attr_e( $event->ticket_url ); ?>" target="_blank"
-					class="ai1ec-tickets btn btn-small btn-primary">
-					<i class="icon-shopping-cart"></i>
-					<?php _e( 'Buy Tickets', AI1EC_PLUGIN_NAME ); ?>
-				</a>
+					class="ai1ec-tickets btn btn-small btn-primary"><?php
+					echo $event->get_tickets_url_label();
+				?></a>
 			<?php endif; ?>
 			<?php if ( $show_subscribe_buttons ) : ?>
 				<a class="btn btn-small ai1ec-subscribe"
@@ -65,6 +64,15 @@
 					<i class="icon-google-plus icon-large"></i>
 					<?php _e( 'Add to Google', AI1EC_PLUGIN_NAME ); ?>
 				</a>
+				<?php if ( $show_email_subscribe ) : ?>
+					<a class="btn btn-small ai1ec-subscribe-mail"
+						href="#ai1ec_subscribe_email_modal"
+						data-toggle="ai1ec_modal"
+						title="<?php _e( 'Get mail notifications for this event', AI1EC_PLUGIN_NAME ); ?>" >
+						<i class="icon-envelope icon-large"></i>
+						<?php _e( 'Email notification', AI1EC_PLUGIN_NAME ); ?>
+					</a>
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>
@@ -76,11 +84,15 @@
 		</div>
 	<?php endif; ?>
 
-	<?php if ( $event->cost ) : ?>
-		<div class="ai1ec-cost">
-			<div class="ai1ec-label"><?php _e( 'Cost:', AI1EC_PLUGIN_NAME ); ?></div>
-			<div class="ai1ec-field-value"><?php echo esc_html( $event->cost ); ?></div>
-		</div>
+	<?php if ( $event->cost || $event->is_free ) : ?>
+	<div class="ai1ec-cost">
+		<div class="ai1ec-label"><?php _e( 'Cost:', AI1EC_PLUGIN_NAME ); ?></div>
+		<div class="ai1ec-field-value"><?php
+		echo ( $event->is_free )
+		     ? __( 'Free', AI1EC_PLUGIN_NAME )
+		     : esc_html( $event->cost );
+		?></div>
+	</div>
 	<?php endif; ?>
 
 	<?php if ( $contact ) : ?>

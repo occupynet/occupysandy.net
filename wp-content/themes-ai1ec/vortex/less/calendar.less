@@ -46,7 +46,7 @@
 		margin: 0 !important;
 	}
 	.btn-group {
-		margin: 2px 0;
+		margin: 5px 0 5px 3px;
 	}
 }
 // Trigger display of dropdown menus on hover on desktop devices only.
@@ -62,10 +62,10 @@
 	a img {
 		border: 0 !important;
 		padding: 0 !important;
-		margin: -3px 0 !important;
+		margin: -4px 0 !important;
 		float: none !important;
 		position: static !important;
-		vertical-align: bottom;
+		vertical-align: middle;
 		background: none !important;
 	}
 }
@@ -73,11 +73,7 @@
 // View filters.
 .ai1ec-category-filter,
 .ai1ec-tag-filter {
-	.ai1ec-category,
-	.ai1ec-tag {
-		font-size: 12px;
-	}
-	.ai1ec-category-color {
+	.ai1ec-color-swatch {
 		height: 7px;
 		width: 7px;
 	}
@@ -90,18 +86,26 @@
 	min-width: 200px;
 	overflow: auto;
 }
+// Select2 filters.
+.ai1ec-select2-filters {
+	clear: both;
+	.select2-container {
+		margin: 2px 0;
+		width: 100%;
+	}
+}
 
 // Clear filter buttons.
 .ai1ec-clear-filter {
 	cursor: pointer;
-	display: none;
+	display: none !important;
 }
 .dropdown.active > .dropdown-toggle {
 	> i {
-		display: none;
+		display: none !important;
 	}
 	.ai1ec-clear-filter {
-		display: inline;
+		display: inline !important;
 	}
 }
 
@@ -132,7 +136,7 @@ h2.ai1ec-calendar-title {
 .ai1ec-pagination {
 	margin-left: 5px;
 	> .btn {
-		font-size: 11px !important;
+		font-size: @baseFontSize * 0.85 !important;
 		height: 16px;
 		padding: 4px 9px;
 		text-transform: uppercase;
@@ -140,19 +144,13 @@ h2.ai1ec-calendar-title {
 			font-size: 12px;
 			line-height: 16px;
 		}
-		&.ai1ec-prev-year > i,
-		&.ai1ec-next-year > i,
-		&.ai1ec-prev-month > i,
-		&.ai1ec-next-month > i {
-			font-size: 10px;
-		}
-		&.ai1ec-prev-year > i + i,
-		&.ai1ec-prev-month > i {
-			margin-right: 1px;
-		}
-		&.ai1ec-next-year > i:first-child,
-		&.ai1ec-next-month > i {
-			margin-left: 1px;
+		&.ai1ec-prev-month,
+		&.ai1ec-next-month,
+		&.ai1ec-prev-year,
+		&.ai1ec-next-year {
+			> i {
+				font-size: 13px;
+			}
 		}
 		&.ai1ec-prev-month,
 		&.ai1ec-next-month {
@@ -173,7 +171,6 @@ h2.ai1ec-calendar-title {
 #ai1ec-print-button i {
 	font-size: 14px;
 	margin-top: -2px;
-	vertical-align: bottom;
 }
 
 // Month, week, day tables.
@@ -191,13 +188,6 @@ table.ai1ec-month-view,
 table.ai1ec-month-view {
 	margin-bottom: 6px !important;
 }
-.ai1ec-week-view .tablescroll_wrapper,
-.ai1ec-oneday-view .tablescroll_wrapper {
-	border-bottom: 1px solid @tableBorder;
-	margin-bottom: 6px;
-	position: relative;
-	width: auto !important;
-}
 table.ai1ec-week-view-original,
 table.ai1ec-oneday-view-original {
 	visibility: hidden;
@@ -205,21 +195,41 @@ table.ai1ec-oneday-view-original {
 	&.tablescroll_body {
 		visibility: visible;
 		height: auto;
+		&,
+		& tr:first-child td {
+			border-top: none !important;
+		}
 	}
 }
 .ai1ec-week-view,
 .ai1ec-oneday-view {
-	table.tablescroll_head,
-	table.tablescroll_head th {
-		border-bottom: none !important;
-		padding: 2.48px !important;
+	.tablescroll_wrapper {
+		border-bottom: 1px solid @tableBorder;
+		margin-bottom: 6px;
+		position: relative;
+		width: auto !important;
 	}
-}
-table.ai1ec-week-view-original,
-table.ai1ec-oneday-view-original {
-	&.tablescroll_body,
-	&.tablescroll_body tr:first-child td {
-		border-top: none !important;
+	table.tablescroll_head {
+		border-bottom: none !important;
+		& th {
+			border-bottom: none !important;
+			padding: 2.48px !important;
+		}
+	}
+	.ai1ec-reveal-full-day {
+		float: right;
+		margin: 3px 3px 3px -3em;
+		position: relative;
+	}
+	.ai1ec-day {
+		height: 1440px;
+	}
+	th {
+		position: relative;
+		.ai1ec-weekday-date {
+			font-size: 1.4em;
+			font-weight: normal;
+		}
 	}
 }
 .ai1ec-month-view,
@@ -259,20 +269,10 @@ table.ai1ec-oneday-view-original {
 }
 .ai1ec-week-view th {
 	text-align: left !important;
-}
-.ai1ec-week-view,
-.ai1ec-oneday-view {
-	.ai1ec-day {
-		height: 1440px;
+	.ai1ec-weekday-day {
+		font-size: 1.1em;
+		font-weight: normal;
 	}
-	th .ai1ec-weekday-date {
-		font-size: 10.5pt !important;
-		font-weight: normal !important;
-	}
-}
-.ai1ec-week-view th .ai1ec-weekday-day {
-	font-size: 9pt !important;
-	font-weight: normal !important;
 }
 .ai1ec-month-view .ai1ec-day,
 .ai1ec-week-view .ai1ec-day,
@@ -313,16 +313,17 @@ table.ai1ec-oneday-view-original {
 	margin: 0 auto !important;
 	min-height: @baseLineHeight;
 	padding: 0 0 6px !important;
-	background: @posterboardMainBg;
+	background-color: @posterboardMainBg;
 	.ai1ec-date-block-wrap {
 		background: saturate( @eventDefaultColor, 15% );
 		color: @posterboardDateTitleText;
 		float: right;
 		margin: 0 0 5px 7px;
-		min-width: 48px;
+		min-width: 50px;
 		.opacity( 75 );
 		position: relative;
 		text-align: center;
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.5);
 		.transition( 0.1s opacity );
 		z-index: 1;
 		&:hover {
@@ -330,24 +331,37 @@ table.ai1ec-oneday-view-original {
 		}
 		a {
 			color: @posterboardDateTitleText;
+			&:hover {
+				color: @posterboardDateTitleText;
+			}
 		}
 	}
 	.ai1ec-month {
 		background: fade( @posterboardDateTitleText, 20% );
 		font-size: 0.8em;
-		display: block;
 		letter-spacing: 0.2em;
 		padding: 0 0.4em;
 		text-transform: uppercase;
 	}
 	.ai1ec-day {
 		font-size: 2.2em;
-		display: block;
-		padding: 0.35em 0.2em 0.45em;
+		padding: 0.3em 0.2em 0.2em;
 		font-weight: bold;
 	}
 	.ai1ec-weekday {
-		line-height: 1.5em;
+		font-size: 0.7em;
+		letter-spacing: 0.2em;
+		line-height: 1.8em;
+	}
+	.ai1ec-year {
+		background: fade( @posterboardDateTitleText, 20% );
+		font-size: 0.7em;
+		letter-spacing: 0.2em;
+		line-height: 1.8em;
+	}
+	.ai1ec-buy-tickets {
+		clear: right;
+		margin: 0 0 @baseLineHeight / 2 5px;
 	}
 	// Posterboard view event tiles.
 	.ai1ec-event-wrap {
@@ -396,10 +410,10 @@ table.ai1ec-oneday-view-original {
 		margin-bottom: 0.3em;
 	}
 	.ai1ec-event-title {
+		color: #555555;
 		font-weight: bold;
 		font-family: @titleFontFamily;
 		font-size: @titleFontSize;
-		color: #555555;
 		a {
 			font-weight: bold !important;
 		}
@@ -408,29 +422,26 @@ table.ai1ec-oneday-view-original {
 		border: 1px solid @posterboardImageBorder;
 		.box-sizing( border-box );
 		clear: both;
-		margin: 5px 0;
-		padding: 8px;
+		margin: @baseFontSize / 2 0;
+		padding: @posterboardImagePaddingWidth;
 		position: relative;
 		width: 100%;
 		img {
 			width: 100%;
 		}
 	}
-	.ai1ec-event-time,
-	.ai1ec-event-description {
-		font-size: 9pt;
-		line-height: 1.5em;
+	.ai1ec-event-time {
+		font-weight: bold;
+		line-height: @baseLineHeight;
+		margin-top: @titleFontSize * 0.2;
 	}
 	.ai1ec-event-description {
 		margin-top: 5px;
 	}
-	.ai1ec-event-time {
-		font-weight: bold;
-	}
 	footer {
 		background: @posterboardFooterBg;
-		border-top: 1px solid darken( @posterboardFooterBg, 6% );
-		.box-shadow( inset 0 1px 0 lighten( @posterboardTileBg, 7% ) );
+		border-top: 1px solid @posterboardTileBorder;
+		.box-shadow( ~"inset 0 1px 0 " darken( @posterboardFooterBg, 6% ) ~", inset 0 2px 0 " lighten( @posterboardTileBg, 7% ) );
 		font-size: 8pt;
 		margin: 5px -@posterboardTilePadding -@posterboardTilePadding;
 		padding: ( @posterboardTilePadding - 3 ) @posterboardTilePadding ( @posterboardTilePadding - 2 );
@@ -445,10 +456,10 @@ table.ai1ec-oneday-view-original {
 		&:after {
 			content: ' ';
 			display: block;
-			height: 100%;
+			bottom: 0;
 			#gradient > .horizontal-replace( fade( @posterboardFooterBg, 0% ), @posterboardFooterBg );
 			position: absolute;
-			top: 0;
+			top: 2px;
 			right: 0;
 			width: 30px;
 			z-index: 1;
@@ -756,109 +767,32 @@ table.ai1ec-oneday-view-original {
 .ai1ec-agenda-view {
 	clear: both;
 	overflow: hidden;
-	margin: 0 0 6px !important;
-	padding: 0 !important;
+	margin: 0 0 6px;
 	.ai1ec-date-events {
 		overflow: hidden;
-		margin: 0 0.75em 0 0 !important;
-		padding: 0 !important;
+		margin: 0 0.75em 0 0;
 	}
 	.ai1ec-date {
-		border-top: 1px solid darken(@agendaDateBackground, 5%);
-		#gradient > .vertical-three-colors-replace(@agendaDateBackground, @agendaDateBackground, 1em, @bodyBackground);
-		margin: 0 !important;
 		overflow: hidden;
-		padding: 0 !important;
-		&.ai1ec-today {
-			border-top: 1px solid darken(@agendaTodayBackground, 5%);
-			#gradient > .vertical-three-colors-replace(@agendaTodayBackground, @agendaTodayBackground, 1em, @bodyBackground);
-		}
 	}
-	.ai1ec-date-title {
-		border: 1px solid mix(@textColor, @agendaDateTitleBackground, 30%);
-		border-top-color: @agendaDateTitleBackground;
-		.border-radius(5px);
-		.box-shadow(0 2px 2px rgba(0,0,0,0.08));
-		color: mix( @textColor, @agendaDateTitleBackground, 85% );
-		float: left;
-		font-size: 8.7pt;
-		font-weight: bold !important;
-		#gradient > .vertical-three-colors(@agendaDateTitleBackground, @agendaDateTitleBackground, 1em, mix(@agendaDateTitleBackground, @textColor, 88%) );
-		filter: none\9; // IE8 doesn't understand how to render this gradient for some reason
-		line-height: 1.2em;
-		margin: 0.5em 0.75em !important;
-		text-align: center;
-		text-shadow: 0 1px 0 @textEmboss;
-		width: 4em;
-		overflow: hidden;
-		&:hover {
-			color: @textColor;
-		}
-	}
-	.ai1ec-month {
-		color: @agendaDateTitleBackground;
-		background: @agendaDateTitleBorder;
-		font-size: 0.8em !important;
-		letter-spacing: 0.2em;
-		padding: 0.2em;
-		display: block;
-		text-transform: uppercase;
-		text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
-		.border-radius(4px 4px 0 0);
-	}
-	.ai1ec-day {
-		display: block;
-		font-size: 2em !important;
-		padding: 0.35em 0 0.22em !important;
-	}
-	.ai1ec-weekday {
-		display: block;
-		font-size: 0.8em !important;
-		line-height: 1.6em;
-	}
-
-	// Conditional styles for Agenda View in Year
-	.ai1ec-agenda-plus-year {
-		.ai1ec-date-title {
-			width: 4.6em;
-			margin-top: 0.5em !important;
-		}
-		.ai1ec-day {
-			padding-bottom: 0.15em !important;
-		}
-		.ai1ec-year {
-			background: mix(@textColor, @agendaDateTitleBackground, 20%);
-			font-size: 0.7em !important;
-			padding: 0.05em 0.1em 0.2em;
-			font-weight: bold;
-			letter-spacing: 0.2em;
-		}
-		.ai1ec-event {
-			padding: 0.9em 0.4em 0.9em 0.8em !important;
-		}
-	}
-
 	.ai1ec-event-toggle {
 		float: right;
-		font-size: 13px;
+		font-size: 14px;
 		font-weight: bold;
 		color: mix( @textColor, @agendaDateTitleBackground, 40% );
-		margin-right: 0;
 		.transition( color 0.1s );
-		// Only show + icon by default.
+		// Only show '+' icon by default.
 		.icon-minus-sign {
 			display: none;
 		}
 	}
-
 	// Agenda view events.
 	.ai1ec-event {
 		position: relative;
 		clear: right;
 		overflow: hidden;
-		font-size: 10pt;
 		padding: 0.6em;
-		margin: 0.5em 0;
+		margin: @baseFontSize / 2 0;
 		background: @eventBackground;
 		border: 1px solid @eventBorder;
 		.border-radius( 0.5em );
@@ -897,7 +831,6 @@ table.ai1ec-oneday-view-original {
 		.post-edit-link {
 			.opacity( 0 );
 			.transition( opacity 0.1s );
-			visibility: hidden;
 		}
 		&:hover {
 			border-color: @eventBorderHover;
@@ -944,7 +877,7 @@ table.ai1ec-oneday-view-original {
 		font-size: 8pt;
 		margin-right: 0.5em;
 	}
-	.ai1ec-read-more {
+	.ai1ec-actions {
 		float: right;
 		margin-top: -5px;
 	}
@@ -1016,7 +949,7 @@ table.ai1ec-oneday-view-original {
 	.ai1ec-pagination,
 	.ai1ec-calendar-toolbar,
 	.ai1ec-read-more,
-	.ai1ec-category-color,
+	.ai1ec-color-swatch,
 	.post-edit-link,
 	.ai1ec-event-toggle {
 		display: none !important;
@@ -1178,4 +1111,18 @@ table.ai1ec-oneday-view-original {
 		padding: 0 3px;
 		text-transform: uppercase;
 	}
+}
+
+// Remove filtered views icon.
+#ai1ec_clear_saved_view {
+	margin-left: -4px;
+	margin-right: 5px;
+}
+// disclaimer link
+.ai1ec-collapsible-toggle {
+	cursor: pointer;
+}
+// set the body as static when the modal is open
+.ai1ec-modal-open {
+	position: static;
 }

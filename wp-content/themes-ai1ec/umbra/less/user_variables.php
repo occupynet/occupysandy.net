@@ -1,4 +1,3 @@
-
 <?php
 $less_user_variables = array(
 	"bodyBackground" => array(
@@ -36,6 +35,12 @@ $less_user_variables = array(
 		"description" => __( "Base font", AI1EC_PLUGIN_NAME ),
 		"tab" => "general",
 		"type" => "font",
+	),
+	"baseFontSize" => array(
+		"value"  => "13px",
+		"description" => __( "Base font size", AI1EC_PLUGIN_NAME ),
+		"tab" => "general",
+		"type" => "size",
 	),
 	"tableBackground" => array(
 		"value"  => "#000000",
@@ -175,18 +180,6 @@ $less_user_variables = array(
 		"tab" => "calendar",
 		"type" => "color",
 	),
-	"categoryBackground" => array(
-		"value"  => "#232323",
-		"description" => __( "Event Category background", AI1EC_PLUGIN_NAME ),
-		"tab" => "calendar",
-		"type" => "color",
-	),
-	"categoryBorder" => array(
-		"value"  => "#303030",
-		"description" => __( "Event Category border", AI1EC_PLUGIN_NAME ),
-		"tab" => "calendar",
-		"type" => "color",
-	),
 	"todayColor" => array(
 		"value"  => "#002743",
 		"description" => __( "Today color", AI1EC_PLUGIN_NAME ),
@@ -225,61 +218,73 @@ $less_user_variables = array(
 	),
 	"eventImageShadow" => array(
 		"value"  => "rgba(0,0,0,0.3)",
-		"description" => __( "Posterboard image shadow", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Image shadow", AI1EC_PLUGIN_NAME ),
 		"tab" => "calendar",
 		"type" => "color",
 	),
 	"titleFontFamily" => array(
 		"value"  => "\"League Gothic\", Impact, \"Arial Black\", Arial, sans-serif",
-		"description" => __( "Posterboard title font", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Title font", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "font",
 	),
+	"titleFontSize" => array(
+		"value"  => "30px",
+		"description" => __( "Title font size", AI1EC_PLUGIN_NAME ),
+		"tab" => "posterboard",
+		"type" => "size",
+	),
 	"posterboardMainBg" => array(
 		"value"  => "rgba(0, 0, 0, 0)",
-		"description" => __( "Posterboard main background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Main background", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardTileBg" => array(
 		"value"  => "#222",
-		"description" => __( "Posterboard tile background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Tile background", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardFooterBg" => array(
 		"value"  => "#282828",
-		"description" => __( "Posterboard tile footer background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Tile footer background", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardTileBorder" => array(
 		"value"  => "rgba(0,0,0,0)",
-		"description" => __( "Posterboard tile border", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Tile border", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardTileShadow" => array(
 		"value"  => "rgba(0,0,0,0.4)",
-		"description" => __( "Posterboard tile shadow", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Tile shadow", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardImageBorder" => array(
 		"value"  => "rgba(0,0,0,0)",
-		"description" => __( "Posterboard image border", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Image border", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
 	"posterboardImagePadding" => array(
 		"value"  => "#333",
-		"description" => __( "Posterboard image padding", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Image padding color", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
+	"posterboardImagePaddingWidth" => array(
+		"value"  => "8px",
+		"description" => __( "Image padding width", AI1EC_PLUGIN_NAME ),
+		"tab" => "posterboard",
+		"type" => "size",
+	),
 	"posterboardDateTitleText" => array(
 		"value"  => "#ffffff",
-		"description" => __( "Posterboard date title text", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Date title text", AI1EC_PLUGIN_NAME ),
 		"tab" => "posterboard",
 		"type" => "color",
 	),
@@ -369,31 +374,31 @@ $less_user_variables = array(
 	),
 	"agendaDateTitleBorder" => array(
 		"value"  => "#35597d",
-		"description" => __( "Agenda date title border", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Date title border", AI1EC_PLUGIN_NAME ),
 		"tab" => "agenda",
 		"type" => "color",
 	),
 	"agendaDateTitleBackground" => array(
 		"value"  => "#000000",
-		"description" => __( "Agenda date title background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Date title background", AI1EC_PLUGIN_NAME ),
 		"tab" => "agenda",
 		"type" => "color",
 	),
 	"agendaDateTitleMonthText" => array(
 		"value"  => "#b0b0b0",
-		"description" => __( "Agenda date title month text", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Date title month text", AI1EC_PLUGIN_NAME ),
 		"tab" => "agenda",
 		"type" => "color",
 	),
 	"agendaDateBackground" => array(
 		"value"  => "#222222",
-		"description" => __( "Agenda date background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Date background", AI1EC_PLUGIN_NAME ),
 		"tab" => "agenda",
 		"type" => "color",
 	),
 	"agendaTodayBackground" => array(
 		"value"  => "#040e16",
-		"description" => __( "Agenda today background", AI1EC_PLUGIN_NAME ),
+		"description" => __( "Today background", AI1EC_PLUGIN_NAME ),
 		"tab" => "agenda",
 		"type" => "color",
 	),

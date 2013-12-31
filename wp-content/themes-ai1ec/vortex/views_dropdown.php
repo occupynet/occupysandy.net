@@ -7,7 +7,7 @@
 	</a>
 	<div class="dropdown-menu">
 		<?php foreach ( $available_views as $key => $values ) : ?>
-			<div class="<?php if ( $key === $current_view ) echo 'active'; ?>">
+			<div class="<?php if ( $key === $current_view ) echo 'active'; ?>" data-action="<?php echo $key; ?>">
 				<a id="ai1ec-view-<?php echo $key; ?>" <?php echo $data_type; ?>
 					class="ai1ec-load-view <?php echo $key; ?>"
 					href="<?php echo $values['href']; ?>">

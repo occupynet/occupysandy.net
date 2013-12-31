@@ -1,5 +1,6 @@
-<select class="ai1ec-categories-selector"
+<select class="ai1ec-categories-selector ai1ec-select2-multiselect-selector"
 	id="<?php echo $id; ?>" name="<?php echo $name; ?>"
+	placeholder="<?php esc_attr_e( 'Categories (optional)', AI1EC_PLUGIN_NAME ); ?>"
 	data-placeholder="<?php esc_attr_e( 'Categories (optional)', AI1EC_PLUGIN_NAME ); ?>"
 	multiple="multiple">
 	<?php foreach ( $categories as $term ) : ?>

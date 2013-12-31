@@ -1,11 +1,10 @@
-// MODALS - .timely namespaced
-// Important: Update this file whenever updating Bootstrap.
-// Simply add ".timely {" immediately above .modal, then close the block by
-// adding "}" to the end.
+// MODALS - namespaced
+// Important: Update this file whenever updating Bootstrap. When updating,
+// simply replace all occurrences of ".modal" with ".ai1ec-modal".
 // ----------------------------------------------------------------------------
 
 // Recalculate z-index where appropriate
-.modal-open {
+.ai1ec-modal-open {
   .dropdown-menu {  z-index: @zindexDropdown + @zindexModal; }
   .dropdown.open { *z-index: @zindexDropdown + @zindexModal; }
   .popover       {  z-index: @zindexPopover  + @zindexModal; }
@@ -13,7 +12,7 @@
 }
 
 // Background
-.modal-backdrop {
+.ai1ec-modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -25,13 +24,12 @@
   &.fade { opacity: 0; }
 }
 
-.modal-backdrop,
-.modal-backdrop.fade.in {
+.ai1ec-modal-backdrop,
+.ai1ec-modal-backdrop.fade.in {
   .opacity(80);
 }
-.timely {
 // Base modal
-.modal {
+.ai1ec-modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -52,7 +50,7 @@
   }
   &.fade.in { top: 50%; }
 }
-.modal-header {
+.ai1ec-modal-header {
   padding: 9px 15px;
   border-bottom: 1px solid #eee;
   // Close icon
@@ -60,18 +58,18 @@
 }
 
 // Body (where all modal content resides)
-.modal-body {
+.ai1ec-modal-body {
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
 }
 // Remove bottom margin if need be
-.modal-form {
+.ai1ec-modal-form {
   margin-bottom: 0;
 }
 
 // Footer (for actions)
-.modal-footer {
+.ai1ec-modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
   text-align: right; // right align buttons
@@ -90,5 +88,4 @@
   .btn-group .btn + .btn {
     margin-left: -1px;
   }
-}
 }

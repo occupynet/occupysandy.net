@@ -9,10 +9,9 @@
 		<div class="btn-group pull-right">
 			<?php if ( $event->ticket_url ) : ?>
 				<a href="<?php esc_attr_e( $event->ticket_url ); ?>" target="_blank"
-					class="ai1ec-tickets btn btn-small btn-primary">
-					<i class="icon-shopping-cart"></i>
-					<?php _e( 'Buy Tickets', AI1EC_PLUGIN_NAME ); ?>
-				</a>
+					class="ai1ec-tickets btn btn-small btn-primary"><?php
+					echo $event->get_tickets_url_label();
+				?></a>
 			<?php endif; ?>
 			<?php if( $event->show_map ): ?>
 				<a class="btn btn-small" href="<?php the_permalink() . $event->instance_id; ?>#ai1ec-event">

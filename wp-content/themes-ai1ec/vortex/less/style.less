@@ -10,7 +10,7 @@
 // = Variables & mixins =
 // ======================
 // Based on Bootstrap. Modify variables.less for custom colors, font-sizes, etc.
-// We do not import variable.less as it's handled server side';
+// We do not import variables.less as it's handled server-side.
 @import "bootstrap/mixins.less";
 @import "bootstrap/mixins-custom.less";
 
@@ -32,23 +32,39 @@
 // =====================================
 // = Unnamespaced includes - overrides =
 // =====================================
-.modal-backdrop {
+.ai1ec-modal-backdrop {
 	background-color: @bodyBackground;
 }
 .select2-container {
 	margin-bottom: 9px;
 }
-.select2-container-multi {
-	.select2-choices {
-		background-color: @inputBackground;
-		background-image: none;
-		border-color: @inputBorder;
-		.select2-search-field input {
-			color: @inputText;
-			&.select2-default {
-				color: @placeholderText !important;
-			}
+.select2-container-multi .select2-choices {
+	background-color: @inputBackground;
+	background-image: none;
+	border-color: @inputBorder;
+	.border-radius( @inputBorderRadius );
+	.box-shadow( inset 0 1px 1px rgba(0,0,0,0.075) );
+  .select2-dropdown-open& {
+    border-bottom-color: #fff;
+    border-radius: @inputBorderRadius @inputBorderRadius 0 0;
+    .select2-drop-above& {
+      border-bottom-color: @inputBorder;
+      border-top-color: #fff;
+      border-radius: 0 0 @inputBorderRadius @inputBorderRadius;
+    }
+  }
+	.select2-search-field input {
+		color: @inputText;
+		margin: 0;
+		&.select2-default {
+			color: @placeholderText !important;
 		}
+	}
+}
+.select2-drop-mask {
+	z-index: @zindexDropdown - 1;
+	.ai1ec-modal-open & {
+		z-index: @zindexDropdown + @zindexModal - 1;
 	}
 }
 .select2-drop {
@@ -81,13 +97,12 @@
 }
 .select2-container,
 .select2-drop {
-	.ai1ec-category-color,
-	.ai1ec-category-color-empty {
+	.ai1ec-color-swatch,
+	.ai1ec-color-swatch-empty {
 		width: 7px;
 		height: 7px;
 	}
 }
-
 // Fight FOUT by hiding .timely container(s) while loading fonts.
 .ai1ec-posterboard-view {
 	background-image: url('@{imgdir}/ajax-loader.gif');
@@ -100,14 +115,55 @@
 		visibility: hidden;
 	}
 }
-.wf-active .ai1ec-posterboard-view,
+.wf-leaguegothic-n4-active .ai1ec-posterboard-view,
 .wf-inactive .ai1ec-posterboard-view {
 	background-image: none;
-	min-height: 0;
+	min-height: @baseLineHeight;
 	> * {
 		.opacity( 100 );
 		visibility: visible;
 	}
+}
+
+// Placeholder icons for Select2 widgets (categories, tags, locations, etc.)
+.ai1ec-category-filter,
+#s2id_ai1ec_categories,
+.ai1ec-tag-filter,
+#s2id_ai1ec_tags,
+.ai1ec-location-filter,
+.ai1ec-author-filter {
+	.select2-choices {
+		padding-left: 1.5em;
+	}
+}
+
+.select2-choices:before {
+  display: inline-block;
+  font-family: Timely_FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  left: 5px;
+  line-height: @baseLineHeight;
+  position: absolute;
+  speak: none;
+  text-align: center;
+  top: 5px;
+  width: 1.2em;
+  z-index: 1;
+  .ai1ec-category-filter &,
+  #s2id_ai1ec_categories & {
+    content: "\f07c";
+  }
+  .ai1ec-tag-filter &,
+	#s2id_ai1ec_tags & {
+    content: "\f02c";
+  }
+  .ai1ec-location-filter & {
+    font-size: 1.15em;
+    content: "\f041";
+  }
+  .ai1ec-author-filter & {
+    content: "\f007";
+  }
 }
 
 // ===============
@@ -182,6 +238,7 @@
 	@import "bootstrap/button-groups.less";
 	@import "bootstrap/alerts.less";
 	@import "bootstrap/navs.less";
+	@import "bootstrap/wells.less";
 	@import "bootstrap/thumbnails.less";
 
 	// Utility classes.
@@ -199,12 +256,14 @@
 	// = Extra Resets =
 	// ================
 
-	// Copied from scaffolding body reset; needed to apply to .timely, not body.
+	// Copied from scaffolding body reset, with additions; needed to apply to
+	// .timely, not body.
 	margin: 0;
 	font-family: @baseFontFamily;
 	font-size: @baseFontSize;
 	line-height: @baseLineHeight;
 	color: @textColor;
+	word-wrap: break-word;
 
 	a {
 		border: none;
@@ -221,6 +280,7 @@
 		*border: 0; // Remove the border to prevent IE7's black border on input:focus
 		border-bottom-color: darken(@btnBorder, 10%);
 		.box-shadow( @btnShadow );
+		.box-sizing( content-box );
 		&:hover {
 			color: @btnTextHover;
 		}
@@ -280,30 +340,33 @@
 	.btn-group {
 		margin-bottom: 6px;
 		vertical-align: bottom;
+		> .btn {
+			max-height: 16px;
+		}
 		> .btn-primary {
 			z-index: 3;
 		}
-	}
-	.btn-group.pull-right + .btn-group.pull-right {
-		margin-left: 0;
-		margin-right: 5px;
-	}
-	// Until we upgrade Bootstrap, must manually apply these styles to override
-	// any applied by themes based on more recent Bootstrap.
-	.btn-group > .btn,
-	.btn-group > .dropdown-menu,
-	.btn-group > .popover {
-		font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
-	}
-	// Reset fonts for other sizes
-	.btn-group > .btn-mini {
-		font-size: @baseFontSize - 2px;
-	}
-	.btn-group > .btn-small {
-		font-size: @fontSizeSmall;
-	}
-	.btn-group > .btn-large {
-		font-size: @baseFontSize + 2px;
+		// Until we upgrade Bootstrap, must manually apply these styles to override
+		// any applied by themes based on more recent Bootstrap.
+		> .btn,
+		> .dropdown-menu,
+		> .popover {
+			font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
+		}
+		&.pull-right + &.pull-right {
+			margin-left: 0;
+			margin-right: 5px;
+		}
+		// Reset fonts for other sizes
+		> .btn-mini {
+			font-size: @baseFontSize - 2px;
+		}
+		> .btn-small {
+			font-size: @fontSizeSmall;
+		}
+		> .btn-large {
+			font-size: @baseFontSize + 2px;
+		}
 	}
 
 	// Position and colorize navigation properly.
@@ -383,27 +446,27 @@
 	// ==========
 	// = Modals =
 	// ==========
-	.modal {
+	.ai1ec-modal {
 		min-height: 250px;
 		margin-left: -250px;
 		width: 500px;
 		background-color: @bodyBackground !important;
 		border-color: @modalBorder !important;
 	}
-	.modal-header {
+	.ai1ec-modal-header {
 		h2 {
 			margin: 0;
 		}
 		border-bottom-color: @fadedModalBorder;
 	}
-	.modal-body {
+	.ai1ec-modal-body {
 		min-height: 90px;
 		max-height: 350px;
 		padding: 15px;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 	}
-	.modal-footer {
+	.ai1ec-modal-footer {
 		background-color: @modalFooterBackground;
 		border-top-color: @fadedModalBorder;
 		.box-shadow( @modalFooterShadow );
@@ -582,6 +645,31 @@
 			border-bottom-color: @dropdownBackground;
 		}
 	}
+	.bootstrap-timepicker-widget.dropdown-menu.ai1ec-alignment-right {
+		left: auto;
+		right: 0;
+		&:before {
+			left: auto;
+			right: 9px;
+		}
+		&:after {
+			left: auto;
+			right: 10px;
+		}
+	}
+	.collapse.in.ai1ec-timepicker-visible {
+		overflow: visible;
+	}
+
+	// Font Awesome fix
+	a {
+		[class^="icon-"],
+		[class*=" icon-"] {
+			&.hide {
+				display: none;
+			}
+		}
+	}
 }
 
 // =======================================================================
@@ -595,6 +683,12 @@
 	.popover       {  z-index: @zindexPopover  + @zindexModal !important; }
 	.tooltip       {  z-index: @zindexTooltip  + @zindexModal !important; }
 }
+
+// ======================================
+// = Timepicker visible status tracking =
+// ======================================
+// Fix bug in timepicker that causes it to get cut off when it's contained
+// within a Bootstrap Collapse element.
 
 // ==============================
 // = AI1EC General declarations =
@@ -615,8 +709,35 @@
 		background-color: transparent;
 		background-position: center 150px;
 	}
-	.modal > & {
+	.ai1ec-modal > & {
 		.border-radius( 5px );
+	}
+}
+
+// Twenty Thirteen fixes
+.entry-content,
+.comment-content,
+.site-footer .widget {
+	.timely {
+		a {
+			color: @linkColor;
+			&:visited {
+				color: @linkColor;
+			}
+			&:hover {
+				color: @linkColorHover;
+			}
+		}
+		.btn {
+			color: @btnTextColor;
+			&:hover {
+				color: @btnTextHover;
+			}
+		}
+	}
+	.ai1ec-agenda-widget-view .ai1ec-date-title,
+	.ai1ec-agenda-view .ai1ec-date-title {
+		color: mix( @textColor, @agendaDateTitleBackground, 85% );
 	}
 }
 
@@ -690,15 +811,15 @@
 }
 
 // Category colors.
-.ai1ec-category-color,
-.ai1ec-category-color-empty {
+.ai1ec-color-swatch,
+.ai1ec-color-swatch-empty {
 	display: inline-block;
 	height: 6px;
 	margin: 0 1px;
 	padding: 1px;
 	width: 6px;
 }
-.ai1ec-category-color {
+.ai1ec-color-swatch {
 	.border-radius( 4px );
 	border-color: rgba(0,0,0,0.5);
 	.opacity( 80 );
@@ -736,81 +857,86 @@
 // ======================
 // = Agenda widget view =
 // ======================
-.ai1ec-agenda-widget-view {
-	font-size: 0.8em;
-	.ai1ec-date-events {
-		margin: 0 0.5em 0 0;
-	}
-	.ai1ec-date {
-		border-top: 1px solid darken(@agendaDateBackground, 5%);
-		#gradient > .vertical-three-colors-replace(@agendaDateBackground, @agendaDateBackground, 1em, @bodyBackground);
-		float: left;
-		width: 100%;
-	}
-	.ai1ec-date.ai1ec-today {
-		border-top: 1px solid darken(@agendaTodayBackground, 5%);
-		#gradient > .vertical-three-colors-replace(@agendaTodayBackground, @agendaTodayBackground, 1em, @bodyBackground);
-	}
+
+// Elements in common with Agenda view
+.ai1ec-agenda-widget-view,
+.ai1ec-agenda-view {
 	.ai1ec-date-title {
-		border: 1px solid mix(@textColor, @agendaDateTitleBackground, 30%);
-		border-top-color: @agendaDateTitleBackground;
-		.border-radius(5px);
-		.box-shadow(0 2px 2px rgba(0,0,0,0.08));
-		overflow: hidden;
+		border: 1px solid mix( @textColor, @agendaDateTitleBackground, 30% );
+		border-top: none;
+		.border-radius( 5px );
+		.box-shadow( 0 2px 2px rgba(0,0,0,0.08) );
+		.box-sizing( border-box );
 		color: mix( @textColor, @agendaDateTitleBackground, 85% );
 		float: left;
-		font-size: 8.7pt;
 		font-weight: bold !important;
-		#gradient > .vertical-three-colors(@agendaDateTitleBackground, @agendaDateTitleBackground, 1em, darken(@agendaDateTitleBackground, 12%));
+		#gradient > .vertical-three-colors(@agendaDateTitleBackground, @agendaDateTitleBackground, 1em, mix(@agendaDateTitleBackground, @textColor, 88%) );
 		filter: none\9; // IE8 doesn't understand how to render this gradient for some reason
 		line-height: 1.2em;
-		margin: 0.5em 0.75em;
+		margin: @baseFontSize / 2 0.75em;
+		overflow: hidden;
 		text-align: center;
 		text-shadow: 0 1px 0 @textEmboss;
-		width: 3.5em;
+		width: 4em;
 		&:hover {
-			color: @textColor;
+			color: @textColor !important;
 		}
 	}
 	.ai1ec-month {
 		background: @agendaDateTitleBorder;
-		color: @agendaDateTitleMonthText;
-		display: block;
-		font-size: 0.7em;
-		font-weight: normal;
+		.border-radius( 4px 4px 0 0 );
+		color: @agendaDateTitleBackground;
+		font-size: 0.8em;
 		letter-spacing: 0.2em;
-		line-height: 1.8em;
+		padding: 0 0.2em;
 		text-transform: uppercase;
 		text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
 	}
 	.ai1ec-day {
-		font-size: 1.7em;
-		padding: 0.3em 0 0.2em;
-		display: block;
+		font-size: 2em;
+		padding: 0.35em 0 0.22em;
 	}
 	.ai1ec-weekday {
 		font-size: 0.8em;
-		line-height: 1.3em;
-		display: block;
+		padding: 0 0 0.2em;
 	}
 	.ai1ec-year {
-		color: @agendaDateTitleMonthText;
-		background: @agendaDateTitleBorder;
-		font-size: 0.8em;
-		letter-spacing: 0.15em;
-		padding: 0 0.1em;
-		text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+		background-color: mix( @textColor, @agendaDateTitleBackground, 13% );
+		.box-shadow( inset 0 3px 3px fade( #000, 8% ) );
+		font-size: 0.7em;
+		letter-spacing: 0.2em;
+		padding: 0 0.2em;
+	}
+	.ai1ec-date {
+		border-top: 1px solid darken(@agendaDateBackground, 5%);
+		#gradient > .vertical-three-colors-replace(@agendaDateBackground, @agendaDateBackground, 1em, @bodyBackground);
+		&.ai1ec-today {
+			border-top: 1px solid darken(@agendaTodayBackground, 5%);
+			#gradient > .vertical-three-colors-replace(@agendaTodayBackground, @agendaTodayBackground, 1em, @bodyBackground);
+		}
+	}
+}
+
+// Agenda widget view only
+.ai1ec-agenda-widget-view {
+	.ai1ec-date-events {
+		margin: 0 0.5em 0 0;
+	}
+	.ai1ec-date {
+		float: left;
+		width: 100%;
+	}
+	.ai1ec-date-title {
+		font-size: 0.9em;
 	}
 
 	// Agenda widget view events.
 	.ai1ec-event {
 		clear: right;
-		font-size: 1.2em;
-		line-height: 1.3em;
-		margin: 0.5em 0 0.5em 4.9em;
+		margin: @baseFontSize / 2 0 @baseFontSize / 2 4.8em;
 		padding: 0;
 		position: relative;
-		a {
+		> a {
 			color: @eventDefaultColor;
 			display: block;
 			background: @eventBackground;
@@ -903,31 +1029,32 @@
 		background: @eventBackground;
 		.border-radius( 4px );
 		color: @eventText;
-		font-size: 10px;
+		font-size: @baseFontSize;
 		font-weight: normal;
 		padding: 5px 8px;
 		position: relative;
 		z-index: 2;
 	}
 	.ai1ec-event-time {
-		padding: 1px 8px;
 		background: @eventTimeBackground;
-		margin: 2px -8px 0;
+		font-size: @baseFontSize * 0.85;
 		font-weight: bold;
+		margin: 2px -8px 0;
+		padding: 1px 8px;
 	}
 	.ai1ec-event-avatar {
-		margin: 6px auto 3px;
+		margin: @baseLineHeight / 3 auto;
 		position: relative;
 		width: 85%;
 		img {
 			width: 100%;
 		}
 	}
-	.ai1ec-category-colors {
+	.ai1ec-color-swatches {
 		float: right;
 		font-size: 0.9em;
 	}
-	.ai1ec-category-color {
+	.ai1ec-color-swatch {
 		padding: 1px;
 	}
 	.post-edit-link {
@@ -945,19 +1072,22 @@
 }
 
 .popover-title.ai1ec-popup-title {
-	font-size: 12px;
+	font-size: @baseFontSize * 0.95;
 	font-weight: bold;
-	line-height: inherit;
+	line-height: @baseLineHeight;
 	background: none;
 	border-bottom: none;
 	padding: 0;
 	a {
 		font-weight: bold !important;
+		&.ai1ec-buy-tickets {
+			font-weight: normal !important;
+		}
 	}
 }
 
 .ai1ec-popup-excerpt {
-	font-size: 11px;
+	font-size: @baseFontSize * 0.85;
 	margin-top: 2px;
 }
 
@@ -968,7 +1098,8 @@
 .ai1ec-create-event-form,
 .ai1ec-submit-ics-form {
 	.ai1ec-checkbox-label {
-		margin: 5px 0 9px;
+		margin: 0;
+		padding: 5px 0 9px;
 		vertical-align: top;
 		span {
 			vertical-align: top;
@@ -977,8 +1108,9 @@
 			margin: 0 0 3px;
 		}
 	}
-	.ai1ec-categories-selector,
-	.ai1ec-tags-selector {
+	.ai1ec-select2-multiselect-selector,
+	.ai1ec-tags-selector,
+	.select2-container {
 		width: 100%;
 	}
 	.fileupload .thumbnail {
@@ -1097,7 +1229,7 @@
 // Devices that are too narrow to display modals properly.
 @media (max-width: 500px ) {
 	.timely {
-		.modal {
+		.ai1ec-modal {
 			position: fixed;
 			top: 3%;
 			right: 3%;
@@ -1105,10 +1237,10 @@
 			width: auto;
 			margin: 0;
 		}
-		.modal.fade.in {
+		.ai1ec-modal.fade.in {
 			top: 3%;
 		}
-		.modal-body {
+		.ai1ec-modal-body {
 			max-height: 222px;
 		}
 	}

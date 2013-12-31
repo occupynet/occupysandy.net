@@ -46,7 +46,7 @@
 											<?php echo esc_html( apply_filters( 'the_title', $event->post->post_title ) ) ?>
 										</a>
 										<?php if ( $show_location_in_title && isset( $event->venue ) && $event->venue != '' ): ?>
-											<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), $event->venue ); ?></span>
+											<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), esc_html( $event->venue ) ); ?></span>
 										<?php endif; ?>
 									</div><!--/.ai1ec-event-title-->
 
@@ -62,8 +62,8 @@
 									</div>
 									<div class="ai1ec-event-meta">
 										<span class="ai1ec-event-time">
-											<i class="icon-time"></i>
-											<?php echo $event->get_timespan_html( 'hidden' ); ?>
+											<i class="icon-calendar"></i>
+											<?php echo $event->get_timespan_html( 'short' ); ?>
 										</span><!--/.ai1ec-event-time-->
 										<?php if ( $event->get_categories_html( 'inline' ) ) : ?>
 											<span class="ai1ec-categories ai1ec-meta-divide">

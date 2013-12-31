@@ -1,5 +1,5 @@
-<div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal">×</button>
+<div class="ai1ec-modal-header">
+	<button type="button" class="close" data-dismiss="ai1ec_modal">×</button>
 	<h2><?php _e( 'Post Your Event', AI1EC_PLUGIN_NAME ); ?></h2>
 </div>
 
@@ -12,15 +12,40 @@
 <input type="hidden" name="ai1ec_all_day_event" id="ai1ec-all-day-event" />
 <input type="hidden" name="ai1ec_instant_event" id="ai1ec-instant-event" />
 
-<div class="modal-body">
+<div class="ai1ec-modal-body">
 
 	<?php // Alerts (hidden by default). ?>
 	<div class="alert alert-error hide ai1ec-missing-field">
 		<?php printf( __( 'The %s field is required.', AI1EC_PLUGIN_NAME ),
 			'<em></em>' ); ?>
 	</div>
+	<?php if( $require_disclaimer ) : ?>
+		<div class="alert alert-error hide ai1ec-required-disclaimer">
+			<?php _e( 'You must check the checkbox stating you agree to the posting rules to submit the event.', AI1EC_PLUGIN_NAME ) ?>
+		</div>
+	<?php endif; ?>
 	<div class="alert alert-error hide ai1ec-submit-error"></div>
 
+	<?php if( $require_disclaimer ) : ?>
+	<div class="row-fluid">
+		<label for="require_disclaimer" class="ai1ec-checkbox-label">
+			<input type="checkbox" id="require_disclaimer" value="1" />
+			<?php printf(
+				__(
+					'I have read and agreed that this event conforms to the <a %s>posting rules</a>',
+					AI1EC_PLUGIN_NAME
+				),
+				'data-toggle="ai1ec_collapse" data-target="#show_disclaimer" class="ai1ec-collapsible-toggle" id="open_require_disclaimer"'
+				); ?>
+		</label>
+	</div>
+	<div class="ai1ec-row collapse"
+			id="show_disclaimer">
+				<div class="well well-small">
+					<?php echo $disclaimer ?>
+				</div>
+			</div>
+	<?php endif; ?>
 	<?php // Event title. ?>
 	<div class="row-fluid">
 		<input type="text" id="ai1ec-event-title" name="post_title"
@@ -40,12 +65,15 @@
 		</div>
 
 		<div class="span3">
-			<div id="ai1ec-start-time-input-wrap" class="collapse">
+			<div id="ai1ec-start-time-input-wrap"
+				class="collapse bootstrap-timepicker">
 				<input id="ai1ec-start-time-input" type="text"
+					title="<?php echo $timezone_expr; ?>"
 					data-show-meridian="<?php echo $input_24h_time ? 'false' : 'true'; ?>"
 					readonly="readonly" disabled="disabled"
-					class="span12 ai1ec-timepicker"
-					placeholder="<?php esc_attr_e( 'Time', AI1EC_PLUGIN_NAME ); ?>" />
+					class="span12 ai1ec-timepicker ai1ec-tooltip-trigger"
+					placeholder="<?php esc_attr_e( 'Time', AI1EC_PLUGIN_NAME ); ?>"
+					/>
 			</div>
 
 			<?php // Has time checkbox. ?>
@@ -72,11 +100,14 @@
 				</div>
 
 				<div class="span6">
-					<div id="ai1ec-end-time-input-wrap" class="collapse">
+					<div id="ai1ec-end-time-input-wrap"
+						class="collapse bootstrap-timepicker">
 						<input id="ai1ec-end-time-input" type="text"
+							title="<?php echo $timezone_expr; ?>"
 							data-show-meridian="<?php echo $input_24h_time ? 'false' : 'true'; ?>"
+							data-alignment="right"
 							readonly="readonly" disabled="disabled"
-							class="span12 ai1ec-timepicker"
+							class="span12 ai1ec-timepicker ai1ec-tooltip-trigger"
 							placeholder="<?php esc_attr_e( 'End time', AI1EC_PLUGIN_NAME ); ?>"
 							/>
 					</div>
@@ -185,13 +216,25 @@
 		<?php /* Event cost and tickets URL */ ?>
 		<div class="row-fluid">
 			<div class="span4">
-				<input type="text" id="ai1ec_cost" name="ai1ec_cost"
-					placeholder="<?php esc_attr_e( 'Event cost (optional)', AI1EC_PLUGIN_NAME ); ?>"
-					class="span12" />
+				<div id="ai1ec_cost_wrap" class="collapse">
+					<input type="text" id="ai1ec_cost" name="ai1ec_cost"
+						placeholder="<?php esc_attr_e( 'Cost', AI1EC_PLUGIN_NAME ); ?>"
+						class="span12" />
+				</div>
+				<label for="ai1ec_is_free">
+					<input type="checkbox"
+					       checked="checked"
+					       name="ai1ec_is_free"
+					       data-toggle="ai1ec_collapse"
+					       data-target="#ai1ec_cost_wrap"
+					       id="ai1ec_is_free"
+					       value="1" />
+					<?php _e( 'Free', AI1EC_PLUGIN_NAME ); ?>
+				</label>
 			</div>
 			<div class="span8">
 				<input type="text" id="ai1ec_ticket_url" name="ai1ec_ticket_url"
-					placeholder="<?php esc_attr_e( 'Buy tickets URL (optional)', AI1EC_PLUGIN_NAME ); ?>"
+					placeholder="<?php esc_attr_e( 'Registration URL (optional)', AI1EC_PLUGIN_NAME ); ?>"
 					class="span12" />
 			</div>
 		</div>
@@ -255,9 +298,9 @@
 		</div>
 	<?php endif; ?>
 
-</div><!-- /.modal-body -->
+</div><!-- /.ai1ec-modal-body -->
 
-<div class="modal-footer">
+<div class="ai1ec-modal-footer">
 	<a href="#" class="btn btn-large btn-primary ai1ec-submit">
 		<?php _e( 'Submit Event', AI1EC_PLUGIN_NAME ); ?>
 		<i class="icon-chevron-right"></i>

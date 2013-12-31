@@ -1,14 +1,14 @@
-<div class="modal hide fade" id="ai1ec-submit-ics-modal">
+<div class="ai1ec-modal hide fade" id="ai1ec-submit-ics-modal">
 	<div class="ai1ec-loading"></div>
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">×</button>
+	<div class="ai1ec-modal-header">
+		<button type="button" class="close" data-dismiss="ai1ec_modal">×</button>
 		<h2><?php _e( 'Add Your Calendar Feed', AI1EC_PLUGIN_NAME ); ?></h2>
 	</div>
 	<form class="ai1ec-submit-ics-form">
 		<span class="ai1ec-nonce-fields">
 			<?php wp_nonce_field( 'ai1ec_submit_ics_form', AI1EC_POST_TYPE ); ?>
 		</span>
-		<div class="modal-body">
+		<div class="ai1ec-modal-body">
 			<div class="ai1ec-pane collapse in">
 				<div class="ai1ec-alerts"></div>
 				<div class="ai1ec-prose">
@@ -70,7 +70,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="modal-footer">
+		<div class="ai1ec-modal-footer">
 			<div class="collapse in ai1ec-pane">
 				<button type="submit"
 					class="btn btn-large btn-primary ai1ec-submit">

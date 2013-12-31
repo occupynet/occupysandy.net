@@ -14,24 +14,31 @@
 	<?php else: ?>
 		<div>
 			<?php foreach( $dates as $timestamp => $date_info ): ?>
-				<div class="ai1ec-date <?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo 'ai1ec-today'; ?>">
+				<div class="ai1ec-date
+					<?php if ( ! empty( $date_info['today'] ) ) echo 'ai1ec-today'; ?>">
 					<a class="ai1ec-date-title ai1ec-load-view" href="<?php echo $date_info['href']; ?>">
-						<span class="ai1ec-month"><?php echo Ai1ec_Time_Utility::date_i18n( 'M', $timestamp, true ); ?></span>
-						<span class="ai1ec-day"><?php echo Ai1ec_Time_Utility::date_i18n( 'j', $timestamp, true ); ?></span>
-						<span class="ai1ec-weekday"><?php echo Ai1ec_Time_Utility::date_i18n( 'D', $timestamp, true ); ?></span>
-						<?php if ( $show_year_in_agenda_dates ): ?>
-							<span class="ai1ec-year"><?php echo Ai1ec_Time_Utility::date_i18n( 'Y', $timestamp, true ) ?></span>
+						<div class="ai1ec-month"><?php echo Ai1ec_Time_Utility::date_i18n( 'M', $timestamp, true ); ?></div>
+						<div class="ai1ec-day"><?php echo Ai1ec_Time_Utility::date_i18n( 'j', $timestamp, true ); ?></div>
+						<div class="ai1ec-weekday"><?php echo Ai1ec_Time_Utility::date_i18n( 'D', $timestamp, true ); ?></div>
+						<?php if ( $show_year_in_agenda_dates ) : ?>
+							<div class="ai1ec-year"><?php echo Ai1ec_Time_Utility::date_i18n( 'Y', $timestamp, true ) ?></div>
 						<?php endif; ?>
 					</a><!--/.ai1ec-date-title-->
 					<div class="ai1ec-date-events">
 						<?php foreach( $date_info['events'] as $category ): ?>
-							<?php foreach( $category as $event ): ?>
+							<?php
+							foreach ( $category as $event ):
+								$full_link = esc_attr(
+									get_permalink( $event->post_id ) .
+									$event->instance_id
+								);
+							?>
 								<div class="ai1ec-event
 									ai1ec-event-id-<?php echo $event->post_id; ?>
 									ai1ec-event-instance-id-<?php echo $event->instance_id; ?>
 									<?php if( $event->allday ) echo 'ai1ec-allday'; ?>">
 
-									<a href="<?php echo esc_attr( get_permalink( $event->post_id ) ) . $event->instance_id; ?>"
+									<a href="<?php echo $full_link; ?>"
 										class="ai1ec-popup-trigger">
 										<?php if ( $event->allday ): ?>
 											<span class="ai1ec-allday-badge">
@@ -45,18 +52,18 @@
 										<span class="ai1ec-event-title">
 											<?php echo esc_html( apply_filters( 'the_title', $event->post->post_title, $event->post_id ) ); ?>
 											<?php if ( $show_location_in_title && isset( $event->venue ) && $event->venue != '' ): ?>
-												<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), $event->venue ); ?></span>
+												<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), esc_html( $event->venue ) ); ?></span>
 											<?php endif; ?>
 										</span>
 
 									</a><!--/.ai1ec-popup-trigger-->
 									<div class="ai1ec-popup hide">
 										<?php if( $event->get_category_colors() ): ?>
-											<div class="ai1ec-category-colors"><?php echo $event->get_category_colors(); ?></div>
+											<div class="ai1ec-color-swatches"><?php echo $event->get_category_colors(); ?></div>
 										<?php endif ?>
 
 										<span class="ai1ec-popup-title popover-title">
-											<a href="<?php echo esc_attr( get_permalink( $event->post_id ) ) . $event->instance_id ?>">
+											<a href="<?php echo $full_link; ?>">
 												<?php if ( function_exists( 'mb_strimwidth' ) ) : ?>
 													<?php echo esc_html( apply_filters( 'the_title', mb_strimwidth( $event->post->post_title, 0, 35, '...' ), $event->post_id ) );
 												else : ?>
@@ -66,6 +73,9 @@
 											?></a>
 											<?php if ( $show_location_in_title && isset( $event->venue ) && $event->venue != '' ): ?>
 												<span class="ai1ec-event-location"><?php echo esc_html( sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), $event->venue ) ); ?></span>
+											<?php endif; ?>
+											<?php if ( $is_ticket_button_enabled && ! empty( $event->ticket_url ) ) : ?>
+												<a class="pull-right btn btn-primary btn-mini ai1ec-buy-tickets" target="_blank" href="<?php echo $event->ticket_url; ?>"><?php echo $event->get_tickets_url_label( false ); ?></a>
 											<?php endif; ?>
 										</span><!--/.span.ai1ec-popup-title-->
 										<?php edit_post_link(
