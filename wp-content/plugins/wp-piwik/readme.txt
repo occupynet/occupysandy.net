@@ -1,9 +1,9 @@
 === WP-Piwik ===
 
 Contributors: Braekling
-Requires at least: 3.5
-Tested up to: 3.5.1
-Stable tag: 0.9.9.1
+Requires at least: 4.0
+Tested up to: 4.3.1
+Stable tag: 1.0.5
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6046779
 Tags: statistics, stats, analytics, piwik, wpmu
 
@@ -11,17 +11,17 @@ This plugin adds a Piwik stats site to your WordPress or WordPress multisite das
 
 == Description ==
 
-This plugin adds a Piwik stats site to your WordPress dashboard. It's also able to add the Piwik tracking code to your blog using wp_footer.
+This plugin adds a Piwik stats site to your WordPress dashboard. It's also able to add the Piwik tracking code to your blog.
 
-**You need a running Piwik (at least 1.11) installation** and at least view access to your stats. Also PHP 5 or higher is strictly required.
+To use this plugin you will need your own Piwik instance. If you do not already have a Piwik setup, you have two simple options: use either [Self-hosted](http://piwik.org/) or [Cloud-hosted](http://piwik.org/hosting/). 
 
-Look at the [Piwik website](http://piwik.org/) to get further information about Piwik.
+**Requirements:** PHP 5.4 (or higher), WordPress 4.0 (or higher), Piwik 2.9 (or higher; 2.14.1 or higher recommended)
+ 
+**Languages:** English, Albania, Dutch, French, German, Greek, Hungarian, Italian, Portuguese (Brazil). Partially supported: Azerbaijani, Belarusian, Chinese (simplified),  Hindi, Lithuanian, Luxembourgish, Norwegian, Persian, Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian
 
-*This plugin is not created or provided by the Piwik project team.*
+**Note:** If you vote "It's broken", please tell me about your problem. It's hard to fix a bug I don't know about! ;-)
 
-Languages: English, German, Albanian, Azerbaijani, Belorussian, Dutch, French, Greek, Lithuanian, Norwegian, Persian, Romanian, Russian, Spanish, Swedish, Ukrainian
-
-*Note: If you vote "It's broken", please tell me about your problem. It's hard to fix a bug I don't know about! ;-)*
+GitHub: https://github.com/braekling/WP-Piwik
 
 = Shortcodes =
 You can use following shortcodes if activated:
@@ -32,21 +32,17 @@ Shows overview table like WP-Piwik's overview dashboard. See Piwik API documenta
     [wp-piwik module="opt-out" language="en" width="100%" height="200px"]
 Shows the Piwik opt-out Iframe. You can change the Iframe's language by the language attribute (e.g. de for German language) and its width and height using the corresponding attributes.
 
+	[wp-piwik module="post" range="last30" key="sum_daily_nb_uniq_visitors"]
+Shows the chosen keys value related to the current post. You can define a range (format: lastN, previousN or YYYY-MM-DD,YYYY-MM-DD) and the desired value's key (e.g., sum_daily_nb_uniq_visitors, nb_visits or nb_hits - for details see Piwik's API method Actions.getPageUrl using a range).
+
 	[wp-piwik]
 is equal to *[wp-piwik module="overview" title="" period="day" date="yesterday"]*.
-
-More shortcodes will follow soon.
-
-= WP multisite =
-
-See section "Installation".
 
 = Credits =
 
 * Graphs powered by [jqPlot](http://www.jqplot.com/) (GPL 2.0 and MIT) and  and [jQuery Sparklines](http://omnipotent.net/jquery.sparkline/) (New BSD License).
-* Metabox support inspired by [Heiko Rabe's metabox demo plugin](http://www.code-styling.de/english/how-to-use-wordpress-metaboxes-at-own-plugins).
-* Translation credits see plugin settings
-* Donations: Marco L., Rolf W., Tobias U., Lars K., Donna F., Kevin D., Ramos S, Thomas M., John C., Andreas G., Ben M., the Piwik team itself, and all people flattering this.
+* All translators at the [Transifex translation community](https://www.transifex.com/projects/p/wp-piwik/).
+* Donations: Marco L., Rolf W., Tobias U., Lars K., Donna F., Kevin D., Ramos S., Thomas M., John C., Andreas G., Ben M., Myra R. I., Carlos U. R.-S., Oleg I., M. N., Daniel K., James L., Jochen K., Cyril P., Thomas K., Patrik K., Zach, Sebastian W., Peakkom, Patrik K., the Piwik team itself, and all people flattering this.
 * All users who send me mails containing criticism, commendation, feature requests and bug reports - you help me to make WP-Piwik much better!
 
 Thank you all!
@@ -55,21 +51,33 @@ Thank you all!
 
 = Where can I find the Piwik URL and the Piwik auth token? =
 
-WP-Piwik requires Piwik. If you did not install Piwik yet, first get it at the [Piwik website](http://www.piwik.org). 
+To use this plugin you will need your own Piwik instance. If you do not already have a Piwik setup, you have two simple options: use either [Self-hosted](http://piwik.org/) or [Cloud-hosted](http://piwik.org/hosting/). 
 
-If Piwik works, you'll be able to configure WP-Piwik: The Piwik URL is the same URL you use to access your Piwik, e.g. for the demo site: http://demo.piwik.org. The auth token is some kind of secret password, which allows WP-Piwik to get the necessary data from Piwik. The super user's auth token, i.e. a full access password for your Piwik, can be found on Piwik's API site. You can find a detailed description [here](http://peepbo.de/board/viewtopic.php?f=5&t=10).
+As soon as Piwik works, you'll be able to configure WP-Piwik: The Piwik URL is the same URL you use to access your Piwik, e.g. for the demo site: http://demo.piwik.org. The auth token is some kind of a secret password, which allows WP-Piwik to get the necessary data from Piwik. To get your auth token, log in to Piwik, click at your user name (top right) and click at "API" (left sidebar menu).
 
-= How to reset/remove all WP-Piwik settings without uninstalling? =
+You can get a more detailed description here: https://piwik.org/blog/2015/05/wordpress-integration-wp-piwik-1-0/
 
-Login to your admin dashboard and open http://YOUR_BLOG_URL/wp-admin/options-general.php?page=wp-piwik/wp-piwik.php&tab=support&mode=resetconfirmed&full=1
+= Can I contribute to WP-Piwik as a translator? =
 
-= Tracking does not work on HostGator! =
+You like to contribute to WP-Piwik translations? Please use the [Transifex translation community](https://www.transifex.com/projects/p/wp-piwik/).
+
+Of course, I will add missing languages if requested, and I will also upload the existing language files of older WP-Piwik releases.
+
+If you can't (or don not want to) use transifex, you can also translate languages/wp-piwik.pot delivered with WP-Piwik.
+
+Thank you very much! :-)
+
+= Why does WP-Piwik require a newer PHP version than WordPress? =
+
+WP-Piwik requires a working Piwik instance which requires a higher PHP version, too. Furthermore, please have a look at the [official PHP Unsupported Branches page](http://php.net/eol.php). Even if your software still works with PHP 5.2, the PHP team stopped to deliver **security** patches in January 2011. Even PHP 5.3 does not get security patches anymore (end of life date was August 2014).
+
+= Tracking does not work on HostGator! / The test script shows an empty response. =
 
 Try to enable the "avoid mod_security" option (WP-Piwik settings, Tracking tab) or create a mod_security whitelist.
 
-= WP-Piwik does not work with SSL! =
+= Overview shortcode shows no unique visitors using a yearly range. =
 
-See [this support thread](http://wordpress.org/support/topic/plugin-wp-piwik-https-ssl-support?replies=3).
+See [Piwik FAQ](http://piwik.org/faq/how-to/#faq_113).
 
 == Installation ==
 
@@ -79,11 +87,11 @@ See [this support thread](http://wordpress.org/support/topic/plugin-wp-piwik-htt
 
 2. Activate the plugin through the 'Plugins' menu in WordPress. 
 
-3. Open the new 'Settings/WP-Piwik Settings' menu, enter your Piwik base URL and your auth token. Save settings.
+3. Open the new 'Settings/WP-Piwik Settings' menu and follow the instructions to configure your Piwik connection. Save settings.
 
 4. If you have view access to multiple site stats and did not enable "auto config", choose your blog and save settings again.
 
-5. Look at 'Dashboard/WP-Piwik' to get your site stats.
+5. Look at 'Dashboard/WP-Piwik' to see your site stats.
 
 = Install WP-Piwik on a WordPress blog network (WPMU/WP multisite) =
 
@@ -107,12 +115,204 @@ Add WP-Piwik to your /wp-content/plugins folder and enable it as [Network Plugin
 2. WP-Piwik statistics page.
 3. Closer look to a pie chart.
 4. WordPress toolbar graph.
+5. Piwik: Here you'll find your auth token.
 
 == Upgrade Notice ==
 
-Please update Piwik if not done yet (Piwik 1.11 or higher is recommended)!
+Version 1.0.5 contains an important security fix. Please update as soon as possible.
 
 == Changelog ==
+
+= 1.0.5=
+* Several language updates.
+* Important security fix: XSS vulnerability
+
+= 1.0.4 =
+* Several language updates.
+* Feature: Offer setDownloadExtensions option (see expert settings).
+* Feature: Consider configured HHTP connection method in proxy script.
+* Widget: Visitor country added.
+* Bugfix: Annotations on scheduled posts will work.
+* Bugfix: Donation button will work again.
+
+= 1.0.3 =
+* Several language updates.
+* Switch to JSON renderer (Piwik 3 compatibility preparation)
+* Workaround: PHP API will work with Piwik 2.14+, see https://github.com/piwik/piwik/issues/8311 for further information.
+* Feature: Heartbeat timer support
+* Feature: Expanded token & URL/path input fields
+* Bugfix: Site duplication fix.
+* Bugfix: Avoid notice on empty overview response.
+* Bugfix: Return request error responses.
+* Bugfix: Opt-out URL fixed.
+* Bugfix: Capabilities: "Do not track"-filter and "show stats"-limit will work on multisites as expected again.
+
+= 1.0.2 =
+* Several language updates.
+* Feature: Disable update notifications (expert settings).
+* Feature: Choose between cURL and fopen if both are available (expert settings).
+* Feature: Choose between POST and GET (expert settings).
+* Widget: System details added.
+* Widget: SEO widget re-enabled.
+* Update: Replaced deprecated Piwik API calls.
+* Bugfix: Settings link (toolbar, network mode) fixed.
+* Bugfix: Encode blog titles in PHP mode.
+* Bugfix: Pie charts won't show to long legends if more than 10 items are available.
+
+= 1.0.1 =
+* Several language updates, amongst others Portuges (Brazil) finished. See https://www.transifex.com/organization/piwik/dashboard/wp-piwik for further information.
+* Bugfix: If WP-Piwik is not configured properly or the connection to Piwik could not be established, the toolbar graph won't cause a JavaScript error anymore.
+
+= 1.0.0 =
+* Feature: Expand "other" values on click
+* Bugfix: Avoid notices on invalid file path (PHP API)
+* Bugfix: Cookie lifetime input boxes are in some cases shown or hidden by mistake
+* Network (multisite): Updated plugin to use wp_get_sites if possible
+* Test script: Settings dump added
+
+= 0.10.1.0 =
+* Bugfix: Fixed memory & timeout issue on multisites
+
+= 0.10.0.9 =
+* Add clear cache function.
+* Add clear settings (reset) function.
+
+= 0.10.0.8 =
+* Bugfix: Sitebrowser link (settings page, support) fixed
+* Bugfix: Use new settings directly after saving (reloading is not necessary anymore)
+* Optimized caching behaviour
+* Language update (German, French)
+
+= 0.10.0.7 =
+* Bugfix: Opt-out shortcode output fix
+* Bugfix: Opt-out shortcode will also work in "pro" and "php" mode
+* Bugfix: Test script link (settings page, support) fixed
+* Bugfix: Removed test script errors and notices
+* Bugfix: Keep sure the revion ID is stored and avoid re-installing the plugin again and again
+* Bugfix: http/pro - after configuration the settings page had to be reloaded once to start working
+* Typo fixes
+ 
+= 0.10.0.6 =
+* Bugfix: Option storage bug if WP-Piwik is used as single site plugin on blog networks
+* Bugfix: WP-Piwik will work without Piwik superuser access, again
+* Bugfix: Choosing the site without auto config works again
+
+= 0.10.0.5 =
+* Bugfix: In some cases the update message did not disappear -> fixed
+* Important change: If you want to upgrade from 0.8.x to 0.10.x, please install 0.9.9.18 first: https://downloads.wordpress.org/plugin/wp-piwik.0.9.9.18.zip
+
+= 0.10.0.4 =
+* Bugfix: Settings link in admin notices fixed
+* Bugfix: Shortcode result will appear where expected
+* Bugfix: 0.9.9.18 settings will be kept (if WP-Piwik was not reconfigured after updating to 0.10.0.3, yet)
+* Feature: If Piwik returns an error instead of a tracking code, this error will be visible
+
+= 0.10.0.3 =
+* Public beta of WP-Piwik 1.0
+* Full refactored code
+* Feature: Limit referral cookie lifetime
+* Feature: Enable content tracking
+
+= 0.9.9.18 =
+* Improvement: Define additional file extensions for tracking downloads
+* Improvement: Added a POT file to support translators (Note: 1.0 will change a lot, so please don't spend too much time in translating the current version, e.g., by creating an all new translation. With 1.0 I will also offer a translation platform to support your work.)
+* Improvement: If necessary, you can force Piwik to use HTTP or HTTPS now (e.g., to avoid redirections from http to https)
+* Avoided a naming collision with Woo Theme
+
+= 0.9.9.17 =
+* Improvement: Updated the Piwik proxy script and added cURL support if url_fopen is not available
+* Bugfix: Setup bug, see https://wordpress.org/support/topic/piwik-urlpath-not-saved
+* Bugfix: CDN URL notice, see https://wordpress.org/support/topic/tracking-cdn-blank-gives-php-notice-which-breaks-the-trackback-js-code
+* Bugfix: Fixed zlib compression notice, see https://wordpress.org/support/topic/v09914-is-bad
+* Bugfix: Proxy script label links to proxy script checkbox
+* Fixed a typo in German language file
+
+= 0.9.9.16 =
+* Bugfix: PHP API causes plain text output issue (see 0.9.9.11)
+* Bugfix: Shortcode output translated
+
+= 0.9.9.15 =
+* Bugfix: One more commit error
+* Bugfix: Adding up problem related to the overview widget
+* Bugfix: Fixes missing brackets on ob_start
+* Hotfix: Adds /0.9.9.15 to js/index.php to force a reload
+* Bugifx: Replaced broken support link
+* Added a bitcoin donation link
+
+= 0.9.9.14 =
+* Bugfix: Commit errors in 0.9.9.13
+
+= 0.9.9.13 =
+* Improvement: Only activate/ load admin components if an admin page is actually loaded. Thanks to Michael!
+* Bugfix: Proxy tracking will work again. Piwik 2.7 or higher is recommended.
+* Bugfix: Avoid a PHP notice in dashboard
+* NOTE: If you update Piwik and use the "add tracking code" feature, please also update your WP-Piwik tracking code: Just open the WP-Piwik tracking code settings and save them again. 
+
+= 0.9.9.12 =
+* Bugfix: Avoid forced relogin on site change (WP network)
+* Bugfix: Avoid multiple annotations on post updates
+* Bugfix: User mergeSubdomains instead of mergeAliasURLs
+* Feature: Added mergeAliasURLs as additional feature
+
+= 0.9.9.11 =
+* Bugfix: PHP API causes plain text output issue, see http://wordpress.org/support/topic/bug-cant-access-to-tabs-in-setting-after-configuration
+* Bugfix: PHP API causes WordPress multisite login issue, see http://wordpress.org/support/topic/causes-multisite-superadmin-subsite-login-problem
+* Bugfix: Removed PHP warning if annotations are enabled and annotations will work again, see http://wordpress.org/support/topic/warning-message-everywhere-in-the-backend-call_user_func_array-expects
+* Feature: "Track visitors across all subdomains" script changes are done by Piwik now, see http://wordpress.org/support/topic/track-across-subdomains-wp-on-subdomain?replies=2
+* Update: Flattr API update
+
+= 0.9.9.10 =
+* Bugfix: Multisite login issue, see http://wordpress.org/support/topic/0999-multisite-frontend-not-logged-in
+* Bugfix: wpMandrill compatibility, see http://wordpress.org/support/topic/version-0999-conflicts-with-wpmandrill
+* Feature: Show page views (actions) in "visitors last 30"
+
+= 0.9.9.9 =
+* Update: PHP API will use namespaces (Piwik 2.x compatibility)
+* Update: Piwik URL isn't necessary to use PHP API anymore.
+* Feature: Limit cookie lifetime
+* Feature: Track visitors across all subdomains
+* Feature: Disable custom var box if necessary
+* Feature: Choose if you like to add the tracking code to your site's footer or header
+* Feature: New shortcode (post)
+* Feature: Add data-cfasync=false to script tag if necessary.
+* Feature: Add annotations on new posts, see http://linuxundich.de/webhosting/beim-veroeffentlichen-von-wordpress-posts-eine-anmerkung-in-piwik-setzen/
+* Bugfix: Do not load sparklines plugin if toolbar not shown
+* Bugfix: PHP API will work again (urlencoding removed)
+* jqPlot and jquery.sparkline updated
+* Partly refactored code
+
+= 0.9.9.8 =
+* Feature: Per post stats (shown at the edit post page)
+* Feature: Track RSS views using a measurement pixel
+
+= 0.9.9.7 =
+* Bugfix: Error messages won't by cached anymore
+* Bugfix: Custom vars will now be added properly
+* Bugfix: Missing slash in proxy mode added
+* Feature: Track users on admin pages
+
+= 0.9.9.6 =
+* Bugfix: Proxy script will work again
+* Option: Enable/disable one week caching
+* Load config file using full path to avoid side effects
+
+= 0.9.9.5 =
+* Fatal error on statistics settings page fixed
+
+= 0.9.9.4 =
+* Use Transients API (one week caching)
+* Option: Track visitors without JavaScript, see http://piwik.org/faq/how-to/#faq_176
+
+= 0.9.9.3 = 
+* Sparkline script update (IE 10 compatibility)
+* Syntax error fixes
+
+= 0.9.9.2 =
+* Bugfix regarding tracking code changes in proxy mode, see http://wordpress.org/support/topic/problem-with-https-in-proxy-mode
+* Feature: Change text "WP-Piwik" in menu items and dashboard widgets
+* Code cleanup ("new" first step)
+* Debugging: Logger added
+* Avoid double slash (//) in tracking code
 
 = 0.9.9.1 =
 * CDN support: http and https separated, see http://wordpress.org/support/topic/request-cdn-support-1
