@@ -1,10 +1,11 @@
 <?php
+
 /*
   Plugin Name: Show Current Template
   Plugin URI: http://wp.tekapo.com/
   Description: Show the current template file name in the tool bar.
   Author: JOTAKI Taisuke
-  Version: 0.1.5
+  Version: 0.2.0
   Author URI: http://tekapo.com/
   Text Domain: show-current-template
   Domain Path: /languages/
@@ -58,12 +59,14 @@ class Show_Template_File_Name {
 		$parent_theme_name	 = '';
 
 		if ( is_child_theme() ) {
-			$child_theme_name	 = __( 'Theme name: ', self::TEXT_DOMAIN ) . $current_theme_name;
+			$child_theme_name	 = __( 'Theme name: ', self::TEXT_DOMAIN, 'show-current-template' )
+					. $current_theme_name;
 			$parent_theme_name	 = $current_theme->parent()->Name;
-			$parent_theme_name	 = ' (' . $parent_theme_name . __( "'s child", self::TEXT_DOMAIN ) . ")";
+			$parent_theme_name	 = ' (' . $parent_theme_name . __( "'s child", self::TEXT_DOMAIN, 'show-current-template' ) . ")";
 			$parent_or_child	 = $child_theme_name . $parent_theme_name;
 		} else {
-			$parent_or_child = __( 'Theme name: ', self::TEXT_DOMAIN ) . $current_theme_name . ' (' . __( 'NOT a child theme', self::TEXT_DOMAIN ) . ')';
+			$parent_or_child = __( 'Theme name: ', self::TEXT_DOMAIN, 'show-current-template' )
+					. $current_theme_name . ' (' . __( 'NOT a child theme', self::TEXT_DOMAIN, 'show-current-template' ) . ')';
 		}
 
 		$included_files = get_included_files();
@@ -76,7 +79,7 @@ class Show_Template_File_Name {
 				if ( $template_relative_path == $filepath ) {
 					$included_files_list .= '';
 				} else {
-					$included_files_list .= "$filepath <br />\n";
+					$included_files_list .= '<li>' . "$filepath" . '</li>';
 				}
 			}
 		}
@@ -84,7 +87,8 @@ class Show_Template_File_Name {
 		global $wp_admin_bar;
 		$args = array(
 			'id'	 => 'show_template_file_name_on_top',
-			'title'	 => __( 'Template:', self::TEXT_DOMAIN ) . '<span class="show-template-name"> ' . $template_file_name . '</span>',
+			'title'	 => __( 'Template:', self::TEXT_DOMAIN, 'show-current-template' )
+			. '<span class="show-template-name"> ' . $template_file_name . '</span>',
 		);
 
 		$wp_admin_bar->add_node( $args );
@@ -92,7 +96,8 @@ class Show_Template_File_Name {
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'show_template_file_name_on_top',
 			'id'	 => 'template_relative_path',
-			'title'	 => __( 'Template relative path:', self::TEXT_DOMAIN ) . '<span class="show-template-name"> ' . $template_relative_path . '</span>',
+			'title'	 => __( 'Template relative path:', self::TEXT_DOMAIN, 'show-current-template' )
+			. '<span class="show-template-name"> ' . $template_relative_path . '</span>',
 		) );
 
 		$wp_admin_bar->add_menu( array(
@@ -104,17 +109,27 @@ class Show_Template_File_Name {
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'show_template_file_name_on_top',
 			'id'	 => 'included_files_path',
-			'title'	 => __( 'Also, below template files are included:', self::TEXT_DOMAIN ) . '<br /><div id="included-files-list">' . $included_files_list . '</div>',
+			'title'	 => __( 'Also, below template files are included:', self::TEXT_DOMAIN
+					, 'show-current-template' ) . '<br /><ul id="included-files-list">'
+			. $included_files_list . '</ul>',
 		) );
 	}
 
 	public function add_current_template_stylesheet() {
 
-		if ( is_admin() or !is_super_admin() )
+		if ( is_admin() or !is_super_admin() ) {
 			return;
+		}
 
-		wp_register_style( 'current-template-style', plugins_url( 'style.css', __FILE__ ) );
-		wp_enqueue_style( 'current-template-style' );
+		$wp_version = get_bloginfo( 'version' );
+
+		if ( $wp_version >= '3.8' ) {
+			wp_register_style( 'current-template-style', plugins_url( 'style.css', __FILE__ ) );
+			wp_enqueue_style( 'current-template-style' );
+		}  else {
+			wp_register_style( 'current-template-style', plugins_url( 'style-old.css', __FILE__ ) );
+			wp_enqueue_style( 'current-template-style' );			
+		}
 	}
 
 }

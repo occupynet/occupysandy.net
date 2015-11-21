@@ -1,10 +1,10 @@
 === Show Current Template ===
 Contributors: tai
-Donate link: 
+Donate link:
 Tags: template, toolbar
 Requires at least: 3.5
-Tested up to: 3.5.1
-Stable tag: 0.1.5
+Tested up to: 4.3.1
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,12 @@ None so far.
 None so far.
 
 == Changelog ==
+
+= 0.1.8 =
+* UPDATED: update for 3.8.
+
+= 0.1.6 =
+* FIXED: update for 3.8.
 
 = 0.1.5 =
 * FIXED: Fixed the issue of not displaying the parent theme name when using a child theme.
