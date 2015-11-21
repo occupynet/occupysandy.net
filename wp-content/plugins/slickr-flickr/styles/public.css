@@ -1,0 +1,69 @@
+/* Slickr Flickr Gallery */
+
+.slickr-flickr-gallery {background-color:transparent;padding:10px;margin:0 auto;}
+.slickr-flickr-gallery ul {list-style:none; margin:0;padding:0}
+.slickr-flickr-gallery ul:after {clear:both;}
+.slickr-flickr-gallery ul.center {margin: 0 auto;}
+.slickr-flickr-gallery ul.left {float:left;}
+.slickr-flickr-gallery ul.right {float:right;}
+.slickr-flickr-gallery ul li {display:inline-block;vertical-align:top;overflow:hidden;background:none;float:none;padding:2px;margin:0px;text-align: center;}
+*:first-child+html .slickr-flickr-gallery ul li {display:inline} /* for IE7 */
+* html .slickr-flickr-gallery ul li {display:inline} /* for IE6 */
+.slickr-flickr-gallery img { border:1px solid #A9A9A9;margin:0;padding:4px;position:relative;}
+.slickr-flickr-gallery img.hover {background-color:brown;}
+.slickr-flickr-gallery ul li a {text-decoration:none;}
+.slickr-flickr-gallery ul li a span{font-size:0.7em;}
+.slickr-flickr-gallery p.slickr-flickr-attribution {font-style:italic;margin-bottom:0;}
+.slickr-flickr-attribution {font-style:italic;margin-bottom:0 !important;}
+
+#TB_caption { height: auto; }
+
+#lightGallery-close {top:0;right:0;}
+#lightGallery-action {bottom: 5px;}
+#lightGallery-slider .lightGallery-slide img {margin-top:25px;}
+#lightGallery-slider .info {width:95%;padding: 0 2%;background-color:rgba(15,15,15,0.99);}
+#lightGallery-slider .info .title a {color:#EEEEEE;}
+#lightGallery-slider .info .title a:hover {text-decoration:underline;}
+#lightGallery-slider .info .desc {max-height:24px;white-space:normal;overflow:hidden;}
+#lightGallery-slider .info .desc:hover {max-height:none;overflow:normal;background-color:rgba(15,15,15,0.99);text-align:left;}
+#lightGallery-slider .info .desc p {color:#DDDDDD;}
+#lightGallery-slider .info .desc a {color:#DDDDDD;text-decoration:underline;}
+
+/* Slickr Flickr Galleria */
+
+.slickr-flickr-galleria.small.miniml .galleria-info-text {display:none;}
+.galleria-info-text {opacity:0.75;}
+.galleria-info-title a{ color:#fff;text-decoration:underline;}
+.galleria-info-description a {color:#bbb;text-decoration:underline; }
+.galleria-info-description p {color:#fff;font-size:10px;}
+
+/* Slickr Flickr Slideshow */
+
+.slickr-flickr-slideshow {display:block;position:relative;cursor:pointer;}
+.slickr-flickr-slideshow.center {text-align: center;}
+.slickr-flickr-slideshow.left {text-align: left;}
+.slickr-flickr-slideshow.right {text-align: right;}
+.slickr-flickr-slideshow.crop {border: 1px solid #A9A9A9;margin:4px 0 4px 5px;padding:4px;overflow:hidden;}
+
+.slickr-flickr-slideshow div {position:absolute;top:0;left:0;z-index:8;width:100%;height:100%;}
+.slickr-flickr-slideshow div:first-child {position:relative;}
+.slickr-flickr-slideshow div p {visibility:hidden;width:90%;margin:0;padding:0;font-style:italic;color:#887;}
+.slickr-flickr-slideshow div img {visibility:hidden;max-width:100%;max-height:100%;overflow-y:hidden;} 
+
+.slickr-flickr-slideshow div img.border {border: 1px solid #A9A9A9;margin:4px 0 4px 5px;padding:4px;position:relative;}
+.slickr-flickr-slideshow div p.border {padding: 0px 10px;}
+
+.slickr-flickr-slideshow div.active {z-index:10}
+.slickr-flickr-slideshow div.active img {visibility:visible}
+.slickr-flickr-slideshow div.active p {visibility:visible}
+.slickr-flickr-slideshow div.last-active {z-index:9}
+
+/* Slickr Flickr Responsive Slideshow */
+
+.slickr-flickr-slideshow .rslides {position:relative;overflow:hidden;width:100%;list-style:none outside none;padding:0;margin:0;cursor:pointer;}
+.slickr-flickr-slideshow .rslides li {display:none;position:absolute;top:0;left:0;width: 100%;list-style:none outside none;}
+.slickr-flickr-slideshow .rslides li:first-child {display:block;position:relative;float:left}
+.slickr-flickr-slideshow .rslides li img {display:block;float:left;width:100%;height:auto;border:0} 
+.slickr-flickr-slideshow .rslides .caption {display:block;position:absolute;width:100%;bottom:0;left:0;right:0;padding:10px 0 0 0;}
+.slickr-flickr-slideshow .rslides .caption p {text-align:center;background:#000;background:rgba(0,0,0, .6);color:#fff;padding:0;margin:0;}
+
