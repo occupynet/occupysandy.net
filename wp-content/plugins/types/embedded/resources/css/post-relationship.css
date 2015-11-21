@@ -3,7 +3,7 @@
     /*    border-bottom: 2px solid #FFF600 !important;*/
 }
 #wpcf-post-relationship table {
-    margin: 10px 0 10px 0;
+    margin: 0;
     clear: both;
     background-color: #FFFFFF;
     border: 1px solid #DFDFDF;
@@ -19,12 +19,25 @@
     background-color: #EBEBEB;
 }
 #wpcf-post-relationship .wpcf-pr-has-entries {
-    margin-bottom: 20px;
+    margin: 0;
 }
-#wpcf-post-relationship table .wpcf-fields-image-upload-link,
-#wpcf-post-relationship table .wpcf-fields-file-upload-link {
-    line-height: 30px;
+
+#wpcf-post-relationship .belongs p
+{
+    margin-bottom: 5px;
 }
+
+#wpcf-post-relationship .belongs .wpcf-form-item
+{
+    margin-bottom: .5em;
+}
+
+#wpcf-post-relationship .belongs .form-item
+{
+    padding-top: .5em;
+    max-width: 300px;
+}
+
 .wpcf-pr-sort-DESC,
 .wpcf-pr-sort-ASC {
     width: 7px;
@@ -49,7 +62,7 @@
 }
 #wpcf-post-relationship .wpcf-pr-ajax-link,
 #wpcf-post-relationship .wpcf-pr-save-all-link {
-    margin: -27px 0 10px 10px;
+    margin: -15px 0 10px 10px;
     float: right;
     line-height: 20px !important;
 }
@@ -58,10 +71,11 @@
 }
 #wpcf-post-relationship .wpcf-pr-has-title {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    padding-right:250px;
 }
 #wpcf-post-relationship .actions a {
-    line-height: 25px;
+    /*line-height: 25px;*/
 /*    margin-top: 10px;*/
 }
 #wpcf-post-relationship table .textarea {
@@ -71,7 +85,51 @@
 #wpcf-post-relationship table .textfield {
     width: 100px !important;
 }
+#wpcf-post-relationship .wpcf-pr-belongs
+{
+    min-width: 300px;
+}
 #wpcf-post-relationship table .form-item-radio {
     white-space: nowrap;
     margin: 0;
 }
+#wpcf-post-relationship hr {
+    color: #DFDFDF;
+    background-color: #DFDFDF;
+    height: 1px;
+    border: 0px;
+    margin: 20px 0;
+}
+
+.types-child-categorydiv div.tabs-panel {
+	min-height: 42px;
+	max-height: 200px;
+	overflow: auto;
+	padding: 0 0.9em;
+	border-style: solid;
+	border-width: 1px;
+    border-color: #dfdfdf;
+    min-width: 120px;
+}
+
+.types-child-categorydiv ul.categorychecklist ul {
+	margin-left: 18px;
+}
+
+.types-child-categorydiv .tabs-panel {
+	border-width: 3px;
+	border-style: solid;
+}
+
+#wpcf-post-relationship td label,
+#wpcf-post-relationship td .description {
+    display: none;
+}
+#wpcf-post-relationship td .form-item-checkboxes label
+,#wpcf-post-relationship td .form-item-checkbox label
+,#wpcf-post-relationship td .form-item-radio label
+,#wpcf-post-relationship td .tabs-panel label
+{
+    display: inline;
+}
+

@@ -1,0 +1,17 @@
+OnTheGo Resources 1.2 (August 17, 2015)
+	- Added new Views icons
+
+OnTheGo Resources 1.1 (June 11, 2015)
+	- Added Toolset Packager icons
+
+-------------------------------------------------------------------------------------------------------------------
+OnTheGo Resources 1.0 (Apr 1, 2014)
+	- Added WPML icons
+-------------------------------------------------------------------------------------------------------------------
+OnTheGo Resources 0.9.1 (Feb 2 2014)
+	- Created advanced resources loader with version control
+
+-------------------------------------------------------------------------------------------------------------------
+OnTheGo Resources 0.9 (Dec 16 2013)
+	- Created icons
+	- Created resources loader

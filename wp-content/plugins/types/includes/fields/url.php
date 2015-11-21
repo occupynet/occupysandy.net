@@ -12,6 +12,7 @@
  * 'show_name' => 'true' (show field name before value e.g. My checkbox: $value)
  * 'title' => link title e.g. 'Go here'
  * 'class' => CSS class applied to link e.g. 'my-link'
+ * 'no_protocol' => 'true'|'false' (display URL without protocol "http:// and https://", default false)
  *
  * Example usage:
  * With a short code use [types field="my-url"]

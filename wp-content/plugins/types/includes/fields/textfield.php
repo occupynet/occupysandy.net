@@ -1,6 +1,6 @@
 <?php
 /**
- * Types-field: Texfield
+ * Types-field: Textfield
  *
  * Description: Displays a textfield input to the user.
  *

@@ -14,7 +14,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
     $output .= '<form id="wpcf_access_admin_form" method="post" action="">';
 
     // Types
-    $types = get_option('wpcf-custom-types', array());
+    $types = get_option(WPCF_OPTION_NAME_CUSTOM_TYPES, array());
 
     // Merge with other types
     $settings_access = get_option('wpcf-access-types', array());
@@ -22,6 +22,11 @@ function wpcf_access_admin_edit_access($enabled = true) {
     foreach ($types_other as $type_slug => $type_data) {
         if (isset($types[$type_slug])) {
             continue;
+        }
+        if ($type_slug == 'view-template' || $type_slug == 'view' || $type_slug == 'cred-form' || $type_slug == 'cred-user-form') {
+                // Don't list Views and View templates separately.
+                // Don't list CRED form post types.
+                continue;
         }
         $types[$type_slug] = (array) $type_data;
         unset($types[$type_slug]->labels, $types[$type_slug]->cap);
@@ -39,7 +44,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
     if (!empty($types)) {
         $output .= '<h3>' . __('Custom Types', 'wpcf') . '</h3>';
         foreach ($types as $type_slug => $type_data) {
-            if ($type_data['public'] === 'hidden') {
+            if (isset($tax_data['public']) && $tax_data['public'] === 'hidden') {
                 continue;
             }
 
@@ -70,8 +75,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
                 if ($mode != 'not_managed') {
                     $output .= ' style="display:none;"';
                 }
-                $output .= '><p>' . __('This post type will inherit the same access rights as the standard WordPress Post when not Managed by Access.',
-                                'wpcf_access') . '</p></div>';
+                $output .= '><p>' . __('This post type will inherit the same access rights as the standard WordPress Post when not Managed by Access.', 'wpcf_access') . '</p></div>';
             }
 
             $permissions = !empty($type_data['_wpcf_access_capabilities']['permissions']) ? $type_data['_wpcf_access_capabilities']['permissions'] : array();
@@ -88,7 +92,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
     }
 
     // Taxonomies
-    $taxonomies = get_option('wpcf-custom-taxonomies', array());
+    $taxonomies = get_option(WPCF_OPTION_NAME_CUSTOM_TAXONOMIES, array());
 
     // Merge with other taxonomies
     $settings_access = get_option('wpcf-access-taxonomies', array());
@@ -133,7 +137,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
     if (!empty($taxonomies)) {
         $output .= '<br /><br /><h3>' . __('Custom Taxonomies', 'wpcf') . '</h3>';
         foreach ($taxonomies as $tax_slug => $tax_data) {
-            if ($tax_data['public'] === 'hidden') {
+            if (isset($tax_data['public']) && $tax_data['public'] === 'hidden') {
                 continue;
             }
             // Set data
@@ -158,7 +162,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
             $output .= '<div class="wpcf-access-type-item">';
             $output .= '<strong>' . $tax_data['labels']['name'] . '</strong>';
             // Add warning if shared and settings are different
-            $disable_same_as_parent = false; //debug($supports_check, false);
+            $disable_same_as_parent = false;
             if ($enabled && isset($supports_check[$tax_slug])
                     && count($supports_check[$tax_slug]) > 1) {
                 $txt = array();
@@ -259,7 +263,7 @@ function wpcf_access_admin_edit_access($enabled = true) {
                 }
             }
             if (isset($cap['style']) && $cap['style'] == 'dropdown') {
-                
+
             } else {
                 $output .= wpcf_access_permissions_table($roles, $saved_data,
                         $caps, $area['id'], $group['id'], $enabled);
@@ -305,11 +309,11 @@ function wpcf_access_admin_edit_access($enabled = true) {
 
 /**
  * Renders dropdown with editable roles.
- * 
+ *
  * @param type $roles
  * @param type $name
  * @param type $data
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_roles_dropdown($roles, $name, $data = array(),
         $dummy = false, $enabled = true, $exclude = array()) {
@@ -355,10 +359,10 @@ function wpcf_access_admin_roles_dropdown($roles, $name, $data = array(),
 
 /**
  * Auto-suggest users search.
- * 
+ *
  * @param type $data
  * @param type $name
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_users_form($data, $name, $enabled = true,
         $managed = true) {
@@ -381,12 +385,12 @@ function wpcf_access_admin_users_form($data, $name, $enabled = true,
 
 /**
  * Renders pre-defined table.
- * 
+ *
  * @param type $type_slug
  * @param type $roles
  * @param type $name
  * @param type $data
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_predefined($type_slug, $roles, $name, $data,
         $enabled = true) {
@@ -413,12 +417,12 @@ function wpcf_access_admin_predefined($type_slug, $roles, $name, $data,
 
 /**
  * Renders custom caps types table.
- * 
+ *
  * @param type $type_slug
  * @param type $roles
  * @param type $name
  * @param type $data
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_edit_access_types_item($type_slug, $roles, $name,
         $data, $enabled = true) {
@@ -450,12 +454,12 @@ function wpcf_access_admin_edit_access_types_item($type_slug, $roles, $name,
 
 /**
  * Renders custom caps tax table.
- * 
+ *
  * @param type $type_slug
  * @param type $roles
  * @param type $name
  * @param type $data
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_edit_access_tax_item($type_slug, $roles, $name,
         $data, $enabled = true) {
@@ -480,10 +484,10 @@ function wpcf_access_admin_edit_access_tax_item($type_slug, $roles, $name,
 
 /**
  * Reset caps button.
- * 
+ *
  * @param type $type_slug
  * @param type $type
- * @return string 
+ * @return string
  */
 function wpcf_access_reset_button($type_slug, $type = 'type', $enabled = true,
         $managed = true) {
@@ -510,10 +514,10 @@ function wpcf_access_reset_button($type_slug, $type = 'type', $enabled = true,
 
 /**
  * Submit button.
- * 
+ *
  * @param type $enabled
  * @param type $managed
- * @return type 
+ * @return type
  */
 function wpcf_access_submit_button($enabled = true, $managed = true) {
     $output = '';
@@ -533,9 +537,9 @@ function wpcf_access_submit_button($enabled = true, $managed = true) {
 
 /**
  * Custom roles form.
- * 
+ *
  * @param type $roles
- * @return string 
+ * @return string
  */
 function wpcf_access_admin_set_custom_roles_level_form($roles, $enabled = true) {
     $levels = wpcf_access_role_to_level_map();
@@ -699,11 +703,11 @@ function wpcf_access_admin_set_custom_roles_level_form($roles, $enabled = true) 
 
 /**
  * HTML formatted permissions table.
- * 
+ *
  * @param type $roles
  * @param type $permissions
  * @param type $name
- * @return string 
+ * @return string
  */
 function wpcf_access_permissions_table($roles, $permissions, $settings,
         $group_id, $id, $enabled = true, $managed = true) {
@@ -811,9 +815,9 @@ function wpcf_access_permissions_table($roles, $permissions, $settings,
 
 /**
  * Suggest user form.
- * 
- * @global type $wpdb
- * @return string 
+ *
+ * @global object $wpdb
+ * @return string
  */
 function wpcf_access_suggest_user($enabled = true, $managed = false) {
     global $wpdb;
@@ -845,8 +849,8 @@ function wpcf_access_suggest_user($enabled = true, $managed = false) {
 
 /**
  * New role form.
- * 
- * @return string 
+ *
+ * @return string
  */
 function wpcf_access_new_role_form($enabled) {
     $output = '';
@@ -871,9 +875,9 @@ function wpcf_access_new_role_form($enabled) {
 
 /**
  * Reassing role form.
- * 
+ *
  * @param type $role
- * @return string 
+ * @return string
  */
 function wpcf_access_reassign_role_form($role) {
     $output = '';
@@ -890,7 +894,7 @@ function wpcf_access_reassign_role_form($role) {
                         'wpcf_access'), '<em>' . $users_txt . '</em>');
         $output .= wpcf_access_admin_roles_dropdown(get_editable_roles(),
                 'wpcf_reassign', array(),
-                __('--- chose role ---', 'wpcf_access'), true, array($role));
+                __('--- choose role ---', 'wpcf_access'), true, array($role));
     } else {
         $output .= '<input type="hidden" name="wpcf_reassign" value="ignore" />';
         $output .= __('Do you really want to remove this role?', 'wpcf_access');

@@ -61,7 +61,12 @@ function wpcf_fields_select_meta_box_form($field) {
  * @param type $params 
  */
 function wpcf_fields_select_view($params) {
-    $field = wpcf_fields_get_field_by_slug($params['field']['slug']);
+    if ( isset($params['usermeta']) && !empty($params['usermeta']) ){
+		$field = wpcf_fields_get_field_by_slug( $params['field']['slug'] , 'wpcf-usermeta');
+	}
+	else{
+		$field = wpcf_fields_get_field_by_slug( $params['field']['slug'] );
+	}
     $output = '';
     if (!empty($field['data']['options'])) {
         $field_value = $params['field_value'];

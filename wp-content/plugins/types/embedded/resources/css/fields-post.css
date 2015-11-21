@@ -7,12 +7,13 @@
 }
 img.ui-datepicker-trigger {
     margin-left: 5px;
+    cursor: pointer;
 }
 #poststuff .inside .wpcf-meta-box-description p {
     margin: 5px 0 15px 0;
 }
 #poststuff .inside .wpcf-form-item:last-child {
-/*    margin-bottom: 0;*/
+    /*    margin-bottom: 0;*/
 }
 /*#poststuff .inside .wpcf-form-item .wpcf-form-item:last-child {
     margin-bottom: 15px;
@@ -41,21 +42,6 @@ img.ui-datepicker-trigger {
 #side-info-column .wpcf-fields-file-textfield {
     width: 130px;
 }
-.wpcf-repetitive-response {
-    margin-top: 20px;
-}
-.wpcf-repetitive-response .form-item,
-.wpcf-skype {
-    margin-bottom: 40px !important;
-}
-.wpcf-repetitive-response .wpcf-form-item-radio {
-    margin-bottom: 0 !important;
-}
-.wpcf-repetitive-buttons {
-    float: right;
-    position: relative;
-    top: -10px;
-}
 .wpcf-message {
     padding: 0 0.6em;
     border-radius: 3px 3px 3px 3px;
@@ -69,5 +55,24 @@ img.ui-datepicker-trigger {
 }
 .wpcf-pr-table-wrapper {
     width: 100%;
+	clear:both;
     overflow: auto;
+}
+.wpcf-pagination-boottom {
+    margin-top: 5px;
+}
+.fields-preview img{
+	max-width:200px;
+	height:auto;	
+}
+.types-cp-preview {
+    width: 22px;
+    height: 22px;
+    float: left;
+    border: 1px solid #BBBBBB;
+}
+#types-preview-warning {
+    margin: 10px 5px 0 0;
+    display: none;
+    clear: both;
 }

@@ -1,0 +1,30 @@
+{
+    "name": "toolset/toolset-common",
+    "description": "A set of libraries for Toolset Plugins",
+    "keywords": ["visual-editor", "types-fields", "utils", "models"],
+    "homepage": "https://git.onthegosystems.com/toolset/toolset-common",
+    "type": "library",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Bruce Pearson, Juan de Paco, Riccardo Strobbia, Marcin Pietrzack, Francesco Livolsi",
+            "email": "riccardo.s@icanlocalize.com",
+            "homepage": "http://www.wp-types.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.6.x-dev",
+            "dev-develop": "1.6.x-dev"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}

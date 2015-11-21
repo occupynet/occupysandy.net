@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/validation-cakephp.php';
+require_once dirname( __FILE__ ) . '/validation-cakephp.php';
 
 /**
  * Validation class
@@ -14,6 +14,7 @@ class Wpcf_Validate
      * @var type 
      */
     public static $messages = null;
+
     /**
      * Holds function names.
      * @var type 
@@ -23,13 +24,14 @@ class Wpcf_Validate
         'number' => 'numeric',
         'alphanumeric' => 'alphaNumericWhitespaces',
         'nospecialchars' => 'noSpecialChars',
+        'maxlength' => 'maxLength',
     );
+
     /**
      * Current validation has 'required' method.
      * @var type 
      */
     private static $_is_required = false;
-    
     private static $_validation_object = null;
 
     /**
@@ -39,38 +41,33 @@ class Wpcf_Validate
      * @param type $value
      * @return type 
      */
-    public static function check($args, $value)
+    public static function check( $args, $value )
     {
         // Init validation object
-        if (is_null(self::$_validation_object)) {
+        if ( is_null( self::$_validation_object ) ) {
             self::$_validation_object = new Wpcf_Cake_Validation();
         }
-        
-        // Init messages
-        if (is_null(self::$messages)) {
-            self::_set_messages();
-        }
         // Check if there is 'required' method
-        if (array_key_exists('required', $args)) {
+        if ( array_key_exists( 'required', $args ) ) {
             self::$_is_required = true;
         }
 
         // Loop over validation array
-        foreach ($args as $method => $v) {
+        foreach ( $args as $method => $v ) {
             // Use this class method
-            if (is_callable(array('Wpcf_Validate', $method))) {
-                $check = call_user_func_array(array('Wpcf_Validate', $method),
-                        array($v, $value));
+            if ( is_callable( array('Wpcf_Validate', $method) ) ) {
+                $check = call_user_func_array( array('Wpcf_Validate', $method),
+                        array($v, $value) );
                 // Use CakePHP method
-            } else if ((isset(self::$_cake_aliases[$method])
-                    && is_callable(array('Wpcf_Cake_Validation', self::$_cake_aliases[$method])))
-                    || is_callable(array('Wpcf_Cake_Validation', $method))) {
-                
+            } else if ( (isset( self::$_cake_aliases[$method] )
+                    && is_callable( array('Wpcf_Cake_Validation', self::$_cake_aliases[$method]) ))
+                    || is_callable( array('Wpcf_Cake_Validation', $method) ) ) {
+
                 // Check if validation pattern is set
-                if (isset($v['pattern'])) {
-                    $pattern = array_flip(explode('.', $v['pattern']));
-                    foreach ($pattern as $arg_key => $arg_value) {
-                        if (isset($v[$arg_key])) {
+                if ( isset( $v['pattern'] ) ) {
+                    $pattern = array_flip( explode( '.', $v['pattern'] ) );
+                    foreach ( $pattern as $arg_key => $arg_value ) {
+                        if ( isset( $v[$arg_key] ) ) {
                             $pattern[$arg_key] = $v[$arg_key];
                         }
                     }
@@ -78,23 +75,23 @@ class Wpcf_Validate
                     $v = $pattern;
                     // Apply simple pattern (check, value)
                 } else {
-                    unset($v['active'], $v['message']);
+                    unset( $v['active'], $v['message'] );
                     $v = array($value) + $v;
                 }
 
                 // Validate
-                if (isset(self::$_cake_aliases[$method]) && is_callable(array('Wpcf_Cake_Validation', self::$_cake_aliases[$method]))) {
+                if ( isset( self::$_cake_aliases[$method] ) && is_callable( array('Wpcf_Cake_Validation', self::$_cake_aliases[$method]) ) ) {
 //                    $check = @call_user_func_array(array('Wpcf_Cake_Validation', self::$_cake_aliases[$method]),
 //                                    array_values($v));
-                    $check = @call_user_func_array(array(self::$_validation_object, self::$_cake_aliases[$method]),
-                                    array_values($v));
+                    $check = @call_user_func_array( array(self::$_validation_object, self::$_cake_aliases[$method]),
+                                    array_values( $v ) );
                 } else {
 //                    $check = @call_user_func_array(array('Wpcf_Cake_Validation', $method),
 //                                    array_values($v));
-                    $check = @call_user_func_array(array(self::$_validation_object, $method),
-                                    array_values($v));
+                    $check = @call_user_func_array( array(self::$_validation_object, $method),
+                                    array_values( $v ) );
                 }
-                if (!$check) {
+                if ( !$check ) {
                     $check = array();
                     $check['error'] = 1;
                 }
@@ -104,11 +101,12 @@ class Wpcf_Validate
             }
 
             // Set error
-            if (isset($check['error'])) {
+            if ( isset( $check['error'] ) ) {
                 // Don't return error if it's empty but not required
-                if ((!empty($value) && $method != 'required' && self::$_is_required)
-                        || (empty($value) && $method == 'required')) {
-                    $check['message'] = !empty($v['message']) ? $v['message'] : self::$messages[$method];
+                if ( (!empty( $value ) && $method != 'required' && self::$_is_required)
+                        || (empty( $value ) && $method == 'required') ) {
+                    $sprintf = isset($v['value']) ? $v['value'] : '';
+                    $check['message'] = !empty( $v['message'] ) ? $v['message'] : self::get_message($method, $sprintf);
                     return $check;
                 }
             }
@@ -123,12 +121,12 @@ class Wpcf_Validate
      * @param type $method
      * @return type 
      */
-    public static function canValidate($method)
+    public static function canValidate( $method )
     {
-        return (is_callable(array('Wpcf_Validate',  $method))
-        || (isset(self::$_cake_aliases[$method])
-        && is_callable(array('Wpcf_Cake_Validation', self::$_cake_aliases[$method])))
-        || is_callable(array('Wpcf_Cake_Validation',  $method)));
+        return (is_callable( array('Wpcf_Validate', $method) )
+                || (isset( self::$_cake_aliases[$method] )
+                && is_callable( array('Wpcf_Cake_Validation', self::$_cake_aliases[$method]) ))
+                || is_callable( array('Wpcf_Cake_Validation', $method) ));
     }
 
     /**
@@ -137,9 +135,9 @@ class Wpcf_Validate
      * @param type $method
      * @return type 
      */
-    public static function hasForm($method)
+    public static function hasForm( $method )
     {
-        return is_callable(array('Wpcf_Validate', $method . '_form'));
+        return is_callable( array('Wpcf_Validate', $method . '_form') );
     }
 
     /**
@@ -157,12 +155,13 @@ class Wpcf_Validate
      * @param type $method
      * @return type 
      */
-    public static function get_message($method)
+    public static function get_message( $method, $sprintf = '' )
     {
-        if (is_null(self::$messages)) {
+        return wpcf_admin_validation_messages($method, $sprintf);
+        if ( is_null( self::$messages ) ) {
             self::_set_messages();
         }
-        if (isset(self::$messages[$method])) {
+        if ( isset( self::$messages[$method] ) ) {
             return self::$messages[$method];
         }
         return null;
@@ -175,9 +174,9 @@ class Wpcf_Validate
      * @param type $value
      * @return type 
      */
-    public static function required($args, $value)
+    public static function required( $args, $value )
     {
-        if (empty($value) && $value !== 0 && $value !== '0') {
+        if ( empty( $value ) && $value !== 0 && $value !== '0' ) {
             return array(
                 'error' => 1,
             );
@@ -192,14 +191,14 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function required_form($field, $data = array())
+    public static function required_form( $field, $data = array() )
     {
         $form = array();
         $form['required-checkbox'] = array(
             '#type' => 'checkbox',
-            '#title' => __('Required', 'wpcf'),
+            '#title' => __( 'Required', 'wpcf' ),
             '#name' => $field['#name'] . '[active]',
-            '#default_value' => isset($data['active']) ? 1 : 0,
+            '#default_value' => isset( $data['active'] ) ? 1 : 0,
             '#inline' => true,
             '#suffix' => '<br />',
         );
@@ -208,8 +207,8 @@ class Wpcf_Validate
             '#value' => 'true',
             '#name' => $field['#name'] . '[value]',
         );
-        $form['required-message'] = self::get_custom_message($field,
-                        self::get_message('required'), $data);
+        $form['required-message'] = self::get_custom_message( $field,
+                        self::get_message( 'required' ), $data );
         return $form;
     }
 
@@ -220,16 +219,16 @@ class Wpcf_Validate
      * @param type $value
      * @return type 
      */
-    public static function email($args, $value)
+    public static function email( $args, $value )
     {
-        if (!is_email($value)) {
+        if ( !is_email( $value ) ) {
             return array(
                 'error' => 1,
             );
         }
         return true;
     }
-    
+
     /**
      * Checks 'rewriteslug'.
      * 
@@ -237,13 +236,18 @@ class Wpcf_Validate
      * @param type $value
      * @return type 
      */
-    public static function rewriteslug($args, $value)
+    public static function rewriteslug( $args, $value )
     {
-        if (preg_match('#[^a-zA-Z0-9\/\_\-\%]#', $value) === false) {
+        if ( preg_match( '#[^a-zA-Z0-9\/\_\-\%]#', $value ) === false ) {
             return array(
                 'error' => 1,
             );
         }
+        return true;
+    }
+
+    public static function skype( $args, $value )
+    {
         return true;
     }
 
@@ -254,20 +258,20 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function email_form($field, $data = array())
+    public static function email_form( $field, $data = array() )
     {
         $form = array();
         $form['email-checkbox'] = array(
             '#type' => 'checkbox',
-            '#title' => __('Email', 'wpcf'),
+            '#title' => __( 'Email', 'wpcf' ),
             '#name' => $field['#name'] . '[active]',
-            '#default_value' => isset($data['active']) ? 1 : 0,
+            '#default_value' => isset( $data['active'] ) ? 1 : 0,
             '#inline' => true,
             '#suffix' => '<br />',
         );
 
-        $form['email-message'] = self::get_custom_message($field,
-                        self::get_message('email'), $data);
+        $form['email-message'] = self::get_custom_message( $field,
+                        self::get_message( 'email' ), $data );
         return $form;
     }
 
@@ -278,20 +282,23 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function url_form($field, $data = array())
+    public static function url_form( $field, $data = array() )
     {
         $form = array();
         $form['url-checkbox'] = array(
             '#type' => 'checkbox',
             '#title' => 'URL',
             '#name' => $field['#name'] . '[active]',
-            '#default_value' => isset($data['active']) ? 1 : 0,
+            '#default_value' => isset( $data['active'] ) ? 1 : 0,
             '#inline' => true,
             '#suffix' => '<br />',
         );
+        
+        $form['url-checkbox'] = self::setForced( $form['url-checkbox'],
+                        $field, $data );
 
-        $form['url-message'] = self::get_custom_message($field,
-                        self::get_message('url'), $data);
+        $form['url-message'] = self::get_custom_message( $field,
+                        self::get_message( 'url' ), $data );
         return $form;
     }
 
@@ -302,14 +309,14 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function date_form($field, $data = array())
+    public static function date_form( $field, $data = array() )
     {
         $form = array();
         $form['date-checkbox'] = array(
             '#type' => 'checkbox',
-            '#title' => __('Date', 'wpcf'),
+            '#title' => __( 'Date', 'wpcf' ),
             '#name' => $field['#name'] . '[active]',
-            '#default_value' => isset($data['active']) ? 1 : 0,
+            '#default_value' => isset( $data['active'] ) ? 1 : 0,
             '#inline' => true,
             '#suffix' => '<br />',
         );
@@ -323,11 +330,11 @@ class Wpcf_Validate
             '#value' => 'check.format',
             '#name' => $field['#name'] . '[pattern]',
         );
-        $form['url-message'] = self::get_custom_message($field,
-                        self::get_message('date'), $data);
+        $form['url-message'] = self::get_custom_message( $field,
+                        self::get_message( 'date' ), $data );
         return $form;
     }
-    
+
     /**
      * Returns form data.
      * 
@@ -335,27 +342,28 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function digits_form($field, $data = array())
+    public static function digits_form( $field, $data = array() )
     {
         $form = array();
         $attributes = array();
-        $default_value = isset($data['active']) ? 1 : 0;
+        $default_value = isset( $data['active'] ) ? 1 : 0;
         $form['digits-checkbox'] = array(
             '#type' => 'checkbox',
-            '#title' => __('Digits', 'wpcf'),
+            '#title' => __( 'Digits', 'wpcf' ),
             '#name' => $field['#name'] . '[active]',
             '#default_value' => $default_value,
             '#inline' => true,
             '#suffix' => '<br />',
             '#attributes' => $attributes,
         );
-        $form['digits-checkbox'] = self::setForced($form['digits-checkbox'], $field, $data);
+        $form['digits-checkbox'] = self::setForced( $form['digits-checkbox'],
+                        $field, $data );
 
-        $form['digits-message'] = self::get_custom_message($field,
-                        self::get_message('digits'), $data);
+        $form['digits-message'] = self::get_custom_message( $field,
+                        self::get_message( 'digits' ), $data );
         return $form;
     }
-    
+
     /**
      * Returns form data.
      * 
@@ -363,33 +371,57 @@ class Wpcf_Validate
      * @param type $data
      * @return array
      */
-    public static function number_form($field, $data = array())
+    public static function number_form( $field, $data = array() )
     {
         $form = array();
         $attributes = array();
-        $default_value = isset($data['active']) ? 1 : 0;
+        $default_value = isset( $data['active'] ) ? 1 : 0;
         $form['number-checkbox'] = array(
             '#type' => 'checkbox',
-            '#title' => __('Numeric', 'wpcf'),
+            '#title' => __( 'Numeric', 'wpcf' ),
             '#name' => $field['#name'] . '[active]',
             '#default_value' => $default_value,
             '#inline' => true,
             '#suffix' => '<br />',
             '#attributes' => $attributes,
         );
-        $form['number-checkbox'] = self::setForced($form['number-checkbox'], $field, $data);
+        $form['number-checkbox'] = self::setForced( $form['number-checkbox'],
+                        $field, $data );
 
-        $form['number-message'] = self::get_custom_message($field,
-                        self::get_message('number'), $data);
+        $form['number-message'] = self::get_custom_message( $field,
+                        self::get_message( 'number' ), $data );
         return $form;
     }
-    
-    public static function setForced($element, $field, $data = array())
+
+    /**
+     * Returns form data.
+     * 
+     * @param type $field
+     * @param type $data
+     * @return array
+     */
+    public static function skype_form( $field, $data = array() )
+    {
+        $form = array();
+        $form['skype-checkbox'] = array(
+            '#type' => 'checkbox',
+            '#title' => 'Skype',
+            '#name' => $field['#name'] . '[active]',
+            '#default_value' => isset( $data['active'] ) ? 1 : 0,
+            '#inline' => true,
+            '#suffix' => '<br />',
+        );
+        $form['skype-checkbox'] = self::setForced( $form['skype-checkbox'], $field, $data );
+        $form['skype-message'] = self::get_custom_message( $field, self::get_message( 'skype' ), $data );
+        return $form;
+    }
+
+    public static function setForced( $element, $field, $data = array() )
     {
         $attributes = array();
-        $default_value = isset($data['active']) ? 1 : 0;
-        if (!empty($data['method_data']['forced'])) {
-            if (!isset($element['#attributes'])) {
+        $default_value = isset( $data['active'] ) ? 1 : 0;
+        if ( !empty( $data['method_data']['forced'] ) ) {
+            if ( !isset( $element['#attributes'] ) ) {
                 $element['#attributes'] = array();
             }
             $element['#attributes']['readonly'] = 'readonly';
@@ -407,16 +439,25 @@ class Wpcf_Validate
      * @param type $data
      * @return type 
      */
-    public static function get_custom_message($field, $default, $data)
+    public static function get_custom_message( $field, $default, $data )
     {
         return array(
             '#type' => 'textfield',
 //            '#title' => __('Custom message', 'wpcf'),
             '#name' => $field['#name'] . '[message]',
-            '#value' => !empty($data['message']) ? $data['message'] : $default,
+            '#value' => !empty( $data['message'] ) ? $data['message'] : $default,
             '#inline' => true,
 //            '#suffix' => '<br /><br />',
         );
+    }
+
+    public static function negativeTimestamp( $args, $value ) {
+        if ( !fields_date_timestamp_neg_supported() && intval( $value ) < 0 ) {
+            return array(
+                'error' => 1,
+            );
+        }
+        return true;
     }
 
 }

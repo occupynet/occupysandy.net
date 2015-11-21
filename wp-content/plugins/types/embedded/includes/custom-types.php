@@ -1,4 +1,11 @@
 <?php
+/**
+ *
+ * Custom Post Types embedded code.
+ *
+ *
+ */
+add_action( 'wpcf_type', 'wpcf_filter_type', 10, 2 );
 
 /**
  * Returns default custom type structure.
@@ -74,10 +81,19 @@ function wpcf_custom_types_default() {
  * Inits custom types.
  */
 function wpcf_custom_types_init() {
-    $custom_types = get_option('wpcf-custom-types', array());
-    if (!empty($custom_types)) {
-        foreach ($custom_types as $post_type => $data) {
-            wpcf_custom_types_register($post_type, $data);
+    $custom_types = get_option( WPCF_OPTION_NAME_CUSTOM_TYPES, array() );
+    if ( !empty( $custom_types ) ) {
+        foreach ( $custom_types as $post_type => $data ) {
+            if ( empty($data) ) {
+                continue;
+            }
+            if (
+                ( isset($data['_builtin']) && $data['_builtin'] )
+                || wpcf_is_builtin_post_types($post_type)
+            ) {
+                continue;
+            }
+            wpcf_custom_types_register( $post_type, $data );
         }
     }
 }
@@ -88,29 +104,32 @@ function wpcf_custom_types_init() {
  * @param type $post_type
  * @param type $data 
  */
-function wpcf_custom_types_register($post_type, $data) {
-    if (!empty($data['disabled'])) {
+function wpcf_custom_types_register( $post_type, $data ) {
+
+    global $wpcf;
+
+    if ( !empty( $data['disabled'] ) ) {
         return false;
     }
-    $data = wpcf_custom_types_translate($post_type, $data);
+    $data = apply_filters( 'types_post_type', $data, $post_type );
     // Set labels
-    if (!empty($data['labels'])) {
-        if (!isset($data['labels']['name'])) {
+    if ( !empty( $data['labels'] ) ) {
+        if ( !isset( $data['labels']['name'] ) ) {
             $data['labels']['name'] = $post_type;
         }
-        if (!isset($data['labels']['singular_name'])) {
+        if ( !isset( $data['labels']['singular_name'] ) ) {
             $data['labels']['singular_name'] = $data['labels']['name'];
         }
-        foreach ($data['labels'] as $label_key => $label) {
-            $data['labels'][$label_key] = $label = stripslashes($label);
-            switch ($label_key) {
+        foreach ( $data['labels'] as $label_key => $label ) {
+            $data['labels'][$label_key] = $label = stripslashes( $label );
+            switch ( $label_key ) {
                 case 'add_new_item':
                 case 'edit_item':
                 case 'new_item':
                 case 'view_item':
                 case 'parent_item_colon':
-                    $data['labels'][$label_key] = sprintf($label,
-                            $data['labels']['singular_name']);
+                    $data['labels'][$label_key] = sprintf( $label,
+                            $data['labels']['singular_name'] );
                     break;
 
                 case 'search_items':
@@ -118,109 +137,216 @@ function wpcf_custom_types_register($post_type, $data) {
                 case 'not_found':
                 case 'not_found_in_trash':
                 case 'menu_name':
-                    $data['labels'][$label_key] = sprintf($label,
-                            $data['labels']['name']);
+                    $data['labels'][$label_key] = sprintf( $label,
+                            $data['labels']['name'] );
                     break;
             }
         }
     }
-    $data['description'] = !empty($data['description']) ? htmlspecialchars(stripslashes($data['description']),
-                    ENT_QUOTES) : '';
-    $data['public'] = (empty($data['public']) || strval($data['public']) == 'hidden') ? false : true;
-    $data['publicly_queryable'] = !empty($data['publicly_queryable']);
-    $data['exclude_from_search'] = !empty($data['exclude_from_search']);
-    $data['show_ui'] = (empty($data['show_ui']) || !$data['public']) ? false : true;
-    if (empty($data['menu_position'])) {
-        unset($data['menu_position']);
+    $data['description'] = !empty( $data['description'] ) ? htmlspecialchars( stripslashes( $data['description'] ),
+                    ENT_QUOTES ) : '';
+    $data['public'] = (empty( $data['public'] ) || strval( $data['public'] ) == 'hidden') ? false : true;
+    $data['publicly_queryable'] = !empty( $data['publicly_queryable'] );
+    $data['exclude_from_search'] = !empty( $data['exclude_from_search'] );
+    $data['show_ui'] = (empty( $data['show_ui'] ) || !$data['public']) ? false : true;
+    if ( empty( $data['menu_position'] ) ) {
+        unset( $data['menu_position'] );
     } else {
-        $data['menu_position'] = intval($data['menu_position']);
+        $data['menu_position'] = intval( $data['menu_position'] );
     }
-    $data['hierarchical'] = !empty($data['hierarchical']);
-    $data['supports'] = !empty($data['supports']) && is_array($data['supports']) ? array_keys($data['supports']) : array();
-    $data['taxonomies'] = !empty($data['taxonomies']) && is_array($data['taxonomies']) ? array_keys($data['taxonomies']) : array();
-    $data['has_archive'] = !empty($data['has_archive']);
-    $data['can_export'] = !empty($data['can_export']);
-    $data['show_in_nav_menus'] = !empty($data['show_in_nav_menus']);
-    $data['show_in_menu'] = !empty($data['show_in_menu']);
-    if (empty($data['query_var_enabled'])) {
+    $data['hierarchical'] = !empty( $data['hierarchical'] );
+    $data['supports'] = !empty( $data['supports'] ) && is_array( $data['supports'] ) ? array_keys( $data['supports'] ) : array();
+    $data['taxonomies'] = !empty( $data['taxonomies'] ) && is_array( $data['taxonomies'] ) ? array_keys( $data['taxonomies'] ) : array();
+    $data['has_archive'] = !empty( $data['has_archive'] );
+    $data['can_export'] = !empty( $data['can_export'] );
+    $data['show_in_nav_menus'] = !empty( $data['show_in_nav_menus'] );
+    $data['show_in_menu'] = !empty( $data['show_in_menu'] );
+    if ( empty( $data['query_var_enabled'] ) ) {
         $data['query_var'] = false;
-    } else if (empty($data['query_var'])) {
+    } else if ( empty( $data['query_var'] ) ) {
         $data['query_var'] = true;
     }
-    if (!empty($data['show_in_menu_page'])) {
+    if ( !empty( $data['show_in_menu_page'] ) ) {
         $data['show_in_menu'] = $data['show_in_menu_page'];
+        $data['labels']['all_items'] = $data['labels']['name'];
     }
-    if (empty($data['menu_icon'])) {
-        unset($data['menu_icon']);
+    /**
+     * menu_icon
+     */
+    if ( empty( $data['menu_icon'] ) ) {
+        unset( $data['menu_icon'] );
     } else {
-        $data['menu_icon'] = stripslashes($data['menu_icon']);
-        if (strpos($data['menu_icon'], '[theme]') !== false) {
-            $data['menu_icon'] = str_replace('[theme]',
-                    get_stylesheet_directory_uri(), $data['menu_icon']);
+        $data['menu_icon'] = stripslashes( $data['menu_icon'] );
+        if ( strpos( $data['menu_icon'], '[theme]' ) !== false ) {
+            $data['menu_icon'] = str_replace( '[theme]',
+                    get_stylesheet_directory_uri(), $data['menu_icon'] );
         }
     }
-    if (!empty($data['rewrite']['enabled'])) {
-        $data['rewrite']['with_front'] = !empty($data['rewrite']['with_front']);
-        $data['rewrite']['feeds'] = !empty($data['rewrite']['feeds']);
-        $data['rewrite']['pages'] = !empty($data['rewrite']['pages']);
-        if (!empty($data['rewrite']['custom']) && $data['rewrite']['custom'] != 'custom') {
-            unset($data['rewrite']['slug']);
+    if ( empty($data['menu_icon'] ) && !empty( $data['icon'] ) ) {
+        $data['menu_icon'] = sprintf( 'dashicons-%s', $data['icon'] );
+    }
+    /**
+     * rewrite
+     */
+    if ( !empty( $data['rewrite']['enabled'] ) ) {
+        $data['rewrite']['with_front'] = !empty( $data['rewrite']['with_front'] );
+        $data['rewrite']['feeds'] = !empty( $data['rewrite']['feeds'] );
+        $data['rewrite']['pages'] = !empty( $data['rewrite']['pages'] );
+        if ( !empty( $data['rewrite']['custom'] ) && $data['rewrite']['custom'] != 'custom' ) {
+            unset( $data['rewrite']['slug'] );
         }
-        unset($data['rewrite']['custom']);
+        unset( $data['rewrite']['custom'] );
     } else {
         $data['rewrite'] = false;
     }
 
     // Set permalink_epmask
-    if (!empty($data['permalink_epmask'])) {
-        $data['permalink_epmask'] = constant($data['permalink_epmask']);
+    if ( !empty( $data['permalink_epmask'] ) ) {
+        $data['permalink_epmask'] = constant( $data['permalink_epmask'] );
     }
 
-    $args = register_post_type($post_type, apply_filters('wpcf_type', $data, $post_type));
-    do_action('wpcf_type_registered', $args);
+    /**
+     * set default support options
+     */
+    $support_fields = array(
+        'editor' => false,
+        'author' => false,
+        'thumbnail' => false,
+        'excerpt' => false,
+        'trackbacks' => false,
+        'custom-fields' => false,
+        'comments' => false,
+        'revisions' => false,
+        'page-attributes' => false,
+        'post-formats' => false,
+    );
+    $data['supports'] = array_merge_recursive( $data['supports'], $support_fields );
 
-    // Add the standard tags and categoires if the're set.
-    $body = '';
-    if (in_array('post_tag', $data['taxonomies'])) {
-        $body = 'register_taxonomy_for_object_type("post_tag", "' . $post_type . '");';
-    }
-    if (in_array('category', $data['taxonomies'])) {
-        $body .= 'register_taxonomy_for_object_type("category", "' . $post_type . '");';
+    /**
+     * custom slug for has_archive
+     */
+    if (
+        isset($data['has_archive'])
+        && $data['has_archive']
+        && isset($data['has_archive_slug'])
+        && $data['has_archive_slug']
+    ) {
+        $data['has_archive'] = $data['has_archive_slug'];
     }
 
-    // make sure the function name is OK
-    $post_type = str_replace('-', '_', $post_type);
-    if ($body != '' && !function_exists($post_type . '_add_default_taxes')) {
-        eval('function ' . $post_type . '_add_default_taxes() { ' . $body . ' }');
-        add_action('init', $post_type . '_add_default_taxes');
-    }
+    $args = register_post_type( $post_type, apply_filters( 'wpcf_type', $data, $post_type ) );
+
+    do_action( 'wpcf_type_registered', $args );
 }
 
 /**
- * Translates data.
+ * Revised rewrite.
  * 
+ * We force slugs now. Submitted and sanitized slug. Set slugs localized (WPML).
+ * More solid way to force WP slugs.
+ * 
+ * @see https://icanlocalize.basecamphq.com/projects/7393061-wp-views/todo_items/153925180/comments
+ * @since 1.1.3.2
+ * @param type $data
  * @param type $post_type
- * @param type $data 
+ * @return boolean 
  */
-function wpcf_custom_types_translate($post_type, $data) {
-    if (!function_exists('icl_t')) {
-        return $data;
-    }
-    $default = wpcf_custom_types_default();
-    if (!empty($data['description'])) {
-        $data['description'] = wpcf_translate($post_type . ' description',
-                $data['description'], 'Types-CPT');
-    }
-    foreach ($data['labels'] as $label => $string) {
-        if ($label == 'name' || $label == 'singular_name') {
-            $data['labels'][$label] = wpcf_translate($post_type . ' ' . $label,
-                    $string, 'Types-CPT');
-            continue;
+function wpcf_filter_type( $data, $post_type ) {
+    if ( !empty( $data['rewrite']['enabled'] ) ) {
+        $data['rewrite']['with_front'] = !empty( $data['rewrite']['with_front'] );
+        $data['rewrite']['feeds'] = !empty( $data['rewrite']['feeds'] );
+        $data['rewrite']['pages'] = !empty( $data['rewrite']['pages'] );
+
+        // If slug is not submitted use default slug
+        if ( empty( $data['rewrite']['slug'] ) ) {
+            $data['rewrite']['slug'] = $data['slug'];
         }
-        if (!isset($default['labels'][$label]) || $string !== $default['labels'][$label]) {
-            $data['labels'][$label] = wpcf_translate($post_type . ' ' . $label,
-                    $string, 'Types-CPT');
+
+        // Also force default slug if rewrite mode is 'normal'
+        if ( !empty( $data['rewrite']['custom'] ) && $data['rewrite']['custom'] != 'normal' ) {
+            $data['rewrite']['slug'] = $data['rewrite']['slug'];
         }
+
+        // Register with _x()
+        $data['rewrite']['slug'] = _x( $data['rewrite']['slug'], 'URL slug',
+                'wpcf' );
+        //
+        // CHANGED leave it for reference if we need
+        // to return handling slugs back to WP.
+        // 
+        // We unset slug settings and leave WP to handle it himself.
+        // Let WP decide what slugs should be!
+//        if (!empty($data['rewrite']['custom']) && $data['rewrite']['custom'] != 'normal') {
+//            unset($data['rewrite']['slug']);
+//        }
+        // Just discard non-WP property
+        unset( $data['rewrite']['custom'] );
+    } else {
+        $data['rewrite'] = false;
     }
+
     return $data;
 }
+
+/**
+ * Returns active custom post types.
+ * 
+ * @return type 
+ */
+function wpcf_get_active_custom_types() {
+    $types = get_option(WPCF_OPTION_NAME_CUSTOM_TYPES, array());
+    foreach ($types as $type => $data) {
+        if (!empty($data['disabled'])) {
+            unset($types[$type]);
+        }
+    }
+    return $types;
+}
+
+/** This action is documented in wp-admin/includes/dashboard.php */
+add_filter('dashboard_glance_items', 'wpcf_dashboard_glance_items');
+
+/**
+ * Add CPT info to "At a Glance"
+ *
+ * Add to "At a Glance" WordPress admin dashboard widget information
+ * about number of posts.
+ *
+ * @since 1.6.6
+ *
+ */
+function wpcf_dashboard_glance_items($elements)
+{
+    $custom_types = get_option( WPCF_OPTION_NAME_CUSTOM_TYPES, array() );
+    if ( empty( $custom_types ) ) {
+        return $elements;
+    }
+    ksort($custom_types);
+    foreach ( $custom_types as $post_type => $data ) {
+        if ( !isset($data['dashboard_glance']) || !$data['dashboard_glance']) {
+            continue;
+        }
+        if ( isset($data['disabled']) && $data['disabled'] ) {
+            continue;
+        }
+        $num_posts = wp_count_posts($post_type);
+        $num = number_format_i18n($num_posts->publish);
+        $text = _n( $data['labels']['singular_name'], $data['labels']['name'], intval($num_posts->publish) );
+        $elements[] = sprintf(
+            '<a href="%s"%s>%d %s</a>',
+            esc_url(
+                add_query_arg(
+                    array(
+                        'post_type' => $post_type,
+                    ),
+                    admin_url('edit.php')
+                )
+            ),
+            isset($data['icon'])? sprintf('class="dashicons-%s"', $data['icon']):'',
+            $num,
+            $text
+        );
+    }
+    return $elements;
+}
+

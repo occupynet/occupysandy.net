@@ -1,0 +1,30 @@
+{
+    "name": "toolset/onthego-resources",
+    "description": "Branding resources for Toolset plugins",
+    "keywords": ["icons", "vectors", "utils", "CSS"],
+    "homepage": "https://git.onthegosystems.com/toolset/onthego-resources",
+    "type": "library",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Bruce Pearson, Juan de Paco, Riccardo Strobbia",
+            "email": "riccardo.s@icanlocalize.com",
+            "homepage": "http://www.wp-types.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.2.x-dev",
+            "dev-develop": "1.2.x-dev"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
