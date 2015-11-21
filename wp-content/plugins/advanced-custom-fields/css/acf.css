@@ -8,62 +8,43 @@
 	background: url(../images/sprite.png) 0 0 no-repeat;
 }
 
-#acf-cols {
-	position: relative; clear: both;
-}
-
-#acf-col-left {
-	margin-right: 300px;
-}
-
-#acf-col-left .tablenav,
-#acf-col-left p.search-box {
+#acf-field-group-wrap .tablenav,
+#acf-field-group-wrap p.search-box {
 	display: none;
 }
 
-#acf-col-left .wp-list-table .check-column {
+#acf-field-group-wrap .wp-list-table .check-column {
 	padding-left: 5px;
 }
 
-#acf-col-left .wp-list-table th#fields {
+#acf-field-group-wrap .wp-list-table th#fields {
 	width: 25%;
 }
 
-#acf-col-left .tablenav.bottom {
+#acf-field-group-wrap .tablenav.bottom {
 	display: block;
 }
 
-#acf-col-left form {
-	position: relative;
+
+/* columns (replicate post edit layout) */
+.acf-columns-2 {
+	margin-right: 300px;
+}
+
+.acf-columns-2 .acf-column-1 {
 	float: left;
 	width: 100%;
 }
 
-#acf-col-right {
-	float: right; 
-	width: 281px; 
-	padding-top: 37px !important;
+.acf-columns-2 .acf-column-2 {
+	float: right;
+    margin-right: -300px;
+    width: 280px;
 }
 
-h3.h2 {
-	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
-	font-size: 25px;
-    line-height: 29px;
-    padding: 5px 0 4px 0;
-    margin: 0;
-    font-weight: normal;
+.acf-clear {
+	clear: both;
 }
-
-h3.h2 span {
-	color: #ccc;
-}
-
-#acf-col-left .wp-list-table {
-	border-radius: 0;
-	border: 1px solid #E1E1E1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
 
 
 .acf-form-table {
@@ -159,20 +140,18 @@ body.custom-fields_page_acf-settings .wp-pointer-arrow {
 }
 
 #add-ons .add-on .inner {
-	min-height: 75px;
+	min-height: 105px;
 }
 
 #add-ons .add-on-active .button {
 	padding-left: 4px;
 }
 
-#add-ons .add-on-active .tick {
+.acf-sprite-tick {
 	width: 14px;
 	height: 14px;
-	display: block;
-	float: left;
 	margin: 4px 5px 0 0;
-	background: url(../images/sprite.png) -18px -318px no-repeat;
+	background-position: 0px -300px;
 }
 
 #add-ons .add-on-title {
@@ -365,8 +344,7 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
 	
 	#icon-edit,
-	#icon-acf,
-	#add-ons .add-on.active .tick  {
+	#icon-acf {
 		background-image: url(../images/sprite@2x.png);
 		background-size: 100px 600px;
 	}

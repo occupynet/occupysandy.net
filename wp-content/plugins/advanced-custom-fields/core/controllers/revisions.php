@@ -32,6 +32,36 @@ class acf_revisions
 		
 		// filters
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields') );
+		add_filter('wp_save_post_revision_check_for_changes', array($this, 'force_save_revision'), 10, 3);
+	}
+	
+	
+	/*
+	*  force_save_revision
+	*
+	*  This filter will return false and force WP to save a revision. This is required due to
+	*  WP checking only post_title, post_excerpt and post_content values, not custom fields.
+	*
+	*  @type	filter
+	*  @date	19/09/13
+	*
+	*  @param	$return (boolean) defaults to true
+	*  @param	$last_revision (object) the last revision that WP will compare against
+	*  @param	$post (object) the $post that WP will compare against
+	*  @return	$return (boolean)
+	*/
+	
+	function force_save_revision( $return, $last_revision, $post )
+	{
+		// preview hack
+		if( isset($_POST['acf_has_changed']) && $_POST['acf_has_changed'] == '1' )
+		{
+			$return = false;
+		}
+		
+		
+		// return
+		return $return;
 	}
 	
 	
@@ -50,6 +80,7 @@ class acf_revisions
 	*/
 		
 	function wp_post_revision_fields( $return ) {
+		
 		
 		//globals
 		global $post, $pagenow;
@@ -134,6 +165,7 @@ class acf_revisions
 								
 			}
 		}
+		
 		
 		return $return;
 	
@@ -220,24 +252,58 @@ class acf_revisions
 	*  @return	$revision_id (int) the source post
 	*/
 	
-	function wp_restore_post_revision( $parent_id, $revision_id )
-	{
+	function wp_restore_post_revision( $post_id, $revision_id ) {
+	
+		// global
 		global $wpdb;
+		
+		
+		// vars
+		$fields = array();
 		
 		
 		// get field from postmeta
 		$rows = $wpdb->get_results( $wpdb->prepare(
-			"SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key NOT LIKE %s", 
-			$revision_id, 
-			'\_%'
+			"SELECT * FROM $wpdb->postmeta WHERE post_id=%d", 
+			$revision_id
 		), ARRAY_A);
 		
 		
+		// populate $fields
 		if( $rows )
 		{
 			foreach( $rows as $row )
 			{
-				update_post_meta( $parent_id, $row['meta_key'], $row['meta_value'] );
+				// meta_key must start with '_'
+				if( substr($row['meta_key'], 0, 1) !== '_' )
+				{
+					continue;
+				}
+				
+				
+				// meta_value must start with 'field_'
+				if( substr($row['meta_value'], 0, 6) !== 'field_' )
+				{
+					continue;
+				}
+				
+				
+				// this is an ACF field, append to $fields
+				$fields[] = substr($row['meta_key'], 1);
+				
+			}
+		}
+		
+		
+		// save data
+		if( $rows )
+		{
+			foreach( $rows as $row )
+			{
+				if( in_array($row['meta_key'], $fields) )
+				{
+					update_post_meta( $post_id, $row['meta_key'], $row['meta_value'] );
+				}
 			}
 		}
 			

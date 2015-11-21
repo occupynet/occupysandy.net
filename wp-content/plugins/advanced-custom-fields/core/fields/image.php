@@ -66,12 +66,19 @@ class acf_field_image extends acf_field
 			'url'		=>	'',
 		);
 		
-		if( $field['value'] && is_numeric($field['value']) )
-		{
+		
+		// has value?
+		if( $field['value'] && is_numeric($field['value']) ) {
+			
 			$url = wp_get_attachment_image_src($field['value'], $field['preview_size']);
 			
-			$o['class'] = 'active';
-			$o['url'] = $url[0];
+			if( $url ) {
+				
+				$o['url'] = $url[0];
+				$o['class'] = 'active';
+			
+			}
+						
 		}
 		
 		?>
@@ -232,6 +239,7 @@ class acf_field_image extends acf_field
 				'title' => $attachment->post_title,
 				'caption' => $attachment->post_excerpt,
 				'description' => $attachment->post_content,
+				'mime_type'	=> $attachment->post_mime_type,
 				'url' => $src[0],
 				'width' => $src[1],
 				'height' => $src[2],
