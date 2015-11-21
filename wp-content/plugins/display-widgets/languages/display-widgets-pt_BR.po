@@ -3,131 +3,127 @@ msgstr ""
 "Project-Id-Version: Display Widgets v2.04\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/display-widgets\n"
 "POT-Creation-Date: 2010-08-26 12:29+0200\n"
-"PO-Revision-Date: 2015-08-20 01:40:33+0000\n"
+"PO-Revision-Date: 2015-08-26 09:14-0300\n"
 "Last-Translator: Alicia García Holgado <alicia.alicia1986gh@gmail.com>\n"
 "Language-Team: Alicia García Holgado <aliciagh@usal.es>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: SPAIN\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
-"X-Poedit-Basepath: \n"
-"X-Poedit-Bookmarks: \n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: es_ES\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Textdomain-Support: yes"
 
+# @ default
 #: display-widgets.php:338
-#@ default
 msgid "Pages"
 msgstr "Páginas"
 
+# @ default
 #: display-widgets.php:384
-#@ default
 msgid "Categories"
-msgstr "Categorías"
+msgstr "Categorias"
 
+# @ display-widgets
 #: display-widgets.php:326
-#@ display-widgets
 msgid "Miscellaneous"
-msgstr "Miscelánea"
+msgstr "Variados"
 
+# @ display-widgets
 #: display-widgets.php:602
-#@ display-widgets
 msgid "Front"
 msgstr ""
 
+# @ display-widgets
 #: display-widgets.php:603
-#@ display-widgets
 msgid "Blog"
 msgstr ""
 
+# @ default
 #: display-widgets.php:604
-#@ default
 msgid "Archives"
-msgstr ""
+msgstr "Arquivos"
 
+# @ default
 #: display-widgets.php:605
-#@ default
 msgid "Single Post"
-msgstr ""
+msgstr "Post Único"
 
+# @ default
 #: display-widgets.php:607
-#@ default
 msgid "Search"
-msgstr ""
+msgstr "Pesquisa"
 
+# @ display-widgets
 #: display-widgets.php:355
-#@ display-widgets
 msgid "Custom Post Types"
-msgstr ""
+msgstr "Tipos de Posts Customizados"
 
+# @ display-widgets
 #: display-widgets.php:402
-#@ display-widgets
 msgid "Taxonomies"
 msgstr ""
 
+# @ display-widgets
 #: display-widgets.php:435
-#@ display-widgets
 msgid "Comma Separated list of IDs of posts not listed above"
-msgstr ""
+msgstr "separe a lista"
 
+# @ display-widgets
 #: display-widgets.php:418
-#@ display-widgets
 msgid "Languages"
-msgstr ""
+msgstr "Traduções"
 
+# @ display-widgets
 #: display-widgets.php:310
-#@ display-widgets
 msgid "Show Widget for:"
-msgstr ""
+msgstr "Mostrar este Widget para:"
 
+# @ display-widgets
 #: display-widgets.php:312
-#@ display-widgets
 msgid "Everyone"
-msgstr ""
+msgstr "Todos"
 
+# @ display-widgets
 #: display-widgets.php:313
-#@ display-widgets
 msgid "Logged-out users"
-msgstr ""
+msgstr "Usuários deslogados"
 
+# @ display-widgets
 #: display-widgets.php:314
-#@ display-widgets
 msgid "Logged-in users"
-msgstr ""
+msgstr "Usuários logados"
 
+# @ display-widgets
 #: display-widgets.php:320
-#@ display-widgets
 msgid "Hide on checked pages"
-msgstr ""
+msgstr "Esconder nas páignas marcadas"
 
+# @ display-widgets
 #: display-widgets.php:321
-#@ display-widgets
 msgid "Show on checked pages"
-msgstr ""
+msgstr "Exibir nas páginas marcadas"
 
+# @ display-widgets
 #: display-widgets.php:368
-#@ display-widgets
 msgid "Custom Post Type Archives"
-msgstr ""
+msgstr "Arquivos de Tipos de Posts Customizados"
 
+# @ display-widgets
 #: display-widgets.php:379
-#@ display-widgets
 msgid "Archive"
-msgstr ""
+msgstr "Arquivo"
 
+# @ display-widgets
 #: display-widgets.php:388
-#@ display-widgets
 msgid "All Categories"
-msgstr ""
+msgstr "Todas as Categorias"
 
+# @ display-widgets
 #: display-widgets.php:732
 #, php-format
-#@ display-widgets
 msgid "#%d (no title)"
 msgstr ""
-

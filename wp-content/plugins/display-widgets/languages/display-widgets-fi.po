@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Display Widgets v2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-05-01 14:15+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"Language: fi\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ display-widgets
+#: display-widgets.php:558
+msgid "Front"
+msgstr "Etusivu"
+
+# @ display-widgets
+#: display-widgets.php:559
+msgid "Blog"
+msgstr "Blogi"
+
+# @ default
+#: display-widgets.php:560
+msgid "Archives"
+msgstr "Arkistot"
+
+# @ default
+#: display-widgets.php:561
+msgid "Single Post"
+msgstr "Yksittäinen artikkeli"
+
+# @ default
+#: display-widgets.php:563
+msgid "Search"
+msgstr "Hakutulokset"
+
+# @ default
+#: display-widgets.php:303
+msgid "Pages"
+msgstr "Sivut"
+
+# @ default
+#: display-widgets.php:356
+msgid "Categories"
+msgstr "Kategoriat"
+
+# @ display-widgets
+#: display-widgets.php:293
+msgid "Miscellaneous"
+msgstr "Sekalaiset"
+
+# @ display-widgets
+#: display-widgets.php:299
+msgid "Page"
+msgstr "Sivu"
+
+# @ display-widgets
+#: display-widgets.php:402
+msgid "Comma Separated list of IDs of posts not listed above"
+msgstr "Pilkuilla eroteltu lista artikkelitunnuksista (Post ID) jotka ei ole listattu ylhäällä"
+
+# @ display-widgets
+#: display-widgets.php:328
+msgid "Custom Post Types"
+msgstr "Sisältötyypit (Custom Post Types)"
+
+# @ display-widgets
+#: display-widgets.php:370
+msgid "Taxonomies"
+msgstr "Taksonomiat"
+
+# @ display-widgets
+#: display-widgets.php:385
+msgid "Languages"
+msgstr "Kielet"
+
+# @ display-widgets
+#: display-widgets.php:277
+msgid "Show Widget for:"
+msgstr "Näytä vimpain:"
+
+# @ display-widgets
+#: display-widgets.php:279
+msgid "Everyone"
+msgstr "Kaikille"
+
+# @ display-widgets
+#: display-widgets.php:280
+msgid "Logged-out users"
+msgstr "Uloskirjautuneille käyttäjille"
+
+# @ display-widgets
+#: display-widgets.php:281
+msgid "Logged-in users"
+msgstr "Kirjautuneille käyttäjille"
+
+# @ display-widgets
+#: display-widgets.php:287
+msgid "Hide on checked pages"
+msgstr "Piilota merkityillä sivuilla"
+
+# @ display-widgets
+#: display-widgets.php:288
+msgid "Show on checked pages"
+msgstr "Näytä merkityillä sivuilla"
+
+# @ display-widgets
+#: display-widgets.php:341
+msgid "Custom Post Type Archives"
+msgstr "Custom Post Type arkistot"
+
+# @ display-widgets
+#: display-widgets.php:351
+msgid "Archive"
+msgstr "Arkisto"

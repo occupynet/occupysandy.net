@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Display Widgets v2.04\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-08-20 01:40:25+0000\n"
+"PO-Revision-Date: 2015-08-20 01:41:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: CSL v1.x\n"
+"X-Generator: Poedit 1.7.6\n"
 "X-Poedit-Language: \n"
 "X-Poedit-Country: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -23,102 +23,102 @@ msgstr ""
 #: display-widgets.php:602
 #@ display-widgets
 msgid "Front"
-msgstr ""
+msgstr "Framsida"
 
 #: display-widgets.php:603
 #@ display-widgets
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: display-widgets.php:604
 #@ default
 msgid "Archives"
-msgstr ""
+msgstr "Arkiv"
 
 #: display-widgets.php:605
 #@ default
 msgid "Single Post"
-msgstr ""
+msgstr "Enskilt inlägg"
 
 #: display-widgets.php:607
 #@ default
 msgid "Search"
-msgstr ""
+msgstr "Sökresultat"
 
 #: display-widgets.php:338
 #@ default
 msgid "Pages"
-msgstr ""
+msgstr "Sidor"
 
 #: display-widgets.php:384
 #@ default
 msgid "Categories"
-msgstr ""
+msgstr "Kategorier"
 
 #: display-widgets.php:326
 #@ display-widgets
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diverse"
 
 #: display-widgets.php:435
 #@ display-widgets
 msgid "Comma Separated list of IDs of posts not listed above"
-msgstr ""
+msgstr "Kommaseparerad lista med ID för inlägg som inte nämnts ovan"
 
 #: display-widgets.php:355
 #@ display-widgets
 msgid "Custom Post Types"
-msgstr ""
+msgstr "Innehållstyper (Custom Post Types)"
 
 #: display-widgets.php:402
 #@ display-widgets
 msgid "Taxonomies"
-msgstr ""
+msgstr "Taxonomier"
 
 #: display-widgets.php:418
 #@ display-widgets
 msgid "Languages"
-msgstr ""
+msgstr "Språk"
 
 #: display-widgets.php:310
 #@ display-widgets
 msgid "Show Widget for:"
-msgstr ""
+msgstr "Visa Widget för:"
 
 #: display-widgets.php:312
 #@ display-widgets
 msgid "Everyone"
-msgstr ""
+msgstr "Alla"
 
 #: display-widgets.php:313
 #@ display-widgets
 msgid "Logged-out users"
-msgstr ""
+msgstr "Icke inloggade användare"
 
 #: display-widgets.php:314
 #@ display-widgets
 msgid "Logged-in users"
-msgstr ""
+msgstr "Inloggade användare"
 
 #: display-widgets.php:320
 #@ display-widgets
 msgid "Hide on checked pages"
-msgstr ""
+msgstr "Dölj på markerade sidor"
 
 #: display-widgets.php:321
 #@ display-widgets
 msgid "Show on checked pages"
-msgstr ""
+msgstr "Visa på markerade sidor"
 
 #: display-widgets.php:368
 #@ display-widgets
 msgid "Custom Post Type Archives"
-msgstr ""
+msgstr "Custom Post Type arkiv"
 
 #: display-widgets.php:379
 #@ display-widgets
 msgid "Archive"
-msgstr ""
+msgstr "Arkiv"
 
 #: display-widgets.php:388
 #@ display-widgets
