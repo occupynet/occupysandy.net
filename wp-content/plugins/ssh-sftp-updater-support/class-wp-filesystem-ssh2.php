@@ -20,8 +20,6 @@ require_once('Crypt/RSA.php');
  * @uses WP_Filesystem_Base Extends class
  */
 
-//define('NET_SFTP_LOGGING', NET_SFTP_LOG_REALTIME);
-
 class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 
 	var $link = false;
@@ -78,13 +76,10 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 	function connect() {
 		$this->link = new Net_SFTP($this->options['hostname'], $this->options['port']);
 
-		if ( ! $this->link ) {
-			$this->errors->add('connect', sprintf(__('Failed to connect to SSH2 Server %1$s:%2$s'), $this->options['hostname'], $this->options['port']));
-			return false;
-		}
-
 		if ( !$this->keys ) {
 			if ( ! $this->link->login($this->options['username'], $this->options['password']) ) {
+				if ( $this->handle_connect_error() )
+					return false;
 				$this->errors->add('auth', sprintf(__('Username/Password incorrect for %s'), $this->options['username']));
 				return false;
 			}
@@ -95,12 +90,25 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 			}
 			$rsa->loadKey($this->options['private_key']);
 			if ( ! $this->link->login($this->options['username'], $rsa ) ) {
+				if ( $this->handle_connect_error() )
+					return false;
 				$this->errors->add('auth', sprintf(__('Private key incorrect for %s'), $this->options['username']));
+				$this->errors->add('auth', __('Make sure that the key you are using is an RSA key and not a DSA key'));
 				return false;
 			}
 		}
 
 		return true;
+	}
+
+	function handle_connect_error() {
+		if ( ! $this->link->isConnected() ) {
+			$this->errors->add('connect', sprintf(__('Failed to connect to SSH2 Server %1$s:%2$s'), $this->options['hostname'], $this->options['port']));
+			$this->errors->add('connect2', __('If SELinux is installed check to make sure that <code>httpd_can_network_connect</code> is set to 1'));
+			return true;
+		}
+
+		return false;
 	}
 
 	function run_command( $command, $returnbool = false) {
@@ -215,7 +223,11 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 		return $this->link->rename($source, $destination);
 	}
 
-	function delete($file, $recursive = false) {
+	function delete($file, $recursive = false, $type = false) {
+		if ( 'f' == $type || $this->is_file($file) )
+			return $this->link->delete($file);
+		if ( ! $recursive )
+			return $this->link->rmdir($file);
 		return $this->link->delete($file, $recursive);
 	}
 
@@ -297,6 +309,9 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 		$ret = array();
 		$entries = $this->link->rawlist($path);
 
+		if ( $entries === false )
+			return false;
+
 		foreach ($entries as $name => $entry) {
 			$struc = array();
 			$struc['name'] = $name;
@@ -313,8 +328,8 @@ class WP_Filesystem_SSH2 extends WP_Filesystem_Base {
 			$struc['perms'] 	= $entry['permissions'];
 			$struc['permsn']	= $this->getnumchmodfromh($struc['perms']);
 			$struc['number'] 	= false;
-			$struc['owner']    	= $this->owner($path.'/'.$entry, $entry['uid']);
-			$struc['group']    	= $this->group($path.'/'.$entry, $entry['gid']);
+			$struc['owner']    	= $this->owner($path.'/'.$name, $entry['uid']);
+			$struc['group']    	= $this->group($path.'/'.$name, $entry['gid']);
 			$struc['size']    	= $entry['size'];//$this->size($path.'/'.$entry);
 			$struc['lastmodunix']= $entry['mtime'];//$this->mtime($path.'/'.$entry);
 			$struc['lastmod']   = date('M j',$struc['lastmodunix']);

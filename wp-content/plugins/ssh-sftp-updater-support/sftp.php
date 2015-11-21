@@ -3,16 +3,28 @@
 Plugin Name: SSH SFTP Updater Support
 Plugin URI: http://phpseclib.sourceforge.net/wordpress.htm
 Description: Update your Wordpress blog / plugins via SFTP without libssh2
-Version: 0.4
+Version: 0.7.1
 Author: TerraFrost
 Author URI: http://phpseclib.sourceforge.net/
 */
 
 // see http://adambrown.info/p/wp_hooks/hook/<filter name>
 add_filter('filesystem_method', 'phpseclib_filesystem_method', 10, 2); // since 2.6 - WordPress will ignore the ssh option if the php ssh extension is not loaded
-add_filter('request_filesystem_credentials', 'phpseclib_request_filesystem_credentials', 10, 6); // since 2.5 - Alter some strings and don't ask for the public key
+add_filter('request_filesystem_credentials', 'phpseclib_request_filesystem_credentials', 10, 1024); // since 2.5 - Alter some strings and don't ask for the public key
 add_filter('fs_ftp_connection_types', 'phpseclib_fs_ftp_connection_types'); // since 2.9 - Add the SSH2 option to the connection options
 add_filter('filesystem_method_file', 'phpseclib_filesystem_method_file', 10, 2); // since 2.6 - Direct WordPress to use our ssh2 class
+if (version_compare(get_bloginfo('version'), '4.2.0') >= 0) // disable the modal dialog on Wordpress >= 4.2
+	add_action('admin_head-plugins.php', 'phpseclib_disable_update_link_onclick');
+
+function phpseclib_disable_update_link_onclick() {
+?>
+<script type="text/javascript">
+	jQuery(function($){
+		jQuery(".plugin-update-tr").off("click", ".update-link");
+	});
+</script>
+<?php
+}
 
 function phpseclib_filesystem_method_file($path, $method) {
 	return $method == 'ssh2' ?
@@ -30,9 +42,9 @@ function phpseclib_fs_ftp_connection_types($types) {
 }
 
 // this has been pretty much copy / pasted from wp-admin/includes/file.php
-function phpseclib_request_filesystem_credentials($value, $form_post, $type = '', $error = false, $context = false, $extra_fields = null) {
+function phpseclib_request_filesystem_credentials($value, $form_post, $type = '', $error = false, $context = false, $extra_fields = null, $allow_relaxed_file_ownership = false) {
 	if ( empty($type) )
-		$type = get_filesystem_method(array(), $context);
+		$type = get_filesystem_method(array(), $context, $allow_relaxed_file_ownership);
 
 	if ( 'direct' == $type )
 		return true;
@@ -56,7 +68,6 @@ function phpseclib_request_filesystem_credentials($value, $form_post, $type = ''
 			$credentials['private_key'] = file_get_contents($_FILES['private_key_file']['tmp_name']);
 		}
 	}
-	
 
 	//sanitize the hostname, Some people might pass in odd-data:
 	$credentials['hostname'] = preg_replace('|\w+://|', '', $credentials['hostname']); //Strip any schemes off
@@ -88,19 +99,26 @@ function phpseclib_request_filesystem_credentials($value, $form_post, $type = ''
 			$stored_credentials['hostname'] .= ':' . $stored_credentials['port'];
 
 		unset($stored_credentials['password'], $stored_credentials['port'], $stored_credentials['private_key'], $stored_credentials['public_key']);
-		update_option('ftp_credentials', $stored_credentials);
+		if ( ! defined( 'WP_INSTALLING' ) ) {
+			update_option( 'ftp_credentials', $stored_credentials );
+		}
 		return $credentials;
 	}
-	$hostname = '';
-	$username = '';
-	$password = '';
-	$connection_type = '';
-	if ( !empty($credentials) )
-		extract($credentials, EXTR_OVERWRITE);
+	$hostname = isset( $credentials['hostname'] ) ? $credentials['hostname'] : '';
+	$username = isset( $credentials['username'] ) ? $credentials['username'] : '';
+	$public_key = isset( $credentials['public_key'] ) ? $credentials['public_key'] : '';
+	$private_key = isset( $credentials['private_key'] ) ? $credentials['private_key'] : '';
+	$port = isset( $credentials['port'] ) ? $credentials['port'] : '';
+	$connection_type = isset( $credentials['connection_type'] ) ? $credentials['connection_type'] : '';
+
 	if ( $error ) {
-		$error_string = __('<strong>Error:</strong> There was an error connecting to the server, Please verify the settings are correct.');
-		if ( is_wp_error($error) )
-			$error_string = esc_html( $error->get_error_message() );
+		$error_string = __('<strong>ERROR:</strong> There was an error connecting to the server, Please verify the settings are correct.');
+		if ( is_wp_error($error) ) {
+			$error_strings = $error->get_error_messages();
+			//foreach ( $error_strings as &$error_string )
+			//	$error_string = esc_html( $error_string );
+			$error_string = implode('<br />', $error_strings);
+		}
 		echo '<div id="message" class="error"><p>' . $error_string . '</p></div>';
 	}
 
@@ -122,13 +140,23 @@ jQuery(function($){
 	jQuery("#ftp, #ftps").click(function () {
 		jQuery(".ssh_keys").hide();
 	});
-	jQuery('form').submit(function () {
+	jQuery("#private_key_file").change(function (event) {
+		if (window.File && window.FileReader) {
+			var reader = new FileReader();
+			reader.onload = function(file) {
+				jQuery("#private_key").val(file.target.result);
+			};
+			reader.readAsBinaryString(event.target.files[0]);
+		}
+	});
+	jQuery("form").submit(function () {
 		if(typeof(Storage)!=="undefined") {
 			localStorage.privateKeyFile = jQuery("#private_key").val();
 		}
+		jQuery("#private_key_file").attr("disabled", "disabled");
 	});
 	if(typeof(Storage)!=="undefined" && localStorage.privateKeyFile) {
-		jQuery('#private_key').val(localStorage.privateKeyFile);
+		jQuery("#private_key").val(localStorage.privateKeyFile);
 	}
 	jQuery('form input[value=""]:first').focus();
 });
@@ -136,7 +164,6 @@ jQuery(function($){
 </script>
 <form action="<?php echo $form_post ?>" method="post" enctype="multipart/form-data">
 <div class="wrap">
-<?php screen_icon(); ?>
 <h2><?php _e('Connection Information') ?></h2>
 <p><?php
 	$label_user = __('Username');
@@ -183,7 +210,7 @@ jQuery(function($){
 <label for="private_key"><?php _e('Copy / Paste Private Key:') ?></label>
 </div>
 </th>
-<td><textarea name="private_key" id="private_key" value="<?php echo esc_attr($private_key) ?>"<?php disabled( defined('FTP_PRIKEY') ); ?>></textarea>
+<td><textarea name="private_key" id="private_key" cols="58" rows="10" value="<?php echo esc_attr($private_key) ?>"<?php disabled( defined('FTP_PRIKEY') ); ?>></textarea>
 </td>
 </tr>
 <tr class="ssh_keys" valign="top" style="<?php if ( 'ssh' != $connection_type ) echo 'display:none' ?>">
