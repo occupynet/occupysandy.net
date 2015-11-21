@@ -8,33 +8,28 @@ license.txt
 *.tar
 *.zip
 *.rar
+*.log
 *bb-config.php
 
 .htaccess
-wp-config.php
 
-voice/voicefiles
-wp-content/_uploads/
-wp-content/uploads/
-wp-content/uploads/gravity_forms/
-wp-content/blogs.dir/
-wp-content/upgrade/
-wp-content/backup-db/
-wp-content/advanced-cache.php
-wp-content/wp-cache-config.php
-wp-content/cache/
-wp-content/backups/
-wp-content/plugins/wp-piwik/update/
+# Ignore everything in the root except the "wp-content" directory.
+/*
+!.gitignore
+!README.md
+!.scrutinizer.yml
+!apigen.neon
+!wp-content/
 
-wp-content/db.php
-wp-content/object-cache.php
-wp-content/w3tc-config/
-wp-content/plugins/custom-post-type-ui/
+# Ignore everything in the "wp-content" directory, except the "plugins", "mu-plugins",
+# and "themes" directories.
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
 
-wp-content/plugins/si-captcha-for-wordpress/captcha/temp/
-wp-content/plugins/duplicator/files/
 
-*.log
+
 
 sitemap.xml
 sitemap.xml.gz
