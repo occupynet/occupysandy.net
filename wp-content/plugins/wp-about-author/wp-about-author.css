@@ -32,19 +32,19 @@
 	background: #fff;
 	border: 1px solid #e7e7e7;
 	float: left;
-	height: 100px;
-	width: 100px;
 	margin: 0 -122px 0 0;
 	padding: 10px;
 }
-.wp-about-author-pic img{
-	width: 100px;
-        height: 100px;
-        max-width: 100px;
+.wp-about-author-pic.wp-about-author-circle,
+.wp-about-author-pic.wp-about-author-circle img {
+	border-radius: 50%;
 }
 .wp-about-author-text{
-	float: left;
 	margin: 0 0 0 140px;
+	display: table;
+}
+.wp-about-author-text > h3 {
+	margin-top: 0;
 }
 .wp-about-author-text p {
         margin: 0 0 5px 0;

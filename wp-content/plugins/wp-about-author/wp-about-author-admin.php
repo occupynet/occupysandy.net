@@ -10,6 +10,7 @@ function add_wp_about_author_admin_styles() {
         wp_enqueue_style('global');
         wp_enqueue_style('wp-admin');
         wp_enqueue_style('farbtastic');
+        wp_enqueue_style('wp-color-picker');
     }
 }
 
@@ -23,6 +24,16 @@ function add_wp_about_author_admin_scripts() {
         wp_enqueue_script('dashboard');
         wp_enqueue_script('custom-background');
     }
+}
+
+//=============================================
+// Display plugin Settings Link on plugins page
+//=============================================
+function wp_about_author_plugin_settings_link($links) {
+    $url = admin_url('options-general.php?page=wp-about-author/wp-about-author-admin.php');
+    $settings_link = '<a href="'.$url.'">' . __('Settings') . '</a>';
+    array_unshift( $links, $settings_link );
+    return $links;
 }
 
 //=============================================
@@ -77,12 +88,17 @@ function wp_about_author_show_blogfeed() {
 // Contact page options
 //=============================================
 function wp_about_author_general_settings() {
+
+    // Make sure we have defaults
+    add_defaults_wp_about_author();
+
     $wp_about_author_settings = wp_about_author_process_settings();
 
     $wrapped_content = "";
     $general_content = "";
     $social_content = "";
     $box_content = "";
+    $avatar_content = "";
 
     if (function_exists('wp_nonce_field')) {
         $general_content .= wp_nonce_field('wp-about-author-update-options', '_wpnonce', true, false);
@@ -107,15 +123,21 @@ function wp_about_author_general_settings() {
 				<small>Display author box in feeds at the top of each entry.</small></p>';
     $wrapped_content .= wp_about_author_postbox('wp-about-author-settings-general', 'Display Settings', $general_content);
 
+    $avatar_content .= '<p><strong>' . __("Size") . '</strong><br /> 
+                <input type="text" name="wp_author_avatar_size" value="' . $wp_about_author_settings['wp_author_avatar_size'] . '" /><br />
+                <small>By default, the size of the image is 100x100.</small></p>';
+    $avatar_content .= '<p><strong>' . __("Display as Circle") . '</strong><br />
+                <input type="checkbox" name="wp_author_avatar_shape" ' . checked($wp_about_author_settings['wp_author_avatar_shape'], 'on', false) . ' />
+                <small>Display circular images instead of square ones.</small></p>';
+    $wrapped_content .= wp_about_author_postbox('wp-about-author-settings-avatar', 'Avatar Settings', $avatar_content);
+
     $social_content .= '<p><strong>' . __("Display Social Media Icons") . '</strong><br />
 				<input type="checkbox" name="wp_author_social_images" ' . checked($wp_about_author_settings['wp_author_social_images'], 'on', false) . ' />
 				<small>Display buttons instead of text links in the author box.</small></p>';
     $wrapped_content .= wp_about_author_postbox('wp-about-author-settings-general', 'Social Links Display Settings', $social_content);
 
     $box_content .= '<p><strong>' . __("Box Background Color") . '</strong><br /> 
-				<input type="text" name="wp_author_alert_bg" id="background-color" value="' . $wp_about_author_settings['wp_author_alert_bg'] . '" />
-				<a class="hide-if-no-js" href="#" id="pickcolor">' . __('Select a Color') . '</a>
-				<div id="colorPickerDiv" style="z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none;"></div>
+				<input type="text" name="wp_author_alert_bg" id="background-color" value="' . $wp_about_author_settings['wp_author_alert_bg'] . '" /><br />
 				<small>By default, the background color of the box is a yellowish tone.</small></p>';
     $box_content .= '<p><strong>' . __("Box Border") . '</strong><br /> 
                 <select name="wp_author_alert_border">
@@ -129,17 +151,10 @@ function wp_about_author_general_settings() {
 }
 // 
 function wp_about_author_get_options(){
-    $fields = array(
-        'wp_author_alert_border' => "",
-        'wp_author_display_front' => "",
-        'wp_author_display_archives' => "",
-        'wp_author_display_search' => "",
-        'wp_author_display_posts' => "",
-        'wp_author_display_pages' => "",
-        'wp_author_display_feed' => "",
-        'wp_author_social_images' => ""
-    );
     $wp_about_author_settings = get_option('wp_about_author_settings');
+    // Make sure we have defaults
+    add_defaults_wp_about_author($wp_about_author_settings);
+
     return wp_parse_args( $wp_about_author_settings, $fields );
 }
 

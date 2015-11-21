@@ -1,10 +1,10 @@
 === WP About Author ===
 Contributors: JonBishop
 Donate link: http://www.jonbishop.com/donate/
-Tags: author, author bio, author box, post, widget, bio, twitter, facebook, about, about author
+Tags: author, author bio, author box, post, widget, bio, twitter, facebook, about, about author, author biography, avatar, user box, wp about author, guest author, guest post
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 1.3
+Tested up to: 3.8.1
+Stable tag: 1.5
 
 Easily display customizable author bios below your posts
 
@@ -18,6 +18,7 @@ Customization capabilities include
 1. Change background color with easy to use color picker
 1. Display settings allow you to control when to display author bios
 1. Display text links or icons to a users social media profiles
+1. Change the size and shape of your avatar
 
 This plugin also expands your profile page by adding popular social media fields so it's easier for readers to follow your authors.
 
@@ -87,12 +88,12 @@ add_filter('wp_about_author_display', 'my_wp_about_author_display');
 = Are there any other filters that let me modify the output? =
 
 The following filters have been added:
-wp_about_author_name - Modify the output of the name in the author box
-wp_about_author_description - Modify the output of the description in the author box
-wp_about_author_more_posts - Modify the "More Posts" text in the author box
-wp_about_author_website - Modify the "Website" text in the author box
-wp_about_author_follow_me - Modify the "Follow Me:" text in the author box
-wp_about_author_separator - Change the separator displayed between text links
+* `wp_about_author_name()` - Modify the output of the name in the author box
+* `wp_about_author_description()` - Modify the output of the description in the author box
+* `wp_about_author_more_posts()` - Modify the "More Posts" text in the author box
+* `wp_about_author_website()` - Modify the "Website" text in the author box
+* `wp_about_author_follow_me()` - Modify the "Follow Me:" text in the author box
+* `wp_about_author_separator()` - Change the separator displayed between text links
 
 
 == Screenshots ==
@@ -103,7 +104,18 @@ wp_about_author_separator - Change the separator displayed between text links
 
 == Changelog ==
 
-The current version is 1.3 (2012.2.23)
+The current version is 1.5 (2014.4.5)
+
+= 1.5 (2014.4.5) =
+* Fixed update
+* Fixing title alignment with avatar
+* Fixing display of text area next to avatar
+
+= 1.4 (2014.3.29) =
+* Fixed conflict with WordPress SEO
+* Can change size and shape of Avatar image
+* Fixed broken color picker
+* Added link to Settings page from Plugins page
 
 = 1.3 (2012.2.23) =
 * Added social media icons as an alternative to text links
