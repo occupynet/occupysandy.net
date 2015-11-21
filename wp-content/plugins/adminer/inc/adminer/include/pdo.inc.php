@@ -2,20 +2,22 @@
 // PDO can be used in several database drivers
 if (extension_loaded('pdo')) {
 	/*abstract*/ class Min_PDO extends PDO {
-		var $_result, $server_info, $affected_rows, $error;
+		var $_result, $server_info, $affected_rows, $errno, $error;
 		
 		function __construct() {
 			global $adminer;
-			$pos = array_search("", $adminer->operators);
+			$pos = array_search("SQL", $adminer->operators);
 			if ($pos !== false) {
 				unset($adminer->operators[$pos]);
 			}
 		}
 		
-		function dsn($dsn, $username, $password, $exception_handler = 'auth_error') {
-			set_exception_handler($exception_handler); // try/catch is not compatible with PHP 4
-			parent::__construct($dsn, $username, $password);
-			restore_exception_handler();
+		function dsn($dsn, $username, $password) {
+			try {
+				parent::__construct($dsn, $username, $password);
+			} catch (Exception $ex) {
+				auth_error($ex->getMessage());
+			}
 			$this->setAttribute(13, array('Min_PDOStatement')); // 13 - PDO::ATTR_STATEMENT_CLASS
 			$this->server_info = $this->getAttribute(4); // 4 - PDO::ATTR_SERVER_VERSION
 		}
@@ -26,8 +28,7 @@ if (extension_loaded('pdo')) {
 			$result = parent::query($query);
 			$this->error = "";
 			if (!$result) {
-				$errorInfo = $this->errorInfo();
-				$this->error = $errorInfo[2];
+				list(, $this->errno, $this->error) = $this->errorInfo();
 				return false;
 			}
 			$this->store_result($result);
@@ -41,6 +42,9 @@ if (extension_loaded('pdo')) {
 		function store_result($result = null) {
 			if (!$result) {
 				$result = $this->_result;
+				if (!$result) {
+					return false;
+				}
 			}
 			if ($result->columnCount()) {
 				$result->num_rows = $result->rowCount(); // is not guaranteed to work with all drivers
@@ -51,6 +55,9 @@ if (extension_loaded('pdo')) {
 		}
 		
 		function next_result() {
+			if (!$this->_result) {
+				return false;
+			}
 			$this->_result->_offset = 0;
 			return @$this->_result->nextRowset(); // @ - PDO_PgSQL doesn't support it
 		}

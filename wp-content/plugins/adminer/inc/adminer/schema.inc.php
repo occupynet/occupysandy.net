@@ -1,10 +1,9 @@
 <?php
-page_header(lang('Database schema'), "", array(), DB . ($_GET["ns"] ? ".$_GET[ns]" : ""));
+page_header(lang('Database schema'), "", array(), h(DB . ($_GET["ns"] ? ".$_GET[ns]" : "")));
 
 $table_pos = array();
 $table_pos_js = array();
-$name = "adminer_schema";
-$SCHEMA = ($_GET["schema"] ? $_GET["schema"] : $_COOKIE[($_COOKIE["$name-" . DB] ? "$name-" . DB : $name)]); // $_COOKIE["adminer_schema"] was used before 3.2.0 //! ':' in table name
+$SCHEMA = ($_GET["schema"] ? $_GET["schema"] : $_COOKIE["adminer_schema-" . str_replace(".", "_", DB)]); // $_COOKIE["adminer_schema"] was used before 3.2.0 //! ':' in table name
 preg_match_all('~([^:]+):([-0-9.]+)x([-0-9.]+)(_|$)~', $SCHEMA, $matches, PREG_SET_ORDER);
 foreach ($matches as $i => $match) {
 	$table_pos[$match[1]] = array($match[2], $match[3]);
@@ -16,23 +15,23 @@ $base_left = -1;
 $schema = array(); // table => array("fields" => array(name => field), "pos" => array(top, left), "references" => array(table => array(left => array(source, target))))
 $referenced = array(); // target_table => array(table => array(left => target_column))
 $lefts = array(); // float => bool
-foreach (table_status() as $table_status) {
-	if (!isset($table_status["Engine"])) { // view
+foreach (table_status('', true) as $table => $table_status) {
+	if (is_view($table_status)) {
 		continue;
 	}
 	$pos = 0;
-	$schema[$table_status["Name"]]["fields"] = array();
-	foreach (fields($table_status["Name"]) as $name => $field) {
+	$schema[$table]["fields"] = array();
+	foreach (fields($table) as $name => $field) {
 		$pos += 1.25;
 		$field["pos"] = $pos;
-		$schema[$table_status["Name"]]["fields"][$name] = $field;
+		$schema[$table]["fields"][$name] = $field;
 	}
-	$schema[$table_status["Name"]]["pos"] = ($table_pos[$table_status["Name"]] ? $table_pos[$table_status["Name"]] : array($top, 0));
-	foreach ($adminer->foreignKeys($table_status["Name"]) as $val) {
+	$schema[$table]["pos"] = ($table_pos[$table] ? $table_pos[$table] : array($top, 0));
+	foreach ($adminer->foreignKeys($table) as $val) {
 		if (!$val["db"]) {
 			$left = $base_left;
-			if ($table_pos[$table_status["Name"]][1] || $table_pos[$val["table"]][1]) {
-				$left = min(floatval($table_pos[$table_status["Name"]][1]), floatval($table_pos[$val["table"]][1])) - 1;
+			if ($table_pos[$table][1] || $table_pos[$val["table"]][1]) {
+				$left = min(floatval($table_pos[$table][1]), floatval($table_pos[$val["table"]][1])) - 1;
 			} else {
 				$base_left -= .1;
 			}
@@ -40,12 +39,12 @@ foreach (table_status() as $table_status) {
 				// find free $left
 				$left -= .0001;
 			}
-			$schema[$table_status["Name"]]["references"][$val["table"]][(string) $left] = array($val["source"], $val["target"]);
-			$referenced[$val["table"]][$table_status["Name"]][(string) $left] = $val["target"];
+			$schema[$table]["references"][$val["table"]][(string) $left] = array($val["source"], $val["target"]);
+			$referenced[$val["table"]][$table][(string) $left] = $val["target"];
 			$lefts[(string) $left] = true;
 		}
 	}
-	$top = max($top, $schema[$table_status["Name"]]["pos"][0] + 2.5 + $pos);
+	$top = max($top, $schema[$table]["pos"][0] + 2.5 + $pos);
 }
 
 ?>
@@ -62,10 +61,12 @@ document.onmouseup = function (ev) {
 foreach ($schema as $name => $table) {
 	echo "<div class='table' style='top: " . $table["pos"][0] . "em; left: " . $table["pos"][1] . "em;' onmousedown='schemaMousedown(this, event);'>";
 	echo '<a href="' . h(ME) . 'table=' . urlencode($name) . '"><b>' . h($name) . "</b></a>";
+	
 	foreach ($table["fields"] as $field) {
 		$val = '<span' . type_class($field["type"]) . ' title="' . h($field["full_type"] . ($field["null"] ? " NULL" : '')) . '">' . h($field["field"]) . '</span>';
 		echo "<br>" . ($field["primary"] ? "<i>$val</i>" : $val);
 	}
+	
 	foreach ((array) $table["references"] as $target_name => $refs) {
 		foreach ($refs as $left => $ref) {
 			$left1 = $left - $table_pos[$name][1];
@@ -75,6 +76,7 @@ foreach ($schema as $name => $table) {
 			}
 		}
 	}
+	
 	foreach ((array) $referenced[$name] as $target_name => $refs) {
 		foreach ($refs as $left => $columns) {
 			$left1 = $left - $table_pos[$name][1];
@@ -84,8 +86,10 @@ foreach ($schema as $name => $table) {
 			}
 		}
 	}
+	
 	echo "\n</div>\n";
 }
+
 foreach ($schema as $name => $table) {
 	foreach ((array) $table["references"] as $target_name => $refs) {
 		foreach ($refs as $left => $ref) {
@@ -103,4 +107,4 @@ foreach ($schema as $name => $table) {
 }
 ?>
 </div>
-<p><a href="<?php echo h(ME . "schema=" . urlencode($SCHEMA)); ?>" id="schema-link"><?php echo lang('Permanent link'); ?></a>
+<p class="links"><a href="<?php echo h(ME . "schema=" . urlencode($SCHEMA)); ?>" id="schema-link"><?php echo lang('Permanent link'); ?></a>

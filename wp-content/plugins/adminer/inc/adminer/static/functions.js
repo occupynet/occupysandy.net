@@ -1,4 +1,15 @@
 
+/** Add or remove CSS class
+* @param HTMLElement
+* @param string
+* @param [bool]
+*/
+function alterClass(el, className, enable) {
+	if (el) {
+		el.className = el.className.replace(RegExp('(^|\\s)' + className + '(\\s|$)'), '$2') + (enable ? ' ' + className : '');
+	}
+}
+
 /** Toggle visibility
 * @param string
 * @return boolean
@@ -21,31 +32,60 @@ function cookie(assign, days) {
 }
 
 /** Verify current Adminer version
+* @param string
 */
-function verifyVersion() {
+function verifyVersion(current) {
 	cookie('adminer_version=0', 1);
-	var script = document.createElement('script');
-	script.src = location.protocol + '//www.adminer.org/version.php';
-	document.body.appendChild(script);
+	var iframe = document.createElement('iframe');
+	iframe.src = location.protocol + '//www.adminer.org/version/?current=' + current;
+	iframe.frameBorder = 0;
+	iframe.marginHeight = 0;
+	iframe.scrolling = 'no';
+	iframe.style.width = '7ex';
+	iframe.style.height = '1.25em';
+	if (window.postMessage && window.addEventListener) {
+		iframe.style.display = 'none';
+		addEventListener('message', function (event) {
+			if (event.origin == location.protocol + '//www.adminer.org') {
+				var match = /version=(.+)/.exec(event.data);
+				if (match) {
+					cookie('adminer_version=' + match[1], 1);
+				}
+			}
+		}, false);
+	}
+	document.getElementById('version').appendChild(iframe);
 }
 
 /** Get value of select
-* @param HTMLSelectElement
+* @param HTMLElement <select> or <input>
 * @return string
 */
 function selectValue(select) {
+	if (!select.selectedIndex) {
+		return select.value;
+	}
 	var selected = select.options[select.selectedIndex];
 	return ((selected.attributes.value || {}).specified ? selected.value : selected.text);
 }
 
-/** Get parent node with specified tag name.
+/** Verify if element has a specified tag name
  * @param HTMLElement
- * @param string
+ * @param string regular expression
+ * @return bool
+ */
+function isTag(el, tag) {
+	var re = new RegExp('^(' + tag + ')$', 'i');
+	return re.test(el.tagName);
+}
+
+/** Get parent node with specified tag name
+ * @param HTMLElement
+ * @param string regular expression
  * @return HTMLElement
  */
 function parentTag(el, tag) {
-	var re = new RegExp('^' + tag + '$', 'i');
-	while (!re.test(el.tagName)) {
+	while (el && !isTag(el, tag)) {
 		el = el.parentNode;
 	}
 	return el;
@@ -56,7 +96,25 @@ function parentTag(el, tag) {
 */
 function trCheck(el) {
 	var tr = parentTag(el, 'tr');
-	tr.className = tr.className.replace(/(^|\s)checked(\s|$)/, '$2') + (el.checked ? ' checked' : '');
+	alterClass(tr, 'checked', el.checked);
+	if (el.form && el.form['all'] && el.form['all'].onclick) { // Opera treats form.all as document.all
+		el.form['all'].onclick();
+	}
+}
+
+/** Fill number of selected items
+* @param string
+* @param string
+*/
+function selectCount(id, count) {
+	setHtml(id, (count === '' ? '' : '(' + (count + '').replace(/\B(?=(\d{3})+$)/g, ' ') + ')'));
+	var inputs = document.getElementById(id).parentNode.parentNode.getElementsByTagName('input');
+	for (var i = 0; i < inputs.length; i++) {
+		var input = inputs[i];
+		if (input.type == 'submit') {
+			input.disabled = (count == '0');
+		}
+	}
 }
 
 /** Check all elements matching given name
@@ -118,9 +176,9 @@ function formChecked(el, name) {
 */
 function tableClick(event, click) {
 	click = (click || !window.getSelection || getSelection().isCollapsed);
-	var el = event.target || event.srcElement;
-	while (!/^tr$/i.test(el.tagName)) {
-		if (/^(table|a|input|textarea)$/i.test(el.tagName)) {
+	var el = getTarget(event);
+	while (!isTag(el, 'tr')) {
+		if (isTag(el, 'table|a|input|textarea')) {
 			if (el.type != 'checkbox') {
 				return;
 			}
@@ -128,6 +186,9 @@ function tableClick(event, click) {
 			click = false;
 		}
 		el = el.parentNode;
+		if (!el) { // Ctrl+click on text fields hides the element
+			return;
+		}
 	}
 	el = el.firstChild.firstChild;
 	if (click) {
@@ -217,8 +278,8 @@ function pageClick(href, page, event) {
 * @param MouseEvent
 */
 function menuOver(el, event) {
-	var a = event.target;
-	if (/^a$/i.test(a.tagName) && a.offsetLeft + a.offsetWidth > a.parentNode.offsetWidth) {
+	var a = getTarget(event);
+	if (isTag(a, 'a|span') && a.offsetLeft + a.offsetWidth > a.parentNode.offsetWidth - 15) { // 15 - ellipsis
 		el.style.overflow = 'visible';
 	}
 }
@@ -240,19 +301,39 @@ function selectAddRow(field) {
 		selectFieldChange(field.form);
 	};
 	field.onchange();
-	var row = field.parentNode.cloneNode(true);
+	var row = cloneNode(field.parentNode);
 	var selects = row.getElementsByTagName('select');
 	for (var i=0; i < selects.length; i++) {
 		selects[i].name = selects[i].name.replace(/[a-z]\[\d+/, '$&1');
 		selects[i].selectedIndex = 0;
 	}
 	var inputs = row.getElementsByTagName('input');
-	if (inputs.length) {
-		inputs[0].name = inputs[0].name.replace(/[a-z]\[\d+/, '$&1');
-		inputs[0].value = '';
-		inputs[0].className = '';
+	for (var i=0; i < inputs.length; i++) {
+		inputs[i].name = inputs[i].name.replace(/[a-z]\[\d+/, '$&1');
+		inputs[i].value = '';
+		inputs[i].className = '';
 	}
 	field.parentNode.parentNode.appendChild(row);
+}
+
+/** Prevent onsearch handler on Enter
+* @param HTMLInputElement
+* @param KeyboardEvent
+*/
+function selectSearchKeydown(el, event) {
+	if (event.keyCode == 13 || event.keyCode == 10) {
+		el.onsearch = function () {
+		};
+	}
+}
+
+/** Clear column name after resetting search
+* @param HTMLInputElement
+*/
+function selectSearchSearch(el) {
+	if (!el.value) {
+		el.parentNode.firstChild.selectedIndex = 0;
+	}
 }
 
 
@@ -281,7 +362,7 @@ function selectSearch(name) {
 	var divs = el.getElementsByTagName('div');
 	for (var i=0; i < divs.length; i++) {
 		var div = divs[i];
-		if (/select/i.test(div.firstChild.tagName) && selectValue(div.firstChild) == name) {
+		if (isTag(div.firstChild, 'select') && selectValue(div.firstChild) == name) {
 			break;
 		}
 	}
@@ -293,6 +374,23 @@ function selectSearch(name) {
 }
 
 
+/** Check if Ctrl key (Command key on Mac) was pressed
+* @param KeyboardEvent|MouseEvent
+* @return boolean
+*/
+function isCtrl(event) {
+	return (event.ctrlKey || event.metaKey) && !event.altKey; // shiftKey allowed
+}
+
+/** Return event target
+* @param Event
+* @return HTMLElement
+*/
+function getTarget(event) {
+	return event.target || event.srcElement;
+}
+
+
 
 /** Send form by Ctrl+Enter on <select> and <textarea>
 * @param KeyboardEvent
@@ -300,14 +398,18 @@ function selectSearch(name) {
 * @return boolean
 */
 function bodyKeydown(event, button) {
-	var target = event.target || event.srcElement;
-	if (event.ctrlKey && (event.keyCode == 13 || event.keyCode == 10) && !event.altKey && !event.metaKey && /select|textarea|input/i.test(target.tagName)) { // 13|10 - Enter, shiftKey allowed
+	var target = getTarget(event);
+	if (target.jushTextarea) {
+		target = target.jushTextarea;
+	}
+	if (isCtrl(event) && (event.keyCode == 13 || event.keyCode == 10) && isTag(target, 'select|textarea|input')) { // 13|10 - Enter
 		target.blur();
 		if (button) {
 			target.form[button].click();
 		} else {
 			target.form.submit();
 		}
+		target.focus();
 		return false;
 	}
 	return true;
@@ -317,11 +419,11 @@ function bodyKeydown(event, button) {
 * @param MouseEvent
 */
 function bodyClick(event) {
-	var target = event.target || event.srcElement;
-	if ((event.ctrlKey || event.shiftKey) && target.type == 'submit' && /input/i.test(target.tagName)) {
+	var target = getTarget(event);
+	if ((isCtrl(event) || event.shiftKey) && target.type == 'submit' && isTag(target, 'input')) {
 		target.form.target = '_blank';
 		setTimeout(function () {
-			// if (event.ctrlKey) { focus(); } doesn't work
+			// if (isCtrl(event)) { focus(); } doesn't work
 			target.form.target = '';
 		}, 0);
 	}
@@ -334,11 +436,11 @@ function bodyClick(event) {
 * @return boolean
 */
 function editingKeydown(event) {
-	if ((event.keyCode == 40 || event.keyCode == 38) && event.ctrlKey && !event.altKey && !event.metaKey) { // 40 - Down, 38 - Up, shiftKey allowed
-		var target = event.target || event.srcElement;
+	if ((event.keyCode == 40 || event.keyCode == 38) && isCtrl(event)) { // 40 - Down, 38 - Up
+		var target = getTarget(event);
 		var sibling = (event.keyCode == 40 ? 'nextSibling' : 'previousSibling');
 		var el = target.parentNode.parentNode[sibling];
-		if (el && (/^tr$/i.test(el.tagName) || (el = el[sibling])) && /^tr$/i.test(el.tagName) && (el = el.childNodes[nodePosition(target.parentNode)]) && (el = el.childNodes[nodePosition(target)])) {
+		if (el && (isTag(el, 'tr') || (el = el[sibling])) && isTag(el, 'tr') && (el = el.childNodes[nodePosition(target.parentNode)]) && (el = el.childNodes[nodePosition(target)])) {
 			el.focus();
 		}
 		return false;
@@ -356,13 +458,43 @@ function editingKeydown(event) {
 function functionChange(select) {
 	var input = select.form[select.name.replace(/^function/, 'fields')];
 	if (selectValue(select)) {
-		if (input.origMaxLength === undefined) {
+		if (input.origType === undefined) {
+			input.origType = input.type;
 			input.origMaxLength = input.maxLength;
 		}
 		input.removeAttribute('maxlength');
-	} else if (input.origMaxLength >= 0) {
-		input.maxLength = input.origMaxLength;
+		input.type = 'text';
+	} else if (input.origType) {
+		input.type = input.origType;
+		if (input.origMaxLength >= 0) {
+			input.maxLength = input.origMaxLength;
+		}
 	}
+	helpClose();
+}
+
+/** Call this.onchange() if value changes
+* @this HTMLInputElement
+*/
+function keyupChange() {
+	if (this.value != this.getAttribute('value')) {
+		this.onchange();
+		this.setAttribute('value', this.value);
+	}
+}
+
+/** Add new field in schema-less edit
+* @param HTMLInputElement
+*/
+function fieldChange(field) {
+	var row = cloneNode(parentTag(field, 'tr'));
+	var inputs = row.getElementsByTagName('input');
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].value = '';
+	}
+	// keep value in <select> (function)
+	parentTag(field, 'table').appendChild(row);
+	field.onchange = function () { };
 }
 
 
@@ -371,11 +503,19 @@ function functionChange(select) {
 * @param string
 * @param function (XMLHttpRequest)
 * @param [string]
+* @param [string]
 * @return XMLHttpRequest or false in case of an error
 */
-function ajax(url, callback, data) {
+function ajax(url, callback, data, message) {
 	var request = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject('Microsoft.XMLHTTP') : false));
 	if (request) {
+		var ajaxStatus = document.getElementById('ajaxstatus');
+		if (message) {
+			ajaxStatus.innerHTML = '<div class="message">' + message + '</div>';
+			ajaxStatus.className = ajaxStatus.className.replace(/ hidden/g, '');
+		} else {
+			ajaxStatus.className += ' hidden';
+		}
 		request.open((data ? 'POST' : 'GET'), url);
 		if (data) {
 			request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -383,7 +523,12 @@ function ajax(url, callback, data) {
 		request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 		request.onreadystatechange = function () {
 			if (request.readyState == 4) {
-				callback(request);
+				if (/^2/.test(request.status)) {
+					callback(request);
+				} else {
+					ajaxStatus.innerHTML = (request.status ? request.responseText : '<div class="error">' + offlineMessage + '</div>');
+					ajaxStatus.className = ajaxStatus.className.replace(/ hidden/g, '');
+				}
 			}
 		};
 		request.send(data);
@@ -397,13 +542,46 @@ function ajax(url, callback, data) {
 */
 function ajaxSetHtml(url) {
 	return ajax(url, function (request) {
-		if (request.status) {
-			var data = eval('(' + request.responseText + ')');
-			for (var key in data) {
-				setHtml(key, data[key]);
-			}
+		var data = eval('(' + request.responseText + ')');
+		for (var key in data) {
+			setHtml(key, data[key]);
 		}
 	});
+}
+
+/** Save form contents through AJAX
+* @param HTMLFormElement
+* @param string
+* @param [HTMLInputElement]
+* @return boolean
+*/
+function ajaxForm(form, message, button) {
+	var data = [];
+	var els = form.elements;
+	for (var i = 0; i < els.length; i++) {
+		var el = els[i];
+		if (el.name && !el.disabled) {
+			if (/^file$/i.test(el.type) && el.value) {
+				return false;
+			}
+			if (!/^(checkbox|radio|submit|file)$/i.test(el.type) || el.checked || el == button) {
+				data.push(encodeURIComponent(el.name) + '=' + encodeURIComponent(isTag(el, 'select') ? selectValue(el) : el.value));
+			}
+		}
+	}
+	data = data.join('&');
+	
+	var url = form.action;
+	if (!/post/i.test(form.method)) {
+		url = url.replace(/\?.*/, '') + '?' + data;
+		data = '';
+	}
+	return ajax(url, function (request) {
+		setHtml('ajaxstatus', request.responseText);
+		if (window.jush) {
+			jush.highlight_tag(document.getElementById('ajaxstatus').getElementsByTagName('code'), 0);
+		}
+	}, data, message);
 }
 
 
@@ -415,8 +593,8 @@ function ajaxSetHtml(url) {
 * @param string warning to display
 */
 function selectClick(td, event, text, warning) {
-	var target = event.target || event.srcElement;
-	if (!event.ctrlKey || /input|textarea/i.test(td.firstChild.tagName) || /^a$/i.test(target.tagName)) {
+	var target = getTarget(event);
+	if (!isCtrl(event) || isTag(td.firstChild, 'input|textarea') || isTag(target, 'a')) {
 		return;
 	}
 	if (warning) {
@@ -429,7 +607,8 @@ function selectClick(td, event, text, warning) {
 		if (!event) {
 			event = window.event;
 		}
-		if (event.keyCode == 27 && !(event.ctrlKey || event.shiftKey || event.altKey || event.metaKey)) { // 27 - Esc
+		if (event.keyCode == 27 && !event.shiftKey && !event.altKey && !isCtrl(event)) { // 27 - Esc
+			inputBlur.apply(input);
 			td.innerHTML = original;
 		}
 	};
@@ -456,10 +635,11 @@ function selectClick(td, event, text, warning) {
 	}
 	td.innerHTML = '';
 	td.appendChild(input);
+	setupSubmitHighlight(td);
 	input.focus();
 	if (text == 2) { // long text
 		return ajax(location.href + '&' + encodeURIComponent(td.id) + '=', function (request) {
-			if (request.status) {
+			if (request.responseText) {
 				input.value = request.responseText;
 				input.name = td.id;
 			}
@@ -480,8 +660,8 @@ function selectClick(td, event, text, warning) {
 
 /** Load and display next page in select
 * @param HTMLLinkElement
-* @param string
 * @param number
+* @param string
 * @return boolean
 */
 function selectLoadMore(a, limit, loading) {
@@ -491,12 +671,10 @@ function selectLoadMore(a, limit, loading) {
 	if (href) {
 		a.removeAttribute('href');
 		return ajax(href, function (request) {
-			document.getElementById('table').innerHTML += request.responseText;
-			var rows = 0;
-			request.responseText.replace(/(^|\n)<tr/g, function () {
-				rows++;
-			});
-			if (rows < limit) {
+			var tbody = document.createElement('tbody');
+			tbody.innerHTML = request.responseText;
+			document.getElementById('table').appendChild(tbody);
+			if (tbody.children.length < limit) {
 				a.parentNode.removeChild(a);
 			} else {
 				a.href = href.replace(/\d+$/, function (page) {
@@ -519,4 +697,99 @@ function eventStop(event) {
 	} else {
 		event.cancelBubble = true;
 	}
+}
+
+
+
+/** Setup highlighting of default submit button on form field focus
+* @param HTMLElement
+*/
+function setupSubmitHighlight(parent) {
+	for (var key in { input: 1, select: 1, textarea: 1 }) {
+		var inputs = parent.getElementsByTagName(key);
+		for (var i = 0; i < inputs.length; i++) {
+			setupSubmitHighlightInput(inputs[i])
+		}
+	}
+}
+
+/** Setup submit highlighting for single element
+* @param HTMLElement
+*/
+function setupSubmitHighlightInput(input) {
+	if (!/submit|image|file/.test(input.type)) {
+		addEvent(input, 'focus', inputFocus);
+		addEvent(input, 'blur', inputBlur);
+	}
+}
+
+/** Highlight default submit button
+* @this HTMLInputElement
+*/
+function inputFocus() {
+	var submit = findDefaultSubmit(this);
+	if (submit) {
+		alterClass(submit, 'default', true);
+	}
+}
+
+/** Unhighlight default submit button
+* @this HTMLInputElement
+*/
+function inputBlur() {
+	var submit = findDefaultSubmit(this);
+	if (submit) {
+		alterClass(submit, 'default');
+	}
+}
+
+/** Find submit button used by Enter
+* @param HTMLElement
+* @return HTMLInputElement
+*/
+function findDefaultSubmit(el) {
+	if (el.jushTextarea) {
+		el = el.jushTextarea;
+	}
+	var inputs = el.form.getElementsByTagName('input');
+	for (var i = 0; i < inputs.length; i++) {
+		var input = inputs[i];
+		if (input.type == 'submit' && !input.style.zIndex) {
+			return input;
+		}
+	}
+}
+
+
+
+/** Add event listener
+* @param HTMLElement
+* @param string without 'on'
+* @param function
+*/
+function addEvent(el, action, handler) {
+	if (el.addEventListener) {
+		el.addEventListener(action, handler, false);
+	} else {
+		el.attachEvent('on' + action, handler);
+	}
+}
+
+/** Defer focusing element
+* @param HTMLElement
+*/
+function focus(el) {
+	setTimeout(function () { // this has to be an anonymous function because Firefox passes some arguments to setTimeout callback
+		el.focus();
+	}, 0);
+}
+
+/** Clone node and setup submit highlighting
+* @param HTMLElement
+* @return HTMLElement
+*/
+function cloneNode(el) {
+	var el2 = el.cloneNode(true);
+	setupSubmitHighlight(el2);
+	return el2;
 }

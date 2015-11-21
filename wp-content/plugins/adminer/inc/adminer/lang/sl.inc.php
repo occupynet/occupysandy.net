@@ -65,7 +65,6 @@ $translations = array(
 	'Too big POST data. Reduce the data or increase the %s configuration directive.' => 'Preveliko podatkov za POST. Zmanjšajte število podatkov ali povečajte nastavitev za %s.',
 	
 	'Export' => 'Izvozi',
-	'Dump' => 'Izvozi',
 	'Output' => 'Izhod rezultata',
 	'open' => 'odpri',
 	'save' => 'shrani',
@@ -89,6 +88,7 @@ $translations = array(
 	
 	// thousands separator - must contain single byte
 	',' => ' ',
+	'0123456789' => '0123456789',
 	'Engine' => 'Pogon',
 	'Collation' => 'Zbiranje',
 	'Data Length' => 'Velikost podatkov',
@@ -140,7 +140,6 @@ $translations = array(
 	'No tables.' => 'Ni tabel.',
 	'Alter table' => 'Spremeni tabelo',
 	'Create table' => 'Ustvari tabelo',
-	'Create new table' => 'Ustvari novo tabelo',
 	'Table has been dropped.' => 'Tabela je zavržena.',
 	'Tables have been dropped.' => 'Tabele so zavržene.',
 	'Table has been altered.' => 'Tabela je spremenjena.',
@@ -161,7 +160,7 @@ $translations = array(
 	'Move up' => 'Premakni gor',
 	'Move down' => 'Premakni dol',
 	'Remove' => 'Odstrani',
-	'Maximum number of allowed fields exceeded. Please increase %s and %s.' => 'Največje število dovoljenih polje je preseženo. Prosimo, povečajte %s in %s.',
+	'Maximum number of allowed fields exceeded. Please increase %s.' => 'Največje število dovoljenih polje je preseženo. Prosimo, povečajte %s.',
 	
 	'Partition by' => 'Porazdeli po',
 	'Partitions' => 'Porazdelitve',
@@ -227,7 +226,6 @@ $translations = array(
 	'%d row(s)' => array('%d vrstica', '%d vrstici', '%d vrstice', '%d vrstic'),
 	'Page' => 'Stran',
 	'last' => 'Zadnja',
-	'Last page' => 'Zadnja stran',
 	'whole result' => 'cel razultat',
 	'%d byte(s)' => array('%d bajt', '%d bajta', '%d bajti', '%d bajtov'),
 	
@@ -290,7 +288,6 @@ $translations = array(
 	'Schema has been dropped.' => 'Shema je zavržena.',
 	'Schema has been created.' => 'Shema je ustvarjena.',
 	'Schema has been altered.' => 'Shema je spremenjena.',
-	'schema' => 'shema',
 	'Schema' => 'Shema',
 	'Invalid schema.' => 'Neveljavna shema.',
 	

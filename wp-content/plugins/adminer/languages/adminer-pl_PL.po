@@ -1,0 +1,181 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Adminer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-19 00:15+0530\n"
+"PO-Revision-Date: 2015-09-19 00:18+0530\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: c:/xampp/htdocs/wp-plugins/adminer\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.8.4\n"
+"Last-Translator: \n"
+"Language: pl_PL\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ adminer
+#: adminer.php:129 adminer.php:131 adminer.php:148 adminer.php:151
+#: adminer.php:169
+msgid "Adminer"
+msgstr "Adminer"
+
+# @ adminer
+#: adminer.php:181
+msgid ""
+"Start the Thickbox inside the Adminer-tool with the button &rsaquo;<em>Start "
+"Adminer inside</em>&lsaquo;."
+msgstr ""
+"Początek Thickbox wewnątrz Adminer narzędzia › przycisk<em>Start Adminer "
+"wewnątrz</em>‹."
+
+# @ adminer
+#: adminer.php:183
+msgid ""
+"Alternatively, you can use the button for use &rsaquo;<em>Adminer in a new "
+"Tab</em>&lsaquo;."
+msgstr ""
+"Alternatywnie można użyć przycisku dla wykorzystania › ‹<em>Adminer w nowej "
+"karcie</em>."
+
+# @ adminer
+#: adminer.php:185
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/adminer/\">Documentation on "
+"Plugin Directory</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/extend/plugins/adminer/\">Dokumentacja na "
+"szpunt księga adresowa</a>"
+
+#: adminer.php:186
+msgid ""
+"<a href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;"
+"hosted_button_id=6069955\">Donate</a>"
+msgstr "Wpłać"
+
+# @ adminer
+#: adminer.php:187
+msgid "<a href=\"http://bueltge.de/\">Blog of Plugin author</a>"
+msgstr "<a href=\"http://bueltge.de/\">Autor bloga Plugin</a>"
+
+# @ adminer
+#: adminer.php:188
+msgid "<a href=\"http://www.adminer.org/\">Adminer website</a></p>"
+msgstr "<a href=\"http://www.adminer.org/\">Adminer stronie</a><p>"
+
+# @ adminer
+#: adminer.php:252 adminer.php:257
+msgid "empty"
+msgstr "pusty"
+
+# @ adminer
+#: adminer.php:264
+msgid "Adminer for WordPress"
+msgstr "Adminer dla WordPress"
+
+# @ adminer
+#: adminer.php:266
+msgid ""
+"(formerly phpMinAdmin) is a full-featured MySQL management tool written in "
+"PHP."
+msgstr ""
+"(dawniej phpMinAdmin) jest w pełni funkcjonalny MySQL narzędzie zarządzania "
+"napisany w PHP."
+
+# @ adminer
+#: adminer.php:266
+msgid "Current used version of Plugin"
+msgstr "Obecna wersja używane wtyczki"
+
+# @ adminer
+#: adminer.php:289
+msgid "Start Adminer inside"
+msgstr "Adminer początek wewnątrz"
+
+# @ adminer
+#: adminer.php:292
+msgid "Start Adminer in a new tab"
+msgstr "Adminer start w nowej karcie"
+
+# @ adminer
+#: adminer.php:298
+msgid "Your browser does not support embedded frames."
+msgstr "Twoja przeglądarka nie obsługuje ramek wbudowanych."
+
+#: adminer.php:307
+msgid "Like this plugin?"
+msgstr "Podoba Ci się to plugin?"
+
+#: adminer.php:310
+msgid "Here's how you can give back:"
+msgstr "Oto w jaki sposób można oddać:"
+
+#: adminer.php:312
+msgid "Give the plugin a good rating."
+msgstr "Dać ten szpunt pewien dobry oszacowanie."
+
+#: adminer.php:313
+msgid "Write a review about the plugin."
+msgstr "Napisz recenzję o plugin."
+
+#: adminer.php:314
+msgid "Donate a few euros."
+msgstr "Oddawać kilka euro."
+
+#: adminer.php:315
+msgid "Get me something from my wish list."
+msgstr "Się mi coś z mojej listy życzeń."
+
+#: adminer.php:316
+msgid "Adminer website for more informations and versions without WordPress"
+msgstr "Adminer witryny więcej informacji i wersje bez WordPress"
+
+#: adminer.php:316
+msgid "More about Adminer"
+msgstr "Więcej informacji na temat Adminer"
+
+# @ adminer
+#: adminer.php:327
+msgid "Your Database Data"
+msgstr "Danych bazy danych"
+
+# @ adminer
+#: adminer.php:333
+msgid "Typ"
+msgstr "Typ"
+
+# @ adminer
+#: adminer.php:334
+msgid "Value"
+msgstr "Wartość"
+
+# @ adminer
+#: adminer.php:339
+msgid "Server"
+msgstr "\"Serwer\""
+
+#: adminer.php:343
+msgid "Database"
+msgstr "Baza danych"
+
+# @ adminer
+#: adminer.php:347
+msgid "User"
+msgstr "Użytkownik"
+
+# @ adminer
+#: adminer.php:351
+msgid "Password"
+msgstr "Hasło"
+
+# @ default
+#: inc/adminer/loader.php:45 inc/adminer-3.6.1-dev/loader.php:45
+#: inc/adminer-old/loader.php:45
+msgid "Cheatin&#8217; uh?"
+msgstr "Oszukujesz, co?"

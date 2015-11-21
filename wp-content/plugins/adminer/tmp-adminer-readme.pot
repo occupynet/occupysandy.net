@@ -1,0 +1,454 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Adminer"
+msgstr ""
+
+#. Short description.
+msgid "Adminer is a full-featured MySQL management tool written in PHP. This plugin include this tool in WordPress."
+msgstr ""
+
+#. Screenshot description.
+msgid "Page in Backend (WordPress 2.9-rare)"
+msgstr ""
+
+#. Screenshot description.
+msgid "Adminer with a database (WordPress 2.9-rare)"
+msgstr ""
+
+#. Screenshot description.
+msgid "Select a table (WordPress 2.9-rare)"
+msgstr ""
+
+#. Screenshot description.
+msgid "See SQL-statement (WordPress 2.9-rare)"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Adminer (formerly phpMinAdmin) is a full-featured MySQL management tool written in PHP. Conversely to phpMyAdmin, it consist of a single file ready to deploy to the target server. This plugin include this tool in WordPress for a fast management of your database. <a href=\"http://www.adminer.org/\" title=\"Adminer\">Adminer</a> is also used without this plugin and WordPress."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "This plugin supports Multisite Installs only as Network Admin; add an menu item on Settings and also an link to WP Admin Bar to the item Network Admin."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "<strong>Crafted by <a href=\"http://inpsyde.com\">Inpsyde</a> · Engineering the web since 2006.</strong>"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Yes, we also run that <a href=\"http://marketpress.com\">marketplace for premium WordPress plugins and themes</a>."
+msgstr ""
+
+#. Found in installation header.
+msgid "Installation"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Unpack the download-package"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Upload the file to your plugin-directory, default is <code>/wp-content/plugins/</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin through the 'Plugins' menu in WordPress or alternative Network Activation"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Menu <code>Tools</code> -&gt; <code>Adminer</code>"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click button <code>Start Adminer</code> for view the database"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "If you use the plugins outside the wp-root or other one install, then you must define the absolute path to <code>wp-load.php</code> in the install root of WordPress in the <code>config.php</code> inside the plugin folder of Adminer."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Drop Table fix, Thx to Tom <a href=\"https://wordpress.org/support/topic/error-when-dropping-tables\">issue</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Drop view fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Change capability check to <code>import</code>, see <a href=\"https://codex.wordpress.org/Roles_and_Capabilities\">https://codex.wordpress.org/Roles_and_Capabilities</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update pot and de_DE language files."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix XSS in alter table (Adminer 4.2.2 now)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix some trouble with SVN, now all files inside the repository"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add .htaccess for trouble to scan php files with third plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add Indonesian language."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bugfix for the checkbox problem"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Prefix of <code>select</code> function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update spanish language files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Include the Adminer 4.2.1 release, see his <a href=\"https://github.com/vrana/adminer/blob/master/changes.txt\">Changelog</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bugfix wrong function name <a href=\"https://wordpress.org/support/topic/fatal-error-1435?replies=1\">issue 1435</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update to Adminer Core 4.1.0, 2014-04-18"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhance loader for greepy installs ;)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Replace another function from Adminer to work with different plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Hide password in clear text, only via mouse over readable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update style for more WP feeling since 3.8 - like no radius"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Check, that the plugin is active for access Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix strict php notice for static method"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix different views via stylesheet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix fatal error on <code>pagination()</code> function"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update to Adminer Core 4.0.2"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhance to support Adminer Core plugins, see official <a href=\"http://www.adminer.org/plugins/\">Adminer - Plugins</a> page, use in different falls scripts outside the WordPress core."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Allows select/deselect several checkboxes with single click, while pressing Shift key; use jQuery from Google CDN"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Format Dump File with the current date, via <a href=\"http://wordpress.org/support/topic/feature-request-file-name-formatting-on-export\">issue</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "See also the [changelog[(http://plugins.svn.wordpress.org/adminer/trunk/inc/adminer/readme.txt) of Adminer Core, lot of improvements was in the new version"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add norwegian translation files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix in stylesheets"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Security Fix"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Change function to load wp requirements"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update Adminer Source to 3.6.2-dev"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Changes for WP Magic Quotes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Small changes on loader"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update on Stylesheet for UI of WP 3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filter magic quotes of WP on more vars"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support for Multisite Network"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add menu item to network, if networrk activate"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add menu item to WP Admin Bar on Network Admin; only for Super Admins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change function to load wp-load.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add database for see the database on admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add the database as value for open thickbox incl. the right database"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "exclude the minified version of Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "include open source files for don't use obfuscated code"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for use sql-strings with magic quotes, see <a href=\"http://wordpress.org/support/topic/plugin-adminer-sql-command-doesnt-work\">bug description in forum</a>"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add function to search and include the wp-load.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Test in WP 3.3-aortic-dissection"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: include new Adminer version 3.2.2, see <a href=\"http://adminer.git.sourceforge.net/git/gitweb.cgi?p=adminer/adminer;a=blob_plain;f=changes.txt;hb=HEAD\">changelog</a> of Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: change is_afax-fct for use with eMember plugin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: include new Adminer version 3.2.1, see <a href=\"http://adminer.git.sourceforge.net/git/gitweb.cgi?p=adminer/adminer;a=blob_plain;f=changes.txt;hb=HEAD\">changelog</a> of Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: change readme"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: change on load on Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "changes: check for rights"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "changes: change init of text-domain and styles now only on admin_init"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "bugfix: adminer-js onload fixed"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: remove older versions of adminer in /inc/"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: change stable tag in readme.txt to trunk; all versions if this plugin is/was stable ;)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: include Adminer version 3.0.1, see <a href=\"http://adminer.git.sourceforge.net/git/gitweb.cgi?p=adminer/adminer;a=blob_plain;f=changes.txt;hb=HEAD\">changelog</a> of Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: changes on stylesheet"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: include Adminer Version 3.0.0, see <a href=\"http://adminer.git.sourceforge.net/git/gitweb.cgi?p=adminer/adminer;a=blob_plain;f=changes.txt;hb=HEAD\">changelog</a> of Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "release stable release 1.0.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "feature: icons on menu and settings page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "feature: view in new tab"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "feature: help in contextual help"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "bugfix: view in thickbox; iframe blocks in Adminer"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "maintenance: language file updated"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change string to multilanguage"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "small changes on source"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "include now, when hook start to load plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add czech language files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "New Adminer Version 2.3.2 include"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "see <a href=\"http://adminer.svn.sourceforge.net/viewvc/adminer/trunk/changes.txt\" title=\"Adminer changelog\">changelog</a> of Adminer for more informations about changes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bugfix for login users with rights smaller admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "include new Adminer version 2.3.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Small changes on css-file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Include new Adminer version 2.1.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Write a Plugin based on my ideas"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Other Notes"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Acknowledgements"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Licence"
+msgstr ""
+
+#. Found in remaining content header.
+msgid "Translations"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for german language file to <a href=\"http://bueltge.de/\" title=\"Frank B&uuml;ltge\">myself</a> ;)"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks to <a href=\"http://www.relijoc.ro/\" title=\"Jürgen Toth\">Jürgen Toth</a> for romanian language file"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for italian language files to <a href=\"http://gidibao.net/\">Gianni Diurno</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for belorussian language files to <a href=\"http://pc.de/\">Marcis G.</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for ukrainian language files to <a href=\"http://foerderkreis-saporoshje.de/\">Förderkreis Saporoshje e.V</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for czech language files to <a href=\"http://kahi.cz/wordpress/\">Peter Kahoun</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for dutch translation to <a href=\"http://wpwebshop.com/premium-wordpress-themes/\" title=\"WP webshop\">Renè</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for japanese translation to [KAZ]"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for the spanish language files to <a href=\"http://www.anunciosgoogle.net/\">Jose Manuel Aguado</a>"
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks to <a href=\"http://www.inmotionhosting.com/\">Brian Flores</a> for serbian translation."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks to Iver Odin Kvello for norwegian translation."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks to Putra Ramadhan for indonesian language."
+msgstr ""
+
+#. Found in remaining content list item.
+msgid "Thanks for the polnish translation to <a href=\"http://couponmachine.in\">Anka</a>"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a <a href=\"http://bueltge.de/wunschliste/\" title=\"Wishliste and Donate\">small donation</a> for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)"
+msgstr ""
+
+#. Found in remaining content paragraph.
+msgid "The plugin comes with various translations, please refer to the <a href=\"http://codex.wordpress.org/Installing_WordPress_in_Your_Language\" title=\"Installing WordPress in Your Language\">WordPress Codex</a> for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all definitions and may be used with a <a href=\"http://www.gnu.org/software/gettext/\">gettext</a> editor like <a href=\"http://www.poedit.net/\">Poedit</a> (Windows) or plugin for WordPress <a href=\"http://wordpress.org/extend/plugins/codestyling-localization/\">Localization</a>."
+msgstr ""

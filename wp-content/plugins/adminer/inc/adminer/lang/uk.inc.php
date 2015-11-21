@@ -66,7 +66,6 @@ $translations = array(
 	'Too big POST data. Reduce the data or increase the %s configuration directive.' => 'Занадто великий об\'єм POST-даних. Зменшіть об\'єм або збільшіть параметр директиви %s конфигурації.',
 	
 	'Export' => 'Експорт',
-	'Dump' => 'Дамп',
 	'Output' => 'Вихідні дані',
 	'open' => 'відкрити',
 	'save' => 'зберегти',
@@ -93,6 +92,7 @@ $translations = array(
 	
 	// thousands separator - must contain single byte
 	',' => ' ',
+	'0123456789' => '0123456789',
 	'Engine' => 'Рушій',
 	'Collation' => 'Співставлення',
 	'Data Length' => 'Об\'єм даних',
@@ -144,7 +144,6 @@ $translations = array(
 	'No tables.' => 'Нема таблиць.',
 	'Alter table' => 'Змінити таблицю',
 	'Create table' => 'Створити таблицю',
-	'Create new table' => 'Створити нову таблицю',
 	'Table has been dropped.' => 'Таблицю було видалено.',
 	'Tables have been dropped.' => 'Таблиці були видалені.',
 	'Tables have been optimized.' => 'Таблиці були оптимізовані.',
@@ -166,7 +165,7 @@ $translations = array(
 	'Move up' => 'Пересунути вгору',
 	'Move down' => 'Пересунути вниз',
 	'Remove' => 'Видалити',
-	'Maximum number of allowed fields exceeded. Please increase %s and %s.' => 'Досягнута максимальна кількість доступних полів. Будь ласка, збільшіть %s і %s.',
+	'Maximum number of allowed fields exceeded. Please increase %s.' => 'Досягнута максимальна кількість доступних полів. Будь ласка, збільшіть %s.',
 	
 	'Partition by' => 'Розділити по',
 	'Partitions' => 'Розділи',
@@ -232,7 +231,6 @@ $translations = array(
 	'%d row(s)' => array('%d рядок', '%d рядки', '%d рядків'),
 	'Page' => 'Сторінка',
 	'last' => 'остання',
-	'Last page' => 'Остання сторінка',
 	'whole result' => 'весь результат',
 	'%d byte(s)' => array('%d байт', '%d байта', '%d байтів'),
 	
@@ -299,7 +297,6 @@ $translations = array(
 	'Schema has been dropped.' => 'Схему було видалено.',
 	'Schema has been created.' => 'Схему було створено.',
 	'Schema has been altered.' => 'Схему було змінено.',
-	'schema' => 'схема',
 	'Schema' => 'Схема',
 	'Invalid schema.' => 'Невірна схема.',
 	

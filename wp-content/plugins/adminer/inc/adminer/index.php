@@ -15,8 +15,9 @@ if ( ! class_exists( 'AdminerForWP' ) ) {
 AdminerForWP::gpc_strip_slashes();
 
 include "./include/bootstrap.inc.php";
+include "./include/tmpfile.inc.php";
 
-$enum_length = "'(?:''|[^'\\\\]|\\\\.)*+'";
+$enum_length = "'(?:''|[^'\\\\]|\\\\.)*'";
 $inout = "IN|OUT|INOUT";
 
 if (isset($_GET["select"]) && ($_POST["edit"] || $_POST["clone"]) && !$_POST["save"]) {
@@ -28,6 +29,7 @@ if (isset($_GET["callf"])) {
 if (isset($_GET["function"])) {
 	$_GET["procedure"] = $_GET["function"];
 }
+
 if (isset($_GET["download"])) {
 	include "./download.inc.php";
 } elseif (isset($_GET["table"])) {

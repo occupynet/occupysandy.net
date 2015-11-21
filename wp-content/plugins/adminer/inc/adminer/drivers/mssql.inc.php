@@ -12,11 +12,12 @@ if (isset($_GET["mssql"])) {
 	define("DRIVER", "mssql");
 	if (extension_loaded("sqlsrv")) {
 		class Min_DB {
-			var $extension = "sqlsrv", $_link, $_result, $server_info, $affected_rows, $error;
+			var $extension = "sqlsrv", $_link, $_result, $server_info, $affected_rows, $errno, $error;
 
 			function _get_error() {
 				$this->error = "";
 				foreach (sqlsrv_errors() as $error) {
+					$this->errno = $error["code"];
 					$this->error .= "$error[message]\n";
 				}
 				$this->error = rtrim($this->error);
@@ -38,7 +39,7 @@ if (isset($_GET["mssql"])) {
 			}
 
 			function select_db($database) {
-				return $this->query("USE $database");
+				return $this->query("USE " . idf_escape($database));
 			}
 
 			function query($query, $unbuffered = false) {
@@ -65,6 +66,9 @@ if (isset($_GET["mssql"])) {
 				if (!$result) {
 					$result = $this->_result;
 				}
+				if (!$result) {
+					return false;
+				}
 				if (sqlsrv_field_metadata($result)) {
 					return new Min_Result($result);
 				}
@@ -73,7 +77,7 @@ if (isset($_GET["mssql"])) {
 			}
 
 			function next_result() {
-				return sqlsrv_next_result($this->_result);
+				return $this->_result ? sqlsrv_next_result($this->_result) : null;
 			}
 
 			function result($query, $field = 0) {
@@ -103,7 +107,7 @@ if (isset($_GET["mssql"])) {
 				}
 				return $row;
 			}
-			
+
 			function fetch_assoc() {
 				return $this->_convert(sqlsrv_fetch_array($this->_result, SQLSRV_FETCH_ASSOC, SQLSRV_SCROLL_NEXT));
 			}
@@ -123,7 +127,7 @@ if (isset($_GET["mssql"])) {
 				$return->type = ($field["Type"] == 1 ? 254 : 0);
 				return $return;
 			}
-			
+
 			function seek($offset) {
 				for ($i=0; $i < $offset; $i++) {
 					sqlsrv_fetch($this->_result); // SQLSRV_SCROLL_ABSOLUTE added in sqlsrv 1.1
@@ -134,7 +138,7 @@ if (isset($_GET["mssql"])) {
 				sqlsrv_free_stmt($this->_result);
 			}
 		}
-		
+
 	} elseif (extension_loaded("mssql")) {
 		class Min_DB {
 			var $extension = "MSSQL", $_link, $_result, $server_info, $affected_rows, $error;
@@ -224,19 +228,52 @@ if (isset($_GET["mssql"])) {
 			function seek($offset) {
 				mssql_data_seek($this->_result, $offset);
 			}
-			
+
 			function __destruct() {
 				mssql_free_result($this->_result);
 			}
 		}
-		
+
 	}
+
+
+
+	class Min_Driver extends Min_SQL {
+
+		function insertUpdate($table, $rows, $primary) {
+			foreach ($rows as $set) {
+				$update = array();
+				$where = array();
+				foreach ($set as $key => $val) {
+					$update[] = "$key = $val";
+					if (isset($primary[idf_unescape($key)])) {
+						$where[] = "$key = $val";
+					}
+				}
+				//! can use only one query for all rows
+				if (!queries("MERGE " . adminer_table($table) . " USING (VALUES(" . implode(", ", $set) . ")) AS source (c" . implode(", c", range(1, count($set))) . ") ON " . implode(" AND ", $where) //! source, c1 - possible conflict
+					. " WHEN MATCHED THEN UPDATE SET " . implode(", ", $update)
+					. " WHEN NOT MATCHED THEN INSERT (" . implode(", ", array_keys($set)) . ") VALUES (" . implode(", ", $set) . ");" // ; is mandatory
+				)) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function begin() {
+			return queries("BEGIN TRANSACTION");
+		}
+
+	}
+
+
 
 	function idf_escape($idf) {
 		return "[" . str_replace("]", "]]", $idf) . "]";
 	}
 
-	function table($idf) {
+	function adminer_table($idf) {
 		return ($_GET["ns"] != "" ? idf_escape($_GET["ns"]) . "." : "") . idf_escape($idf);
 	}
 
@@ -289,10 +326,10 @@ if (isset($_GET["mssql"])) {
 		}
 		return $return;
 	}
-	
+
 	function table_status($name = "") {
 		$return = array();
-		foreach (get_rows("SELECT name AS Name, type_desc AS Engine FROM sys.all_objects WHERE schema_id = SCHEMA_ID(" . q(get_schema()) . ") AND type IN ('S', 'U', 'V')" . ($name != "" ? " AND name = " . q($name) : "")) as $row) {
+		foreach (get_rows("SELECT name AS Name, type_desc AS Engine FROM sys.all_objects WHERE schema_id = SCHEMA_ID(" . q(get_schema()) . ") AND type IN ('S', 'U', 'V') " . ($name != "" ? "AND name = " . q($name) : "ORDER BY name")) as $row) {
 			if ($name != "") {
 				return $row;
 			}
@@ -304,7 +341,7 @@ if (isset($_GET["mssql"])) {
 	function is_view($table_status) {
 		return $table_status["Engine"] == "VIEW";
 	}
-	
+
 	function fk_support($table_status) {
 		return true;
 	}
@@ -319,7 +356,7 @@ LEFT JOIN sys.default_constraints d ON c.default_object_id = d.parent_column_id
 WHERE o.schema_id = SCHEMA_ID(" . q(get_schema()) . ") AND o.type IN ('S', 'U', 'V') AND o.name = " . q($table)
 		) as $row) {
 			$type = $row["type"];
-			$length = (ereg("char|binary", $type) ? $row["max_length"] : ($type == "decimal" ? "$row[precision],$row[scale]" : ""));
+			$length = (preg_match("~char|binary~", $type) ? $row["max_length"] : ($type == "decimal" ? "$row[precision],$row[scale]" : ""));
 			$return[$row["name"]] = array(
 				"field" => $row["name"],
 				"full_type" => $type . ($length ? "($length)" : ""),
@@ -339,15 +376,17 @@ WHERE o.schema_id = SCHEMA_ID(" . q(get_schema()) . ") AND o.type IN ('S', 'U', 
 	function indexes($table, $connection2 = null) {
 		$return = array();
 		// sp_statistics doesn't return information about primary key
-		foreach (get_rows("SELECT i.name, key_ordinal, is_unique, is_primary_key, c.name AS column_name
+		foreach (get_rows("SELECT i.name, key_ordinal, is_unique, is_primary_key, c.name AS column_name, is_descending_key
 FROM sys.indexes i
 INNER JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
 INNER JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
 WHERE OBJECT_NAME(i.object_id) = " . q($table)
 		, $connection2) as $row) {
-			$return[$row["name"]]["type"] = ($row["is_primary_key"] ? "PRIMARY" : ($row["is_unique"] ? "UNIQUE" : "INDEX"));
-			$return[$row["name"]]["lengths"] = array();
-			$return[$row["name"]]["columns"][$row["key_ordinal"]] = $row["column_name"];
+			$name = $row["name"];
+			$return[$name]["type"] = ($row["is_primary_key"] ? "PRIMARY" : ($row["is_unique"] ? "UNIQUE" : "INDEX"));
+			$return[$name]["lengths"] = array();
+			$return[$name]["columns"][$row["key_ordinal"]] = $row["column_name"];
+			$return[$name]["descs"][$row["key_ordinal"]] = ($row["is_descending_key"] ? '1' : null);
 		}
 		return $return;
 	}
@@ -356,11 +395,11 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 		global $connection;
 		return array("select" => preg_replace('~^(?:[^[]|\\[[^]]*])*\\s+AS\\s+~isU', '', $connection->result("SELECT VIEW_DEFINITION FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = SCHEMA_NAME() AND TABLE_NAME = " . q($name))));
 	}
-	
+
 	function collations() {
 		$return = array();
 		foreach (get_vals("SELECT name FROM fn_helpcollations()") as $collation) {
-			$return[ereg_replace("_.*", "", $collation)][] = $collation;
+			$return[preg_replace('~_.*~', '', $collation)][] = $collation;
 		}
 		return $return;
 	}
@@ -373,21 +412,17 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 		global $connection;
 		return nl_br(h(preg_replace('~^(\\[[^]]*])+~m', '', $connection->error)));
 	}
-	
-	function exact_value($val) {
-		return q($val);
-	}
 
 	function create_database($db, $collation) {
-		return queries("CREATE DATABASE " . idf_escape($db) . (eregi('^[a-z0-9_]+$', $collation) ? " COLLATE $collation" : ""));
+		return queries("CREATE DATABASE " . idf_escape($db) . (preg_match('~^[a-z0-9_]+$~i', $collation) ? " COLLATE $collation" : ""));
 	}
-	
+
 	function drop_databases($databases) {
 		return queries("DROP DATABASE " . implode(", ", array_map('idf_escape', $databases)));
 	}
-	
+
 	function rename_database($name, $collation) {
-		if (eregi('^[a-z0-9_]+$', $collation)) {
+		if (preg_match('~^[a-z0-9_]+$~i', $collation)) {
 			queries("ALTER DATABASE " . idf_escape(DB) . " COLLATE $collation");
 		}
 		queries("ALTER DATABASE " . idf_escape(DB) . " MODIFY NAME = " . idf_escape($name));
@@ -395,9 +430,9 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 	}
 
 	function auto_increment() {
-		return " IDENTITY" . ($_POST["Auto_increment"] != "" ? "(" . (+$_POST["Auto_increment"]) . ",1)" : "") . " PRIMARY KEY";
+		return " IDENTITY" . ($_POST["Auto_increment"] != "" ? "(" . number($_POST["Auto_increment"]) . ",1)" : "") . " PRIMARY KEY";
 	}
-	
+
 	function alter_table($table, $name, $fields, $foreign, $comment, $engine, $collation, $auto_increment, $partitioning) {
 		$alter = array();
 		foreach ($fields as $field) {
@@ -412,17 +447,17 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 				} else {
 					unset($val[6]); //! identity can't be removed
 					if ($column != $val[0]) {
-						queries("EXEC sp_rename " . q(table($table) . ".$column") . ", " . q(idf_unescape($val[0])) . ", 'COLUMN'");
+						queries("EXEC sp_rename " . q(adminer_table($table) . ".$column") . ", " . q(idf_unescape($val[0])) . ", 'COLUMN'");
 					}
 					$alter["ALTER COLUMN " . implode("", $val)][] = "";
 				}
 			}
 		}
 		if ($table == "") {
-			return queries("CREATE TABLE " . table($name) . " (" . implode(",", (array) $alter["ADD"]) . "\n)");
+			return queries("CREATE TABLE " . adminer_table($name) . " (" . implode(",", (array) $alter["ADD"]) . "\n)");
 		}
 		if ($table != $name) {
-			queries("EXEC sp_rename " . q(table($table)) . ", " . q($name));
+			queries("EXEC sp_rename " . q(adminer_table($table)) . ", " . q($name));
 		}
 		if ($foreign) {
 			$alter[""] = $foreign;
@@ -434,7 +469,7 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 		}
 		return true;
 	}
-	
+
 	function alter_indexes($table, $alter) {
 		$index = array();
 		$drop = array();
@@ -443,59 +478,35 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 				if ($val[0] == "PRIMARY") { //! sometimes used also for UNIQUE
 					$drop[] = idf_escape($val[1]);
 				} else {
-					$index[] = idf_escape($val[1]) . " ON " . table($table);
+					$index[] = idf_escape($val[1]) . " ON " . adminer_table($table);
 				}
 			} elseif (!queries(($val[0] != "PRIMARY"
-				? "CREATE $val[0] " . ($val[0] != "INDEX" ? "INDEX " : "") . idf_escape($val[1] != "" ? $val[1] : uniqid($table . "_")) . " ON " . table($table)
-				: "ALTER TABLE " . table($table) . " ADD PRIMARY KEY"
-			) . " $val[2]")) {
+				? "CREATE $val[0] " . ($val[0] != "INDEX" ? "INDEX " : "") . idf_escape($val[1] != "" ? $val[1] : uniqid($table . "_")) . " ON " . adminer_table($table)
+				: "ALTER TABLE " . adminer_table($table) . " ADD PRIMARY KEY"
+			) . " (" . implode(", ", $val[2]) . ")")) {
 				return false;
 			}
 		}
 		return (!$index || queries("DROP INDEX " . implode(", ", $index)))
-			&& (!$drop || queries("ALTER TABLE " . table($table) . " DROP " . implode(", ", $drop)))
+			&& (!$drop || queries("ALTER TABLE " . adminer_table($table) . " DROP " . implode(", ", $drop)))
 		;
 	}
-	
-	function begin() {
-		return queries("BEGIN TRANSACTION");
-	}
-	
-	function insert_into($table, $set) {
-		return queries("INSERT INTO " . table($table) . ($set ? " (" . implode(", ", array_keys($set)) . ")\nVALUES (" . implode(", ", $set) . ")" : "DEFAULT VALUES"));
-	}
-	
-	function insert_update($table, $set, $primary) {
-		$update = array();
-		$where = array();
-		foreach ($set as $key => $val) {
-			$update[] = "$key = $val";
-			if (isset($primary[idf_unescape($key)])) {
-				$where[] = "$key = $val";
-			}
-		}
-		// can use only one query for all rows with different API
-		return queries("MERGE " . table($table) . " USING (VALUES(" . implode(", ", $set) . ")) AS source (c" . implode(", c", range(1, count($set))) . ") ON " . implode(" AND ", $where) //! source, c1 - possible conflict
-			. " WHEN MATCHED THEN UPDATE SET " . implode(", ", $update)
-			. " WHEN NOT MATCHED THEN INSERT (" . implode(", ", array_keys($set)) . ") VALUES (" . implode(", ", $set) . ");" // ; is mandatory
-		);
-	}
-	
+
 	function last_id() {
 		global $connection;
 		return $connection->result("SELECT SCOPE_IDENTITY()"); // @@IDENTITY can return trigger INSERT
 	}
-	
+
 	function explain($connection, $query) {
 		$connection->query("SET SHOWPLAN_ALL ON");
 		$return = $connection->query($query);
 		$connection->query("SET SHOWPLAN_ALL OFF"); // connection is used also for indexes
 		return $return;
 	}
-	
+
 	function found_rows($table_status, $where) {
 	}
-	
+
 	function foreign_keys($table) {
 		$return = array();
 		foreach (get_rows("EXEC sp_fkeys @fktable_name = " . q($table)) as $row) {
@@ -522,7 +533,7 @@ WHERE OBJECT_NAME(i.object_id) = " . q($table)
 	function move_tables($tables, $views, $target) {
 		return apply_queries("ALTER SCHEMA " . idf_escape($target) . " TRANSFER", array_merge($tables, $views));
 	}
-	
+
 	function trigger($name) {
 		if ($name == "") {
 			return array();
@@ -541,7 +552,7 @@ WHERE s.xtype = 'TR' AND s.name = " . q($name)
 		}
 		return $return;
 	}
-	
+
 	function triggers($table) {
 		$return = array();
 		foreach (get_rows("SELECT sys1.name,
@@ -555,18 +566,19 @@ WHERE sys1.xtype = 'TR' AND sys2.name = " . q($table)
 		}
 		return $return;
 	}
-	
+
 	function trigger_options() {
 		return array(
 			"Timing" => array("AFTER", "INSTEAD OF"),
+			"Event" => array("INSERT", "UPDATE", "DELETE"),
 			"Type" => array("AS"),
 		);
 	}
-	
+
 	function schemas() {
 		return get_vals("SELECT name FROM sys.schemas");
 	}
-	
+
 	function get_schema() {
 		global $connection;
 		if ($_GET["ns"] != "") {
@@ -574,34 +586,34 @@ WHERE sys1.xtype = 'TR' AND sys2.name = " . q($table)
 		}
 		return $connection->result("SELECT SCHEMA_NAME()");
 	}
-	
+
 	function set_schema($schema) {
 		return true; // ALTER USER is permanent
 	}
-	
+
 	function use_sql($database) {
 		return "USE " . idf_escape($database);
 	}
-	
+
 	function show_variables() {
 		return array();
 	}
-	
+
 	function show_status() {
 		return array();
 	}
 
 	function convert_field($field) {
 	}
-	
+
 	function unconvert_field($field, $return) {
 		return $return;
 	}
-	
+
 	function support($feature) {
-		return ereg('^(scheme|trigger|view|drop_col)$', $feature); //! routine|
+		return preg_match('~^(columns|database|drop_col|indexes|scheme|sql|table|trigger|view|view_trigger)$~', $feature); //! routine|
 	}
-	
+
 	$jush = "mssql";
 	$types = array();
 	$structured_types = array();

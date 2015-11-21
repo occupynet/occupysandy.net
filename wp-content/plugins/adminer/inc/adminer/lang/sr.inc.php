@@ -66,7 +66,6 @@ $translations = array(
 	'Too big POST data. Reduce the data or increase the %s configuration directive.' => 'Превелики POST податак. Морате да смањите податак или повећајте вредност конфигурационе директиве %s.',
 
 	'Export' => 'Извоз',
-	'Dump' => 'Истовар',
 	'Output' => 'Испис',
 	'open' => 'отвори',
 	'save' => 'сачувај',
@@ -93,6 +92,7 @@ $translations = array(
 
 	// thousands separator - must contain single byte
 	',' => ',',
+	'0123456789' => '0123456789',
 	'Engine' => 'Механизам',
 	'Collation' => 'Сравњивање',
 	'Data Length' => 'Дужина података',
@@ -144,7 +144,6 @@ $translations = array(
 	'No tables.' => 'Без табела.',
 	'Alter table' => 'Уреди табелу',
 	'Create table' => 'Направи табелу',
-	'Create new table' => 'направи нову табелу',
 	'Table has been dropped.' => 'Табела је избрисана.',
 	'Tables have been dropped.' => 'Табеле су избрисане.',
 	'Tables have been optimized.' => 'Табеле су оптимизоване.',
@@ -166,7 +165,7 @@ $translations = array(
 	'Move up' => 'Помери на горе',
 	'Move down' => 'Помери на доле',
 	'Remove' => 'Уклони',
-	'Maximum number of allowed fields exceeded. Please increase %s and %s.' => 'Премашен је максимални број дозвољених поља. Молим увећајте %s и %s.',
+	'Maximum number of allowed fields exceeded. Please increase %s.' => 'Премашен је максимални број дозвољених поља. Молим увећајте %s.',
 
 	'Partition by' => 'Подели по',
 	'Partitions' => 'Поделе',
@@ -233,7 +232,6 @@ $translations = array(
 	'%d row(s)' => array('%d ред', '%d реда', '%d редова'),
 	'Page' => 'Страна',
 	'last' => 'последња',
-	'Last page' => 'Последња страна',
 	'Loading'  => 'Учитавам',
 	'Load more data'  => 'Учитавам још података',
 	'whole result' => 'цео резултат',
@@ -302,7 +300,6 @@ $translations = array(
 	'Schema has been dropped.' => 'Шема је избрисана.',
 	'Schema has been created.' => 'Шема је креирана.',
 	'Schema has been altered.' => 'Шема је измењена.',
-	'schema' => 'шема',
 	'Schema' => 'Шема',
 	'Invalid schema.' => 'Шема није исправна.',
 

@@ -66,7 +66,6 @@ $translations = array(
 	'Too big POST data. Reduce the data or increase the %s configuration directive.' => 'Per daug POST duomenų. Sumažinkite duomenų kiekį arba padidinkite konfigūracijos nustatymą %s.',
 	
 	'Export' => 'Eksportas',
-	'Dump' => 'Eksportuoti',
 	'Output' => 'Išvestis',
 	'open' => 'atidaryti',
 	'save' => 'išsaugoti',
@@ -93,6 +92,7 @@ $translations = array(
 	
 	// thousands separator - must contain single byte
 	',' => ' ',
+	'0123456789' => '0123456789',
 	'Engine' => 'Variklis',
 	'Collation' => 'Lyginimas',
 	'Data Length' => 'Duomenų ilgis',
@@ -144,7 +144,6 @@ $translations = array(
 	'No tables.' => 'Nėra lentelių.',
 	'Alter table' => 'Redaguoti lentelę',
 	'Create table' => 'Sukurti lentelę',
-	'Create new table' => 'Sukurti naują lentelę',
 	'Table has been dropped.' => 'Lentelė pašalinta.',
 	'Tables have been dropped.' => 'Lentelės pašalintos.',
 	'Table has been altered.' => 'Lentelė pakeista.',
@@ -165,7 +164,7 @@ $translations = array(
 	'Move up' => 'Perkelti į viršų',
 	'Move down' => 'Perkelti žemyn',
 	'Remove' => 'Pašalinti',
-	'Maximum number of allowed fields exceeded. Please increase %s and %s.' => 'Viršytas maksimalus leidžiamų stulpelių kiekis. Padidinkite %s ir %s.',
+	'Maximum number of allowed fields exceeded. Please increase %s.' => 'Viršytas maksimalus leidžiamų stulpelių kiekis. Padidinkite %s.',
 	
 	'Partition by' => 'Skirstyti pagal',
 	'Partitions' => 'Skirsniai',
@@ -231,7 +230,6 @@ $translations = array(
 	'%d row(s)' => array('%d įrašas', '%d įrašai', '%d įrašų'),
 	'Page' => 'Puslapis',
 	'last' => 'paskutinis',
-	'Last page' => 'Paskutinis puslapis',
 	'whole result' => 'visas rezultatas',
 	'%d byte(s)' => array('%d baitas', '%d baigai', '%d baitų'),
 	
@@ -295,7 +293,6 @@ $translations = array(
 	'Schema has been dropped.' => 'Schema pašalinta.',
 	'Schema has been created.' => 'Schema sukurta.',
 	'Schema has been altered.' => 'Schema pakeista.',
-	'schema' => 'schema',
 	'Schema' => 'Schema',
 	'Invalid schema.' => 'Neteisinga schema.',
 	

@@ -2,11 +2,11 @@
 if (support("kill") && $_POST && !$error) {
 	$killed = 0;
 	foreach ((array) $_POST["kill"] as $val) {
-		if (queries("KILL " . (+$val))) {
+		if (queries("KILL " . number($val))) {
 			$killed++;
 		}
 	}
-	queries_redirect(ME . "processlist=", lang('%d process(es) have been killed.', $killed), $killed || !$_POST["kill"]);
+	queries_adminer_redirect(ME . "processlist=", lang('%d process(es) have been killed.', $killed), $killed || !$_POST["kill"]);
 }
 
 page_header(lang('Process list'), $error);
@@ -18,16 +18,26 @@ page_header(lang('Process list'), $error);
 // HTML valid because there is always at least one process
 $i = -1;
 foreach (process_list() as $i => $row) {
+
 	if (!$i) {
-		echo "<thead><tr lang='en'>" . (support("kill") ? "<th>&nbsp;" : "") . "<th>" . implode("<th>", array_keys($row)) . "</thead>\n";
+		echo "<thead><tr lang='en'>" . (support("kill") ? "<th>&nbsp;" : "");
+		foreach ($row as $key => $val) {
+			echo "<th>$key" . doc_link(array(
+				'sql' => "show-processlist.html#processlist_" . strtolower($key),
+				'pgsql' => "monitoring-stats.html#PG-STAT-ACTIVITY-VIEW",
+				'oracle' => "../b14237/dynviews_2088.htm",
+			));
+		}
+		echo "</thead>\n";
 	}
-	echo "<tr" . odd() . ">" . (support("kill") ? "<td>" . checkbox("kill[]", $row["Id"], 0) : "");
+
+	echo "<tr" . odd() . ">" . (support("kill") ? "<td>" . adminer_checkbox("kill[]", $row["Id"], 0) : "");
 	foreach ($row as $key => $val) {
 		echo "<td>" . (
-			($jush == "sql" && $key == "Info" && ereg("Query|Killed", $row["Command"]) && $val != "") ||
+			($jush == "sql" && $key == "Info" && preg_match("~Query|Killed~", $row["Command"]) && $val != "") ||
 			($jush == "pgsql" && $key == "current_query" && $val != "<IDLE>") ||
 			($jush == "oracle" && $key == "sql_text" && $val != "")
-			? "<code class='jush-$jush'>" . shorten_utf8($val, 100, "</code>") . ' <a href="' . h(ME . ($row["db"] != "" ? "db=" . urlencode($row["db"]) . "&" : "") . "sql=" . urlencode($val)) . '">' . lang('Edit') . '</a>'
+			? "<code class='jush-$jush'>" . shorten_utf8($val, 100, "</code>") . ' <a href="' . h(ME . ($row["db"] != "" ? "db=" . urlencode($row["db"]) . "&" : "") . "sql=" . urlencode($val)) . '">' . lang('Clone') . '</a>'
 			: nbsp($val)
 		);
 	}
