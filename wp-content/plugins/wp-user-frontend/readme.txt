@@ -1,62 +1,103 @@
 === WP User Frontend ===
-Contributors: tareq1988
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=tareq%40wedevs%2ecom&lc=US&item_name=WP%20User%20Frontend&item_number=Tareq%27s%20Planet&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
-Tags: frontend, post, edit, dashboard, restrict
+Contributors: tareq1988, wedevs
+Donate link: http://tareq.wedevs.com/donate/
+Tags: frontend, post, edit, dashboard, restrict, content submission, guest post, guest, dashboard, registration, profile, anonymous post, gravity, gravity forms, formidable
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 1.1
+Tested up to: 4.3.1
+Stable tag: trunk
 
-Create, update, delete posts and edit profile from wordpress frontend.
+Create, update, delete posts and edit profile directly from the WordPress frontend.
 
 == Description ==
 
-Gives ability to the user to create new post, edit post, edit profile from site frontend.
-So users doesn't need to enter the admin panel. Everything they need to do can be done from
-the frontend.
+This plugin gives the user the ability to create new posts, edit their profile all from the site frontend, so the user does not need to enter the backend admin panel to do these things.
 
 = Features:  =
 
-So here is my plugin that solves your problem. This features of this plugin are follows:
-
-* User can create a new post and edit from frontend
-* They can view their page in the custom dashboard
+* The user can create a new post and edit it from the frontend
+* They can view their page in the frontend custom dashboard
 * Users can edit their profile
-* Administrator can restrict any user level to access the wordpress backend (/wp-admin)
+* Administrator can restrict any user level on accessing the WordPress backend
 * New posts status, submitted by users are configurable via admin panel. i.e. Published, Draft, Pending
-* Admin can configure to receive notification mail when the users creates a new post.
-* Configurable options if the user can edit or delete their posts.
-* Users can upload attachments from the frontend
-* Post featured image can be set
-* Admins can manage their users from frontend
-* Pay per post or subscription on posting is possible
+* Get email notification on new posts
+* Configurable options giving access to the user edit or delete their posts
+* Upload attachments from the frontend
+* Upload post featured image
+* Admins can manage users from frontend
+* Pay-per-post or subscription package for posting
 
+= WP User Frontend PRO - Premium Features =
+
+The <a href="http://wedevs.com/plugin/wp-user-frontend-pro">premium version</a> of WP User Frontend is completely different from the free version as there are a lot more features included.
+
+[youtube http://www.youtube.com/watch?v=C0sInxx49Vg]
+
+
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#unlimited-forms">Unlimited post type form creation</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#post-forms">Drag-n-drop form builder</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#custom-taxonomy">Custom taxonomy support</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#custom-fields">13 variations of custom fields</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#guest-posting">Guest post support</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#custom-redirection">Custom Redirection</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#image-upload-post">Image upload on post content area</a>
+* Post status selection on new post and edited post separately
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#post-notification">New or edit post notification</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#custom-field-admin">Custom fields are also generated in admin area</a>
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#profile-builder">Profile form builder</a>
+* Different profile edit forms for different user roles
+* Drag-n-Drop profile form builder
+* Profile fields are also generated on the backend
+* Avatar Upload
+* Frontend profile edit
+* <strong>Registration form</strong> builder
+* <a href="http://wedevs.com/plugin/wp-user-frontend-pro/#captcha">Captcha Support</a>
+
+Try an <a href="http://demo.wedevs.com/wpuf/wp-admin/">online demo</a> of the Pro version.
+
+= Translation =
+
+* Italian translation by Gabriele Lamberti
+* Persian translation by Abolfazl Esmailinejad
+
+[Github Repository](https://github.com/tareq1988/WP-User-Frontend).
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+After having installed the plugin:
 
-1. Create a new Page “New Post” and insert shorcode `[wpuf_addpost]`.
-    For a custom post type **event**, use it like `[wpuf_addpost post_type="event"]`
-1. Create a new Page “Edit” for editing posts and insert shorcode `[wpuf_edit]`
-1. Create a new Page “Profile” for editing profile and insert shorcode `[wpuf_editprofile]`
-1. Create a new Page “Dashboard” and insert shorcode `[wpuf_dashboard]`
-    To list custom post type **event**, use it like `[wpuf_dashboard post_type="event"]`
+1. Click "Install WPUF Pages" after installation for automatic settings installation.
+1. Create a form from the form builder. Get the shortcode for a form. Copy and paste that shortcode to a page.
+1. Create a new Page “Edit” for editing posts and insert shortcode `[wpuf_edit]`
+1. Create a new Page “Profile” for editing profile and insert shortcode `[wpuf_editprofile]`
+1. Create a new Page “Dashboard” and insert shortcode `[wpuf_dashboard]`
+    To list custom post type **event**, use `[wpuf_dashboard post_type="event"]`
 1. Set the *Edit Page* option from *Others* tab on settings page.
 1. To show the subscription info, insert the shortcdoe `[wpuf_sub_info]`
 1. To show the subscription packs, insert the shortcode `[wpuf_sub_pack]`
 1. For subscription payment page, set the *Payment Page* from *Payments* tab on settings page.
 
+= Video =
+[youtube https://www.youtube.com/watch?v=pK3nLeR2fzc]
+
 
 == Screenshots ==
+
 1. Admin panel
-2. User Dashboard
-3. Add Post
-4. Edit Posts
-5. Edit Profile
-6. Custom Field Manager
-7. Subscription Pack Manager
-8. Subscription packs
-9. Edit Users
+2. Admin panel &rarr; Dashboard Tab
+3. Admin panel &rarr; Login Tab
+4. Admin panel &rarr; Payments Tab
+5. Post Forms
+6. Form Builder
+7. Form Builder &rarr; Post Settings
+8. Form Builder &rarr; Edit Settings
+9. Form Elements
+10. Subscription Packs
+11. Subscription Pack Settings
+12. Subscription Packs in a Page
+13. Subscription Payment Screen
+14. A single Form Element on Form Editor
+15. A Form in a Page
+16. Frontend User Dashboard
 
 == Frequently Asked Questions ==
 
@@ -78,13 +119,133 @@ Yes
 = I am having problem with uploading files =
 Please check if you've specified the max upload size on setting
 
-= Why "Edit Post" page shows "invalid post id"?=
+= Why "Edit Post" page shows "invalid post id"? =
 This page is for the purpose of editing posts. You shouldn't access this page directly.
 First you need to go to the dashboard, then when you click "edit", you'll be
 redirected to the edit page with that post id. Then you'll see the edit post form.
 
 
 == Changelog ==
+
+= v2.3.10 (5 Ocotber, 2015) =
+
+ * [fix] Custom css is now working
+ * [fix] Textdomain added to some text
+ * [fix] Visibility of address field data in the frontend is now fixed
+ * [tweak] A new filter has been added to get subscription meta data
+ * [new] A new option has been added to date field to treat it future publish date if user wants
+ * [new] Autologin after registration - feature added
+ * [new] Confirmation alert added when user wants to delete subscription in frontend
+ * [fix] Publish post after paypal payment completion
+
+= v2.3.9 (13 Sepetember, 2015) =
+
+ * [fix] Newly registered users were having no meta named "wpuf_postlock"
+ * [fix] Newly registered users (having no meta named "wpuf_postlock") are now having form in the frontend
+ * [fix] Text input field for category is now working
+ * [fix] Pack id warning in admin area profile
+ * [fix] Error in rendering map in edit mode, when having no value
+ * [fix] Progress bar style are set in condition
+ * [fix] Error undefined object post when updating user profile
+ * [improve] Button style in payment form
+
+= v2.3.8 (3rd Sepetember, 2015) =
+
+ * [fix] Problem with wpuf lock post fixed.
+ * [fix] Problem with retyping password disability in the frontend fixed.
+ * [fix] Problem with password visibilty fixed.
+ * [fix] Redirection to subscription page from user profile fixed.
+ * [fix] Scripts and styles of wpuf are now loading when needed.
+ * [add] RTL support improvement
+
+= v2.3.7 (24 August, 2015) =
+
+ * [fix] Problem with conditional logic in image upload field fixed.
+ * [fix] Transaction log updating issue fixed.
+ * [fix] Email field in form with required flag is now working even if left empty.
+ * [fix] Data from address field in registration form is now saved and shows data in edit form .
+ * [new] Persian language translation added
+ * [fix] Problem with 'pay per post' feature fixed
+
+= v2.3.6 (13 July, 2015) =
+
+ * [fix] Login page bug fixed.
+ * [fix] Wordpress native registration page made working.
+ * [fix] Email validation bug fixed.
+ * [fix] Issue in country field fixed.
+ * [fix] Issue with saving taxonomy fixed.
+ * [fix] Problem with captcha and really simple captcha fixed.
+ * [fix] Problem with action hook fixed.
+
+= v2.3.5 (2 July, 2015) =
+
+ * [fix] Ajax taxonomy field bug fixed.
+
+= v2.3.4 (June 29, 2015) =
+
+ * [fix] Featured image caption was not being updated
+
+= v2.3.3 (June 24, 2015) =
+
+ * [fix] Post status settings in form, wasn't being updated.
+
+= v2.3.2 (June 22, 2015) =
+
+ * [fix] Featured image upload fix
+ * [new] Image upload field brought back to free
+
+= v2.3.1 (June 21, 2015) =
+
+ * [fix] Compatibility problem with PHP < 5.2. Accidental PHP array shorthand used.
+
+= version 2.3 (June 20, 2015) =
+
+ * Pro plugin released as free with less features
+
+= version 1.3.2 =
+
+ * [improve] post thumbnail image association added
+ * [improve] various form styles updated
+ * [fix] teeny textarea buttons fix
+ * [fix] Dashboard show post type settings won't effect
+ * [fix] zxcvbn is not defined in edit profile
+ * [fix] Two click needed to submit a post
+ * [fix] dashboard author bio height fix
+
+= version 1.3.1 =
+
+ * [fix] `[wpuf_editpost]` typo fix
+ * [fix] clean $dashboard_query from corrupting beyond use
+
+= version 1.3 =
+
+ * [fix] PayPal payment user_id issue fixed
+ * [fix] Plupload `o is null` error fix
+ * [fix] PHP 5.4 strict warnings fix
+ * [update] new version of settings api class
+
+= version 1.2.3 =
+
+* [fix] `has_shortcode()` brought back again by renaming as `wpuf_has_shortcode()`
+* [fix] all the labels now have a default text
+
+= version 1.2.2 =
+
+* [fix] shortcode error fix for edit users
+* [fix] plugin css/js url
+* [fix] removed has_shortcode() call
+
+= version 1.2.1 =
+
+* [fix] Performance problem with wp_list_users()
+
+= version 1.2 =
+
+* [fix] Subscription post publish
+* [fix] Post delete fix in dashboard
+* [fix] Silverlight in IE upload error
+* [fix] Category checklist bug fix
+* [new] Checkbox field in custom field
 
 = version 1.1 =
 
@@ -123,7 +284,6 @@ redirected to the edit page with that post id. Then you'll see the edit post for
 * improved action hooks and filter hooks
 
 = version 0.6 =
----------------
 
 * fixed error on attachment delete
 * added styles on dashboard too
@@ -175,4 +335,5 @@ redirected to the edit page with that post id. Then you'll see the edit post for
 
 == Upgrade Notice ==
 
-Nothing to say
+= 2.3 =
+ * It's a **massive update and change** from the previous version 1.3.2. Please do test in your site and main compatibility.
