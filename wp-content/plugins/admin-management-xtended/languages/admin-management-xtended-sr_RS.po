@@ -1,0 +1,228 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Admin-Management-Xtended CZ\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/admin-management-xtended\n"
+"POT-Creation-Date: 2008-06-22 21:28+0000\n"
+"PO-Revision-Date: 2015-05-20 09:21+0100\n"
+"Last-Translator: Borisa Djuraskovic <borisad@webhostinghub.com>\n"
+"Language-Team: Pepawo <jklimosz@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+": \n"
+"Language: cs_CZ\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: admin-management-xtended.php:222
+msgid "Admin Management Xtended requires at least WordPress 2.5!"
+msgstr "Admin Management Xtended zahteva bar  WordPress 2.5!"
+
+#: admin-management-xtended.php:246
+msgid ""
+"You seem using the <em>Better Tags Manager</em> plugin, which collides with "
+"the <em>Admin Management Xtended</em> plugin since both extend the tags "
+"column. Please deactivate one of both to make this message disappear."
+msgstr ""
+"Izgleda da koristite em>Better Tags Manager</em> plugin, koji se sukobljava "
+"sa <em>Admin Management Xtended</em> plugin-om pošto i jedan i drugi "
+"proširuju kolonu oznaka. Deaktivirajte jedan plugin ili oba plugin-a da bi "
+"vam ova poruka nestala. "
+
+#: admin-management-xtended.php:246
+msgid "(This message was created by Admin Management Xtended plugin)"
+msgstr "(Ovu poruku je kreirao Admin Management Xtended plugin)"
+
+#: general-functions.php:166 general-functions.php:170 page-functions.php:92
+#: post-functions.php:209
+msgid "Toggle comment status open/closed"
+msgstr "Promeni status komentara otvoren/zatvoren"
+
+#: general-functions.php:224 post-functions.php:70
+msgid "No Tags"
+msgstr "Nema oznaka"
+
+#: general-functions.php:261 post-functions.php:128
+msgid "Uncategorized"
+msgstr "Nekategorizovan"
+
+#: general-functions.php:710
+msgid "Post"
+msgstr "Post"
+
+#: general-functions.php:328 general-functions.php:369
+#: general-functions.php:710 link-functions.php:118 post-functions.php:143
+msgid "Save"
+msgstr "Sačuvaj"
+
+#: general-functions.php:328 general-functions.php:369
+#: general-functions.php:710 link-functions.php:118 post-functions.php:143
+msgid "Cancel"
+msgstr "Cancel"
+
+#: general-functions.php:474 general-functions.php:483
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+#: general-functions.php:513 general-functions.php:518 link-functions.php:62
+#: page-functions.php:79 page-functions.php:82 post-functions.php:196
+#: post-functions.php:199
+msgid "Toggle visibility"
+msgstr "Vidljivost promene"
+
+#: general-functions.php:649 general-functions.php:655
+#: general-functions.php:661
+msgid "Edit Page Order:"
+msgstr "Uredi redosled stranice:"
+
+#: general-functions.php:649 general-functions.php:655
+#: general-functions.php:661
+msgid "Off"
+msgstr "Isključi"
+
+#: general-functions.php:649 general-functions.php:655
+#: general-functions.php:661
+msgid "Direct input"
+msgstr "Direktan unos"
+
+#: general-functions.php:649 general-functions.php:655
+msgid "Drag & Drop"
+msgstr "Prevuci i pozicioniraj"
+
+#: general-functions.php:670
+msgid "Hide invisible Posts"
+msgstr "Sakrij nevidljive postove"
+
+#: general-functions.php:676
+msgid "Show invisible Posts"
+msgstr "Prikaži nevidljive postove"
+
+#: general-functions.php:710
+msgid "Please wait..."
+msgstr "Molimo sačekajte..."
+
+#: general-functions.php:774
+msgid "Change image set"
+msgstr "Promeni skup slika "
+
+#: link-functions.php:44 link-functions.php:82 media-functions.php:43
+#: media-functions.php:60 page-functions.php:43 page-functions.php:59
+#: post-functions.php:44 post-functions.php:101 post-functions.php:176
+msgid "Enhanced by Admin Management Xtended Plugin"
+msgstr "Poboljšan plugin-om Admin Management Xtended "
+
+#: media-functions.php:43
+msgid "Media Order"
+msgstr "Redosled medija"
+
+#: page-functions.php:43 post-functions.php:176
+msgid "Actions"
+msgstr "Aktivnosti"
+
+#: page-functions.php:59
+msgid "Page Order"
+msgstr "Redosled stranica"
+
+#: page-functions.php:85 post-functions.php:202
+msgid "Change Publication Date"
+msgstr "Promeni datum objavljivanja"
+
+#: page-functions.php:87
+msgid "Edit Page Slug"
+msgstr "Uredi podlošku stranice"
+
+#: post-functions.php:44
+msgid "Tags"
+msgstr "Oznake"
+
+#: link-functions.php:82 post-functions.php:101
+msgid "Categories"
+msgstr "Kategorije"
+
+#: post-functions.php:204
+msgid "Edit Post Slug"
+msgstr "Uredi redosled stranice:"
+
+#: admin-management-xtended.php:234
+#, php-format
+msgid ""
+"<strong>Admin Management Xtended</strong> plugin version 2.0 requires at "
+"least WordPress 2.7! If you're still using a WP version prior to 2.7, please "
+"<a href='%s'>use Admin Management Xtended version 1.9.1</a>! Consider "
+"updating to the latest WP version for your own safety!"
+msgstr ""
+"<strong>Admin Management Xtended</strong> plugin nije razvijen za WordPress "
+"2.7 i više verzije koje imaju ugrađenu QuickEdit funkciju. Deaktivirajte "
+"Admin Management Xtended plugin i koristite QuickEdit, funkciju WordPress-"
+"a.  "
+
+#: general-functions.php:142 general-functions.php:227
+#: general-functions.php:710 link-functions.php:62 link-functions.php:111
+#: media-functions.php:99 post-functions.php:75 post-functions.php:150
+msgid "Edit"
+msgstr "Uredi"
+
+#: general-functions.php:345 general-functions.php:360
+msgid "You are not allowed to change the post author as this user."
+msgstr "Nije vam dozvoljeno da menjate autora posta u ulozi ovog korisnika."
+
+#: general-functions.php:348 general-functions.php:363
+msgid "You are not allowed to change the page author as this user."
+msgstr "Nije vam dozvoljeno da menjate autora stranice u ulozi ovog korisnika."
+
+#: general-functions.php:477
+msgid "You are not allowed to edit this post."
+msgstr "Nije vam dozvoljeno da uređujete ovaj post."
+
+#: general-functions.php:502
+msgid "Sorry, you do not have the right to publish this post."
+msgstr "Žao nam je, nemate pravo da objavite ovaj post."
+
+#: general-functions.php:567
+msgid "Change page order"
+msgstr "Promeni redosled stranice:"
+
+#: general-functions.php:661
+msgid ""
+"Drag & Drop <a href='http://www.schloebe.de/wordpress/admin-management-"
+"xtended-plugin/#pageorder' target='_blank'>[?]</a>"
+msgstr ""
+"Prevuci i pozicioniraj <a href='http://www.schloebe.de/wordpress/admin-"
+"management-xtended-plugin/#pageorder' target='_blank' style='color:#fff;text-"
+"decoration:underline;'>[?]</a>"
+
+#: general-functions.php:704
+msgid "Post Revisions"
+msgstr "Revizije posta"
+
+#: general-functions.php:704
+msgid "Page Revisions"
+msgstr "Revizije stranice"
+
+#: general-functions.php:710
+msgid "Slug may not be empty!"
+msgstr "Podloška ne može biti prazna!"
+
+#: general-functions.php:710
+msgid "Insert time"
+msgstr "Vreme unosa"
+
+#: link-functions.php:44
+msgid "Visible"
+msgstr "Vidljiv"
+
+#: link-functions.php:61 link-functions.php:142
+msgid "Yes"
+msgstr "Da"
+
+#: link-functions.php:61 link-functions.php:142
+msgid "No"
+msgstr "Ne"
+
+#: media-functions.php:60
+msgid "Description"
+msgstr "Opis"

@@ -7,7 +7,7 @@
  */
  
 /*
-Copyright 2008-2012 Oliver Schlöbe (email : scripts@schloebe.de)
+Copyright 2008-2015 Oliver Schlöbe (email : scripts@schloebe.de)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -122,7 +122,7 @@ function ame_custom_column_page_order( $ame_column_name, $ame_id ) {
     if( $ame_column_name == 'ame_page_order' ) {
     	$q_post_order = get_post( $ame_id );
     	echo '<div style="width:75px;" class="ame_options">';
-    	echo '<input type="text" value="' . $q_post_order->menu_order . '" size="3" maxlength="3" style="font-size:1em;" id="ame_' . $q_post_order->post_type . 'order' . $ame_id . '" onchange="ame_ajax_order_save(' . $ame_id . ', \'' . $q_post_order->post_type . '\');" /> <span id="ame_order_loader' . $ame_id . '" style="display:none;"><img src="' . AME_PLUGINFULLURL . 'img/' . AME_IMGSET . 'loader.gif" border="0" alt="" /></span>';
+    	echo '<input type="text" value="' . $q_post_order->menu_order . '" size="4" style="font-size:1em;" id="ame_' . $q_post_order->post_type . 'order' . $ame_id . '" onchange="ame_ajax_order_save(' . $ame_id . ', \'' . $q_post_order->post_type . '\');" /> <span id="ame_order_loader' . $ame_id . '" style="display:none;"><img src="' . AME_PLUGINFULLURL . 'img/' . AME_IMGSET . 'loader.gif" border="0" alt="" /></span>';
     	echo '</div>';
     }
 }

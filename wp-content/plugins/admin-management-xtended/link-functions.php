@@ -7,7 +7,7 @@
  */
  
 /*
-Copyright 2008-2012 Oliver Schlöbe (email : scripts@schloebe.de)
+Copyright 2008-2015 Oliver Schlöbe (email : scripts@schloebe.de)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -131,6 +131,12 @@ function ame_toggle_linkvisibility() {
 	global $wpdb;
 	$posttype = 'link';
 	$linkid = intval( $_POST['link_id'] );
+	
+	if( !current_user_can( 'manage_links' ) ) {
+		die();
+		return;
+	}
+	
 	$link = get_bookmark( $linkid );
 	$status = ($link->link_visible == 'Y') ? 'N' : 'Y';
 	$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->links SET link_visible = %s WHERE link_id = %d", $status, $linkid ) );
@@ -149,6 +155,11 @@ function ame_ajax_save_linkcategories() {
 	global $wpdb;
 	$linkid = (int) $_POST['linkid'];
 	$ame_linkcats = $_POST['ame_linkcats'];
+	
+	if( !current_user_can( 'manage_links' ) ) {
+		die();
+		return;
+	}
 	
 	$ame_linkcategories = substr( $ame_linkcats, 0, -1 );
 	$catarray = explode(",", $ame_linkcategories);
