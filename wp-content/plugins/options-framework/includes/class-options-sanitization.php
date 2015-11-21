@@ -1,37 +1,66 @@
 <?php
+/**
+ * @package   Options_Framework
+ * @author    Devin Price <devin@wptheming.com>
+ * @license   GPL-2.0+
+ * @link      http://wptheming.com
+ * @copyright 2010-2014 WP Theming
+ */
 
-/* Text */
-
+/**
+ * Sanitization for text input
+ *
+ * @link http://developer.wordpress.org/reference/functions/sanitize_text_field/
+ */
 add_filter( 'of_sanitize_text', 'sanitize_text_field' );
 
-/* Password */
-
+/**
+ * Sanitization for password input
+ *
+ * @link http://developer.wordpress.org/reference/functions/sanitize_text_field/
+ */
 add_filter( 'of_sanitize_password', 'sanitize_text_field' );
 
-/* Textarea */
+/**
+ * Sanitization for select input
+ *
+ * Validates that the selected option is a valid option.
+ */
+add_filter( 'of_sanitize_select', 'of_sanitize_enum', 10, 2 );
 
-function of_sanitize_textarea($input) {
+/**
+ * Sanitization for radio input
+ *
+ * Validates that the selected option is a valid option.
+ */
+add_filter( 'of_sanitize_radio', 'of_sanitize_enum', 10, 2 );
+
+/**
+ * Sanitization for image selector
+ *
+ * Validates that the selected option is a valid option.
+ */
+add_filter( 'of_sanitize_images', 'of_sanitize_enum', 10, 2 );
+
+/**
+ * Sanitization for textarea field
+ *
+ * @param $input string
+ * @return $output sanitized string
+ */
+function of_sanitize_textarea( $input ) {
 	global $allowedposttags;
-	$output = wp_kses( $input, $allowedposttags);
+	$output = wp_kses( $input, $allowedposttags );
 	return $output;
 }
-
 add_filter( 'of_sanitize_textarea', 'of_sanitize_textarea' );
 
-/* Select */
-
-add_filter( 'of_sanitize_select', 'of_sanitize_enum', 10, 2);
-
-/* Radio */
-
-add_filter( 'of_sanitize_radio', 'of_sanitize_enum', 10, 2);
-
-/* Images */
-
-add_filter( 'of_sanitize_images', 'of_sanitize_enum', 10, 2);
-
-/* Checkbox */
-
+/**
+ * Sanitization for checkbox input
+ *
+ * @param $input string (1 or empty) checkbox state
+ * @return $output '1' or false
+ */
 function of_sanitize_checkbox( $input ) {
 	if ( $input ) {
 		$output = '1';
@@ -42,8 +71,12 @@ function of_sanitize_checkbox( $input ) {
 }
 add_filter( 'of_sanitize_checkbox', 'of_sanitize_checkbox' );
 
-/* Multicheck */
-
+/**
+ * Sanitization for multicheck
+ *
+ * @param array of checkbox values
+ * @return array of sanitized values ('1' or false)
+ */
 function of_sanitize_multicheck( $input, $option ) {
 	$output = '';
 	if ( is_array( $input ) ) {
@@ -52,7 +85,7 @@ function of_sanitize_multicheck( $input, $option ) {
 		}
 		foreach( $input as $key => $value ) {
 			if ( array_key_exists( $key, $option['options'] ) && $value ) {
-				$output[$key] = "1";
+				$output[$key] = '1';
 			}
 		}
 	}
@@ -60,57 +93,79 @@ function of_sanitize_multicheck( $input, $option ) {
 }
 add_filter( 'of_sanitize_multicheck', 'of_sanitize_multicheck', 10, 2 );
 
-/* Color Picker */
-
-add_filter( 'of_sanitize_color', 'of_sanitize_hex' );
-
-/* Uploader */
-
+/**
+ * File upload sanitization.
+ *
+ * Returns a sanitized filepath if it has a valid extension.
+ *
+ * @param string $input filepath
+ * @returns string $output filepath
+ */
 function of_sanitize_upload( $input ) {
 	$output = '';
-	$filetype = wp_check_filetype($input);
+	$filetype = wp_check_filetype( $input );
 	if ( $filetype["ext"] ) {
-		$output = $input;
+		$output = esc_url( $input );
 	}
 	return $output;
 }
 add_filter( 'of_sanitize_upload', 'of_sanitize_upload' );
 
-/* Editor */
-
-function of_sanitize_editor($input) {
+/**
+ * Sanitization for editor input.
+ *
+ * Returns unfiltered HTML if user has permissions.
+ *
+ * @param string $input
+ * @returns string $output
+ */
+function of_sanitize_editor( $input ) {
 	if ( current_user_can( 'unfiltered_html' ) ) {
 		$output = $input;
 	}
 	else {
-		global $allowedtags;
-		$output = wpautop(wp_kses( $input, $allowedtags));
+		global $allowedposttags;
+		$output = wp_kses( $input, $allowedposttags );
 	}
 	return $output;
 }
 add_filter( 'of_sanitize_editor', 'of_sanitize_editor' );
 
-/* Allowed Tags */
-
-function of_sanitize_allowedtags($input) {
+/**
+ * Sanitization of input with allowed tags and wpautotop.
+ *
+ * Allows allowed tags in html input and ensures tags close properly.
+ *
+ * @param string $input
+ * @returns string $output
+ */
+function of_sanitize_allowedtags( $input ) {
 	global $allowedtags;
-	$output = wpautop(wp_kses( $input, $allowedtags));
+	$output = wpautop( wp_kses( $input, $allowedtags ) );
 	return $output;
 }
 
-/* Allowed Post Tags */
-
-function of_sanitize_allowedposttags($input) {
+/**
+ * Sanitization of input with allowed post tags and wpautotop.
+ *
+ * Allows allowed post tags in html input and ensures tags close properly.
+ *
+ * @param string $input
+ * @returns string $output
+ */
+function of_sanitize_allowedposttags( $input ) {
 	global $allowedposttags;
-	$output = wpautop(wp_kses( $input, $allowedposttags));
+	$output = wpautop( wp_kses( $input, $allowedposttags) );
 	return $output;
 }
 
-add_filter( 'of_sanitize_info', 'of_sanitize_allowedposttags' );
-
-
-/* Check that the key value sent is valid */
-
+/**
+ * Validates that the $input is one of the avilable choices
+ * for that specific option.
+ *
+ * @param string $input
+ * @returns string $output
+ */
 function of_sanitize_enum( $input, $option ) {
 	$output = '';
 	if ( array_key_exists( $input, $option['options'] ) ) {
@@ -119,9 +174,13 @@ function of_sanitize_enum( $input, $option ) {
 	return $output;
 }
 
-/* Background */
-
+/**
+ * Sanitization for background option.
+ *
+ * @returns array $output
+ */
 function of_sanitize_background( $input ) {
+
 	$output = wp_parse_args( $input, array(
 		'color' => '',
 		'image'  => '',
@@ -140,6 +199,11 @@ function of_sanitize_background( $input ) {
 }
 add_filter( 'of_sanitize_background', 'of_sanitize_background' );
 
+/**
+ * Sanitization for background repeat
+ *
+ * @returns string $value if it is valid
+ */
 function of_sanitize_background_repeat( $value ) {
 	$recognized = of_recognized_background_repeat();
 	if ( array_key_exists( $value, $recognized ) ) {
@@ -149,6 +213,11 @@ function of_sanitize_background_repeat( $value ) {
 }
 add_filter( 'of_background_repeat', 'of_sanitize_background_repeat' );
 
+/**
+ * Sanitization for background position
+ *
+ * @returns string $value if it is valid
+ */
 function of_sanitize_background_position( $value ) {
 	$recognized = of_recognized_background_position();
 	if ( array_key_exists( $value, $recognized ) ) {
@@ -158,6 +227,11 @@ function of_sanitize_background_position( $value ) {
 }
 add_filter( 'of_background_position', 'of_sanitize_background_position' );
 
+/**
+ * Sanitization for background attachment
+ *
+ * @returns string $value if it is valid
+ */
 function of_sanitize_background_attachment( $value ) {
 	$recognized = of_recognized_background_attachment();
 	if ( array_key_exists( $value, $recognized ) ) {
@@ -167,9 +241,9 @@ function of_sanitize_background_attachment( $value ) {
 }
 add_filter( 'of_background_attachment', 'of_sanitize_background_attachment' );
 
-
-/* Typography */
-
+/**
+ * Sanitization for typography option.
+ */
 function of_sanitize_typography( $input, $option ) {
 
 	$output = wp_parse_args( $input, array(
@@ -195,6 +269,9 @@ function of_sanitize_typography( $input, $option ) {
 }
 add_filter( 'of_sanitize_typography', 'of_sanitize_typography', 10, 2 );
 
+/**
+ * Sanitization for font size
+ */
 function of_sanitize_font_size( $value ) {
 	$recognized = of_recognized_font_sizes();
 	$value_check = preg_replace('/px/','', $value);
@@ -205,7 +282,9 @@ function of_sanitize_font_size( $value ) {
 }
 add_filter( 'of_font_size', 'of_sanitize_font_size' );
 
-
+/**
+ * Sanitization for font style
+ */
 function of_sanitize_font_style( $value ) {
 	$recognized = of_recognized_font_styles();
 	if ( array_key_exists( $value, $recognized ) ) {
@@ -215,7 +294,9 @@ function of_sanitize_font_style( $value ) {
 }
 add_filter( 'of_font_style', 'of_sanitize_font_style' );
 
-
+/**
+ * Sanitization for font face
+ */
 function of_sanitize_font_face( $value ) {
 	$recognized = of_recognized_font_faces();
 	if ( array_key_exists( $value, $recognized ) ) {
@@ -229,14 +310,13 @@ add_filter( 'of_font_face', 'of_sanitize_font_face' );
  * Get recognized background repeat settings
  *
  * @return   array
- *
  */
 function of_recognized_background_repeat() {
 	$default = array(
-		'no-repeat' => __('No Repeat', 'optionsframework'),
-		'repeat-x'  => __('Repeat Horizontally', 'optionsframework'),
-		'repeat-y'  => __('Repeat Vertically', 'optionsframework'),
-		'repeat'    => __('Repeat All', 'optionsframework'),
+		'no-repeat' => __( 'No Repeat', 'options-framework' ),
+		'repeat-x'  => __( 'Repeat Horizontally', 'options-framework' ),
+		'repeat-y'  => __( 'Repeat Vertically', 'options-framework' ),
+		'repeat'    => __( 'Repeat All', 'options-framework' ),
 		);
 	return apply_filters( 'of_recognized_background_repeat', $default );
 }
@@ -245,19 +325,18 @@ function of_recognized_background_repeat() {
  * Get recognized background positions
  *
  * @return   array
- *
  */
 function of_recognized_background_position() {
 	$default = array(
-		'top left'      => __('Top Left', 'optionsframework'),
-		'top center'    => __('Top Center', 'optionsframework'),
-		'top right'     => __('Top Right', 'optionsframework'),
-		'center left'   => __('Middle Left', 'optionsframework'),
-		'center center' => __('Middle Center', 'optionsframework'),
-		'center right'  => __('Middle Right', 'optionsframework'),
-		'bottom left'   => __('Bottom Left', 'optionsframework'),
-		'bottom center' => __('Bottom Center', 'optionsframework'),
-		'bottom right'  => __('Bottom Right', 'optionsframework')
+		'top left'      => __( 'Top Left', 'options-framework' ),
+		'top center'    => __( 'Top Center', 'options-framework' ),
+		'top right'     => __( 'Top Right', 'options-framework' ),
+		'center left'   => __( 'Middle Left', 'options-framework' ),
+		'center center' => __( 'Middle Center', 'options-framework' ),
+		'center right'  => __( 'Middle Right', 'options-framework' ),
+		'bottom left'   => __( 'Bottom Left', 'options-framework' ),
+		'bottom center' => __( 'Bottom Center', 'options-framework' ),
+		'bottom right'  => __( 'Bottom Right', 'options-framework')
 		);
 	return apply_filters( 'of_recognized_background_position', $default );
 }
@@ -266,12 +345,11 @@ function of_recognized_background_position() {
  * Get recognized background attachment
  *
  * @return   array
- *
  */
 function of_recognized_background_attachment() {
 	$default = array(
-		'scroll' => __('Scroll Normally', 'optionsframework'),
-		'fixed'  => __('Fixed in Place', 'optionsframework')
+		'scroll' => __( 'Scroll Normally', 'options-framework' ),
+		'fixed'  => __( 'Fixed in Place', 'options-framework')
 		);
 	return apply_filters( 'of_recognized_background_attachment', $default );
 }
@@ -282,7 +360,6 @@ function of_recognized_background_attachment() {
  * @param    string    Color in hexidecimal notation. "#" may or may not be prepended to the string.
  * @param    string    The value that this function should return if it cannot be recognized as a color.
  * @return   string
- *
  */
 
 function of_sanitize_hex( $hex, $default = '' ) {
@@ -291,6 +368,7 @@ function of_sanitize_hex( $hex, $default = '' ) {
 	}
 	return $default;
 }
+add_filter( 'of_sanitize_color', 'of_sanitize_hex' );
 
 /**
  * Get recognized font sizes.
@@ -317,7 +395,6 @@ function of_recognized_font_sizes() {
  * while values are ready for display in in html.
  *
  * @return   array
- *
  */
 function of_recognized_font_faces() {
 	$default = array(
@@ -341,14 +418,13 @@ function of_recognized_font_faces() {
  * while values are ready for display in in html.
  *
  * @return   array
- *
  */
 function of_recognized_font_styles() {
 	$default = array(
-		'normal'      => __( 'Normal', 'optionsframework' ),
-		'italic'      => __( 'Italic', 'optionsframework' ),
-		'bold'        => __( 'Bold', 'optionsframework' ),
-		'bold italic' => __( 'Bold Italic', 'optionsframework' )
+		'normal'      => __( 'Normal', 'options-framework' ),
+		'italic'      => __( 'Italic', 'options-framework' ),
+		'bold'        => __( 'Bold', 'options-framework' ),
+		'bold italic' => __( 'Bold Italic', 'options-framework' )
 		);
 	return apply_filters( 'of_recognized_font_styles', $default );
 }
@@ -358,9 +434,7 @@ function of_recognized_font_styles() {
  *
  * @param    string    Color in hexidecimal notation. "#" may or may not be prepended to the string.
  * @return   bool
- *
  */
-
 function of_validate_hex( $hex ) {
 	$hex = trim( $hex );
 	/* Strip recognized prefixes. */

@@ -1,128 +1,135 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Options Framework Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-22 15:51-0300\n"
-"PO-Revision-Date: 2012-04-22 16:04-0300\n"
-"Last-Translator: Weslly Honorato <weslly.honorato@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2012-04-22 19:13-0300\n"
+"PO-Revision-Date: 2014-03-16 20:20+0700\n"
+"Last-Translator: Andrea Bersi\n"
+"Language-Team: Arya Prakasa <arya@prakasa.me>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;esc_attr_e\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;_x;__;esc_attr_e\n"
+"X-Poedit-Basepath: ../\n"
+"Language: id\n"
+"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: options-framework.php:71
 #, php-format
-msgid "Your current theme does not have support for the Options Framework plugin.  <a href=\"%1$s\" target=\"_blank\">Learn More</a> | <a href=\"%2$s\">Hide Notice</a>"
-msgstr "Seu tema atual não suporta o plugin Options Framework. <a href=\"%1$s\" target=\"_blank\">Saiba Mais</a> | <a href=\"%2$s\">Esconder Alerta</a>"
+msgid ""
+"Your current theme does not have support for the Options Framework plugin.  "
+"<a href=\"%1$s\" target=\"_blank\">Learn More</a> | <a href=\"%2$s\">Hide "
+"Notice</a>"
+msgstr ""
+"Tema Anda saat ini tidak memiliki dukungan untuk plugin Options Framework. "
+"<a href=\"%1$s\" target=\"_blank\">Pelajari Lebih Lanjut</a> | <a href=\"%2$s"
+"\">Sembunyikan Pemberitahuan</a>"
 
-#: options-framework.php:254
-#: options-framework.php:456
+#: options-framework.php:254 options-framework.php:456
 msgid "Theme Options"
-msgstr "Opções do Tema"
+msgstr "Opsi Tema"
 
 #: options-framework.php:323
 msgid "Save Options"
-msgstr "Salvar Opções"
+msgstr "Simpan Opsi"
 
 #: options-framework.php:324
 msgid "Restore Defaults"
-msgstr "Restaurar Padrões"
+msgstr "Kembali ke Awal"
 
 #: options-framework.php:324
 msgid "Click OK to reset. Any theme settings will be lost!"
-msgstr "Clique em OK para restaurar. As configurações feitas anteriormente serão perdidas!"
+msgstr "Klik OK untuk me-reset. Setiap pengaturan tema akan hilang!"
 
 #: options-framework.php:358
 msgid "Default options restored."
-msgstr "Opções padrão restauradas."
+msgstr "Opsi dikembalikan ke awal."
 
 #: options-framework.php:400
 msgid "Options saved."
-msgstr "Opções salvas."
+msgstr "Opsi tersimpan."
 
 #: options-medialibrary-uploader.php:26
 msgid "Options Framework Internal Container"
-msgstr "Container Interno do Options Framework"
+msgstr "Options Framework Internal Kontainer"
 
 #: options-medialibrary-uploader.php:128
 msgid "Upload"
-msgstr "Upload"
+msgstr "Unggah"
 
 #: options-medialibrary-uploader.php:151
 msgid "View File"
-msgstr "Visualizar Arquivo"
+msgstr "Tampilkan Berkas"
 
 #: options-medialibrary-uploader.php:288
 msgid "Gallery"
-msgstr "Galeria"
+msgstr "Galeri"
 
 #: options-medialibrary-uploader.php:288
 msgid "Previously Uploaded"
-msgstr "Enviado Anteriormente"
+msgstr "Unggahan Sebelumnya"
 
 #: options-sanitize.php:232
 msgid "No Repeat"
-msgstr "Sem Repetição"
+msgstr "Tidak Berulang"
 
 #: options-sanitize.php:233
 msgid "Repeat Horizontally"
-msgstr "Repetir Horizontalmente"
+msgstr "Pengulanagan Horizontal"
 
 #: options-sanitize.php:234
 msgid "Repeat Vertically"
-msgstr "Repetir Verticalmente"
+msgstr "Pengulangan Vertikal"
 
 #: options-sanitize.php:235
 msgid "Repeat All"
-msgstr "Repetir"
+msgstr "Pengulangan Semua"
 
 #: options-sanitize.php:248
 msgid "Top Left"
-msgstr "Superior Esquerda"
+msgstr "Puncak Kiri"
 
 #: options-sanitize.php:249
 msgid "Top Center"
-msgstr "Superior Centro"
+msgstr "Puncak Pusat"
 
 #: options-sanitize.php:250
 msgid "Top Right"
-msgstr "Superior Direita"
+msgstr "Puncak Kanan"
 
 #: options-sanitize.php:251
 msgid "Middle Left"
-msgstr "Meio Esquerda"
+msgstr "Tengah Kiri"
 
 #: options-sanitize.php:252
 msgid "Middle Center"
-msgstr "Meio Centro"
+msgstr "Tengah Pusat"
 
 #: options-sanitize.php:253
 msgid "Middle Right"
-msgstr "Meio Direita"
+msgstr "Tengah Kanan"
 
 #: options-sanitize.php:254
 msgid "Bottom Left"
-msgstr "Inferior Esquerda"
+msgstr "Dasar Kiri"
 
 #: options-sanitize.php:255
 msgid "Bottom Center"
-msgstr "Inferior Centro"
+msgstr "Dasar Pusat"
 
 #: options-sanitize.php:256
 msgid "Bottom Right"
-msgstr "Inferior Direita"
+msgstr "Dasar Kanan"
 
 #: options-sanitize.php:269
 msgid "Scroll Normally"
-msgstr "Rolar Normalmente"
+msgstr "Gulir Normal"
 
 #: options-sanitize.php:270
 msgid "Fixed in Place"
-msgstr "Fixado no Local"
+msgstr "Tetap di Tempat"
 
 #: options-sanitize.php:344
 msgid "Normal"
@@ -130,13 +137,12 @@ msgstr "Normal"
 
 #: options-sanitize.php:345
 msgid "Italic"
-msgstr "Itálico"
+msgstr "Cetak Miring"
 
 #: options-sanitize.php:346
 msgid "Bold"
-msgstr "Negrito"
+msgstr "Cetak Tebal"
 
 #: options-sanitize.php:347
 msgid "Bold Italic"
-msgstr "Negrito e Itálico"
-
+msgstr "Cetak Tebal Miring"
