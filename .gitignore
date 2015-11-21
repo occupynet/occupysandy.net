@@ -11,7 +11,26 @@ license.txt
 *bb-config.php
 
 .htaccess
+
+/wp-admin
+/wp-includes
+index.php
+license.txt
+readme.html
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
 wp-config.php
+wp-cron.php
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
 
 voice/voicefiles
 wp-content/_uploads/
@@ -24,15 +43,10 @@ wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
 wp-content/cache/
 wp-content/backups/
-wp-content/plugins/wp-piwik/update/
 
 wp-content/db.php
 wp-content/object-cache.php
 wp-content/w3tc-config/
-wp-content/plugins/custom-post-type-ui/
-
-wp-content/plugins/si-captcha-for-wordpress/captcha/temp/
-wp-content/plugins/duplicator/files/
 
 *.log
 
